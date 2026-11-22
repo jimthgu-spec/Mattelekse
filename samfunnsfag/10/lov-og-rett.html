@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lov og rett</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style></style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Lov og rett</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#film"><b>2</b>Film</a>
+    <a href="#sak"><b>3</b>Straffesaken</a>
+    <a href="#folger"><b>4</b>Følger</a>
+    <a href="#hvorfor"><b>5</b>Drøft</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Hva skjer når noen bryter loven?</h1>
+      <p class="lead">Fra du fyller 15 år, kan du straffes i Norge. Men en straff er mer enn en bot eller en dom. Et lovbrudd kan få følger for deg, for den som blir rammet, og for samfunnet, både nå og om mange år.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En dommerklubbe og en vekt"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Norge har en kriminell lavalder. Under den alderen kan du ikke straffes, uansett hva du gjør.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Taggingen</h2></div>
+    <p class="sec-lead">Mats (15) og vennene hans tagger på veggen til en idrettshall en fredagskveld.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="sak"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fra lovbrudd til dom</h2></div>
+    <p class="sec-lead">Hva skjer i en straffesak? Sett stegene i riktig rekkefølge.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="ord1"></div></div>
+  </div></section>
+
+  <section id="folger"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Kort og lang sikt</h2></div>
+    <p class="sec-lead">Et lovbrudd kan få følger lenge etterpå. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="hvorfor"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Hvorfor straffer vi, og er det alltid galt å bryte loven?</h2></div>
+    <p class="sec-lead">Svar på spørsmålene, og tenk over begrunnelsene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="d0"></div><div id="d1"></div><div id="d2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: forklare sentrale lover, regler og normer og drøfte konsekvenser av lovbrudd for enkeltmennesker og samfunnet på kort og lang sikt. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<g transform="rotate(-30 150 110)"><rect x="90" y="90" width="110" height="40" rx="8" fill="#8a5a33"/><rect x="140" y="130" width="12" height="70" rx="4" fill="#6b4426"/></g><rect x="60" y="190" width="120" height="16" rx="4" fill="#6b4426"/>
+<line x1="290" y1="40" x2="290" y2="190" stroke="var(--ink)" stroke-width="4"/><line x1="230" y1="60" x2="350" y2="60" stroke="var(--ink)" stroke-width="4"/><path d="M215 60 l15 40 l15 -40 M335 60 l15 40 l15 -40" fill="none" stroke="var(--muted)" stroke-width="2"/><ellipse cx="230" cy="102" rx="24" ry="6" fill="var(--accent-soft)" stroke="var(--accent)"/><ellipse cx="350" cy="102" rx="24" ry="6" fill="var(--accent-soft)" stroke="var(--accent)"/><rect x="270" y="188" width="40" height="8" fill="var(--ink)"/>`;
+
+V.predict($('#p1'),{q:'Hvor gammel må du være for å kunne straffes i Norge?',opts:['12 år','15 år','18 år'],ok:1,expl:'15 år. Under 15 kan du ikke straffes, men politiet kan likevel etterforske, og barnevernet kan følge opp. Fra 15 til 18 år får du mildere straffer enn voksne, og fengsel brukes nesten aldri.',retry:'Det er før du blir myndig.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const wall=(tag)=>`<rect width="400" height="${GY}" fill="var(--paper)"/><rect x="40" y="40" width="330" height="${GY-40}" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/><text x="205" y="32" class="fm-small" text-anchor="middle">IDRETTSHALLEN</text>${tag>0?`<path d="M120 120 q30 -40 60 0 t60 0 t60 0" fill="none" stroke="var(--c3)" stroke-width="${8*Math.min(1,tag)}" opacity="${Math.min(1,tag)}"/><text x="210" y="160" text-anchor="middle" font-size="30" font-weight="800" fill="var(--c1)" opacity="${Math.min(1,tag)}">MZ</text>`:''}<line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const spray=`<rect x="-4" y="-16" width="8" height="18" rx="3" fill="var(--c1)"/>`;
+  const mats=(o={})=>person(150,GY,90,Object.assign({shirt:1,skin:0,hair:1},o)),venn=(o={})=>person(220,GY,88,Object.assign({shirt:2,skin:3,hair:2},o));
+  S.film('#film1',{title:'Taggingen',real:'Hærverk',size:[400,250],end:{text:'Følg straffesaken ↓',href:'#sak'},poster:'Det tok ti minutter å tagge veggen. Hvor lenge varer følgene?',
+    scenes:[
+      {dur:4000,text:'Mats og vennen tagger på veggen til idrettshallen. Det føles spennende.',draw:p=>wall(seg(p,.1,.9))+mats({armL:140,hold:spray})+venn({flip:true})},
+      {dur:4000,text:'Et overvåkingskamera har filmet dem. Mandagen etter ringer politiet hjem til Mats.',draw:p=>wall(1)+`<rect x="330" y="50" width="30" height="16" rx="3" fill="var(--ink)"/><circle cx="332" cy="58" r="4" fill="var(--bad)"/>`+mats({armL:-10})},
+      {dur:1200,text:'Det koster 25 000 kroner å fjerne taggingen.',draw:()=>wall(1)+mats(),
+        ask:{q:'Mats er 15 år. Hva er en vanlig reaksjon for en førstegangsforbryter på hans alder?',opts:['Fengsel i to år','Møte i konfliktrådet, der han treffer eieren og gjør opp for seg','Ingenting, han er for ung'],ok:1,why:'Unge som begår lovbrudd for første gang, får ofte møte i konfliktrådet. Der møter de den som ble rammet, sier unnskyld og blir enige om hvordan skaden skal gjøres god igjen.',wrong:{0:'Fengsel for unge brukes nesten aldri, og ikke for slike saker.',2:'Han er 15, så han kan straffes.'}}},
+      {dur:4600,text:'I konfliktrådet møter Mats vaktmesteren i hallen. – Jeg må bruke helgene mine på å vaske dette bort, sier hun. Mats skjønte ikke at det rammet noen.',draw:p=>S.bg.klasse()+mats({flip:false})+person(260,GY,96,{shirt:4,skin:1,hair:3,flip:true,armL:60})+person(205,GY,94,{shirt:3,skin:2,hair:0})+bubble(260,GY-104,'Det rammer meg.',{opacity:seg(p,.3,.5)})},
+      {dur:4600,text:'Mats vasker veggen sammen med vaktmesteren i fire lørdager, og familien betaler en del av regningen. Saken blir ikke liggende på rullebladet hans, slik en dom kunne gjort.',draw:p=>wall(1-seg(p,0,1))+mats({armL:lerp(40,120,(Math.sin(p*20)+1)/2)})+person(260,GY,96,{shirt:4,skin:1,hair:3,flip:true})}]});}
+
+S.order($('#ord1'),{intro:'Fra første steg øverst til siste nederst.',items:[
+  {t:'Lovbruddet blir anmeldt til politiet.',k:1},{t:'Politiet etterforsker: avhører vitner og samler bevis.',k:2},{t:'Påtalemyndigheten bestemmer om saken skal føres for retten (tiltale).',k:3},{t:'Rettssak i tingretten med dommer, aktor og forsvarer.',k:4},{t:'Retten avsier dom: skyldig eller ikke skyldig.',k:5},{t:'Straffen gjennomføres, for eksempel bot, samfunnsstraff eller fengsel.',k:6}],
+  good:'Riktig! Alle er uskyldige til det motsatte er bevist, og alle har rett til en forsvarer. Hvis man er uenig i dommen, kan den ankes til lagmannsretten og til slutt Høyesterett.'});
+
+N.sorter($('#sort1'),{groups:[{id:'k',name:'Kort sikt'},{id:'l',name:'Lang sikt'}],
+  items:[{t:'Bot som må betales',g:'k'},{t:'Foreldrene må hente deg hos politiet',g:'k'},{t:'Offeret er redd og sint',g:'k'},{t:'Merknad på politiattest gjør det vanskelig å få enkelte jobber',g:'l',why:'Mange jobber med barn, i helsevesenet eller i forsvaret krever politiattest.'},{t:'Kan bli nektet visum til enkelte land',g:'l'},{t:'Offeret føler seg utrygg i lang tid',g:'l'},{t:'Samfunnet bruker penger på reparasjoner og rettssaker',g:'k'},{t:'Mindre tillit mellom folk i nabolaget',g:'l'}],
+  good:'Riktig. Et lovbrudd rammer flere enn den som gjør det. Samtidig er målet med straff for unge først og fremst å hjelpe dem bort fra kriminalitet, slik at de får en god fremtid.'});
+
+V.predict($('#d0'),{tag:'Drøft 1',q:'Hva er det viktigste målet med straff i Norge i dag?',opts:['Å hevne seg på den som gjorde det','Å hindre nye lovbrudd, både ved at den dømte endrer seg og ved at andre lar være','Å tjene penger til staten'],ok:1,expl:'Norge legger stor vekt på <b>rehabilitering</b>: Den dømte skal komme tilbake til samfunnet som en bedre nabo. Straff skal også <b>avskrekke</b> og <b>beskytte</b> samfunnet. Mange mener også at straff skal være rettferdig gjengjeldelse.',retry:'Hva ønsker samfunnet å oppnå?'});
+V.predict($('#d1'),{tag:'Drøft 2',q:'Hva er forskjellen på en lov og en norm, når de brytes?',opts:['Det er ingen forskjell','Brudd på lover kan straffes av staten, brudd på normer får sosiale reaksjoner','Brudd på normer straffes hardere'],ok:1,expl:'Å snike i køen er et normbrudd: folk blir irriterte. Å stjele er et lovbrudd: du kan få straff. Noen ganger blir normer til lover, for eksempel forbudet mot å slå barn i 1987.',retry:'Hvem reagerer?'});
+V.predict($('#d2'),{tag:'Drøft 3',q:'Under Alta-saken lenket demonstranter seg fast for å stoppe en utbygging. Det var ulovlig. Kan det være riktig å bryte en lov?',opts:['Aldri','Det kalles sivil ulydighet: åpent og fredelig lovbrudd for en sak man mener er viktig, der man godtar straffen','Ja, alltid hvis man er uenig'],ok:1,expl:'Dette er et ekte dilemma. Noen mener sivil ulydighet har ført samfunnet fremover, for eksempel kvinnekampen og borgerrettskampen. Andre mener at alle må følge lovene, ellers kan hvem som helst bryte dem. Hva mener du?',retry:'Det finnes et eget begrep for dette.'});
+
+const skills={
+  sak:{name:'Rettssystemet',gens:[
+    ()=>N.mc('Hva er den kriminelle lavalderen i Norge?','15 år',['12 år','16 år','18 år'],['Ungdomsskolen.'],'Under 15 kan du ikke straffes.'),
+    ()=>N.mc('Hva gjør <b>forsvareren</b> i en rettssak?','Hjelper og forsvarer den tiltalte',['Bestemmer straffen','Fører saken mot den tiltalte'],['Forsvare.'],'Alle tiltalte har rett til en forsvarer.'),
+    ()=>N.mc('Hva gjør <b>aktor</b> i en rettssak?','Fører saken på vegne av påtalemyndigheten og argumenterer for at tiltalte er skyldig',['Forsvarer tiltalte','Er vitne'],['Påtalemyndigheten.'],'Aktor er ofte en politiadvokat eller statsadvokat.'),
+    ()=>N.mc('Hva er <b>konfliktrådet</b>?','Et møte der den som har gjort noe galt, møter den som ble rammet, for å gjøre opp',['En domstol for voksne','En del av Stortinget'],['Gjenopprettende.'],'Konfliktrådet brukes mye for unge lovbrytere.'),
+    ()=>N.mc('Hva betyr det å <b>anke</b> en dom?','Å be en høyere domstol behandle saken på nytt',['Å godta dommen','Å slippe straff'],['Lagmannsretten.'],'Fra tingretten kan man anke til lagmannsretten, og så Høyesterett.'),
+    ()=>N.mc('Hva betyr <b>uskyldspresumsjon</b>?','At alle regnes som uskyldige til det motsatte er bevist',['At alle er skyldige','At politiet alltid har rett'],['Uskyldig til...'],'Det er et grunnleggende prinsipp i en rettsstat.')]},
+  folger:{name:'Konsekvenser av lovbrudd',gens:[
+    ()=>{const x=pick([['Bot','Kort sikt'],['Problemer med å få visse jobber','Lang sikt'],['Avhør hos politiet','Kort sikt'],['Utrygghet i nabolaget over tid','Lang sikt'],['Merknad på politiattest','Lang sikt']]);return N.mc(`Er «${x[0].toLowerCase()}» en følge på kort eller lang sikt?`,x[1],[x[1]==='Kort sikt'?'Lang sikt':'Kort sikt'],['Skjer det med en gang, eller varer det lenge?'],`${x[1]}.`);},
+    ()=>N.mc('Hvem kan bli rammet av et lovbrudd?','Den som gjør det, offeret, familiene og samfunnet',['Bare den som gjør det','Bare offeret'],['Ringvirkninger.'],'Lovbrudd har mange ringvirkninger.'),
+    ()=>N.mc('Hva er <b>rehabilitering</b>?','At den dømte får hjelp til å komme tilbake til et lovlydig liv',['Strengere straff','Å bygge nye fengsler'],['Tilbake til samfunnet.'],'Norge satser mye på rehabilitering, og har lav gjentakelse sammenlignet med mange land.')]},
+  lov:{name:'Lover og normer',gens:[
+    ()=>{const x=pick([['Å stjele','Lov'],['Å si takk for maten','Norm'],['Å kjøre uten førerkort','Lov'],['Å holde døra for andre','Norm'],['Å true noen på nett','Lov']]);return N.mc(`Er det en lov eller en norm som sier noe om dette? <b>${x[0]}</b>`,x[1],[x[1]==='Lov'?'Norm':'Lov'],['Kan du få straff?'],`Det er regulert av en ${x[1].toLowerCase()}.`);},
+    ()=>N.mc('Hva er <b>sivil ulydighet</b>?','Åpent og fredelig lovbrudd for en sak, der man godtar straffen',['Hemmelig kriminalitet','Å følge alle lover'],['Alta-saken.'],'Sivil ulydighet er omstridt, men har spilt en rolle i mange kamper for rettigheter.')]}
+};
+V.practice($('#practice'),{id:'saf10-lov',title:'Lov og rett',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

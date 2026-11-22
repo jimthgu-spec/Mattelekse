@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Identitet og påvirkning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style></style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Identitet og påvirkning</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#asch"><b>2</b>Eksperimentet</a>
+    <a href="#film"><b>3</b>Film</a>
+    <a href="#mangfold"><b>4</b>Mangfold</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Følger du flokken?</h1>
+      <p class="lead">Hvem du er, formes av familien, vennene, kulturen og alt du ser på skjermen. Det meste av påvirkningen merker vi ikke engang. Test deg selv i et berømt eksperiment, og finn ut hva som gjør det lettere å stå for egne valg.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En figur som går en annen vei enn flokken"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">I 1951 gjorde psykologen Solomon Asch et eksperiment. Deltakerne skulle si hvilken strek som var like lang som en annen. Oppgaven var veldig lett. Men alle de andre i rommet var med på et lurespill og svarte feil med vilje.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="asch"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Prøv eksperimentet selv</h2></div>
+    <p class="sec-lead">Hvilken strek, A, B eller C, er like lang som streken til venstre? De fem andre svarer først.</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="aFig" viewBox="0 0 380 250" role="img" aria-label="Streker og fem personer som svarer"></svg></div>
+  <div class="controls"><div class="card2" id="aCard" aria-live="polite"></div></div>
+</div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Festen</h2></div>
+    <p class="sec-lead">Nora er på fest. Noen sender rundt en vape.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="mangfold"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Muligheter og utfordringer</h2></div>
+    <p class="sec-lead">Mangfold i identitet, levesett og kultur gir både muligheter og utfordringer. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: reflektere over likheter og forskjeller i identitet, levesett og kulturuttrykk og drøfte muligheter og utfordringer ved mangfold, og reflektere over hvordan identitet, selvbilde og grenser utvikles og utfordres i fellesskap, og foreslå måter å håndtere påvirkning og uønskede hendelser på. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const P=window.Film?Film.person:()=>'';
+$('#heroFig').innerHTML=[0,1,2,3,4].map(i=>P(40+i*45,190,90,{shirt:2,skin:i%4,hair:i%4,walk:i*.7})).join('')+P(320,190,96,{shirt:1,skin:1,hair:3,flip:true,walk:1})+`<path d="M260 60 h60" stroke="var(--accent)" stroke-width="4" marker-end="url(#ar)"/><path d="M120 60 h-60" stroke="var(--muted)" stroke-width="4" marker-end="url(#ar2)"/><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker><marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>`;
+
+V.predict($('#p1'),{q:'Hvor mange av deltakerne fulgte flertallet og svarte feil minst én gang?',opts:['Nesten ingen','Omtrent 1 av 10','Omtrent 3 av 4'],ok:2,expl:'Omtrent tre av fire svarte feil minst én gang, selv om de kunne se at svaret var feil. Vi vil gjerne passe inn, og det er ubehagelig å være den eneste som mener noe annet. Men en av fire sto imot hver gang.',retry:'Gruppepress er sterkere enn de fleste tror.'});
+
+/* Asch */
+const RND=[{ref:120,l:[80,120,150],ok:1,grp:1},{ref:90,l:[90,130,60],ok:0,grp:2},{ref:140,l:[100,170,140],ok:2,grp:0},{ref:110,l:[150,110,75],ok:1,grp:0},{ref:70,l:[105,140,70],ok:2,grp:1}];
+let r=0,wrong=0,conf=0,ans=[];
+function aDraw(show){const d=RND[r];let s=`<rect width="380" height="250" fill="var(--paper)" rx="8"/><rect x="20" y="16" width="340" height="140" rx="6" fill="var(--surface)" stroke="var(--line)"/>`;
+  s+=`<line x1="60" y1="${140-d.ref}" x2="60" y2="140" stroke="var(--ink)" stroke-width="6"/>`;
+  d.l.forEach((h,i)=>s+=`<line x1="${190+i*60}" y1="${140-h}" x2="${190+i*60}" y2="140" stroke="var(--accent)" stroke-width="6"/><text x="${190+i*60}" y="${152}" text-anchor="middle" font-weight="700" font-size="13" fill="var(--ink)">${'ABC'[i]}</text>`);
+  const said='ABC'[d.grp];
+  for(let i=0;i<5;i++){s+=P(40+i*62,246,70,{shirt:1+i%4,skin:(i*3)%4,hair:i%4});if(show>i)s+=`<rect x="${26+i*62}" y="164" width="28" height="22" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="${40+i*62}" y="180" text-anchor="middle" font-weight="700" font-size="14" fill="var(--ink)">${said}</text>`;}
+  s+=`<text x="350" y="240" text-anchor="end" font-size="12" fill="var(--muted)">Du er nummer 6</text>`;
+  $('#aFig').innerHTML=s;}
+function aRound(){const d=RND[r];let k=0;aDraw(0);$('#aCard').innerHTML=`<span class="tag">Runde ${r+1} av ${RND.length}</span><p style="margin:0">De andre svarer …</p>`;
+  const step=()=>{k++;aDraw(k);if(k<5)setTimeout(step,V.reduce?50:450);else ask();};setTimeout(step,V.reduce?50:450);
+  function ask(){$('#aCard').innerHTML=`<span class="tag">Runde ${r+1} av ${RND.length}</span><p style="margin:0">Alle fem sa <b>${'ABC'[d.grp]}</b>. Hva svarer du?</p><div class="opts">${[0,1,2].map(i=>`<button type="button" class="opt" data-i="${i}">${'ABC'[i]}</button>`).join('')}</div>`;
+    $('#aCard').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i;ans.push(i);if(d.grp!==d.ok){wrong++;if(i===d.grp)conf++;}
+      r++;if(r<RND.length)aRound();else aEnd();}));}}
+function aEnd(){$('#aCard').innerHTML=`<span class="tag">Resultat</span><p style="margin:0">I <b>${wrong}</b> av rundene svarte gruppa feil med vilje. Du fulgte gruppa <b>${conf}</b> ${conf===1?'gang':'ganger'}.</p><p style="margin:0">${conf?'Det er helt vanlig! Selv når vi ser svaret, kjenner vi presset fra gruppa.':'Du sto imot hver gang. Her var det lett, fordi du visste at det var et eksperiment. I virkeligheten er presset sterkere.'}</p><p class="note" style="margin:0">Asch fant også at hvis bare <b>én</b> annen person svarte riktig, falt andelen som fulgte gruppa kraftig. Én alliert gjør en stor forskjell.</p><div class="row"><button class="btn" type="button" id="aRe">Prøv igjen</button></div>`;
+  $('#aRe').addEventListener('click',()=>{r=0;wrong=0;conf=0;ans=[];aRound();});}
+aDraw(0);$('#aCard').innerHTML='<span class="tag">Klar?</span><p style="margin:0">Du får fem runder.</p><div class="row"><button class="btn primary" type="button" id="aGo">Start</button></div>';$('#aGo').addEventListener('click',aRound);
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const vape=`<rect x="-3" y="-14" width="6" height="16" rx="2" fill="var(--c3)"/>`;
+  const nora=(o={})=>person(170,GY,90,Object.assign({shirt:3,skin:1,hair:3},o)),venn=(x,i,o={})=>person(x,GY,92,Object.assign({shirt:[1,2,4,1][i],skin:(i*2)%4,hair:i%4},o));
+  const bg=()=>S.bg.stue()+`<text x="330" y="30" font-size="22">🎵</text>`;
+  S.film('#film1',{title:'Festen',real:'Gruppepress',size:[400,250],end:{text:'Se på mangfold ↓',href:'#mangfold'},poster:'– Kom igjen, alle prøver! Hvordan sier man nei når alle sier ja?',
+    scenes:[
+      {dur:4000,text:'Nora er på fest med klassen. Noen sender rundt en vape. Den går fra hånd til hånd.',draw:p=>bg()+venn(60,0,{armL:90,hold:p<.5?vape:''})+venn(110,1,{flip:true,armL:p>.5?90:10,hold:p>.5?vape:''})+nora()+venn(240,2,{flip:true})+venn(300,3,{flip:true})},
+      {dur:4200,text:'Nå er det Noras tur. – Kom igjen, alle prøver! Ikke vær så kjedelig.',draw:p=>bg()+venn(60,0)+venn(110,1,{flip:true,armL:90,hold:vape})+nora({armL:-20})+venn(240,2,{flip:true,armL:60})+venn(300,3,{flip:true})+bubble(110,GY-100,'Ikke vær kjedelig!',{opacity:seg(p,.2,.4)})},
+      {dur:1200,text:'Nora vil egentlig ikke.',draw:()=>bg()+venn(60,0)+venn(110,1,{flip:true,armL:90,hold:vape})+nora()+venn(240,2,{flip:true})+venn(300,3,{flip:true}),
+        ask:{q:'Hva kan gjøre det lettere for Nora å si nei?',opts:['At én annen også sier nei','At hun later som hun prøver','At hun drar hjem uten å si noe'],ok:0,why:'Akkurat som i Asch-eksperimentet: Én alliert gjør det mye lettere å stå imot. Du kan selv være den personen for noen andre.',wrong:{1:'Da gir hun egentlig etter for presset.',2:'Det går an, men det er lettere å stå imot sammen med noen.'}}},
+      {dur:4200,text:'– Nei takk, sier Nora. Da sier Jonas: – Jeg står over jeg også. Skal vi heller ta en runde Uno?',draw:p=>bg()+venn(60,0)+venn(110,1,{flip:true})+nora({armL:100})+venn(240,2,{flip:true,armL:120})+venn(300,3,{flip:true})+bubble(170,GY-98,'Nei takk!',{opacity:seg(p,0,.2)})+bubble(240,GY-100,'Jeg også!',{opacity:seg(p,.4,.6)})},
+      {dur:4000,text:'Flere blir med på kortspillet. Det viste seg at mange egentlig ikke ville. Å si nei kan gi andre mot til å gjøre det samme.',draw:p=>bg()+venn(60,0,{sit:true})+nora({sit:true})+venn(240,2,{flip:true,sit:true})+venn(300,3,{flip:true,sit:true})+`<rect x="180" y="${GY-28}" width="60" height="10" rx="3" fill="var(--c1)"/>`}]});}
+
+N.sorter($('#sort1'),{groups:[{id:'m',name:'Mulighet'},{id:'u',name:'Utfordring'}],
+  items:[{t:'Vi lærer nye perspektiver og måter å tenke på.',g:'m'},{t:'Mer variert mat, musikk og kultur.',g:'m'},{t:'Flere språk gir fordeler i handel og arbeidsliv.',g:'m'},{t:'Misforståelser fordi vi har ulike normer.',g:'u'},{t:'Fordommer og diskriminering.',g:'u'},{t:'Noen kan føle at de må velge mellom to kulturer.',g:'u',why:'Mange med flerkulturell bakgrunn opplever forventninger fra flere kanter. Mange beskriver det også som en styrke.'}],
+  good:'Riktig! Mangfold er ikke enten bra eller dårlig. Utfordringene kan løses med kunnskap, respekt og samtale.'});
+V.predict($('#p2'),{tag:'Drøft',q:'Hva har alle mennesker felles, uansett kultur og identitet?',opts:['Ingenting','Behov for å høre til, bli respektert og få være seg selv','Samme religion'],ok:1,expl:'Selv om levesett og kulturuttrykk er ulike, har vi grunnleggende behov felles. Det er et godt utgangspunkt for å forstå hverandre.',retry:'Tenk på hva du selv trenger.'});
+
+const skills={
+  press:{name:'Gruppepress og påvirkning',gens:[
+    ()=>N.mc('Hva viste Asch-eksperimentet?','At mange følger flertallet selv når de ser at flertallet tar feil',['At ingen bryr seg om andre','At grupper alltid har rett'],['Strekene.'],'Konformitet: Vi tilpasser oss gruppa.'),
+    ()=>N.mc('Hva gjør det lettest å stå imot gruppepress?','At minst én annen er enig med deg',['At du er helt alene','At gruppa er stor'],['Allierte.'],'Én alliert reduserer presset kraftig.'),
+    ()=>N.mc('Hva er en god måte å si nei på?','Si det tydelig og kort, og foreslå noe annet',['Finne på en lang unnskyldning','Late som du gjør det'],['Enkelt og tydelig.'],'«Nei takk» er nok. Du trenger ikke forklare deg.'),
+    ()=>N.mc('Hvem påvirker identiteten din?','Familie, venner, kultur, skole og medier',['Bare deg selv','Bare foreldrene dine'],['Mange kilder.'],'Identitet formes i samspill med andre hele livet.'),
+    ()=>N.mc('Hva kan du gjøre hvis du opplever en uønsket hendelse, for eksempel at noen deler et bilde av deg?','Si fra til en voksen du stoler på, og be om at bildet slettes',['Ikke si noe til noen','Dele et bilde av dem tilbake'],['Du skal ikke stå alene.'],'Det er ikke din feil. Voksne, skolen og politiet kan hjelpe.')]},
+  mang:{name:'Mangfold',gens:[
+    ()=>{const x=pick([['Flere språk i klassen','Mulighet'],['Fordommer','Utfordring'],['Ny mat og musikk','Mulighet'],['Ulike normer gir misforståelser','Utfordring'],['Nye perspektiver','Mulighet']]);return N.mc(`Er «${x[0].toLowerCase()}» en mulighet eller en utfordring ved mangfold?`,x[1],[x[1]==='Mulighet'?'Utfordring':'Mulighet'],['Positivt eller vanskelig?'],`${x[1]}.`);},
+    ()=>N.mc('Hva er et <b>kulturuttrykk</b>?','Måter å uttrykke kultur på, som musikk, klær, mat, språk og høytider',['En type identitetskort','En lov'],['Uttrykk.'],'Kulturuttrykk viser hvem vi er og hvor vi hører til.'),
+    ()=>N.mc('Hva betyr det at identitet er <b>sammensatt</b>?','At vi består av mange deler, og kan høre til flere grupper samtidig',['At vi bare har én identitet','At identiteten aldri endres'],['Mange deler.'],'Du kan være norsk, muslim, håndballspiller og storesøster på en gang.')]}
+};
+V.practice($('#practice'),{id:'saf10-identitet',title:'Identitet og påvirkning',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

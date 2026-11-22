@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digitale spor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.day{display:flex;flex-direction:column;gap:6px}
+.day button{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;cursor:pointer;font:inherit;color:inherit}
+.day button.on{border-color:var(--accent);background:var(--accent-soft)}
+.day .t{font-family:var(--f-mono);font-weight:700;color:var(--muted);width:3.2rem}
+.prof li{margin:2px 0}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Digitale spor</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#spor"><b>2</b>Sporene</a>
+    <a href="#opphav"><b>3</b>Opphavsrett</a>
+    <a href="#debatt"><b>4</b>Debatt</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Hva vet nettet om deg?</h1>
+      <p class="lead">Hver gang du bruker mobilen, legger du igjen spor. Noen ser du, andre ikke. Finn ut hva som samles inn, hvilke rettigheter du har, og hvordan nettet former debatten i samfunnet.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Fotspor som går gjennom en mobil"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Et selskap har lagret mange opplysninger om deg, og du vil at de skal slette dem.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="spor"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>En dag med mobilen</h2></div>
+    <p class="sec-lead">Trykk på hver hendelse i løpet av Emils dag, og se hvilke spor han legger igjen.</p>
+<div class="bench">
+  <div class="controls"><div class="day" id="day"></div></div>
+  <div class="controls"><div class="card2" id="spCard" aria-live="polite"></div><div class="card2"><span class="tag">Det appene kan vite om Emil</span><ul class="prof" id="prof"></ul></div></div>
+</div>
+  </div></section>
+
+  <section id="opphav"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Lov eller ikke lov?</h2></div>
+    <p class="sec-lead"><b>Opphavsrett</b> betyr at den som har laget noe, bestemmer hvordan det brukes. <b>Personvern</b> betyr at du bestemmer over opplysninger og bilder av deg selv. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="debatt"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Kommentarfeltet</h2></div>
+    <p class="sec-lead">Lina (16) skriver et innlegg i lokalavisen på nett om at bussen bør gå oftere.</p>
+<div id="film1"></div>
+<div class="bench" style="grid-template-columns:1fr;margin-top:14px"><div id="sort2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: utforske egne digitale spor og muligheten for å slette dem og reflektere over personvern og opphavsrett, og utforske plattformer for digitalt samspill og reflektere over hvordan digital deltakelse påvirker form og innhold i samfunnsdebatten. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=S.phone(130,10,120,200,'')+[0,1,2,3,4,5].map(i=>`<text x="${40+i*58}" y="${200-i*30}" font-size="26" transform="rotate(${-20+i*6} ${40+i*58} ${200-i*30})">👣</text>`).join('');
+
+V.predict($('#p1'),{q:'Har du rett til å kreve at opplysninger om deg blir slettet?',opts:['Nei, det selskapet har, eier det','Ja, i mange tilfeller, etter personvernloven (GDPR)','Bare hvis du er over 30'],ok:1,expl:'Etter personvernforordningen (GDPR) har du blant annet rett til innsyn (se hva de har lagret), retting og sletting. Det finnes unntak, men du kan alltid spørre. Datatilsynet hjelper deg.',retry:'EU og Norge har strenge regler for personvern.'});
+
+const DAY=[
+  {t:'07:00',e:'⏰',n:'Vekkerklokke og treningsapp',d:'Treningsappen registrerer hvor lenge og hvor godt Emil sov, og pulsen hans.',p:'Søvnvaner og helse'},
+  {t:'07:45',e:'📍',n:'Snap Map',d:'Posisjonen hans deles med venner, og lagres hos selskapet. De ser hvilken skole han går på.',p:'Hvor han bor og går på skole'},
+  {t:'10:15',e:'🔎',n:'Søker «hvordan bli kvitt kviser»',d:'Søkemotoren lagrer søket, og han får reklame for hudkrem resten av uka.',p:'Bekymringer om utseende'},
+  {t:'15:30',e:'🎮',n:'Spiller i to timer',d:'Spillet lagrer når han spiller, hvor lenge, og hva han kjøper.',p:'Gamer, mest aktiv om ettermiddagen'},
+  {t:'19:00',e:'🛒',n:'Kjøper sko på nett',d:'Nettbutikken lagrer navn, adresse, betalingskort og skostørrelse. Mange butikker deler data med annonsenettverk.',p:'Navn, adresse og hva han har råd til'},
+  {t:'22:30',e:'❤️',n:'Liker triste videoer på TikTok',d:'Algoritmen merker at han ser på triste videoer sent på kvelden, og viser ham flere.',p:'Humøret hans'}];
+const seen=new Set();
+$('#day').innerHTML=DAY.map((d,i)=>`<button type="button" data-i="${i}"><span class="t">${d.t}</span><span style="font-size:1.4rem">${d.e}</span><span>${d.n}</span></button>`).join('');
+$('#day').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i,d=DAY[i];seen.add(i);b.classList.add('on');
+  $('#spCard').innerHTML=`<span class="tag">${d.t} · ${d.n}</span><p style="margin:0">${d.d}</p>`;
+  $('#prof').innerHTML=[...seen].sort().map(j=>`<li>${DAY[j].p}</li>`).join('')+(seen.size===DAY.length?'<li><b>Til sammen:</b> en ganske detaljert profil av en 15-åring, som kan brukes til å selge ham ting, og som han selv aldri har sett.</li>':'');
+  if(seen.size===DAY.length)$('#spCard').innerHTML+=`<div class="fb hint" style="margin-top:8px">Hva kan Emil gjøre? Skru av posisjonsdeling, sjekke personverninnstillingene, slette søkehistorikk, og be om innsyn og sletting hos selskapene. Under 13 år kan man ikke samtykke selv til de fleste sosiale medier.</div>`;}));
+$('#spCard').innerHTML='<span class="tag">Start</span><p style="margin:0">Trykk på første hendelse.</p>';$('#prof').innerHTML='<li class="note">Ingenting ennå</li>';
+
+N.sorter($('#sort1'),{groups:[{id:'j',name:'Lov'},{id:'n',name:'Ikke lov (uten tillatelse)'}],
+  items:[{t:'Dele en tegning du har laget selv',g:'j'},{t:'Lenke til en avisartikkel',g:'j'},{t:'Bruke et bilde merket med fri lisens (CC BY) og oppgi hvem som tok det',g:'j',why:'Creative Commons-lisenser gir lov til å bruke verket på visse vilkår, for eksempel at du oppgir navnet.'},{t:'Sitere noen få linjer fra en bok og oppgi kilden',g:'j'},
+    {t:'Bruke en kjent sang i TikTok-videoen til firmaet ditt',g:'n'},{t:'Laste opp en hel film på YouTube',g:'n'},{t:'Legge ut et bilde av en venn som gråter',g:'n',why:'Det er personvern: Den som er på bildet, må samtykke, særlig når bildet viser noe privat.'},{t:'Kopiere en tekst fra nettet og levere den som din egen',g:'n',why:'Det er plagiat. Det bryter opphavsretten og er fusk på skolen.'}],
+  good:'Riktig! Hovedregelen er: Har du ikke laget det selv, må du ha lov, eller bruke noe som er fritt. Og har noen andre med på bildet, spør først.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const lina=(o={})=>person(80,GY,84,Object.assign({shirt:4,skin:2,hair:2,sit:true,armL:110},o));
+  const cm=(items,op=1)=>`<g opacity="${op}">`+S.phone(190,10,190,220,items.map((c,i)=>`<rect x="10" y="${16+i*48}" width="170" height="42" rx="6" fill="${c[1]==='bad'?'var(--bad-soft)':c[1]==='good'?'var(--good-soft)':'var(--paper)'}"/>${S.lines(18,32+i*48,c[0],28,'fm-small',13)}`).join(''))+'</g>';
+  S.film('#film1',{title:'Kommentarfeltet',real:'Samfunnsdebatt',size:[400,250],end:{text:'Sorter: hva gjør nettet med debatten? ↓',href:'#sort2'},poster:'Lina skriver om bussen. Hva skjer i kommentarfeltet?',
+    scenes:[
+      {dur:4000,text:'Lina skriver et innlegg: «Bussen går bare hver time. Ungdom på bygda trenger buss for å komme seg på trening og jobb.»',draw:p=>S.bg.stue()+lina()+cm([['Lina, 16: Bussen må gå oftere!','']],seg(p,.2,.5))},
+      {dur:4200,text:'Mange er enige. En politiker svarer at saken skal tas opp i kommunestyret. Ingen avis hadde trykket et innlegg fra en 16-åring så raskt før internett.',draw:p=>S.bg.stue()+lina({armL:150})+cm([['Lina, 16: Bussen må gå oftere!',''],['Enig! Min sønn venter i en time.','good'],['Politiker: Tar det opp i kommunestyret.','good']])},
+      {dur:4200,text:'Men så kommer andre kommentarer. Noen er sinte, og noen går til angrep på Lina, ikke på saken.',draw:p=>S.bg.stue()+lina({armL:30})+cm([['Lina, 16: Bussen må gå oftere!',''],['Hvem skal betale? Typisk ungdom!',''],['Du er jo bare en bortskjemt unge 🙄','bad'],['Hold kjeft og gå hjem','bad']])},
+      {dur:1200,text:'Lina vurderer å slette innlegget og aldri skrive noe igjen.',draw:()=>S.bg.stue()+lina({armL:30}),
+        ask:{q:'Hva kan hets i kommentarfelt føre til for samfunnsdebatten?',opts:['At flere deltar','At noen, ofte unge, kvinner og minoriteter, trekker seg fra debatten','Ingenting'],ok:1,why:'Når folk blir hetset, slutter mange å delta. Da blir debatten fattigere, fordi noen stemmer forsvinner. Mange aviser har derfor moderatorer eller stengte kommentarfelt.',wrong:{0:'Hets skremmer folk bort.',2:'Undersøkelser viser at mange lar være å delta etter hets.'}}},
+      {dur:4000,text:'Avisen sletter kommentarene som bryter reglene. Lina skriver et nytt svar til den som spurte hvem som skal betale. Saksargumenter er en del av demokratiet. Personangrep er det ikke.',draw:p=>S.bg.stue()+lina({armL:110})+cm([['Lina, 16: Bussen må gå oftere!',''],['Hvem skal betale? Typisk ungdom!',''],['Lina: Fylket! Flere passasjerer gir mer billettinntekter.','good']])}]});}
+N.sorter($('#sort2'),{intro:'Hvordan påvirker digital deltakelse samfunnsdebatten? Sorter.',groups:[{id:'p',name:'Styrker debatten'},{id:'s',name:'Svekker debatten'}],
+  items:[{t:'Alle kan delta, også unge og folk uten kjente navn.',g:'p'},{t:'Politikere kan nås direkte.',g:'p'},{t:'Saker kan spre seg raskt og skape engasjement.',g:'p'},{t:'Hets gjør at noen trekker seg.',g:'s'},{t:'Falske nyheter spres raskere enn sannheten.',g:'s'},{t:'Algoritmer belønner sinne og sterke meninger.',g:'s',why:'Innlegg som gjør folk sinte, får flere reaksjoner, og blir derfor vist til flere.'}],
+  good:'Riktig! Formen på debatten endres: kortere, raskere og mer følelser. Innholdet påvirkes av hvem som orker å delta, og hva algoritmene viser frem.'});
+
+const skills={
+  spor:{name:'Digitale spor og personvern',gens:[
+    ()=>N.mc('Hva er et <b>digitalt spor</b>?','Informasjon om deg som blir lagret når du bruker digitale tjenester',['Et fotspor i snøen','En type app'],['Spor = noe som blir igjen.'],'Søk, likes, posisjon og kjøp er eksempler.'),
+    ()=>N.mc('Hva betyr <b>personvern</b>?','Retten til å bestemme over opplysninger om deg selv',['At du har en livvakt','At du ikke kan bruke nett'],['Vern av personen.'],'Personvern er en menneskerettighet.'),
+    ()=>N.mc('Hvilken rettighet gir GDPR deg?','Rett til innsyn i og sletting av opplysninger om deg',['Rett til gratis mobil','Rett til å se andres data'],['Personvernforordningen.'],'Du kan be om innsyn, retting og sletting.'),
+    ()=>N.mc('Hvilken offentlig etat passer på personvernet i Norge?','Datatilsynet',['Skatteetaten','NAV'],['Data.'],'Datatilsynet gir råd og kan gi bøter til selskaper som bryter reglene.'),
+    ()=>N.mc('Hvilket tiltak reduserer digitale spor?','Skru av posisjonsdeling i apper som ikke trenger den',['Like flere innlegg','Bruke samme passord overalt'],['Innstillinger.'],'Sjekk personverninnstillingene i appene dine.')]},
+  opphav:{name:'Opphavsrett',gens:[
+    ()=>{const x=pick([['Bruke en populær sang i en reklamevideo','Ikke lov'],['Dele ditt eget bilde','Lov'],['Laste opp en hel serie på nett','Ikke lov'],['Lenke til en nettside','Lov'],['Levere andres tekst som din egen','Ikke lov'],['Bruke et CC BY-bilde og oppgi fotografen','Lov']]);return N.mc(`Er dette lov? <b>${x[0]}</b>`,x[1],[x[1]==='Lov'?'Ikke lov':'Lov'],['Har du laget det selv, eller fått lov?'],`${x[1]}.`);},
+    ()=>N.mc('Hva betyr <b>opphavsrett</b>?','At den som har laget et verk, bestemmer hvordan det brukes',['At alt på nett er gratis','At bare staten eier kunst'],['Opphav = den som laget det.'],'Opphavsretten gjelder tekst, bilder, musikk og film.')]},
+  debatt:{name:'Samfunnsdebatt på nett',gens:[
+    ()=>N.mc('Hva er forskjellen på et saksargument og et personangrep?','Et saksargument handler om saken, et personangrep går løs på personen',['Det er ingen forskjell','Personangrep er alltid sant'],['Hva handler det om?'],'Gode debatter handler om saken.'),
+    ()=>N.mc('Hvordan kan algoritmer påvirke samfunnsdebatten?','De viser oss innhold som vekker sterke følelser, så debatten kan bli mer polarisert',['De gjør alle enige','De sletter alle meninger'],['Hva får flest reaksjoner?'],'Polarisering betyr at folk trekkes mot ytterkantene.'),
+    ()=>N.mc('Hvordan har digitale plattformer endret hvem som kan delta i debatten?','Nesten alle kan delta, ikke bare de som slapp til i aviser og TV',['Bare politikere kan delta nå','Ingen deltar lenger'],['Tenk på Lina.'],'Terskelen for å delta er lavere enn før.')]}
+};
+V.practice($('#practice'),{id:'saf10-digitale-spor',title:'Digitale spor',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

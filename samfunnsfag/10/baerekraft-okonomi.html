@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bærekraft og privatøkonomi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<style>.bud{display:flex;flex-direction:column;gap:10px}
+.bud fieldset{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0}
+.bud legend{font-weight:700;padding:0 4px}
+.bud label{display:flex;gap:8px;align-items:center;cursor:pointer;padding:2px 0}
+.bud input{width:18px;height:18px}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Bærekraft og privatøkonomi</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#budsjett"><b>2</b>Budsjett</a>
+    <a href="#dim"><b>3</b>Bærekraft</a>
+    <a href="#ov"><b>4</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Ditt første budsjett</h1>
+      <p class="lead">Hva skjer med lønna før den kommer på konto? Og hvordan henger valgene dine sammen med klimaet og livskvaliteten din? Lag et budsjett som 23-åring, og se at bærekraft handler om både miljø, økonomi og mennesker.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En lommebok og en jordklode"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du får jobb med en lønn på 40 000 kroner i måneden.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="budsjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Lag et budsjett</h2></div>
+    <p class="sec-lead">Du er 23 år og har flyttet hjemmefra. Velg jobb og hvordan du vil leve. Se hva du har igjen, og hvor stort klimaavtrykket ditt blir. Tallene er omtrentlige.</p>
+<div class="bench">
+  <div class="controls"><form class="bud" id="bud"></form></div>
+  <div class="controls"><div class="stat" id="budStat"></div><div><span class="note">Klimaavtrykk fra valgene dine</span><div class="meter"><i id="co2" style="background:var(--warm)"></i></div></div><div class="card2" id="budNote" aria-live="polite"></div></div>
+</div>
+  </div></section>
+
+  <section id="dim"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Tre sider av bærekraft</h2></div>
+    <p class="sec-lead">Bærekraftig utvikling har tre dimensjoner: <b>miljø</b> (naturen og klimaet), <b>økonomi</b> (arbeid og verdiskaping) og <b>sosial</b> (rettferdighet, helse og fellesskap). Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: beskrive dimensjoner ved bærekraftig utvikling og samspillet mellom dem og presentere tiltak for bærekraftige samfunn, og vurdere hvordan arbeid, inntekt og forbruk påvirker privatøkonomi, levestandard og livskvalitet. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<rect x="40" y="70" width="150" height="100" rx="14" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="3"/><rect x="140" y="100" width="56" height="40" rx="8" fill="var(--surface)" stroke="var(--c1)" stroke-width="3"/><circle cx="160" cy="120" r="6" fill="var(--c1)"/>
+<circle cx="285" cy="115" r="62" fill="color-mix(in srgb,var(--water) 30%,var(--surface))" stroke="var(--c2)" stroke-width="3"/><path d="M250 90 q20 -12 36 6 q12 18 -8 30 q-20 10 -14 30 M300 70 q20 10 30 36" fill="none" stroke="var(--leaf)" stroke-width="10" stroke-linecap="round"/>`;
+
+V.predict($('#p1'),{q:'Omtrent hvor mye får du utbetalt etter skatt?',opts:['40 000 kr','Omtrent 29 000 kr','Omtrent 15 000 kr'],ok:1,expl:'Med denne lønna betaler du omtrent 27 prosent i skatt, rundt 11 000 kroner. Skatten går til fellesskapet: skole, sykehus, veier, politi og pensjoner. Det du får utbetalt, kalles <b>nettolønn</b>.',retry:'Skatten tar en del, men ikke halvparten.'});
+
+/* Budsjett */
+const G=[
+  {k:'jobb',n:'Jobb (lønn før skatt)',o:[['Butikkmedarbeider',32000,0],['Elektriker',45000,0],['Sykepleier',48000,0]]},
+  {k:'bo',n:'Bolig',o:[['Bofellesskap',6500,1],['Hybel',9000,1],['Egen leilighet',14000,2]]},
+  {k:'tr',n:'Transport',o:[['Sykkel og buss',900,0],['Brukt bensinbil',4500,4],['Ny elbil på lån',6500,1]]},
+  {k:'mat',n:'Mat',o:[['Lager mat selv, lite kjøtt',3500,1],['Lager mat selv, mye kjøtt',4500,3],['Mye takeaway',8000,3]]},
+  {k:'kl',n:'Klær og ting',o:[['Bruktbutikk og arv',400,0],['Litt nytt',1200,1],['Mye nytt hver måned',3500,3]]},
+  {k:'fe',n:'Ferie (per måned spart)',o:[['Tog i Norge',600,0],['Én flytur i Europa',1500,2],['Langtur med fly',3500,4]]}];
+const tax=b=>Math.round(b*(b<35000?.25:b<46000?.27:.28)/100)*100;
+$('#bud').innerHTML=G.map(g=>`<fieldset><legend>${g.n}</legend>${g.o.map((o,i)=>`<label><input type="radio" name="${g.k}" value="${i}"${i===(g.k==='jobb'?1:0)?' checked':''}> ${o[0]} <span class="note">(${V.nf(o[1],0)} kr)</span></label>`).join('')}</fieldset>`).join('')+
+  `<fieldset><legend>Faste utgifter</legend><p class="note" style="margin:0">Strøm, forsikring, mobil og strømmetjenester: 2 500 kr</p></fieldset>`;
+function bud(){const v={};G.forEach(g=>{v[g.k]=+($('#bud').querySelector(`input[name="${g.k}"]:checked`)||{value:0}).value;});
+  const brutto=G[0].o[v.jobb][1],skatt=tax(brutto),netto=brutto-skatt;
+  const ut=G.slice(1).reduce((s,g)=>s+g.o[v[g.k]][1],0)+2500,rest=netto-ut,co2=G.slice(1).reduce((s,g)=>s+g.o[v[g.k]][2],0);
+  $('#budStat').innerHTML=`<div><b>${V.nf(brutto,0)}</b><span>bruttolønn</span></div><div><b>−${V.nf(skatt,0)}</b><span>skatt</span></div><div><b>${V.nf(netto,0)}</b><span>nettolønn</span></div><div><b>−${V.nf(ut,0)}</b><span>utgifter</span></div><div><b style="color:${rest<0?'var(--bad)':'var(--good)'}">${V.nf(rest,0)}</b><span>igjen til sparing</span></div>`;
+  $('#co2').style.width=Math.min(100,co2/16*100)+'%';
+  let note=rest<0?`<b>Du bruker mer enn du tjener!</b> Da må du låne, og gjeld med høy rente kan bli et stort problem. Kutt i noe.`:rest<2000?'Budsjettet går så vidt opp. En uventet regning, for eksempel en tannlegetime, kan gi problemer. Det er lurt å ha en buffer.':`Bra! Du kan spare ${V.nf(rest,0)} kr i måneden, det er ${V.nf(rest*12,0)} kr i året.`;
+  note+=co2>=11?' <br><b>Klimaavtrykket ditt er høyt.</b> Fly, bensinbil, mye kjøtt og mange nye ting gir store utslipp.':co2<=4?' <br><b>Lavt klimaavtrykk.</b> Ofte er de klimavennlige valgene også de billigste.':'';
+  note+='<p class="note" style="margin:6px 0 0">Husk: <b>Levestandard</b> er hva du har råd til. <b>Livskvalitet</b> er hvordan du har det: venner, helse, fritid og mening. Mer penger gir ikke alltid bedre liv.</p>';
+  $('#budNote').innerHTML=note;}
+$('#bud').addEventListener('change',bud);bud();
+
+N.sorter($('#sort1'),{groups:[{id:'m',name:'Miljø'},{id:'o',name:'Økonomi'},{id:'s',name:'Sosial'}],
+  items:[{t:'Kutte utslipp av klimagasser',g:'m'},{t:'Verne regnskog og havområder',g:'m'},{t:'Skape arbeidsplasser',g:'o'},{t:'Bedrifter som tjener penger over tid',g:'o'},{t:'Gratis skole for alle barn',g:'s'},{t:'Like rettigheter for kvinner og menn',g:'s'},{t:'Ordentlige lønninger i fabrikkene som syr klærne våre',g:'s',why:'Det handler om rettferdighet og arbeidsforhold, altså sosial bærekraft. Men det henger også sammen med økonomi.'}],
+  good:'Riktig! De tre dimensjonene henger sammen. Et samfunn er bare bærekraftig hvis alle tre er ivaretatt.'});
+V.predict($('#p2'),{tag:'Samspill',q:'En kullgruve legges ned for å kutte utslipp. Hva skjer med de andre dimensjonene?',opts:['Ingenting','Miljøet blir bedre, men gruvearbeidere kan miste jobben (økonomi og sosial), så de trenger nye jobber og utdanning','Alle tre blir dårligere'],ok:1,expl:'Dette kalles en <b>rettferdig omstilling</b>. Et tiltak for miljøet kan skape problemer for økonomien og menneskene, og derfor må politikken ta hensyn til alle tre.',retry:'Hvem jobbet i gruva?'});
+
+const skills={
+  lonn:{name:'Lønn og skatt',gens:[
+    ()=>{const b=pick([30000,35000,40000,45000,50000]),p=pick([25,27,30]);const s=b*p/100;return{prompt:`Bruttolønna er <b>${V.nf(b,0)} kr</b>, og du betaler <b>${p} %</b> skatt. Hvor mye får du utbetalt?`,ans:b-s,unit:'kr',hints:[`Skatten er ${p} % av ${V.nf(b,0)}.`,`${V.nf(b,0)} · ${p/100} = ${V.nf(s,0)}`],sol:`${V.nf(b,0)} − ${V.nf(s,0)} = <b>${V.nf(b-s,0)} kr</b>`,diag:v=>near(v,s)?'Det er skatten. Trekk den fra bruttolønna.':null};},
+    ()=>{const n=pick([25000,28000,30000,32000]),u=pick([22000,24000,26000,29000,34000]);return{prompt:`Nettolønna er <b>${V.nf(n,0)} kr</b>, og utgiftene er <b>${V.nf(u,0)} kr</b>. Hvor mye har du igjen? (Bruk minus hvis du går i underskudd.)`,ans:n-u,unit:'kr',hints:['Inntekt minus utgifter.'],sol:`${V.nf(n,0)} − ${V.nf(u,0)} = <b>${V.nf(n-u,0)} kr</b>`};},
+    ()=>N.mc('Hva er forskjellen på brutto- og nettolønn?','Bruttolønn er før skatt, nettolønn er det du får utbetalt',['De er like','Nettolønn er før skatt'],['Netto = det som blir igjen.'],'Skatten trekkes fra bruttolønna.'),
+    ()=>N.mc('Hva brukes skatten til?','Fellesgoder som skole, sykehus, veier og pensjoner',['Bare til politikernes lønn','Ingenting'],['Velferdsstaten.'],'Skatt finansierer velferdsstaten.')]},
+  liv:{name:'Levestandard og livskvalitet',gens:[
+    ()=>N.mc('Hva er <b>levestandard</b>?','Hvor mye du har råd til av ting og tjenester',['Hvor lykkelig du er','Hvor gammel du blir'],['Standard = nivå på forbruk.'],'Levestandard måles ofte i penger.'),
+    ()=>N.mc('Hva er <b>livskvalitet</b>?','Hvordan du har det, for eksempel helse, venner og mening',['Hvor mye du tjener','Hvor stort hus du har'],['Kvalitet på livet.'],'Høy levestandard gir ikke automatisk høy livskvalitet.'),
+    ()=>N.mc('Hva er lurt å ha i budsjettet?','En buffer til uventede utgifter',['Ingenting igjen på slutten av måneden','Mest mulig gjeld'],['Hva om vaskemaskinen går i stykker?'],'En buffer gir trygghet.'),
+    ()=>N.mc('Hvorfor er forbrukslån med høy rente farlig?','Gjelden kan vokse raskt og bli vanskelig å betale tilbake',['De er gratis','De gir skattefradrag'],['Rente på rente.'],'Mange unge får betalingsproblemer på grunn av forbruksgjeld.')]},
+  baer:{name:'Bærekraft',gens:[
+    ()=>{const x=pick([['Kutte utslipp','Miljø'],['Rettferdig lønn','Sosial'],['Lønnsomme bedrifter','Økonomi'],['Gratis helsehjelp','Sosial'],['Verne natur','Miljø'],['Nye arbeidsplasser','Økonomi']]);return N.mc(`Hvilken dimensjon av bærekraft handler «${x[0].toLowerCase()}» mest om?`,x[1],['Miljø','Økonomi','Sosial'].filter(y=>y!==x[1]),['Natur, penger eller mennesker?'],`${x[1]}.`);},
+    ()=>N.mc('Hvilket valg gir ofte både lavere utgifter og lavere klimaavtrykk?','Sykle og ta buss i stedet for å eie bil',['Fly oftere','Kjøpe mer nytt'],['Se på budsjettet.'],'Mange klimavennlige valg sparer også penger.')]}
+};
+V.practice($('#practice'),{id:'saf10-okonomi',title:'Bærekraft og privatøkonomi',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

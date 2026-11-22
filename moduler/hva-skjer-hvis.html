@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../felles/verksted.css?v=2">
+<link rel="stylesheet" href="../felles/film.css?v=3">
 <style>
 .three{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;align-items:end;width:100%}
 .three p{text-align:center;font-family:var(--f-mono);font-size:.85rem;margin-top:4px}
@@ -56,6 +57,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="step-no">1</span><h2>Forstørr alt med k</h2></div>
       <p class="sec-lead">En strek, et kvadrat og en kube med kant 1. Gang alle kantene med <b>k</b>, og tell hvor mange av de små som får plass.</p>
+      <div id="film-hvis"></div>
       <div class="bench">
         <div class="figbox" style="padding:10px" id="kFig"></div>
         <div class="controls">
@@ -285,5 +287,7 @@ V.practice($('#practice'),{id:'hva-skjer-hvis',title:'Hva skjer hvis …?',skill
   prak:{name:'I praksis',gens:[G.praksis]}}});
 })();
 </script>
+<script src="../felles/film.js?v=3"></script>
+<script src="filmer/hva-skjer-hvis.js?v=1"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../felles/verksted.css?v=2">
+<link rel="stylesheet" href="../felles/film.css?v=3">
 <style>
 .fig .water{fill:var(--water);fill-opacity:.5;stroke:none}
 .fig .wsurf{fill:var(--water);fill-opacity:.75;stroke:var(--surface);stroke-width:.8}
@@ -62,6 +63,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="step-no">1</span><h2>En tredjedel</h2></div>
       <p class="sec-lead">Tenk deg at pyramiden er en beholder full av vann. Hell den over i prismet med samme grunnflate og høyde. Hvor mange ganger må du helle?</p>
+      <div id="film-pyramide"></div>
       <div class="bench">
         <div class="figbox" id="pFig"></div>
         <div class="controls">
@@ -504,5 +506,7 @@ V.practice($('#practice'),{id:'pyramide-kjegle-kule',title:'Pyramide, kjegle og 
   sam:{name:'Sammenhenger',gens:[G.tredel,G.arki]}}});
 })();
 </script>
+<script src="../felles/film.js?v=3"></script>
+<script src="filmer/pyramide-kjegle-kule.js?v=1"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../felles/verksted.css?v=2">
+<link rel="stylesheet" href="../felles/film.css?v=3">
 <style>
 :root{--red:#d1443a;--blue:#3361c4;--green:#25945a}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--red:#f0776c;--blue:#7d9cf0;--green:#5ccb8c}}
@@ -66,6 +67,7 @@ details summary{cursor:pointer;font-weight:700}
     <div class="wrap">
       <div class="sec-head"><span class="step-no">1</span><h2>Gunstige over mulige</h2></div>
       <p class="sec-lead">Bestem hva som ligger i posen. Trekk kuler (og legg dem tilbake), og se om andelen nærmer seg sannsynligheten.</p>
+      <div id="film-sannsynlighet"></div>
       <div class="bench">
         <div class="figbox" id="bFig"></div>
         <div class="controls">
@@ -428,5 +430,7 @@ V.practice($('#practice'),{id:'sannsynlighet',title:'Sannsynlighet',skills:{
   forsok:{name:'Forsøk og vurdering',gens:[G.relfrek,G.vurder]}}});
 })();
 </script>
+<script src="../felles/film.js?v=3"></script>
+<script src="filmer/sannsynlighet.js?v=1"></script>
 </body>
 </html>

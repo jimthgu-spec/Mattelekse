@@ -66,6 +66,55 @@
     return s;
   }
 
+  /* ---------- Menneskefigurer ----------
+     person(x, y, h, o): x = midten, y = der føttene står, h = høyde i px.
+     o.flip: snur figuren mot venstre. o.walk: fase (radianer) for gange. o.armL/o.armR: vinkel i grader
+     fra rett ned (positiv = fremover). o.legL/o.legR: beinvinkel. o.shirt: 1–4 (farge). o.skin: 0–3. o.hair: 0–3.
+     o.sit: sitter (bøyde bein). o.hold: tegnet i hånden (svg-streng, plassert ved fremste hånd). */
+  const SKIN = ['#f3cfa6', '#d9a066', '#a86b3c', '#6e4325'], HAIR = ['#3b2a20', '#c8902e', '#1d1d1d', '#8a3b1e'];
+  function person(x, y, h, o = {}) {
+    const u = h / 10, rad = d => d * Math.PI / 180;
+    const ph = o.walk != null ? o.walk : null;
+    const legL = o.legL != null ? o.legL : (ph != null ? 28 * Math.sin(ph) : 7);
+    const legR = o.legR != null ? o.legR : (ph != null ? -28 * Math.sin(ph) : -7);
+    const armL = o.armL != null ? o.armL : (ph != null ? -24 * Math.sin(ph) : 8);
+    const armR = o.armR != null ? o.armR : (ph != null ? 24 * Math.sin(ph) : -8);
+    const bob = ph != null ? Math.abs(Math.sin(ph)) * u * .25 : 0;
+    const hipY = -4.1 * u + bob, shY = -7.5 * u + bob, headY = -8.85 * u + bob, hr = 1.1 * u;
+    const limb = (x0, y0, ang, len, w, cls, knee) => {
+      if (knee) { // sittende: lår fremover, legg ned
+        const kx = x0 + len * .55, ky = y0;
+        return `<path class="${cls}" d="M${f1(x0)},${f1(y0)} L${f1(kx)},${f1(ky)} L${f1(kx + len * .05)},${f1(ky + len * .5)}" stroke-width="${f1(w)}"/>`;
+      }
+      const ex = x0 + Math.sin(rad(ang)) * len, ey = y0 + Math.cos(rad(ang)) * len;
+      return `<line class="${cls}" x1="${f1(x0)}" y1="${f1(y0)}" x2="${f1(ex)}" y2="${f1(ey)}" stroke-width="${f1(w)}"/>`;
+    };
+    const shirt = 'fm-shirt' + (o.shirt || 1);
+    let s = `<g transform="translate(${f1(x)},${f1(y)})${o.flip ? ' scale(-1,1)' : ''}">`;
+    s += limb(0, hipY, legR, 4.1 * u, 1.15 * u, 'fm-legs', o.sit) + limb(0, hipY, legL, 4.1 * u, 1.15 * u, 'fm-legs', o.sit);
+    s += limb(0, shY + .4 * u, armR, 3.5 * u, .85 * u, shirt + ' fm-limb');
+    s += `<rect class="${shirt}" x="${f1(-1.15 * u)}" y="${f1(shY)}" width="${f1(2.3 * u)}" height="${f1(hipY - shY + .5 * u)}" rx="${f1(.9 * u)}"/>`;
+    s += `<circle cx="0" cy="${f1(headY)}" r="${f1(hr)}" fill="${SKIN[(o.skin || 0) % 4]}"/>`;
+    s += `<path d="M${f1(-hr)},${f1(headY)} A${f1(hr)},${f1(hr)} 0 0 1 ${f1(hr)},${f1(headY)} L${f1(hr * .6)},${f1(headY - hr * .35)} L${f1(-hr * .9)},${f1(headY + hr * .2)} Z" fill="${HAIR[(o.hair || 0) % 4]}"/>`;
+    s += `<circle cx="${f1(hr * .45)}" cy="${f1(headY - hr * .05)}" r="${f1(Math.max(.9, hr * .11))}" fill="#1d1d1d"/>`;
+    const ax = Math.sin(rad(armL)) * 3.5 * u, ay = shY + .4 * u + Math.cos(rad(armL)) * 3.5 * u;
+    s += limb(0, shY + .4 * u, armL, 3.5 * u, .85 * u, shirt + ' fm-limb');
+    if (o.hold) s += `<g transform="translate(${f1(ax)},${f1(ay)})">${o.hold}</g>`;
+    return s + '</g>';
+  }
+  /* Snakkeboble over (x, y) */
+  function bubble(x, y, str, o = {}) {
+    const w = o.w || Math.max(40, str.length * 7.4 + 18), h = 26, bx = clamp(x - w / 2, 4, (o.W || 400) - w - 4);
+    return `<g opacity="${o.opacity != null ? o.opacity : 1}"><rect class="fm-card" x="${f1(bx)}" y="${f1(y - h - 8)}" width="${f1(w)}" height="${h}" rx="12"/>` +
+      `<path class="fm-card" d="M${f1(x - 6)},${f1(y - 9)} L${f1(x)},${f1(y)} L${f1(x + 6)},${f1(y - 9)}" style="stroke-linejoin:round"/>` +
+      `<text class="fm-bubble" x="${f1(bx + w / 2)}" y="${f1(y - 16)}" text-anchor="middle">${str}</text></g>`;
+  }
+  const sun = (x, y, r = 16, rot = 0) => {
+    let s = `<g transform="translate(${x},${y}) rotate(${f1(rot)})">`;
+    for (let i = 0; i < 8; i++) s += `<line class="fm-sunray" x1="0" y1="${-r - 4}" x2="0" y2="${-r - 11}" transform="rotate(${i * 45})"/>`;
+    return s + `<circle class="fm-sun" r="${r}"/></g>`;
+  };
+
   /* ---------- Tale ---------- */
   let voice = null, voiceChecked = false, voices = [];
   const listeners = [];
@@ -111,11 +160,14 @@
       .replace(/(\d)[\s  ](?=\d{3}\b)/g, '$1')
       .replace(/cm³/g, ' kubikkcentimeter').replace(/dm³/g, ' kubikkdesimeter').replace(/m³/g, ' kubikkmeter')
       .replace(/cm²/g, ' kvadratcentimeter').replace(/dm²/g, ' kvadratdesimeter').replace(/m²/g, ' kvadratmeter')
-      .replace(/\br²/g, 'r i andre').replace(/(\d)²/g, '$1 i andre')
+      .replace(/\b([a-z])²/g, '$1 i andre').replace(/√\s?/g, 'kvadratroten av ').replace(/(\d)²/g, '$1 i andre')
+      .replace(/(\d)\s?km\/h/g, '$1 kilometer i timen').replace(/km\/h/g, 'kilometer i timen').replace(/(\d)\s?km\b/g, '$1 kilometer')
+      .replace(/(\d)\s?min\b/g, '$1 minutter').replace(/(\d)\s?%/g, '$1 prosent').replace(/\b1\/6\b/g, 'en sjettedel').replace(/\b1\/2\b/g, 'en halv').replace(/\b6\/6\b/g, 'seks sjettedeler')
+      .replace(/⅓/g, 'en tredjedel').replace(/(\d)\s?m\b(?![²³])/g, '$1 meter').replace(/(\d)\s?kr\b/g, '$1 kroner').replace(/\bØ\s?/g, 'diameter ')
       .replace(/(\d)\s?L\b/g, '$1 liter').replace(/(\d)\s?cm\b/g, '$1 centimeter').replace(/(\d)\s?kg\b/g, '$1 kilo')
       .replace(/\bG\s?=/g, 'G er lik').replace(/\bV\s?=/g, 'V er lik')
       .replace(/·/g, ' ganger ').replace(/(\d)\s*:\s*(?=\d)/g, '$1 delt på ').replace(/≈/g, ' omtrent ').replace(/=/g, ' er ')
-      .replace(/π/g, 'pi').replace(/→/g, ', ').replace(/\s+/g, ' ').trim();
+      .replace(/π/g, 'pi').replace(/\s[−-]\s/g, ' minus ').replace(/→/g, ', ').replace(/\s+/g, ' ').trim();
   }
 
   /* ---------- Spilleren ---------- */
@@ -331,12 +383,12 @@
     /* Plakat: første scene ferdig tegnet */
     t = scenes[0].dur; render(); t = 0; showCaption(); spoken = !sound;
     if (film.poster) cap.innerHTML = film.poster;
-    const api = { pause, play, goto, host };
+    const api = { pause, play, goto, host, film };
     players.push(api);
     return api;
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) players.forEach(p => p.pause()); });
   window.addEventListener('pagehide', () => { if (synth) try { synth.cancel(); } catch (e) {} });
 
-  window.Film = { players, mount, ease, seg, lerp, clamp, nf, proj, poly, line, text, box, backEdges, cylinder, speechText };
+  window.Film = { players, person, bubble, sun, mount, ease, seg, lerp, clamp, nf, proj, poly, line, text, box, backEdges, cylinder, speechText };
 })();

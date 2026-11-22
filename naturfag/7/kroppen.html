@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kroppen og puberteten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .skin{fill:var(--c1-soft);stroke:var(--c1);stroke-width:1.5}
+.fig .org{cursor:pointer;stroke:var(--ink);stroke-width:1.2;transition:opacity .2s}
+.fig .org:hover,.fig .org:focus-visible{stroke-width:3;outline:none}
+.fig .org.hit{stroke:var(--good);stroke-width:4}
+.fig .org.miss{stroke:var(--bad);stroke-width:4}
+.fig .beat{transform-origin:190px 90px;transform-box:view-box}
+.orglist{display:flex;flex-wrap:wrap;gap:6px}
+.act{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:6px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Kroppen</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#organer"><b>2</b>Organene</a>
+    <a href="#puls"><b>3</b>Puls</a>
+    <a href="#mat"><b>4</b>Maten</a>
+    <a href="#pubertet"><b>5</b>Pubertet</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Kroppen din jobber hele tiden</h1>
+      <p class="lead">Organene i kroppen jobber sammen i <b>organsystemer</b>. Lungene henter oksygen, hjertet pumper det rundt, og fordøyelsen gir deg energi. I puberteten forandrer kroppen seg fra barn til voksen.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 240 340" id="heroFig" role="img" aria-label="En kropp med organer" style="max-height:240px"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du løper fort opp en bakke. Hjertet dunker og du puster tungt.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="organer"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Finn organene</h2></div>
+    <p class="sec-lead">Trykk på et organ for å lære hva det gjør. Trykk så <b>Test meg</b> og finn organene selv.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="bFig" viewBox="0 0 240 340" role="img" aria-label="Kropp med organer du kan trykke på"></svg></div>
+      <div class="controls">
+        <div class="card2" id="oCard" aria-live="polite"><span class="tag">Organ</span><p>Trykk på et organ i kroppen.</p></div>
+        <div class="row"><button class="btn primary" type="button" id="bQuiz">Test meg</button></div>
+        <div class="fb" id="qFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="puls"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Puls og pust</h2></div>
+    <p class="sec-lead">Velg hva du gjør. Se hvor fort hjertet slår og hvor fort du puster. Hvorfor endrer det seg?</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="hFig" viewBox="0 0 380 180" role="img" aria-label="Hjerte og lunger"></svg>
+        <svg class="fig" id="pGraph" role="img" aria-label="Puls ved ulike aktiviteter"></svg>
+      </div>
+      <div class="controls">
+        <div class="act" id="act"></div>
+        <div class="stats"><div class="counter">Puls: <b id="vP">–</b> slag/min</div><div class="counter">Pust: <b id="vB">–</b> pust/min</div></div>
+        <div class="fb" id="pFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="mat"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Matens reise</h2></div>
+    <p class="sec-lead">Maten går gjennom et langt rør, fordøyelseskanalen. Sett stoppene i riktig rekkefølge.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="fill1"></div></div>
+  </div></section>
+
+  <section id="pubertet"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Puberteten</h2></div>
+    <p class="sec-lead">I puberteten lager kroppen mer <b>hormoner</b>, og den begynner å bli voksen. Det skjer for alle, men ikke på samme tid. Noen starter når de er 9, andre når de er 15. Begge deler er helt normalt. Sorter endringene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om kroppens organsystemer og hvordan de samarbeider, og om endringer i kroppen i puberteten. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Kroppskart ---------- */
+const ORG={
+  hjerne:['Hjernen','Nervesystemet','Styrer hele kroppen. Tar imot signaler fra sansene og sender beskjeder til musklene.','<ellipse cx="120" cy="38" rx="22" ry="15" fill="#f4a3b5"/>'],
+  lunger:['Lungene','Åndedrettssystemet','Henter oksygen fra lufta inn i blodet, og sender karbondioksid ut når du puster ut.','<path d="M112 108 Q80 110 80 160 Q82 182 110 176Z M128 108 Q160 110 160 160 Q158 182 130 176Z" fill="#f08c8c"/>'],
+  hjerte:['Hjertet','Blodomløpet','En sterk muskel som pumper blod rundt i hele kroppen. Blodet frakter oksygen og næring til alle cellene.','<path d="M122 160 C110 148 106 136 116 132 C121 130 124 134 125 137 C126 134 129 130 134 132 C144 136 140 148 128 160 Z" fill="#d6336c"/>'],
+  lever:['Leveren','Fordøyelsessystemet','Renser blodet for giftstoffer og lager galle som hjelper til å fordøye fett.','<ellipse cx="102" cy="196" rx="26" ry="13" fill="#8c4b32"/>'],
+  magesekk:['Magesekken','Fordøyelsessystemet','En sekk med sterk syre som knar maten til en grøt og dreper bakterier.','<ellipse cx="142" cy="200" rx="17" ry="13" fill="#f5a35c"/>'],
+  nyrer:['Nyrene','Utskillelsessystemet','Renser blodet og lager urin (tiss) av avfallsstoffer og overflødig vann.','<ellipse cx="86" cy="225" rx="8" ry="12" fill="#a0522d"/><ellipse cx="154" cy="225" rx="8" ry="12" fill="#a0522d"/>'],
+  tarmer:['Tarmene','Fordøyelsessystemet','I tynntarmen blir næringen tatt opp i blodet. I tykktarmen blir vann tatt opp, og resten blir til avføring.','<path d="M90 248 Q120 236 150 248 Q164 262 150 280 Q120 292 90 280 Q76 264 90 248Z" fill="#f7c59f"/><path d="M98 256 q10 8 20 0 t20 0 M98 270 q10 -8 20 0 t20 0" stroke="#c98b5a" fill="none"/>'],
+  blaere:['Urinblæra','Utskillelsessystemet','Samler opp urin fra nyrene til du går på do.','<ellipse cx="120" cy="304" rx="12" ry="8" fill="#f2d35b"/>']
+};
+const BODY='<circle class="skin" cx="120" cy="40" r="30"/><path class="skin" d="M108 68 L108 84 L66 94 Q54 98 52 112 L42 240 L58 242 L70 130 L74 130 L72 318 L168 318 L166 130 L170 130 L182 242 L198 240 L188 112 Q186 98 174 94 L132 84 L132 68Z"/>';
+function bodySvg(cls){return BODY+Object.entries(ORG).map(([k,o])=>`<g class="org${cls&&cls[k]?' '+cls[k]:''}" data-k="${k}" tabindex="0" role="button" aria-label="${o[0]}">${o[3]}</g>`).join('');}
+$('#heroFig').innerHTML=BODY+Object.values(ORG).map(o=>o[3]).join('');
+let quiz=null,qScore=0,qN=0,cls={};
+function drawB(){$('#bFig').innerHTML=bodySvg(cls);$('#bFig').querySelectorAll('.org').forEach(g=>{const go=()=>tapOrg(g.dataset.k);g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});}
+function tapOrg(k){const o=ORG[k];
+  if(quiz){const fb=$('#qFb');qN++;if(k===quiz){qScore++;cls={[k]:'hit'};fb.className='fb good';fb.innerHTML=`Riktig, det er ${o[0].toLowerCase()}! ${o[2]}`;}
+    else{cls={[k]:'miss',[quiz]:'hit'};fb.className='fb bad';fb.innerHTML=`Det der er ${o[0].toLowerCase()}. ${ORG[quiz][0]} er markert med grønt.`;}
+    drawB();quiz=null;$('#bQuiz').textContent=`Neste (${qScore} av ${qN} riktige)`;return;}
+  cls={[k]:'hit'};drawB();$('#oCard').innerHTML=`<span class="tag">${o[1]}</span><p><b>${o[0]}</b></p><p>${o[2]}</p>`;}
+$('#bQuiz').addEventListener('click',()=>{quiz=pick(Object.keys(ORG).filter(k=>k!==quiz));cls={};drawB();$('#qFb').className='fb hint';$('#qFb').innerHTML=`Trykk på <b>${ORG[quiz][0].toLowerCase()}</b>.`;});
+drawB();
+
+/* ---------- Puls ---------- */
+const ACT=[['😴 Sover',55,12],['🪑 Sitter',75,16],['🚶 Går',100,22],['🚴 Sykler',130,30],['🏃 Løper',165,40],['⚡ Spurter',190,50]];
+let aI=1;const seenA=new Set([1]);
+$('#act').innerHTML=ACT.map((a,i)=>`<button type="button" class="btn${i===aI?' on':''}" data-i="${i}">${a[0]}</button>`).join('');
+$('#act').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{aI=+b.dataset.i;seenA.add(aI);$('#act').querySelectorAll('.btn').forEach(x=>x.classList.toggle('on',x===b));showA();}));
+function showA(){const a=ACT[aI];$('#vP').textContent=a[1];$('#vB').textContent=a[2];
+  N.graph($('#pGraph'),{x:{min:0,max:5,step:1,label:'Aktivitet',fmt:v=>ACT[v][0].split(' ')[0]},y:{min:0,max:200,step:50,label:'Puls'},series:[{pts:[...seenA].sort().map(i=>[i,ACT[i][1]]),cls:'pt'}],W:380,H:190});
+  const fb=$('#pFb');fb.className='fb good';
+  fb.innerHTML=aI<=1?'I ro trenger musklene lite oksygen. Hjertet kan slå rolig.':aI<4?'Musklene jobber og trenger mer oksygen og energi. Hjertet slår fortere for å pumpe mer blod, og du puster fortere for å få inn mer oksygen.':'Musklene jobber hardt. Lungene og hjertet samarbeider for å få nok oksygen ut til musklene. Musklene blir også varme, så du svetter for å kjøle deg ned.';}
+let ph=0,hvis=true,lastT=performance.now();if('IntersectionObserver' in window)new IntersectionObserver(e=>{hvis=e[0].isIntersecting;}).observe($('#hFig'));
+function drawH(){const a=ACT[aI];const beat=Math.pow(Math.max(0,Math.sin(ph*Math.PI*2)),8),br=(Math.sin(ph*Math.PI*2*a[2]/a[1])+1)/2;const sc=1+beat*.15,ls=1+br*.12;
+  $('#hFig').innerHTML=`<g transform="translate(90 90) scale(${fx(ls*10)/10}) translate(-90 -90)"><path d="M84 40 Q40 44 40 110 Q44 142 80 134Z M96 40 Q140 44 140 110 Q136 142 100 134Z" fill="#f08c8c" stroke="var(--ink)"/></g><text class="lbl small" x="90" y="170" text-anchor="middle">Lungene</text>`+
+  `<g transform="translate(270 90) scale(${fx(sc*100)/100}) translate(-270 -90)"><path d="M270 140 C230 110 220 70 245 60 C258 55 266 64 270 72 C274 64 282 55 295 60 C320 70 310 110 270 140Z" fill="#d6336c" stroke="var(--ink)"/></g><text class="lbl small" x="270" y="170" text-anchor="middle">Hjertet</text>`;}
+(function an(t){const dt=Math.min(.1,(t-lastT)/1000);lastT=t;if(hvis&&!V.reduce){ph+=dt*ACT[aI][1]/60;drawH();}requestAnimationFrame(an);})(performance.now());
+showA();drawH();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvorfor slår hjertet fortere når du løper?',opts:['Fordi du blir redd','Musklene trenger mer oksygen, og blodet frakter det','Hjertet blir varmt'],ok:1,
+  expl:'Musklene bruker oksygen og næring for å lage energi. Når de jobber hardt, trenger de mye mer. Lungene henter oksygen inn i blodet, og hjertet pumper blodet fortere ut til musklene. Organsystemene samarbeider.',
+  retry:'Hva trenger musklene når de jobber hardt? Prøv igjen.'});
+
+/* ---------- 4 Fordøyelse ---------- */
+N.fill($('#fill1'),{html:'<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start"><span>🍎 Maten tygges i</span>[]<span>↓ glir ned gjennom</span>[]<span>↓ knas med syre i</span>[]<span>↓ næringen tas opp i blodet i</span>[]<span>↓ vann tas opp i</span>[]</div>',
+  tokens:['munnen','spiserøret','magesekken','tynntarmen','tykktarmen'],
+  check:v=>{const ok=['munnen','spiserøret','magesekken','tynntarmen','tykktarmen'];const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:'Ikke helt. Tynntarmen er lang og tar opp næring. Tykktarmen kommer til slutt.'}:{ok:true,msg:'Riktig! Tynntarmen er omtrent 6 meter lang. Næringen går over i blodet, og hjertet pumper den ut til alle cellene.'};}});
+
+/* ---------- 5 Pubertet ---------- */
+N.sorter($('#sort1'),{groups:[{id:'j',name:'Mest hos jenter'},{id:'g',name:'Mest hos gutter'},{id:'b',name:'Hos alle'}],
+  items:[{t:'Brystene vokser',g:'j'},{t:'Menstruasjon (mens) starter',g:'j'},{t:'Stemmen blir mye dypere',g:'g',why:'Stemmen endrer seg litt hos alle, men hos gutter vokser strupehodet mye og stemmen blir mye dypere.'},{t:'Skjegget begynner å vokse',g:'g'},{t:'Testiklene begynner å lage sædceller',g:'g'},{t:'Hår under armene og ved kjønnsorganene',g:'b'},{t:'Kviser',g:'b'},{t:'Vokser raskt i høyden',g:'b'},{t:'Svetter mer og lukter mer',g:'b'},{t:'Humøret kan svinge mer',g:'b',why:'Hormonene påvirker følelsene hos alle. Det er normalt å være mer irritert eller lei seg noen ganger.'}],
+  good:'Riktig! Kroppen endrer seg i sitt eget tempo. Lurer du på noe, kan du spørre helsesykepleieren, en voksen du stoler på, eller lese på ung.no.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  organ:{name:'Organer og oppgaver',gens:[
+    ()=>{const k=pick(Object.keys(ORG));const o=ORG[k];return N.mc(`Hvilket organ gjør dette? <i>${o[2]}</i>`,o[0],shuffle(Object.values(ORG).map(x=>x[0]).filter(x=>x!==o[0])).slice(0,3),['Se kroppskartet.'],`Det er ${o[0].toLowerCase()}.`);},
+    ()=>{const k=pick(Object.keys(ORG));const o=ORG[k];return N.mc(`Hvilket organsystem hører <b>${o[0].toLowerCase()}</b> til?`,o[1],['Nervesystemet','Åndedrettssystemet','Blodomløpet','Fordøyelsessystemet','Utskillelsessystemet'].filter(x=>x!==o[1]).slice(0,3),['Hva gjør organet?'],`${o[0]} hører til ${o[1].toLowerCase()}.`);}
+  ]},
+  puls:{name:'Puls og pust',gens:[
+    ()=>{const b=R(16,30),m=pick([4,6]);const s=60/m;return {prompt:`Du teller <b>${b}</b> pulsslag på ${s} sekunder. Hva er pulsen din per minutt?`,ans:b*m,unit:'slag/min',abs:.01,hints:[`Et minutt er 60 sekunder.`,`60 : ${s} = ${m}. Gang med ${m}.`],sol:`${b} · ${m} = <b>${b*m} slag/min</b>`,diag:v=>v===b?'Det er bare slagene på '+s+' sekunder.':null};},
+    ()=>N.mc('Hva frakter blodet ut til musklene?','Oksygen og næring',['Bare vann','Karbondioksid'],['Hva henter lungene?'],'Blodet frakter oksygen fra lungene og næring fra tarmen ut til cellene. På vei tilbake tar det med karbondioksid.')
+  ]},
+  mat:{name:'Fordøyelsen',gens:[
+    ()=>{const s=['Munnen','Spiserøret','Magesekken','Tynntarmen','Tykktarmen'];const i=R(0,3);return N.mc(`Hvor går maten etter <b>${s[i].toLowerCase()}</b>?`,s[i+1],s.filter((_,j)=>j!==i+1&&j!==i).slice(0,3),['Tenk på matens reise.'],`Etter ${s[i].toLowerCase()} kommer ${s[i+1].toLowerCase()}.`);},
+    ()=>N.mc('Hvor blir næringen fra maten tatt opp i blodet?','Tynntarmen',['Magesekken','Tykktarmen'],['Den er lang og har mange små folder.'],'Tynntarmen er lang og har mange små folder som tar opp næringen.')
+  ]},
+  pub:{name:'Puberteten',gens:[
+    ()=>N.mc('Hva styrer endringene i puberteten?','Hormoner',['Mat','Søvn'],['Kjemiske budbringere i blodet.'],'Hormoner er kjemiske budbringere. I puberteten lager kroppen mer kjønnshormoner.'),
+    ()=>N.mc('Når starter puberteten?','Ulikt for alle, ofte mellom 9 og 15 år',['Akkurat når man fyller 12','Samme dag for alle i klassen'],['Er alle like?'],'Puberteten starter på ulik tid. Det er helt normalt å være tidlig eller sen.'),
+    ()=>{const t=pick([['Kviser','Hos alle'],['Menstruasjon','Mest hos jenter'],['Skjegg','Mest hos gutter'],['Hår under armene','Hos alle'],['Brystene vokser','Mest hos jenter']]);return N.mc(`<b>${t[0]}</b>: Hvem får det i puberteten?`,t[1],['Hos alle','Mest hos jenter','Mest hos gutter'].filter(x=>x!==t[1]),['Se sorteringen.'],`${t[0]}: ${t[1].toLowerCase()}.`);}
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-kroppen',title:'Kroppen og puberteten',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

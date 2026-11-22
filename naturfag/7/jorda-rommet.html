@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jorda i rommet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .sun{fill:var(--lamp)}
+.fig .orbit{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 4}
+.fig .earth{fill:var(--cold)}
+.fig .night{fill:#000;opacity:.45}
+.fig .axis{stroke:var(--ink);stroke-width:2}
+.fig .ground{fill:var(--leaf-soft);stroke:var(--leaf);stroke-width:2}
+.fig .ray{stroke:var(--lamp);stroke-width:3}
+.fig .planet{stroke:var(--ink);stroke-width:1}
+.fig .zone{fill:var(--leaf);opacity:.18}
+.stats2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stats2 div{background:var(--surface);border-radius:10px;padding:8px;text-align:center}
+.stats2 b{display:block;font-family:var(--f-mono);font-size:1.3rem}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Jorda i rommet</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#aar"><b>2</b>Årstider</a>
+    <a href="#liv"><b>3</b>Liv på jorda</a>
+    <a href="#hvorfor"><b>4</b>Hvorfor?</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Jorda i rommet</h1>
+      <p class="lead">Jorda snurrer rundt seg selv én gang i døgnet. Det gir dag og natt. Den går rundt sola én gang i året, og fordi jordaksen <b>heller</b>, får vi årstider.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Jorda i bane rundt sola"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">I Norge er det mye kaldere i januar enn i juli.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="aar"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Reis gjennom året</h2></div>
+    <p class="sec-lead">Dra i datoen og se hvor jorda er i banen. Velg et sted og se hvor lenge sola er oppe, og hvor høyt den står midt på dagen.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="oFig" viewBox="0 0 380 220" role="img" aria-label="Jordas bane rundt sola sett ovenfra"></svg>
+        <svg class="fig" id="hFig" viewBox="0 0 380 130" role="img" aria-label="Solhøyden midt på dagen"></svg>
+      </div>
+      <div class="controls">
+        <div class="pick" id="place"></div>
+        <div id="dSl"></div>
+        <div class="stats2"><div>Sola er oppe<b id="sDay">–</b></div><div>Solhøyde kl. 12<b id="sH">–</b></div></div>
+        <svg class="fig" id="yFig" role="img" aria-label="Dagens lengde gjennom året"></svg>
+        <div class="fb" id="aFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="liv"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Akkurat passe for liv</h2></div>
+    <p class="sec-lead">Alt liv vi kjenner trenger <b>flytende vann</b>. Flytt planeten nærmere eller lenger fra sola. Finn sonen der vannet verken fryser eller koker bort.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="zFig" viewBox="0 0 380 170" role="img" aria-label="Planet i avstand fra sola"></svg></div>
+      <div class="controls"><div id="zSl"></div><div class="counter" id="zOut" aria-live="polite"></div><div class="fb" id="zFb" aria-live="polite"></div></div>
+    </div>
+  </div></section>
+
+  <section id="hvorfor"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Hva er grunnen?</h2></div>
+    <p class="sec-lead">Sorter: Kommer det av at jorda snurrer rundt seg selv, at jorda går rundt sola med skrå akse, eller at månen går rundt jorda?</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om jordas bevegelser i solsystemet, døgn og årstider, og forutsetninger for liv på jorda. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const PL=[['Lindesnes',58],['Oslo',59.9],['Trondheim',63.4],['Tromsø',69.6],['Svalbard',78.2],['Ekvator',0]];
+const MND=['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'];
+const dato=d=>{const t=new Date(2025,0,d);return t.getDate()+'. '+MND[t.getMonth()].slice(0,3);};
+const decl=d=>23.44*Math.sin(2*Math.PI*(d-81)/365);
+function dayLen(lat,d){const x=-Math.tan(lat*Math.PI/180)*Math.tan(decl(d)*Math.PI/180);if(x<=-1)return 24;if(x>=1)return 0;return 24/Math.PI*Math.acos(x);}
+const sunH=(lat,d)=>Math.max(-10,90-Math.abs(lat-decl(d)));
+const hm=h=>{const m=Math.round(h*60);return Math.floor(m/60)+' t '+(m%60)+' min';};
+function orbit(d,W){const th=Math.PI+2*Math.PI*(d-172)/365,x=190+150*Math.cos(th),y=110+75*Math.sin(th);const ang=Math.atan2(110-y,190-x);
+  let s=`<ellipse class="orbit" cx="190" cy="110" rx="150" ry="75"/><circle class="sun" cx="190" cy="110" r="26"/>`;
+  for(let i=0;i<12;i++){const a=i*Math.PI/6;s+=`<line x1="${fx(190+31*Math.cos(a))}" y1="${fx(110+31*Math.sin(a))}" x2="${fx(190+38*Math.cos(a))}" y2="${fx(110+38*Math.sin(a))}" stroke="var(--lamp)" stroke-width="3"/>`;}
+  s+=`<circle class="earth" cx="${fx(x)}" cy="${fx(y)}" r="15"/><path class="night" d="M${fx(x+15*Math.cos(ang+Math.PI/2))} ${fx(y+15*Math.sin(ang+Math.PI/2))} A15 15 0 0 1 ${fx(x+15*Math.cos(ang-Math.PI/2))} ${fx(y+15*Math.sin(ang-Math.PI/2))}Z"/>`;
+  s+=`<line class="axis" x1="${fx(x-8)}" y1="${fx(y+19)}" x2="${fx(x+8)}" y2="${fx(y-19)}"/><circle cx="${fx(x+8)}" cy="${fx(y-19)}" r="2.5" fill="var(--ink)"/>`;
+  if(W)s+=`<text class="lbl small" x="8" y="14">Nordpolen heller alltid samme vei</text>`;
+  [['juni',172],['sept.',265],['des.',355],['mars',80]].forEach(([n,dd])=>{const t=Math.PI+2*Math.PI*(dd-172)/365;s+=`<text class="lbl small" x="${fx(190+108*Math.cos(t))}" y="${fx(114+50*Math.sin(t))}" text-anchor="middle">${n}</text>`;});
+  return s;}
+$('#heroFig').innerHTML=orbit(172,false);
+let place=1,day=172,seen=new Set();
+$('#place').innerHTML=PL.map((p,i)=>`<button type="button" class="btn${i===place?' on':''}" data-i="${i}">${p[0]}</button>`).join('');
+$('#place').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{place=+b.dataset.i;$('#place').querySelectorAll('.btn').forEach(x=>x.classList.toggle('on',x===b));drawA();}));
+const dS=N.slider($('#dSl'),{id:'dDay',label:'Dato',min:1,max:365,step:1,value:172,fmt:dato,on:v=>{day=+v;if(typeof drawA==='function')drawA();}});
+function drawA(){if(!$('#yFig'))return;const lat=PL[place][1],L=dayLen(lat,day),H=sunH(lat,day);
+  $('#oFig').innerHTML=orbit(day,true);
+  $('#sDay').textContent=L>=24?'hele døgnet':L<=0?'ikke i det hele tatt':hm(L);$('#sH').textContent=H<=0?'under horisonten':nf(H,0)+'°';
+  const a=Math.max(0,H)*Math.PI/180;let s=`<rect class="ground" x="20" y="100" width="340" height="20" rx="4"/><text class="lbl small" x="30" y="94">${PL[place][0]}</text>`;
+  if(H>0){const sx=190-Math.cos(a)*150,sy=100-Math.sin(a)*150;s+=`<line class="ray" x1="${fx(190-Math.cos(a)*60)}" y1="${fx(100-Math.sin(a)*60)}" x2="190" y2="100"/><circle class="sun" cx="${fx(Math.max(18,190-Math.cos(a)*80))}" cy="${fx(Math.max(14,100-Math.sin(a)*80))}" r="12"/><path d="M230 100 A40 40 0 0 0 ${fx(190+40*Math.cos(Math.PI-a))} ${fx(100-40*Math.sin(a))}" fill="none" stroke="var(--muted)"/><text class="lbl small" x="240" y="90">${nf(H,0)}°</text>`;}
+  else s+=`<text class="lbl" x="190" y="60" text-anchor="middle">Sola kommer ikke over horisonten (mørketid)</text>`;
+  $('#hFig').innerHTML=s;
+  const pts=[];for(let d=1;d<=365;d+=7)pts.push([d,dayLen(lat,d)]);
+  N.graph($('#yFig'),{x:{min:0,max:360,step:60,label:'Dag i året',fmt:v=>['jan','mar','mai','jul','sep','nov','jan'][v/60]},y:{min:0,max:24,step:6,label:'Timer sol'},series:[{pts,dots:false,lineCls:'ptline2'}],marks:(X,Y)=>`<circle class="pt" cx="${fx(X(day))}" cy="${fx(Y(L))}" r="6"/>`,W:380,H:190});
+  const fb=$('#aFb');
+  if(L>=24){fb.className='fb good';fb.innerHTML='<b>Midnattssol!</b> Nordpolen heller mot sola, så her er sola oppe hele døgnet.';seen.add('m');}
+  else if(L<=0){fb.className='fb good';fb.innerHTML='<b>Mørketid.</b> Nordpolen heller bort fra sola, så sola kommer ikke over horisonten.';seen.add('p');}
+  else if(place===5){fb.className='fb hint';fb.innerHTML='Ved ekvator er dag og natt nesten like lange hele året, og sola står høyt. Derfor er det varmt der hele året.';}
+  else{fb.className='fb hint';fb.innerHTML=H>40?'Sola står høyt og er oppe lenge. Strålene treffer mer rett ned og varmer godt. Det er sommer.':H<15?'Sola står lavt og er oppe kort. Strålene treffer skrått og sprer seg over et stort område. Det er vinter.':'Vår eller høst: dagen og natta er omtrent like lange.';}
+  if(seen.size===2)fb.innerHTML+=' Du har funnet både midnattssol og mørketid!';
+}
+drawA();
+
+/* ---------- 3 Liv ---------- */
+const tempAt=d=>Math.round(15+288*(1/d-1));
+const zS=N.slider($('#zSl'),{id:'zD',label:'Avstand',min:.3,max:2.5,step:.05,value:.5,fmt:v=>nf(v,2)+' × jorda',on:()=>{if(typeof drawZ==='function')drawZ();}});
+let zFound=false;
+function drawZ(){if(!$('#zOut'))return;const d=+$('#zD').value,T=tempAt(d),X=v=>30+v*135;
+  let s=`<rect class="zone" x="${fx(X(.77))}" y="20" width="${fx(X(1.055)-X(.77))}" height="120" rx="8"/><circle class="sun" cx="18" cy="80" r="40"/>`;
+  [['Merkur',.39,'#9a8f84',5],['Venus',.72,'#e0b860',8],['Jorda',1,'#3d8bd6',8],['Mars',1.52,'#c4532b',6]].forEach(p=>s+=`<circle class="planet" cx="${fx(X(p[1]))}" cy="150" r="${p[3]/1.6}" fill="${p[2]}"/><text class="lbl small" x="${fx(X(p[1]))}" y="168" text-anchor="middle">${p[0]}</text>`);
+  const st=T>100?'damp':T<0?'is':'vann';const col=st==='damp'?'var(--c1)':st==='is'?'#e6f1fb':'var(--cold)';
+  s+=`<circle cx="${fx(X(d))}" cy="80" r="20" fill="${col}" stroke="var(--ink)" stroke-width="1.5"/><text x="${fx(X(d))}" y="87" text-anchor="middle" font-size="18">${st==='vann'?'🌍':st==='is'?'🧊':'♨️'}</text>`;
+  $('#zFig').innerHTML=s;$('#zOut').innerHTML=`Temperatur: <b>${T>0?'':'−'}${Math.abs(T)} °C</b>`;
+  const fb=$('#zFb');
+  if(st==='damp'){fb.className='fb hint';fb.innerHTML='For varmt! Vannet koker bort. Slik er det nesten på Venus, som også har en veldig tykk atmosfære.';}
+  else if(st==='is'){fb.className='fb hint';fb.innerHTML='For kaldt! Vannet fryser til is. Mars har is, men nesten ikke flytende vann.';}
+  else{fb.className='fb good';fb.innerHTML='<b>Akkurat passe!</b> Her kan vann være flytende. Dette kalles den <b>beboelige sonen</b>. Jorda har også atmosfære som holder på varmen og beskytter mot farlig stråling fra sola.';zFound=true;}}
+drawZ();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvorfor er det kaldere om vinteren?',opts:['Jorda er lenger unna sola','Jordaksen heller, så sola står lavere og skinner kortere','Sola lyser svakere om vinteren'],ok:1,
+  expl:'Jorda er faktisk litt <b>nærmere</b> sola i januar enn i juli! Det er hellingen på jordaksen som gir årstider. Om vinteren heller vår del av jorda bort fra sola. Da står sola lavt, dagene er korte, og strålene treffer skrått.',
+  retry:'Overraskende nok er jorda nærmest sola i januar. Hva annet kan forklare det? Prøv igjen.'});
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'r',name:'Jorda snurrer rundt seg selv'},{id:'b',name:'Jorda går rundt sola, aksen heller'},{id:'m',name:'Månen går rundt jorda'}],
+  items:[{t:'Dag og natt',g:'r'},{t:'Sola står opp i øst',g:'r'},{t:'Stjernene ser ut til å bevege seg om natta',g:'r'},{t:'Sommer og vinter',g:'b'},{t:'Midnattssol i Tromsø',g:'b',why:'Midnattssol skjer fordi nordpolen heller mot sola om sommeren.'},{t:'Mørketid i Tromsø',g:'b'},{t:'Fullmåne og nymåne',g:'m',why:'Månen lyser ikke selv. Vi ser ulike deler av den solbelyste siden mens den går rundt jorda.'},{t:'En måned er omtrent 29 dager',g:'m'}],
+  good:'Riktig! Ett døgn er én runde rundt seg selv. Ett år er én runde rundt sola. En måned er omtrent én runde for månen rundt jorda.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  dag:{name:'Dag, år og måned',gens:[
+    ()=>{const q=pick([['Hvor lang tid bruker jorda på å snurre én gang rundt seg selv?','Ett døgn (24 timer)'],['Hvor lang tid bruker jorda på én runde rundt sola?','Ett år (365 dager)'],['Hvor lang tid bruker månen på én runde rundt jorda?','Omtrent én måned']]);
+      return N.mc(q[0],q[1],['Ett døgn (24 timer)','Ett år (365 dager)','Omtrent én måned'].filter(x=>x!==q[1]),['Døgn, måned, år.'],q[1]+'.');},
+    ()=>N.mc('Hvorfor har vi dag og natt?','Jorda snurrer rundt seg selv',['Sola går rundt jorda','Sola slukker om natta'],['Det ser ut som sola beveger seg, men …'],'Jorda snurrer. Den siden som vender mot sola har dag.',{'Sola går rundt jorda':'Det ser slik ut, men det er jorda som snurrer.'})
+  ]},
+  aar:{name:'Årstider',gens:[
+    ()=>N.mc('Hva er hovedgrunnen til årstidene?','Jordaksen heller',['Avstanden til sola endrer seg','Månen skygger for sola'],['Prøv simuleringen.'],'Jordaksen heller omtrent 23 grader. Derfor får nord og sør sommer på ulike tider av året.',{'Avstanden til sola endrer seg':'Jorda er faktisk nærmest sola i januar.'}),
+    ()=>{const p=pick(PL.slice(0,5));const d=pick([[172,'juni'],[355,'desember']]);const L=dayLen(p[1],d[0]);const ans=L>=24?'Hele døgnet':L<=0?'Ikke i det hele tatt':L>12?'Mer enn 12 timer':'Mindre enn 12 timer';
+      return N.mc(`Hvor lenge er sola oppe i <b>${p[0]}</b> rundt 21. ${d[1]}?`,ans,['Hele døgnet','Ikke i det hele tatt','Mer enn 12 timer','Mindre enn 12 timer'].filter(x=>x!==ans).slice(0,2),['Er det sommer eller vinter? Ligger stedet nord for polarsirkelen?'],`I ${p[0]} rundt 21. ${d[1]}: ${L>=24?'midnattssol':L<=0?'mørketid':hm(L)}.`);},
+    ()=>N.mc('Når det er sommer i Norge, hva er det i Australia?','Vinter',['Også sommer','Høst'],['Australia ligger på den sørlige halvkula.'],'Når nordpolen heller mot sola, heller sørpolen bort. Da er det vinter i Australia.')
+  ]},
+  liv:{name:'Liv på jorda',gens:[
+    ()=>N.mc('Hva trenger alt liv vi kjenner?','Flytende vann',['Snø','Sand'],['Hva fant du i simuleringen?'],'Alt liv vi kjenner trenger flytende vann. Jorda ligger akkurat passe langt fra sola.'),
+    ()=>N.mc('Hvorfor er atmosfæren viktig for livet på jorda?','Den holder på varmen og beskytter mot stråling',['Den gjør himmelen blå','Den holder månen på plass'],['Hva ville skjedd uten den?'],'Atmosfæren gir oss luft å puste, holder på varmen og stopper farlig UV-stråling.'),
+    ()=>{const p=pick([['Venus','For varm'],['Mars','For kald'],['Merkur','For varm']]);return N.mc(`Hvorfor kan vi ikke bo på <b>${p[0]}</b>?`,p[1],['For kald','For varm','Har for mye vann'].filter(x=>x!==p[1]),['Hvor ligger den i forhold til jorda?'],`${p[0]} er ${p[1].toLowerCase()} til at vann kan være flytende.`);}
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-jorda-rommet',title:'Jorda i rommet',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

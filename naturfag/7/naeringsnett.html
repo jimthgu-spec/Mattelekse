@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Næringsnett</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .arr{stroke:var(--muted);stroke-width:1.6;fill:none;marker-end:url(#ah)}
+.fig .arr.hot{stroke:var(--accent);stroke-width:2.6}
+.fig .arr.dead{stroke-dasharray:4 4;opacity:.35}
+.fig .node{cursor:pointer}
+.fig .node circle{fill:var(--surface);stroke:var(--line);stroke-width:2}
+.fig .node.sel circle{stroke:var(--bad);stroke-width:3;fill:var(--bad-soft)}
+.fig .node.up circle{stroke:var(--good);stroke-width:3;fill:var(--good-soft)}
+.fig .node.down circle{stroke:var(--warm);stroke-width:3}
+.fig .node.gone circle{stroke:var(--bad);stroke-dasharray:3 3}
+.fig .node:focus-visible circle{stroke:var(--accent);stroke-width:3}
+.fig .badge{font-weight:700;font-size:15px}
+.pyr div{margin:0 auto 4px;text-align:center;border-radius:6px;padding:4px;font-size:.9rem;color:#fff;font-weight:700}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Næringsnett</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#nett"><b>2</b>Fjern en art</a>
+    <a href="#kjede"><b>3</b>Næringskjede</a>
+    <a href="#roller"><b>4</b>Roller</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Hvem spiser hvem?</h1>
+      <p class="lead">I naturen henger artene sammen. Planter blir spist av planteetere, som blir spist av rovdyr. Når én art blir borte, merker mange andre det. Pilene viser hvor energien går: fra maten til den som spiser.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En næringskjede: gress, lemen, rev, kongeørn"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">På fjellet spiser reven mye lemen. Et år blir det nesten ingen rev igjen på grunn av sykdom.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="nett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Fjern en art</h2></div>
+    <p class="sec-lead">Trykk på en art for å fjerne den fra næringsnettet. Gjett hva som skjer, og se hvordan de andre artene påvirkes.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="wFig" viewBox="0 0 380 270" role="img" aria-label="Næringsnett i skog og fjell"></svg>
+        <p class="note" style="text-align:center">Pilen betyr «blir spist av».</p></div>
+      <div class="controls"><div class="card2" id="wCard" aria-live="polite"></div><div class="row"><button class="btn" type="button" id="wReset">Sett alle tilbake</button></div></div>
+    </div>
+  </div></section>
+
+  <section id="kjede"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Lag en næringskjede</h2></div>
+    <p class="sec-lead">En næringskjede starter alltid med en <b>produsent</b>, en plante som lager næring av sollys. Sett artene i riktig rekkefølge.</p>
+    <div class="bench">
+      <div id="fill1"></div>
+      <div class="controls"><p><b>Energipyramiden</b></p><div class="pyr" id="pyr"></div><p class="note">Bare omtrent en tidel av energien går videre til neste ledd. Resten brukes til å leve, bevege seg og holde varmen. Derfor er det færre rovdyr enn planteetere.</p></div>
+    </div>
+  </div></section>
+
+  <section id="roller"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Produsent, konsument eller nedbryter?</h2></div>
+    <p class="sec-lead"><b>Produsenter</b> lager næring av sollys. <b>Konsumenter</b> spiser andre. <b>Nedbrytere</b> bryter ned døde planter og dyr til næring for jorda. Sorter.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om næringskjeder og næringsnett, og hvordan endringer i en bestand påvirker andre arter i et økosystem. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const SP={gress:['Gress','🌱',90,232],blab:['Blåbær','🫐',280,232],ins:['Insekter','🐛',320,158],lem:['Lemen','🐹',60,158],hare:['Hare','🐇',190,158],meis:['Meis','🐦',300,90],rev:['Rev','🦊',110,90],orn:['Kongeørn','🦅',200,28]};
+const EATS={ins:['gress','blab'],lem:['gress'],hare:['gress','blab'],meis:['ins','blab'],rev:['lem','hare','meis'],orn:['hare','lem','rev']};
+const NAME=k=>SP[k][0];
+$('#heroFig').innerHTML=`<defs><marker id="ah0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>`+
+  ['🌱','🐹','🦊','🦅'].map((e,i)=>`<text x="${50+i*95}" y="125" font-size="44" text-anchor="middle">${e}</text>`+(i<3?`<line x1="${80+i*95}" y1="110" x2="${112+i*95}" y2="110" stroke="var(--muted)" stroke-width="2" marker-end="url(#ah0)"/>`:'')).join('');
+
+/* ---------- 2 Nett ---------- */
+let removed=null,eff={},asked=null;
+function effects(x){const e={};
+  Object.entries(EATS).forEach(([y,foods])=>{if(foods.includes(x)){const left=foods.filter(f=>f!==x);e[y]=left.length?'down':'gone';}});
+  (EATS[x]||[]).forEach(f=>{e[f]='up';});return e;}
+function drawW(){let s=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>`;
+  Object.entries(EATS).forEach(([y,foods])=>foods.forEach(f=>{const a=SP[f],b=SP[y];const dx=b[2]-a[2],dy=b[3]-a[3],l=Math.hypot(dx,dy);
+    const hot=removed&&(f===removed||y===removed);s+=`<line class="arr${hot&&removed?' dead':''}" x1="${fx(a[2]+dx/l*24)}" y1="${fx(a[3]+dy/l*24)}" x2="${fx(b[2]-dx/l*26)}" y2="${fx(b[3]-dy/l*26)}"/>`;}));
+  Object.entries(SP).forEach(([k,v])=>{const st=k===removed?'sel':(asked===null&&eff[k])?eff[k]:'';
+    s+=`<g class="node ${st}" data-k="${k}" tabindex="0" role="button" aria-label="${v[0]}${k===removed?', fjernet':''}"><circle cx="${v[2]}" cy="${v[3]}" r="22"/><text x="${v[2]}" y="${v[3]+9}" text-anchor="middle" font-size="24">${v[1]}</text><text class="lbl small" x="${v[2]}" y="${v[3]+36}" text-anchor="middle">${v[0]}</text>`;
+    if(k===removed)s+=`<text class="badge" x="${v[2]+18}" y="${v[3]-14}" fill="var(--bad)">✖</text>`;
+    else if(asked===null&&eff[k])s+=`<text class="badge" x="${v[2]+18}" y="${v[3]-14}" fill="${eff[k]==='up'?'var(--good)':'var(--warm)'}">${eff[k]==='up'?'▲':eff[k]==='down'?'▼':'▼▼'}</text>`;
+    s+='</g>';});
+  $('#wFig').innerHTML=s;
+  $('#wFig').querySelectorAll('.node').forEach(g=>{const go=()=>pickSp(g.dataset.k);g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});}
+const WORD={up:'blir flere',down:'blir færre',gone:'får det svært vanskelig og kan forsvinne'};
+function pickSp(k){removed=k;eff=effects(k);const keys=Object.keys(eff);
+  if(!keys.length){asked=null;drawW();$('#wCard').innerHTML=`<span class="tag">${NAME(k)} er borte</span><p>Ingen andre i dette nettet spiser ${NAME(k).toLowerCase()}, og ${NAME(k).toLowerCase()} spiser ingen her. Prøv en annen art.</p>`;return;}
+  asked=pick(keys);drawW();
+  $('#wCard').innerHTML=`<span class="tag">${NAME(k)} er fjernet</span><p>Hva tror du skjer med <b>${NAME(asked).toLowerCase()}</b>?</p><div class="opts">${['up','down','gone'].map(o=>`<button type="button" class="opt" data-o="${o}">${cap(WORD[o])}</button>`).join('')}</div><div class="fb" id="wFb"></div>`;
+  $('#wCard').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{const o=b.dataset.o,ok=o===eff[asked]||(o!=='up'&&eff[asked]!=='up'&&o!==eff[asked]&&false);
+    const why=eff[asked]==='up'?`${NAME(k)} spiste ${NAME(asked).toLowerCase()}. Nå blir færre spist, så de blir flere.`:eff[asked]==='down'?`${NAME(asked)} spiste ${NAME(k).toLowerCase()}, men har annen mat også. Bestanden går ned, men overlever.`:`${NAME(asked)} har ikke annen mat i dette nettet. Da blir det svært vanskelig.`;
+    const was=asked;asked=null;drawW();
+    const all=Object.entries(eff).map(([y,e])=>`<li>${NAME(y)} ${WORD[e]}</li>`).join('');
+    $('#wCard').innerHTML=`<span class="tag">${NAME(k)} er fjernet</span><div class="fb ${o===eff[was]?'good':'hint'}">${o===eff[was]?'Riktig! ':'Ikke helt. '}${why}</div><p>Dette skjer i nettet:</p><ul>${all}</ul><p class="note">Etter en stund kan endringene spre seg videre. Flere planteetere betyr for eksempel at det blir spist mer planter.</p>`;}));}
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+$('#wReset').addEventListener('click',()=>{removed=null;eff={};asked=null;drawW();$('#wCard').innerHTML='<span class="tag">Velg en art</span><p>Trykk på en art i næringsnettet for å fjerne den.</p>';});
+$('#wReset').click();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva skjer med lemenbestanden det neste året?',opts:['Den blir mindre','Den blir større','Den blir som før'],ok:1,
+  expl:'Når det er færre rev, blir færre lemen spist. Da overlever flere og får unger, så bestanden vokser. Men hvis lemenene blir veldig mange, kan de spise opp maten sin. Alt i et næringsnett henger sammen.',
+  retry:'Reven spiste lemen. Hva skjer når det er færre som spiser dem? Prøv igjen.'});
+
+/* ---------- 3 Kjede ---------- */
+N.fill($('#fill1'),{html:'<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start"><span>☀️ Sola gir energi til</span>[]<span>↓ blir spist av</span>[]<span>↓ blir spist av</span>[]<span>↓ blir spist av</span>[]</div>',
+  tokens:['Blåbærlyng','Insekter','Meis','Rev'],
+  check:v=>{const ok=['Blåbærlyng','Insekter','Meis','Rev'];const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:v[0]!=='Blåbærlyng'?'En næringskjede starter alltid med en plante, som lager næring av sollys.':'Hvem spiser hvem? Meisen spiser insekter, og reven tar meis.'}:{ok:true,msg:'Riktig! Blåbærlyngen er <b>produsent</b>. Insektene er <b>planteetere</b>. Meis og rev er <b>rovdyr</b>. Reven er toppen av denne kjeden.'};}});
+$('#pyr').innerHTML=[['Rev','10 kJ',30,'var(--warm)'],['Meis','100 kJ',50,'var(--c3)'],['Insekter','1 000 kJ',72,'var(--c2)'],['Blåbærlyng','10 000 kJ',96,'var(--leaf)']].map(r=>`<div style="width:${r[2]}%;background:${r[3]}">${r[0]}: ${r[1]}</div>`).join('');
+
+/* ---------- 4 Roller ---------- */
+N.sorter($('#sort1'),{groups:[{id:'p',name:'Produsent'},{id:'k',name:'Konsument'},{id:'n',name:'Nedbryter'}],
+  items:[{t:'🌲 Gran',g:'p'},{t:'🌿 Tang',g:'p',why:'Tang lever i havet, men er grønn/brun og lager næring av sollys.'},{t:'🫐 Blåbærlyng',g:'p'},{t:'🦌 Rein',g:'k'},{t:'🦉 Ugle',g:'k'},{t:'🐛 Larve',g:'k'},{t:'🍄 Sopp',g:'n',why:'Sopp kan ikke lage sin egen næring. Den bryter ned døde blader og trær.'},{t:'🪱 Meitemark',g:'n'},{t:'🦠 Bakterier i jorda',g:'n'}],
+  good:'Riktig! Uten nedbrytere ville skogen vært full av døde blader og dyr. Nedbryterne gjør dem om til næring som plantene kan bruke igjen. Slik går stoffene i kretsløp.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  effekt:{name:'Hva skjer når en art blir borte?',gens:[
+    ()=>{const x=pick(Object.keys(SP).filter(k=>Object.keys(effects(k)).length));const e=effects(x);const y=pick(Object.keys(e));const ans=cap(WORD[e[y]]);
+      return N.mc(`I næringsnettet blir <b>${NAME(x).toLowerCase()}</b> borte. Hva skjer med <b>${NAME(y).toLowerCase()}</b>?`,ans,['up','down','gone'].filter(o=>o!==e[y]).map(o=>cap(WORD[o])),['Spiser '+NAME(y).toLowerCase()+' '+NAME(x).toLowerCase()+', eller omvendt?'],`${NAME(y)} ${WORD[e[y]]}.`);}
+  ]},
+  kjede:{name:'Næringskjeder',gens:[
+    ()=>{const c=pick([['Gress','Lemen','Rev'],['Blåbær','Hare','Kongeørn'],['Plankton','Sild','Torsk'],['Lav','Rein','Ulv']]);const q=R(0,2);const ans=['Produsent','Planteeter','Rovdyr'][q];
+      return N.mc(`Næringskjede: ${c.join(' → ')}. Hva er <b>${c[q].toLowerCase()}</b>?`,ans,['Produsent','Planteeter','Rovdyr','Nedbryter'].filter(x=>x!==ans),['Hvor i kjeden står den?'],`${c[q]} er ${ans.toLowerCase()}.`);},
+    ()=>N.mc('Hva viser pilen i en næringskjede?','Hvem som blir spist av hvem, altså hvor energien går',['Hvem som er størst','Hvor dyret går'],['Pilen peker mot den som spiser.'],'Pilen går fra maten til den som spiser. Den viser hvor energien går.'),
+    ()=>N.mc('Hvorfor starter alle næringskjeder med en plante?','Planter lager næring av sollys',['Planter er minst','Planter lever lengst'],['Hvor kommer energien fra?'],'Planter er produsenter. De fanger energien fra sola med fotosyntese.')
+  ]},
+  energi:{name:'Energipyramiden',gens:[
+    ()=>{const p=pick([1000,2000,5000,10000,20000]);const lvl=R(1,2);const ans=p/Math.pow(10,lvl);
+      return {prompt:`Plantene i et område har <b>${nf(p,0)} kJ</b> energi. Omtrent en tidel går videre til hvert nye ledd. Hvor mye energi når ${lvl===1?'planteeterne':'rovdyrene som spiser planteeterne'}?`,ans,unit:'kJ',abs:.01,hints:['Del på 10 for hvert ledd.',lvl===2?'Del på 10 to ganger.':'Del på 10 én gang.'],sol:`${nf(p,0)} ${':10'.repeat(lvl)} = <b>${nf(ans,0)} kJ</b>`,diag:v=>near(v,p/10,.01)&&lvl===2?'Det er planteeterne. Del på 10 én gang til.':near(v,p*.9,.01)?'En tidel går videre, ikke ni tideler.':null};}
+  ]},
+  rolle:{name:'Roller i økosystemet',gens:[
+    ()=>{const it=pick([['Sopp','Nedbryter'],['Meitemark','Nedbryter'],['Bjørk','Produsent'],['Mose','Produsent'],['Elg','Konsument'],['Gaupe','Konsument']]);return N.mc(`Er <b>${it[0].toLowerCase()}</b> produsent, konsument eller nedbryter?`,it[1],['Produsent','Konsument','Nedbryter'].filter(x=>x!==it[1]),['Lager den næring av sollys? Spiser den andre? Bryter den ned døde ting?'],`${it[0]} er ${it[1].toLowerCase()}.`);}
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-naeringsnett',title:'Næringsnett',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

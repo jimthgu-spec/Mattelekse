@@ -129,5 +129,32 @@ N.slider=function(el,{id,label,min,max,step,value,fmt,on}){
   return {get value(){return +inp.value;},set value(v){inp.value=v;upd();},input:inp};
 };
 
+/* Opplesing for yngre elever: N.lesOpp() legger en «Les opp»-knapp etter innledninger og spørsmål.
+   Bruker nettleserens beste norske stemme (samme valg som filmene, lagret i «film:stemme»). */
+N.lesOpp=function(sel='.hero .lead, .sec-lead, .predict > p'){
+  const synth=window.speechSynthesis;if(!synth||!window.SpeechSynthesisUtterance)return;
+  const ROBOT=/\b(eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley|albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|eloquence)\b/i;
+  const isNo=v=>/^(nb|no|nn)([-_]|$)/i.test(v.lang)||/norsk|norwegian|bokm/i.test(v.name);
+  const score=v=>{const n=(v.name+' '+(v.voiceURI||'')).toLowerCase();let x=0;if(ROBOT.test(n))x-=100;if(/premium/.test(n))x+=40;if(/enhanced|forbedret|neural|natural|online/.test(n))x+=30;if(/siri/.test(n))x+=25;if(/nora|pernille|iselin|finn|google/.test(n))x+=10;return x;};
+  let voice=null;
+  const pick=()=>{const vs=(synth.getVoices()||[]).filter(isNo).sort((a,b)=>score(b)-score(a));let saved=null;try{saved=localStorage.getItem('film:stemme');}catch(e){}
+    voice=(saved&&vs.find(v=>v.voiceURI===saved))||vs.find(v=>score(v)>-50)||vs[0]||null;
+    document.querySelectorAll('.lesopp').forEach(b=>b.hidden=!voice&&synth.getVoices().length>0);};
+  const clean=t=>t.replace(/CO₂/g,'C O to').replace(/H₂O/g,'H to O').replace(/O₂/g,'O to').replace(/°C/g,' grader').replace(/[–—]/g,', ').replace(/\s+/g,' ').trim();
+  let cur=null;
+  document.querySelectorAll(sel).forEach(el=>{
+    if(el.dataset.les)return;el.dataset.les='1';
+    const b=document.createElement('button');b.type='button';b.className='btn mini ghost lesopp';b.innerHTML='🔊 Les opp';b.setAttribute('aria-label','Les teksten opp');
+    b.addEventListener('click',()=>{
+      if(cur===b&&synth.speaking){synth.cancel();cur=null;b.innerHTML='🔊 Les opp';return;}
+      synth.cancel();document.querySelectorAll('.lesopp').forEach(x=>x.innerHTML='🔊 Les opp');
+      const u=new SpeechSynthesisUtterance(clean(el.textContent));u.lang=voice?voice.lang:'nb-NO';if(voice)u.voice=voice;u.rate=.95;
+      u.onend=u.onerror=()=>{if(cur===b){cur=null;b.innerHTML='🔊 Les opp';}};
+      cur=b;b.innerHTML='■ Stopp';synth.speak(u);});
+    el.insertAdjacentElement('afterend',b);
+  });
+  pick();try{synth.addEventListener('voiceschanged',pick);}catch(e){synth.onvoiceschanged=pick;}
+};
+
 window.N=N;
 })();

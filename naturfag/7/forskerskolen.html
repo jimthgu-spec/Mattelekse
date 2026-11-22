@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forskerskolen 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .wing{fill:var(--c2);fill-opacity:.8;stroke:var(--c2)}
+.fig .body{fill:var(--c1)}
+.fig .clip{fill:none;stroke:var(--ink);stroke-width:2}
+.fig .floor{stroke:var(--ink);stroke-width:2}
+.ghs{display:inline-block;width:34px;height:34px;vertical-align:middle;margin-right:6px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Forskerskolen</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#obs"><b>2</b>Se eller tro</a>
+    <a href="#heli"><b>3</b>Papirhelikopter</a>
+    <a href="#fare"><b>4</b>Faresymboler</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Bli en forsker</h1>
+      <p class="lead">Forskere ser nøye etter, stiller spørsmål og gjetter et svar. Gjetningen heter en <b>hypotese</b>. Så tester de den med et forsøk der de endrer <b>bare én ting</b> om gangen.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Et papirhelikopter som faller"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du våkner og ser at gaten utenfor er våt.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="obs"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Se eller tro?</h2></div>
+    <p class="sec-lead">En <b>observasjon</b> er noe du ser, hører, kjenner eller måler. En <b>slutning</b> er det du tror forklarer det. Sorter setningene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="heli"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Papirhelikopteret</h2></div>
+    <p class="sec-lead">Hva får et papirhelikopter til å falle saktest? Velg hva du vil teste, gjett først, og slipp helikopteret fra 2 meter. Endre bare én ting om gangen.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="hFig" viewBox="0 0 380 260" role="img" aria-label="Papirhelikopter som faller"></svg>
+        <div class="counter" id="hOut" aria-live="polite">Velg hva du vil teste.</div>
+        <svg class="fig" id="hGraph" role="img" aria-label="Graf over falltid"></svg>
+      </div>
+      <div class="controls">
+        <div><p style="font-weight:700;margin-bottom:6px">1. Hva vil du teste?</p><div class="pick" id="hVar"></div></div>
+        <div class="card2" id="hHyp"></div>
+        <div id="hSl"></div>
+        <div class="row"><button class="btn primary" type="button" id="hDrop">Slipp</button><button class="btn" type="button" id="hClear">Ny måleserie</button></div>
+        <div class="fb" id="hFb" aria-live="polite"></div>
+        <div class="row"><button class="btn" type="button" id="hCheck" disabled>Sjekk hypotesen</button></div>
+        <div class="fb" id="hConc" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="fare"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Faresymboler hjemme</h2></div>
+    <p class="sec-lead">Mange ting i skapet hjemme har faresymboler: en rød ruter med et svart bilde. Sorter produktene etter symbolet de har.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om å stille spørsmål, lage hypoteser, skille mellom observasjon og slutning, bruke modeller og kjenne faresymboler. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Helikopteret ---------- */
+function heli(L,clips,y,spin){const w=L*4.5;let s='';
+  s+=`<g transform="translate(190 ${fx(y)})"><ellipse class="wing" cx="${fx(-w/2*Math.cos(spin))}" cy="-10" rx="${fx(Math.max(3,w/2*Math.abs(Math.cos(spin))))}" ry="6"/><ellipse class="wing" cx="${fx(w/2*Math.cos(spin))}" cy="-10" rx="${fx(Math.max(3,w/2*Math.abs(Math.cos(spin))))}" ry="6"/>`;
+  s+=`<rect class="body" x="-7" y="-6" width="14" height="40" rx="3"/>`;for(let i=0;i<clips;i++)s+=`<rect class="clip" x="-5" y="${24+i*5}" width="10" height="10" rx="3"/>`;return s+'</g>';}
+const ghs=(t)=>`<svg class="ghs" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="8" width="24" height="24" transform="rotate(45 20 20)" fill="#fff" stroke="#e03131" stroke-width="3"/><text x="20" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="#111">${t}</text></svg>`;
+$('#heroFig').innerHTML=heli(7,1,90,.6)+`<line class="floor" x1="60" y1="200" x2="320" y2="200"/>`;
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvilken av disse er en observasjon?',opts:['Det har regnet i natt','Gaten er våt','Noen har vasket gaten'],ok:1,
+  expl:'At gaten er våt, er det du faktisk ser. At det har regnet, er en <b>slutning</b>, en forklaring du tror på. Det kan også være en vannbil eller en lekk vannslange. Forskere skiller nøye mellom det de ser og det de tror.',
+  retry:'Har du sett at det regnet, eller bare at gaten er våt? Prøv igjen.'});
+
+/* ---------- 2 Observasjon/slutning ---------- */
+N.sorter($('#sort1'),{groups:[{id:'o',name:'Observasjon'},{id:'s',name:'Slutning'}],
+  items:[{t:'Termometeret viser 30 °C',g:'o'},{t:'Det lukter røyk',g:'o'},{t:'Planten har gule blader',g:'o'},{t:'Det er sommer',g:'s',why:'30 °C kan også være i et badstue eller i et annet land om vinteren.'},{t:'Naboen griller',g:'s'},{t:'Planten har fått for lite vann',g:'s',why:'Gule blader kan også komme av for mye vann, for lite lys eller sykdom.'}],
+  good:'Riktig! Én observasjon kan ha mange mulige forklaringer. Derfor må vi teste slutningene våre med forsøk.'});
+
+/* ---------- 3 Papirhelikopter ---------- */
+const HV={L:{n:'Vingelengde',u:'cm',min:4,max:10,step:1,fmt:v=>v+' cm'},M:{n:'Antall binders',u:'stk',min:0,max:4,step:1,fmt:v=>v+' stk'}};
+const HYP=[['up','faller det saktere'],['down','faller det fortere'],['same','blir det ingen forskjell']];
+const TRUTH={L:'up',M:'down'};
+let hv='L',hyp=null,rows=[],busy=false;
+const sl={};const box=$('#hSl');
+sl.L=N.slider(box,{id:'hL',label:'Vinger',min:4,max:10,step:1,value:7,fmt:v=>v+' cm',on:()=>{if(!busy)drawH(30,0);}});
+sl.M=N.slider(box,{id:'hM',label:'Binders',min:0,max:4,step:1,value:1,fmt:v=>v+' stk',on:()=>{if(!busy)drawH(30,0);}});
+const ftime=(L,M)=>{const m=1+M*.6,A=2*L*3,v=6.2*Math.sqrt(m/A);return 2/v;};
+function drawH(y,spin){if(!sl.M)return;$('#hFig').innerHTML=`<line class="floor" x1="60" y1="240" x2="320" y2="240"/><text class="lbl small" x="60" y="30">2 m</text><line x1="50" y1="24" x2="50" y2="240" stroke="var(--muted)"/>`+heli(sl.L.value,sl.M.value,y,spin);}
+function renderH(){
+  $('#hVar').innerHTML=Object.entries(HV).map(([k,v])=>`<button type="button" class="btn${k===hv?' on':''}" data-k="${k}">${v.n}</button>`).join('');
+  $('#hVar').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(busy)return;hv=b.dataset.k;hyp=null;rows=[];renderH();}));
+  $('#hHyp').innerHTML=`<span class="tag">2. Hypotese</span><p>Når <b>${HV[hv].n.toLowerCase()}</b> øker, tror jeg at helikopteret …</p><div class="opts">${HYP.map(([k,t])=>`<button type="button" class="opt${hyp===k?' is-ok':''}" data-h="${k}">${t}</button>`).join('')}</div>`;
+  $('#hHyp').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{hyp=b.dataset.h;renderH();}));
+  const pts=rows.map(r=>[r[hv],r.t]);
+  N.graph($('#hGraph'),{x:{min:HV[hv].min,max:HV[hv].max,step:1,label:HV[hv].n+' ('+HV[hv].u+')',fmt:v=>v},y:{min:0,max:3,step:.5,label:'Falltid (s)'},series:[{pts:pts.sort((a,b)=>a[0]-b[0]),cls:'pt'}],empty:'Målingene dine kommer her',W:380,H:200});
+  $('#hDrop').disabled=busy||!hyp;$('#hCheck').disabled=new Set(rows.map(r=>r[hv])).size<3;
+  $('#hOut').innerHTML=hyp?'Trykk <b>Slipp</b>.':'Velg hva du vil teste, og en hypotese.';drawH(30,0);
+}
+$('#hDrop').addEventListener('click',()=>{if(busy||!hyp)return;const r={L:sl.L.value,M:sl.M.value},fb=$('#hFb');
+  if(rows.length){const o=hv==='L'?'M':'L';if(r[o]!==rows[0][o]){fb.className='fb bad';fb.innerHTML=`Du har endret <b>${HV[o].n.toLowerCase()}</b> også. Da er det ikke en rettferdig test. Sett den tilbake til ${HV[o].fmt(rows[0][o])}.`;return;}}
+  if(rows.some(x=>x[hv]===r[hv])){fb.className='fb hint';fb.innerHTML='Du har allerede målt med denne verdien. Prøv en annen.';return;}
+  fb.className='fb';fb.innerHTML='';const T=ftime(r.L,r.M)+(Math.random()-.5)*.12;busy=true;$('#hDrop').disabled=true;const t0=performance.now(),dur=V.reduce?50:T*1000;
+  (function st(){const p=Math.min(1,(performance.now()-t0)/dur);drawH(30+p*200,p*T*14);$('#hOut').innerHTML=`Tid: <b>${nf(p*T,2)} s</b>`;
+    if(p<1){requestAnimationFrame(st);return;}busy=false;r.t=T;rows.push(r);renderH();$('#hOut').innerHTML=`Falltid: <b>${nf(T,2)} s</b>`;
+    if(rows.length===1){fb.className='fb hint';fb.innerHTML=`Bra! Endre nå bare ${HV[hv].n.toLowerCase()} og slipp igjen.`;}})();});
+$('#hClear').addEventListener('click',()=>{if(busy)return;rows=[];renderH();$('#hFb').className='fb';$('#hFb').innerHTML='';$('#hConc').className='fb';$('#hConc').innerHTML='';});
+$('#hCheck').addEventListener('click',()=>{const ok=hyp===TRUTH[hv],fb=$('#hConc');fb.className='fb '+(ok?'good':'hint');
+  fb.innerHTML=(ok?'<b>Hypotesen din stemmer!</b> ':'<b>Målingene viser noe annet enn du trodde.</b> Det er helt vanlig, og slik lærer forskere. ')+
+  (hv==='L'?'Lengre vinger tar mer luft, så luftmotstanden blir større og helikopteret faller saktere.':'Flere binders gjør helikopteret tyngre. Tyngdekraften blir større, men luftmotstanden er den samme, så det faller fortere.')+' Helikopteret er en <b>modell</b> av et frø fra lønnetreet, som snurrer på samme måte.';});
+renderH();
+
+/* ---------- 4 Faresymboler ---------- */
+N.sorter($('#sort2'),{groups:[{id:'f',name:ghs('🔥')+'Brannfarlig'},{id:'e',name:ghs('⚗')+'Etsende'},{id:'g',name:ghs('☠')+'Giftig'},{id:'h',name:ghs('!')+'Helsefare'}],
+  items:[{t:'Rødsprit',g:'f'},{t:'Tennvæske til grillen',g:'f'},{t:'Avløpsåpner',g:'e',why:'Avløpsåpner inneholder sterk lut som etser hud og øyne.'},{t:'Maskinoppvaskmiddel',g:'e'},{t:'Rottegift',g:'g'},{t:'Oppvaskmiddel (irriterer øynene)',g:'h',why:'Utropstegnet betyr at stoffet kan irritere hud og øyne, men ikke er like farlig som etsende eller giftig.'}],
+  good:'Riktig! Oppbevar slike produkter utilgjengelig for små barn, og aldri i flasker som ligner på drikke. Ved ulykker: ring Giftinformasjonen på 22 59 13 00.'});
+
+/* ---------- Øving ---------- */
+const EXP=[['Du tester om ballen spretter høyere på asfalt enn på gress.','underlaget','hvor høyt ballen spretter',['ballen','høyden du slipper fra']],
+  ['Du tester om bønner spirer raskere i varme enn i kulde.','temperaturen','dager til bønnene spirer',['mengden vann','type bønne']],
+  ['Du tester om sukker løses fortere i varmt vann.','vanntemperaturen','tiden til sukkeret er borte',['mengden sukker','omrøringen']]];
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const skills={
+  obs:{name:'Observasjon og slutning',gens:[
+    ()=>{const o=pick(['Hunden logrer med halen','Melken lukter surt','Himmelen er grå','Det ligger fotspor i snøen']),s=pick(['Hunden er glad','Melken er gammel','Det kommer til å regne','Noen har gått her i morges']);const q=Math.random()<.5;
+      return N.mc(`Hvilken er en <b>${q?'observasjon':'slutning'}</b>?`,q?o:s,[q?s:o],['En observasjon er noe du sanser direkte.'],q?`«${o}» er noe du sanser direkte.`:`«${s}» er en forklaring du tror på.`);},
+    ()=>N.mc('Hva er en hypotese?','En begrunnet gjetning som kan testes',['Et svar som alltid er riktig','Det du måler i forsøket'],['Den kommer før forsøket.'],'En hypotese er en gjetning med en begrunnelse, for eksempel «helikopteret faller saktere med lange vinger, fordi de tar mer luft».')
+  ]},
+  variabel:{name:'Rettferdig test',gens:[
+    ()=>{const e=pick(EXP);return N.mc(`${e[0]} Hva er det du <b>endrer</b>?`,cap(e[1]),[cap(e[2]),cap(e[3][0])],['Det er det spørsmålet handler om.'],`Du endrer ${e[1]} og måler ${e[2]}.`);},
+    ()=>{const e=pick(EXP);return N.mc(`${e[0]} Hva er det du <b>måler</b>?`,cap(e[2]),[cap(e[1]),cap(e[3][0])],['Det er resultatet av forsøket.'],`Du måler ${e[2]}.`);},
+    ()=>{const e=pick(EXP),k=pick(e[3]);return N.mc(`${e[0]} Hva gjør du med <b>${k}</b>?`,'Holder det likt',['Endrer det også','Glemmer det'],['Hva er en rettferdig test?'],`${cap(k)} må være likt, ellers vet du ikke hva som ga forskjellen.`);}
+  ]},
+  snitt:{name:'Regne snitt',gens:[
+    ()=>{const a=[R(14,22),R(14,22),R(14,22)].map(x=>x/10);const ans=(a[0]+a[1]+a[2])/3;return {prompt:`Tre falltider: <span class="mono">${a.map(x=>nf(x,1)).join(' s, ')} s</span>. Hva er gjennomsnittet? Svar med to desimaler.`,ans,unit:'s',abs:.006,hints:['Legg sammen.','Del på 3.'],sol:`(${a.map(x=>nf(x,1)).join(' + ')}) : 3 = <b>${nf(ans,2)} s</b>`,diag:v=>near(v,a[0]+a[1]+a[2],.01)?'Det er summen. Del på 3.':null};}
+  ]},
+  fare:{name:'Faresymboler',gens:[
+    ()=>{const f=pick([['en flamme','Brannfarlig'],['en hodeskalle','Giftig'],['en hånd og et bord som etses','Etsende'],['et utropstegn','Kan irritere hud og øyne']]);return N.mc(`Hva betyr faresymbolet med ${f[0]}?`,f[1],['Brannfarlig','Giftig','Etsende','Kan irritere hud og øyne'].filter(x=>x!==f[1]),['Se på sorteringen over.'],`${cap(f[0])} betyr: ${f[1].toLowerCase()}.`);},
+    ()=>N.mc('Lillesøsteren din har drukket noe fra en flaske med faresymbol. Hva gjør du først?','Ringer Giftinformasjonen (22 59 13 00) eller 113',['Gir henne masse melk og venter','Får henne til å kaste opp'],['Hvem vet hva som er riktig å gjøre?'],'Ring Giftinformasjonen eller 113 hvis det er alvorlig. Ikke gi melk eller prøv å få henne til å kaste opp uten råd, det kan gjøre skaden verre.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-forskerskolen',title:'Forskerskolen 7',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

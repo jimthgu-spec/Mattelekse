@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partikkelmodellen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .box{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.fig .p-s{fill:var(--cold)}
+.fig .p-l{fill:var(--water)}
+.fig .p-g{fill:var(--c1)}
+.fig .flame{fill:var(--warm)}
+.fig .frost{fill:var(--cold);opacity:.7}
+.thermo{font-family:var(--f-mono);font-size:1.5rem;font-weight:700;text-align:center}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;justify-content:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Partikkelmodellen</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#sim"><b>2</b>Varm og kjøl</a>
+    <a href="#kurve"><b>3</b>Kurven</a>
+    <a href="#ord"><b>4</b>Ordene</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Alt er laget av små partikler</h1>
+      <p class="lead">Vann, luft og is er laget av bittesmå partikler som hele tiden beveger seg. Jo varmere det er, jo raskere beveger de seg. Det forklarer hvorfor is smelter og vann koker.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Partikler i fast stoff, væske og gass"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du har et glass med isbiter og vann. Du setter det på en varm plate og rører hele tiden.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="sim"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Varm og kjøl</h2></div>
+    <p class="sec-lead">Her ser du vannpartiklene forstørret mange millioner ganger. Varm opp eller kjøl ned, og se hvordan de beveger seg.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="pFig" viewBox="0 0 380 260" role="img" aria-label="Vannpartikler i en beholder"></svg>
+        <div class="legend"><span><i style="background:var(--cold)"></i>is</span><span><i style="background:var(--water)"></i>vann</span><span><i style="background:var(--c1)"></i>vanndamp</span></div>
+      </div>
+      <div class="controls">
+        <div class="thermo" id="pT" aria-live="off">−20 °C</div>
+        <div class="counter" id="pState">Fast stoff (is)</div>
+        <div class="row"><button class="btn" type="button" id="bCool">❄ Kjøl ned</button><button class="btn" type="button" id="bStop">Pause</button><button class="btn primary" type="button" id="bHeat">🔥 Varm opp</button></div>
+        <div class="card2"><span class="tag">Hva skjer?</span><p id="pTxt">Partiklene i is sitter fast i et mønster. De kan bare dirre på plassen sin.</p></div>
+        <div class="card2"><span class="tag">Oppdrag</span><p id="mTxt"></p><div class="fb" id="mFb" aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="kurve"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Temperaturkurven</h2></div>
+    <p class="sec-lead">Grafen viser temperaturen mens du varmet og kjølte. Se etter de flate stykkene. Der står temperaturen stille selv om du varmer.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="gFig" role="img" aria-label="Temperatur over tid"></svg></div>
+      <div class="controls"><div id="p2"></div></div>
+    </div>
+  </div></section>
+
+  <section id="ord"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Ordene for endringene</h2></div>
+    <p class="sec-lead">Hver tilstandsendring har sitt eget navn. Sorter eksemplene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om å bruke partikkelmodellen til å forklare egenskaper ved stoffer og tilstandsendringer. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Partikkelmodell ---------- */
+const NP=30,BX=40,BY=20,BW=300,BH=200;
+function heroDraw(){let s='';const lab=['Fast stoff','Væske','Gass'];
+  for(let k=0;k<3;k++){const x0=15+k*125;s+=`<rect class="box" x="${x0}" y="30" width="105" height="140" rx="6"/><text class="lbl small" x="${x0+52}" y="195" text-anchor="middle">${lab[k]}</text>`;
+    for(let i=0;i<16;i++){let x,y;if(k===0){x=x0+18+(i%4)*23;y=100+Math.floor(i/4)*20;}else if(k===1){x=x0+14+((i*37)%78)+(i%3);y=110+((i*23)%52);}else{x=x0+12+((i*53)%82);y=42+((i*41)%118);}
+      s+=`<circle class="${['p-s','p-l','p-g'][k]}" cx="${x}" cy="${y}" r="7"/>`;}}
+  $('#heroFig').innerHTML=s;}
+heroDraw();
+/* Energi E -> temperatur og andel smeltet/fordampet */
+const E_M0=40,E_M1=120,E_B0=220,E_B1=420;
+function stateOf(E){if(E<E_M0)return{T:-20+E/2,melt:0,boil:0};if(E<E_M1)return{T:0,melt:(E-E_M0)/(E_M1-E_M0),boil:0};if(E<E_B0)return{T:E-E_M1,melt:1,boil:0};if(E<E_B1)return{T:100,melt:1,boil:(E-E_B0)/(E_B1-E_B0)};return{T:Math.min(130,100+(E-E_B1)/2),melt:1,boil:1};}
+let E=0,dir=0,tSim=0,log=[[0,-20]],acc=0;
+const P=[];for(let i=0;i<NP;i++)P.push({x:BX+20+Math.random()*(BW-40),y:BY+BH-20-Math.random()*60,vx:0,vy:0,gx:BX+30+(i%6)*48,gy:BY+BH-18-Math.floor(i/6)*22});
+const mis=[{t:'Smelt all isen.',ok:s=>s.melt>=1,good:'Isen er smeltet. Partiklene har sluppet mønsteret og glir forbi hverandre.'},
+  {t:'Få vannet til å koke. Hva skjer med temperaturen mens det koker?',ok:s=>s.boil>0.5,good:'Temperaturen står på 100 °C mens vannet koker. Varmen brukes til å rive partiklene løs fra hverandre.'},
+  {t:'Kjøl ned til du får is igjen.',ok:s=>s.melt<=0&&E<E_M0,good:'Nå er alt is igjen. Partiklene har satt seg i et fast mønster. Det heter å <b>fryse</b> eller <b>størkne</b>.'}];
+let mi=0,seenBoil=false;
+function showMis(){$('#mTxt').innerHTML=mi<mis.length?`${mi+1}. ${mis[mi].t}`:'Alle oppdrag er klare! Se på kurven under.';}
+showMis();
+function step(dt){
+  if(dir){E=Math.max(0,Math.min(470,E+dir*dt*25));}
+  const s=stateOf(E);tSim+=dt*dir*dir;acc+=dt*dir*dir;
+  if(acc>.5){acc=0;log.push([tSim,s.T]);if(log.length>160)log.shift();drawGraph();}
+  const nSolid=Math.round(NP*(1-s.melt)),nGas=Math.round(NP*s.boil);
+  const sp=0.4+Math.max(0,s.T+20)/40;
+  P.forEach((p,i)=>{
+    const kind=i<nGas?'g':(i>=NP-nSolid?'s':'l');p.k=kind;
+    if(kind==='s'){const a=0.6+Math.max(0,s.T+20)/12;p.x+=(p.gx+(Math.random()-.5)*a-p.x)*.5;p.y+=(p.gy+(Math.random()-.5)*a-p.y)*.5;p.vx=p.vy=0;}
+    else{const v=kind==='g'?sp*3.2:sp*1.1;p.vx+=(Math.random()-.5)*v*.6;p.vy+=(Math.random()-.5)*v*.6+(kind==='l'?.15:0);const m=Math.hypot(p.vx,p.vy)||1;if(m>v){p.vx*=v/m;p.vy*=v/m;}
+      p.x+=p.vx;p.y+=p.vy;const top=kind==='l'?BY+BH-95:BY+8;
+      if(p.x<BX+8){p.x=BX+8;p.vx=Math.abs(p.vx);}if(p.x>BX+BW-8){p.x=BX+BW-8;p.vx=-Math.abs(p.vx);}
+      if(p.y<top){p.y=top;p.vy=Math.abs(p.vy);}if(p.y>BY+BH-8){p.y=BY+BH-8;p.vy=-Math.abs(p.vy);}}
+  });
+  return s;}
+function drawP(s){let h=`<rect class="box" x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="8"/>`;
+  if(dir>0)for(let i=0;i<5;i++)h+=`<path class="flame" d="M${110+i*40} 252 q-9 -12 0 -26 q9 14 0 26z"/>`;
+  if(dir<0)for(let i=0;i<5;i++)h+=`<text x="${110+i*40}" y="252" text-anchor="middle" font-size="18" class="frost">❄</text>`;
+  P.forEach(p=>h+=`<circle class="p-${p.k}" cx="${fx(p.x)}" cy="${fx(p.y)}" r="8"/>`);$('#pFig').innerHTML=h;
+  $('#pT').textContent=nf(Math.round(s.T),0).replace('-','−')+' °C';
+  let st,tx;
+  if(s.melt<=0){st='Fast stoff (is)';tx='Partiklene i is sitter fast i et mønster. De kan bare dirre på plassen sin. Jo kaldere, jo mindre dirrer de.';}
+  else if(s.melt<1){st='Is og vann: smelter';tx='Temperaturen står stille på 0 °C. Varmen brukes til å løsne partiklene fra mønsteret, ikke til å gjøre dem raskere.';}
+  else if(s.boil<=0){st='Væske (vann)';tx='Partiklene henger sammen, men glir forbi hverandre. Derfor kan vann renne og ta formen til glasset.';}
+  else if(s.boil<1){st='Vann og damp: koker';tx='Temperaturen står stille på 100 °C. Partiklene river seg løs og blir til vanndamp (gass).';}
+  else{st='Gass (vanndamp)';tx='Partiklene i gass er langt fra hverandre og suser rundt i hele beholderen. Gass fyller alt rommet den får.';}
+  $('#pState').textContent=st;$('#pTxt').textContent=tx;
+  if(s.boil>0)seenBoil=true;
+  if(mi<mis.length&&mis[mi].ok(s)){$('#mFb').className='fb good';$('#mFb').innerHTML=mis[mi].good;mi++;showMis();}
+}
+function drawGraph(){N.graph($('#gFig'),{x:{min:Math.max(0,Math.floor(tSim/10)*10-60),max:Math.max(60,Math.floor(tSim/10)*10+10),step:10,label:'Tid (s)',fmt:v=>v},y:{min:-20,max:120,step:20,label:'Temperatur (°C)'},
+  series:[{pts:log.filter(q=>q[0]>=tSim-70),cls:'pt',dots:false,lineCls:'ptline2'}],marks:(X,Y)=>`<line x1="46" x2="366" y1="${fx(Y(0))}" y2="${fx(Y(0))}" stroke="var(--cold)" stroke-dasharray="4 4"/><line x1="46" x2="366" y1="${fx(Y(100))}" y2="${fx(Y(100))}" stroke="var(--warm)" stroke-dasharray="4 4"/>`,W:380,H:240});}
+let last=performance.now(),vis=true;
+function loop(t){const dt=Math.min(.1,(t-last)/1000);last=t;if(vis){const s=step(dt);drawP(s);}requestAnimationFrame(loop);}
+$('#bHeat').addEventListener('click',()=>{dir=1;});$('#bCool').addEventListener('click',()=>{dir=-1;});$('#bStop').addEventListener('click',()=>{dir=0;});
+if('IntersectionObserver' in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting;}).observe($('#pFig'));
+drawP(step(0));drawGraph();requestAnimationFrame(loop);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva skjer med temperaturen i vannet mens isen smelter?',opts:['Den stiger hele tiden','Den står stille på 0 °C til isen er borte','Den synker'],ok:1,
+  expl:'Så lenge det er is i glasset, står temperaturen på 0 °C. Varmen går med til å løsne partiklene i isen. Først når all isen er smeltet, begynner vannet å bli varmere. Prøv selv i simuleringen under.',
+  retry:'Tenk på hva varmen må brukes til mens det fortsatt er is i glasset. Prøv igjen.'});
+V.predict($('#p2'),{q:'Hvorfor er kurven flat ved 100 °C?',opts:['Plata slutter å varme','Varmen brukes til å gjøre vann om til damp','Termometeret er ødelagt'],ok:1,
+  expl:'Når vannet koker, brukes all varmen til å rive partiklene løs fra hverandre. Da blir de ikke raskere, og temperaturen står stille. Det samme skjer ved 0 °C når is smelter.',
+  retry:'Plata varmer fortsatt. Hva brukes varmen til? Prøv igjen.'});
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'sm',name:'Smelting'},{id:'fr',name:'Frysing'},{id:'fo',name:'Fordamping'},{id:'ko',name:'Kondensering'}],
+  items:[{t:'Smøret blir flytende i stekepanna',g:'sm'},{t:'Snømannen blir en dam',g:'sm'},{t:'Vannpytten blir is om natta',g:'fr'},{t:'Lava blir til stein',g:'fr',why:'Lava er flytende stein som blir fast når den kjøles. Det er samme endring som når vann fryser.'},{t:'Klesvasken tørker',g:'fo'},{t:'Svetten forsvinner fra huden',g:'fo'},{t:'Speilet dugger på badet',g:'ko',why:'Vanndamp i lufta treffer det kalde speilet og blir til små vanndråper.'},{t:'Dråper på et kaldt brusglass',g:'ko'}],
+  good:'Riktig! Smelting og fordamping trenger varme. Frysing og kondensering skjer når noe kjøles ned.'});
+
+/* ---------- Øving ---------- */
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const CH=[['fast stoff','væske','smelting'],['væske','fast stoff','frysing'],['væske','gass','fordamping'],['gass','væske','kondensering']];
+const skills={
+  tilstand:{name:'Tilstand ved temperatur',gens:[
+    ()=>{const T=pick([-15,-5,5,20,37,60,90,110,120]);const ans=T<0?'Fast stoff (is)':T<100?'Væske (vann)':'Gass (vanndamp)';
+      return N.mc(`Rent vann har temperaturen <b>${nf(T,0).replace('-','−')} °C</b>. Hvilken tilstand er det i?`,ans,['Fast stoff (is)','Væske (vann)','Gass (vanndamp)'].filter(x=>x!==ans),['Vann fryser ved 0 °C og koker ved 100 °C.'],`Under 0 °C er vann is, mellom 0 og 100 °C er det flytende, over 100 °C er det damp.`);}
+  ]},
+  ord:{name:'Navn på endringene',gens:[
+    ()=>{const c=pick(CH);return N.mc(`Hva heter det når et stoff går fra <b>${c[0]}</b> til <b>${c[1]}</b>?`,cap(c[2]),CH.map(x=>cap(x[2])).filter(x=>x!==cap(c[2])),['Tenk på et eksempel med vann.'],`Fra ${c[0]} til ${c[1]} heter ${c[2]}.`);},
+    ()=>{const e=pick([['Vinduet dugger når du puster på det','Kondensering'],['Isbiten blir til vann','Smelting'],['Vannet i kjelen blir borte når det koker lenge','Fordamping'],['Saft i fryseren blir til is','Frysing']]);return N.mc(`${e[0]}. Hvilken endring er det?`,e[1],['Smelting','Frysing','Fordamping','Kondensering'].filter(x=>x!==e[1]),['Fra hvilken tilstand, til hvilken?'],`Det er ${e[1].toLowerCase()}.`);}
+  ]},
+  modell:{name:'Partikkelmodellen',gens:[
+    ()=>{const k=pick([['fast stoff','Sitter i et fast mønster og dirrer'],['væske','Henger sammen, men glir forbi hverandre'],['gass','Er langt fra hverandre og suser rundt']]);return N.mc(`Hvordan oppfører partiklene seg i en <b>${k[0]}</b>?`,k[1],['Sitter i et fast mønster og dirrer','Henger sammen, men glir forbi hverandre','Er langt fra hverandre og suser rundt'].filter(x=>x!==k[1]),['Tenk på is, vann og damp i simuleringen.'],`I ${k[0]}: ${k[1].toLowerCase()}.`);},
+    ()=>N.mc('Hva skjer med partiklene når et stoff blir varmere?','De beveger seg raskere',['De blir større','De blir flere'],['Partiklene selv endrer seg ikke.'],'Partiklene blir ikke større eller flere. De beveger seg bare raskere.',{'De blir større':'Det er en vanlig misforståelse. Partiklene er like store, men de trenger mer plass fordi de beveger seg mer.'}),
+    ()=>N.mc('Hvorfor kan du lukte kakene fra stua når noen baker på kjøkkenet?','Duftpartikler sprer seg i lufta fordi de hele tiden beveger seg',['Lukten går gjennom veggene','Ovnen blåser lukten ut'],['Gasspartikler suser rundt.'],'Duftpartiklene er gass og spres i hele huset fordi de hele tiden beveger seg og kolliderer med luftpartiklene.'),
+    ()=>N.mc('Hvorfor står temperaturen stille mens isen smelter?','Varmen brukes til å løsne partiklene fra mønsteret',['Isen tar ikke opp varme','Termometeret viser feil'],['Hva må skje med partiklene i isen?'],'Varmen går med til å bryte mønsteret i isen. Først når alt er smeltet, blir vannet varmere.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-partikler',title:'Partikkelmodellen',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

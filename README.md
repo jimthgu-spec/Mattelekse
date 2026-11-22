@@ -3,7 +3,8 @@
 Interaktive lekse-moduler etter LK20, delt opp i fag. Forsiden (`index.html`) er et fagvalg, og hvert fag har sin egen side med modulene per trinn. Alle sidene viser fremgang og hva som er klart for repetisjon.
 
 - **Matematikk 9. trinn** (MAT01-06): 9 moduler i `matematikk/9/`
-- **Naturfag 10. trinn** (NAT01-05): 12 moduler i `naturfag/10/`. 2., 4. og 7. trinn kommer.
+- **Naturfag 10. trinn** (NAT01-05): 12 moduler i `naturfag/10/`.
+- **Naturfag 7. trinn**: 10 moduler i `naturfag/7/`, med opplesing (🔊 Les opp). 2. og 4. trinn kommer.
 
 ## Struktur
 
@@ -12,12 +13,13 @@ index.html                 forside med fagvalg
 katalog.js                 alle fag og moduler (fag, trinn, fil, id, tittel, mål)
 felles/forside.js + .css   forside og fagsider (leser katalog.js)
 felles/verksted.css/.js    felles stil og verktøy: V.predict, V.walk, V.check, V.practice
-felles/natur.js + .css     naturfag: N.sorter (dra og slipp), N.fill, N.graph, N.slider, N.mc
+felles/natur.js + .css     naturfag: N.sorter (dra og slipp), N.fill, N.graph, N.slider, N.mc, N.lesOpp (opplesing)
 felles/film.js + film.css  filmspiller for animerte filmsnutter (Film.mount)
 matematikk/index.html      fagside
 matematikk/9/*.html        mattemodulene (+ filmer/)
 naturfag/index.html        fagside med trinnvalg
 naturfag/10/*.html         naturfagmodulene for 10. trinn
+naturfag/7/*.html          naturfagmodulene for 7. trinn
 moduler/*.html             gamle adresser som sender videre til matematikk/9/
 ```
 

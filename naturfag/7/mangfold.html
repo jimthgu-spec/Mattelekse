@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Livets mangfold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.orgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:6px}
+.orgs .btn{flex-direction:column;gap:2px;font-size:.85rem;padding:8px 4px}
+.orgs .btn span{font-size:1.8rem;line-height:1}
+.orgs .btn.done{border-color:var(--good);background:var(--good-soft)}
+.keybox{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+.keybox .emo{font-size:4.5rem;line-height:1}
+.keybox .q{font-weight:700;font-size:1.1rem}
+.trail{font-size:.85rem;color:var(--muted);text-align:left;align-self:stretch}
+.trail li{margin:2px 0}
+.adapt{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Livets mangfold</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#nokkel"><b>2</b>Artsnøkkel</a>
+    <a href="#grupper"><b>3</b>Grupper</a>
+    <a href="#arktis"><b>4</b>Arktis</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Sorter livet</h1>
+      <p class="lead">Det finnes millioner av arter på jorda. For å holde orden sorterer forskere dem i grupper etter hva de har felles. En <b>artsnøkkel</b> hjelper deg å finne ut hva noe er, med ja-eller-nei-spørsmål.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Dyr, planter og sopp"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">En kantarell vokser på skogbunnen, akkurat som blåbærlyngen.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="nokkel"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bruk artsnøkkelen</h2></div>
+    <p class="sec-lead">Velg en organisme. Svar ja eller nei på spørsmålene, og finn ut hvilken gruppe den hører til. Klarer du alle?</p>
+    <div class="bench">
+      <div class="figcol"><div class="orgs" id="orgs"></div></div>
+      <div class="controls"><div class="card2 keybox" id="key" aria-live="polite"></div></div>
+    </div>
+  </div></section>
+
+  <section id="grupper"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Ryggrad eller ikke?</h2></div>
+    <p class="sec-lead">Den største delingen av dyrene er om de har <b>ryggrad</b> (virveldyr) eller ikke (virvelløse dyr). Sorter dyrene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="arktis"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Livet i Arktis</h2></div>
+    <p class="sec-lead">I Arktis er det kaldt, mørkt om vinteren og lyst hele døgnet om sommeren. Dyrene har <b>tilpasninger</b> som hjelper dem å overleve. Koble dyret til tilpasningen.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="fill1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om å sortere og klassifisere levende organismer og utforske det biologiske mangfoldet i nærmiljøet og i Arktis. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=['🫎','🐟','🐦','🐸','🐍','🐜','🕷️','🍄','🌿','🐻‍❄️'].map((e,i)=>`<text x="${40+(i%5)*75}" y="${80+Math.floor(i/5)*90}" font-size="46" text-anchor="middle">${e}</text>`).join('');
+
+/* ---------- Artsnøkkel ---------- */
+/* egenskaper: g=grønn/lager næring, s=sopp, r=ryggrad, f=fjær, h=hår/pels, gj=gjeller hele livet, fh=fuktig hud, b6=seks bein, b8=åtte bein */
+const ORG=[['Elg','🫎',{r:1,h:1}],['Isbjørn','🐻‍❄️',{r:1,h:1}],['Måke','🐦',{r:1,f:1}],['Laks','🐟',{r:1,gj:1}],['Frosk','🐸',{r:1,fh:1}],['Hoggorm','🐍',{r:1}],['Maur','🐜',{b6:1}],['Korsedderkopp','🕷️',{b8:1}],['Meitemark','🪱',{}],['Kantarell','🍄',{s:1}],['Blåbærlyng','🌿',{g:1}],['Bjørk','🌳',{g:1}]];
+const KEY={start:{q:'Er den grønn og lager sin egen næring med sollys?',k:'g',y:'Plante',n:'sopp'},
+  sopp:{q:'Vokser den som tråder i jorda og lager sporer i stedet for frø?',k:'s',y:'Sopp',n:'rygg'},
+  rygg:{q:'Har den ryggrad (et skjelett inni kroppen)?',k:'r',y:'fjaer',n:'bein6'},
+  fjaer:{q:'Har den fjær?',k:'f',y:'Fugl',n:'har'},
+  har:{q:'Har den hår eller pels?',k:'h',y:'Pattedyr',n:'gjel'},
+  gjel:{q:'Puster den med gjeller hele livet?',k:'gj',y:'Fisk',n:'fukt'},
+  fukt:{q:'Har den naken, fuktig hud?',k:'fh',y:'Amfibie',n:'Krypdyr'},
+  bein6:{q:'Har den seks bein?',k:'b6',y:'Insekt',n:'bein8'},
+  bein8:{q:'Har den åtte bein?',k:'b8',y:'Edderkoppdyr',n:'Annet virvelløst dyr (mark)'}};
+const ABOUT={Plante:'Planter lager sin egen næring med fotosyntese.',Sopp:'Sopp er verken plante eller dyr. Den er et eget rike som bryter ned døde ting.',Fugl:'Alle fugler har fjær og legger egg.',Pattedyr:'Pattedyr har hår og gir ungene melk.',Fisk:'Fisk har gjeller og skjell.',Amfibie:'Amfibier lever først i vann med gjeller, så på land med lunger.',Krypdyr:'Krypdyr har tørr hud med skjell og legger egg på land.',Insekt:'Insekter har seks bein og tre kroppsdeler.',Edderkoppdyr:'Edderkoppdyr har åtte bein og to kroppsdeler.','Annet virvelløst dyr (mark)':'Meitemarken har verken ryggrad eller bein. Den lager god jord.'};
+let cur=null,node='start',trail=[];const done=new Set();
+function renderOrgs(){$('#orgs').innerHTML=ORG.map((o,i)=>`<button type="button" class="btn${done.has(i)?' done':''}${cur===i?' on':''}" data-i="${i}"><span aria-hidden="true">${o[1]}</span>${o[0]}</button>`).join('');
+  $('#orgs').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{cur=+b.dataset.i;node='start';trail=[];renderOrgs();renderKey();}));}
+function renderKey(msg){const k=$('#key');if(cur==null){k.innerHTML='<p>Velg en organisme til venstre.</p>';return;}const o=ORG[cur];
+  const tr=trail.length?`<ol class="trail">${trail.map(t=>`<li>${t}</li>`).join('')}</ol>`:'';
+  if(!KEY[node]){done.add(cur);renderOrgs();k.innerHTML=`<div class="emo" aria-hidden="true">${o[1]}</div><div class="q">${o[0]} er: ${node}</div><p>${ABOUT[node]}</p>${tr}<p class="note">${done.size}/${ORG.length} funnet${done.size===ORG.length?'. Alle!':''}</p>`;return;}
+  const q=KEY[node];k.innerHTML=`<div class="emo" aria-hidden="true">${o[1]}</div><div><b>${o[0]}</b></div><div class="q">${q.q}</div><div class="row"><button class="btn primary" type="button" data-a="1">Ja</button><button class="btn" type="button" data-a="0">Nei</button></div><div class="fb ${msg?'bad':''}">${msg||''}</div>${tr}`;
+  k.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{const a=+b.dataset.a,truth=o[2][q.k]?1:0;
+    if(a!==truth){renderKey(`Ikke helt. ${hintFor(q.k,o)}`);return;}
+    trail.push(q.q.replace('?','')+': '+(a?'ja':'nei'));node=a?q.y:q.n;renderKey();}));}
+function hintFor(k,o){return ({g:'Har den grønne blader?',s:'Kantareller og andre sopper har ikke grønne blader og ikke frø.',r:'Insekter, edderkopper og mark har ikke skjelett inni seg.',f:'Bare fugler har fjær.',h:'Fisk, frosk og slanger har ikke pels.',gj:'Frosken har gjeller bare når den er rumpetroll.',fh:'Slanger har tørr hud med skjell.',b6:'Tell beina.',b8:'Tell beina.'})[k]||'';}
+renderOrgs();renderKey();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Er kantarellen en plante?',opts:['Ja, den vokser jo i bakken','Nei, sopp er en egen gruppe','Nei, det er et dyr'],ok:1,
+  expl:'Sopp er hverken planter eller dyr. Sopp har ikke grønne blader og kan ikke lage sin egen næring med sollys. Den henter næring fra døde planter og dyr, og lager sporer i stedet for frø. Derfor er sopp et eget <b>rike</b>.',
+  retry:'Har kantarellen grønne blader? Kan den lage næring av sollys? Prøv igjen.'});
+
+/* ---------- 3 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'v',name:'Virveldyr (har ryggrad)'},{id:'u',name:'Virvelløse dyr'}],
+  items:[{t:'🐟 Torsk',g:'v'},{t:'🐸 Frosk',g:'v'},{t:'🦇 Flaggermus',g:'v'},{t:'🐍 Hoggorm',g:'v'},{t:'🐝 Humle',g:'u'},{t:'🐌 Snegle',g:'u',why:'Sneglehuset sitter utenpå. Inni har sneglen ikke noe skjelett.'},{t:'🦀 Krabbe',g:'u',why:'Krabben har et hardt skall utenpå, men ingen ryggrad inni.'},{t:'🪼 Manet',g:'u'}],
+  good:'Riktig! Fisk, amfibier, krypdyr, fugler og pattedyr er virveldyr. Insekter, edderkoppdyr, snegler, krepsdyr og maneter er virvelløse. Det finnes mange flere virvelløse arter enn virveldyr.'});
+
+/* ---------- 4 Arktis ---------- */
+N.fill($('#fill1'),{html:'<div style="display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center;width:100%"><span>🐻‍❄️ Isbjørn</span>[]<span>🦊 Fjellrev</span>[]<span>🐦 Rype</span>[]<span>🦭 Sel</span>[]<span>🦌 Rein</span>[]</div>',
+  tokens:['Svart hud under tykk pels','Bytter til hvit pels om vinteren','Fjær helt ned på føttene','Tykt spekk under huden','Kan grave fram lav under snøen'],
+  check:v=>{const ok=['Svart hud under tykk pels','Bytter til hvit pels om vinteren','Fjær helt ned på føttene','Tykt spekk under huden','Kan grave fram lav under snøen'];
+    const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:`${bad.length} er feil. Tenk: hvem lever i vannet, hvem må gjemme seg i snøen, og hvem spiser planter?`}:{ok:true,msg:'Riktig! Tilpasningene hjelper dyrene å holde varmen, gjemme seg og finne mat. Når isen smelter på grunn av klimaendringer, blir det vanskeligere for isbjørn og sel, som trenger havisen.'};}});
+
+/* ---------- Øving ---------- */
+const groupOf=o=>{let n='start';while(KEY[n]){const q=KEY[n];n=o[2][q.k]?q.y:q.n;}return n;};
+const skills={
+  gruppe:{name:'Finn gruppa',gens:[
+    ()=>{const o=pick(ORG);const g=groupOf(o);const others=shuffle(['Plante','Sopp','Fugl','Pattedyr','Fisk','Amfibie','Krypdyr','Insekt','Edderkoppdyr'].filter(x=>x!==g)).slice(0,3);
+      return N.mc(`Hvilken gruppe hører <b>${o[0].toLowerCase()}</b> ${o[1]} til?`,g,others,['Bruk artsnøkkelen.'],`${o[0]} er ${g.toLowerCase()}. ${ABOUT[g]||''}`);},
+    ()=>{const g=pick(Object.keys(ABOUT).filter(x=>!x.startsWith('Annet')));return N.mc(`Hva kjennetegner gruppen <b>${g.toLowerCase()}</b>?`,ABOUT[g],Object.entries(ABOUT).filter(([k])=>k!==g&&!k.startsWith('Annet')).map(e=>e[1]).sort(()=>Math.random()-.5).slice(0,2),['Tenk på artsnøkkelen.'],ABOUT[g]);}
+  ]},
+  rygg:{name:'Virveldyr og virvelløse',gens:[
+    ()=>{const d=pick([['Hval','v'],['Pingvin','v'],['Ål','v'],['Salamander','v'],['Blekksprut','u'],['Sommerfugl','u'],['Reke','u'],['Flått','u']]);const ans=d[1]==='v'?'Virveldyr':'Virvelløst dyr';
+      return N.mc(`Er <b>${d[0].toLowerCase()}</b> et virveldyr eller et virvelløst dyr?`,ans,[ans==='Virveldyr'?'Virvelløst dyr':'Virveldyr'],['Har den skjelett inni kroppen?'],`${d[0]} er ${ans.toLowerCase()}.`,{'Virveldyr':'Et hardt skall utenpå er ikke en ryggrad.'});}
+  ]},
+  tilpas:{name:'Tilpasninger',gens:[
+    ()=>{const t=pick([['Isbjørnen har svart hud under den hvite pelsen.','Den tar opp varme fra sola'],['Rypa blir hvit om vinteren.','Den blir vanskelig å se i snøen'],['Selen har tykt spekk.','Spekket holder på varmen i det kalde vannet'],['Fjellreven har små ører.','Den mister mindre varme']]);
+      return N.mc(`${t[0]} Hvorfor er det en fordel?`,t[1],['Det er bare tilfeldig','Den blir raskere'].concat([]),['Tenk på kulde og fiender.'],t[1]+'.');},
+    ()=>N.mc('Hva betyr biologisk mangfold?','At det finnes mange ulike arter og leveområder',['At alle dyr er like','At det finnes mange av én art'],['«Mangfold» betyr mange forskjellige.'],'Biologisk mangfold er variasjonen av arter, gener og naturtyper. Et stort mangfold gjør naturen mer robust.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-mangfold',title:'Livets mangfold',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

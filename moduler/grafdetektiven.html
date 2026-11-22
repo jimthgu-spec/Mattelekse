@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../felles/verksted.css?v=2">
+<link rel="stylesheet" href="../felles/film.css?v=3">
 <style>
 .fig .ax{stroke:var(--ink);stroke-width:1.2}
 .fig .gridl{stroke:var(--line);stroke-width:1}
@@ -58,6 +59,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="step-no">1</span><h2>Aksen som ikke starter på null</h2></div>
       <p class="sec-lead">En kiosk solgte 102 is i juni i fjor og 108 is i juni i år. Flytt starten på den loddrette aksen og se hvor stor økningen ser ut til å være.</p>
+      <div id="film-graf"></div>
       <div class="bench">
         <div class="figbox" id="aFig"></div>
         <div class="controls">
@@ -296,5 +298,7 @@ V.practice($('#practice'),{id:'grafdetektiven',title:'Grafdetektiven',skills:{
   syn:{name:'Vinkling',gens:[G.syn]}}});
 })();
 </script>
+<script src="../felles/film.js?v=3"></script>
+<script src="filmer/grafdetektiven.js?v=1"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../felles/verksted.css?v=2">
+<link rel="stylesheet" href="../felles/film.css?v=3">
 <style>
 .status{font-weight:700;border-radius:10px;padding:10px 12px;background:var(--paper)}
 .status.ok{background:var(--good-soft);border-left:4px solid var(--good)}
@@ -92,6 +93,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="step-no">3</span><h2>Mål et tre med en pinne</h2></div>
       <p class="sec-lead">Solstrålene kommer inn med samme vinkel overalt. Derfor danner pinnen og skyggen dens en trekant som er formlik med treet og skyggen til treet. Mål to skygger og én pinne, så kan du regne ut høyden på treet.</p>
+      <div id="film-formlikhet"></div>
       <div class="bench">
         <div class="figbox" id="sFig"></div>
         <div class="controls">
@@ -311,5 +313,7 @@ V.practice($('#practice'),{id:'formlikhet',title:'Formlikhet',skills:{
   begrep:{name:'Formlik eller kongruent?',gens:[G.begrep]}}});
 })();
 </script>
+<script src="../felles/film.js?v=3"></script>
+<script src="filmer/formlikhet.js?v=1"></script>
 </body>
 </html>

@@ -85,3 +85,29 @@
 .film-voice label{display:flex;gap:8px;align-items:center;font-weight:700;min-width:0;flex:1 1 14rem}
 .film-voice select{min-width:0;flex:1 1 auto;max-width:100%}
 .film-voice .note{flex-basis:100%;margin:0;font-size:.85rem;color:var(--muted)}
+/* Menneskefigurer */
+.film-svg .fm-legs{stroke:var(--ink);stroke-linecap:round;fill:none;stroke-linejoin:round}
+.film-svg .fm-limb{fill:none;stroke-linecap:round}
+.film-svg .fm-shirt1{fill:var(--accent);stroke:var(--accent)}
+.film-svg .fm-shirt2{fill:var(--f1);stroke:var(--f1)}
+.film-svg .fm-shirt3{fill:var(--f2);stroke:var(--f2)}
+.film-svg .fm-shirt4{fill:var(--good);stroke:var(--good)}
+.film-svg rect.fm-shirt1,.film-svg rect.fm-shirt2,.film-svg rect.fm-shirt3,.film-svg rect.fm-shirt4{stroke:none}
+.film-svg .fm-bubble{fill:var(--ink);font-family:var(--f-body);font-size:13px;font-weight:700}
+.film-svg .fm-sun{fill:#f5b82e}
+.film-svg .fm-sunray{stroke:#f5b82e;stroke-width:3;stroke-linecap:round}
+.film-svg .fm-shadow{fill:var(--ink);fill-opacity:.18}
+.film-svg .fm-tri{fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:2;stroke-linejoin:round}
+.film-svg .fm-tri2{fill:var(--f1);fill-opacity:.18;stroke:var(--f1);stroke-width:2;stroke-linejoin:round}
+.film-svg .fm-ray{stroke:#e0a21a;stroke-width:1.5;stroke-dasharray:5 4}
+.film-svg .fm-wood{fill:none;stroke:#9a6a3a;stroke-width:4;stroke-linecap:round}
+.film-svg .fm-rung{stroke:#9a6a3a;stroke-width:2.5;stroke-linecap:round}
+.film-svg .fm-leaf{fill:var(--good);fill-opacity:.75}
+.film-svg .fm-trunk{fill:#8a5a30}
+.film-svg .fm-bar{fill:var(--accent);fill-opacity:.8}
+.film-svg .fm-bar2{fill:var(--f1);fill-opacity:.85}
+.film-svg .fm-axis{stroke:var(--ink);stroke-width:1.4;fill:none}
+.film-svg .fm-pizza{fill:#f0b44c;stroke:#c9802a;stroke-width:3}
+.film-svg .fm-salami{fill:#c4472f}
+.film-svg .fm-good{fill:var(--good)}
+.film-svg .fm-goodtxt{fill:var(--good);font-family:var(--f-mono);font-size:14px;font-weight:700}

@@ -8,25 +8,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap">
 <style>
-:root{--paper:#f3f6fb;--surface:#fff;--ink:#14213a;--muted:#56627a;--line:#d2dae7;--grid:#e2e8f1;--accent:#3350c4;--accent-soft:#e3e8fb;
+:root{--paper:#f3f6fb;--surface:#fff;--ink:#14213a;--muted:#56627a;--line:#d2dae7;--grid:#e2e8f1;--accent:#3350c4;--accent-soft:#e3e8fb;--good:#1d8549;--good-soft:#dcf2e4;--hint:#7a5d00;--hint-soft:#fff2c4;
   --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--f-body:'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0e1422;--surface:#161f33;--ink:#e7ecf6;--muted:#9ba7bf;--line:#2b3753;--grid:#1a2338;--accent:#8199f5;--accent-soft:#232f55;color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#0e1422;--surface:#161f33;--ink:#e7ecf6;--muted:#9ba7bf;--line:#2b3753;--grid:#1a2338;--accent:#8199f5;--accent-soft:#232f55;color-scheme:dark}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0e1422;--surface:#161f33;--ink:#e7ecf6;--muted:#9ba7bf;--line:#2b3753;--grid:#1a2338;--accent:#8199f5;--accent-soft:#232f55;--good:#52c486;--good-soft:#15352a;--hint:#f0c94a;--hint-soft:#352c10;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e1422;--surface:#161f33;--ink:#e7ecf6;--muted:#9ba7bf;--line:#2b3753;--grid:#1a2338;--accent:#8199f5;--accent-soft:#232f55;--good:#52c486;--good-soft:#15352a;--hint:#f0c94a;--hint-soft:#352c10;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
 .wrap{max-width:760px;margin:0 auto;padding:48px max(16px,env(safe-area-inset-left,0px)) 64px}
-h1,h2{font-family:var(--f-display);margin:0;line-height:1.1}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1}
 h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;letter-spacing:-.02em;margin:6px 0 10px}
+h2.group{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:30px 0 10px}
 .eyebrow{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.lead{color:var(--muted);margin:0 0 28px}
+.lead{color:var(--muted);margin:0 0 8px}
 .list{display:grid;gap:12px;list-style:none;padding:0;margin:0}
 .card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .15s,transform .15s}
-.card:hover,.card:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
-.card h2{font-size:1.3rem;font-weight:700}
+a.card:hover,a.card:focus-visible{border-color:var(--accent);transform:translateY(-2px);outline:none}
+.card h3{font-size:1.3rem;font-weight:700}
 .card p{margin:6px 0 0;color:var(--muted)}
-.tag{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px}
-.soon{opacity:.6;pointer-events:none}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px}
+.tag.due{color:var(--hint);background:var(--hint-soft)}
+.tag.done{color:var(--good);background:var(--good-soft)}
+.bar{height:6px;background:var(--paper);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;background:var(--good)}
+.soon{opacity:.55}
+.today{background:var(--accent-soft);border-radius:14px;padding:14px 18px;margin-top:20px}
+.today:empty{display:none}
+footer{color:var(--muted);font-size:.85rem;margin-top:36px}
 </style>
 </head>
 <body>
@@ -34,24 +43,59 @@ h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;letter-spacing:-.02em;margin:6
   <div class="eyebrow">Matematikk · 9. trinn · LK20</div>
   <h1>Matteverkstedet</h1>
   <p class="lead">Velg en modul. Alt fungerer rett i nettleseren, også på mobil.</p>
-  <ul class="list" id="list"></ul>
+  <div class="today" id="today"></div>
+  <div id="groups"></div>
+  <footer>Modulene følger kompetansemålene etter 9. trinn i LK20 (MAT01-06). Fremgangen lagres bare i denne nettleseren.</footer>
 </main>
 <script>
-// Ny modul: legg HTML-fila i mappa «moduler/» og legg til én linje her.
+// Ny modul: legg HTML-fila i «moduler/» og legg til én linje her. «id» er lagringsnøkkelen modulen bruker (V.practice id).
+// «mal» = kompetansemål etter 9. trinn som modulen dekker (nummerert som på udir.no).
 const moduler = [
-  { fil: "moduler/volum-prisme-sylinder.html", tittel: "Volumverkstedet", tekst: "Volum av prisme og sylinder, og omregning mellom cm³, dm³ og liter.", tema: "Geometri og volum" },
+  { fil:"moduler/volum-prisme-sylinder.html", id:"volumverkstedet-v1", tittel:"Volumverkstedet", tekst:"Volum av prisme og sylinder, og omregning mellom cm³, dm³ og liter.", tema:"Geometri og måling", mal:[6] },
+  { fil:"moduler/pytagoras.html", id:"pytagoras", tittel:"Pytagoras og trekanter", tekst:"a² + b² = c², finne ukjente sider og avgjøre om en trekant er rettvinklet.", tema:"Geometri og måling", mal:[3,4] },
+  { fil:"moduler/pyramide-kjegle-kule.html", id:"pyramide-kjegle-kule", tittel:"Pyramide, kjegle og kule", tekst:"Volum og overflate av spisse og runde former, med Pytagoras for å finne høyden.", tema:"Geometri og måling", mal:[6,3] },
+  { fil:"moduler/formlikhet.html", id:"formlikhet", tittel:"Formlikhet og kongruens", tekst:"Målestokk, like vinkler og å måle høye ting med skygger.", tema:"Geometri og måling", mal:[2,3] },
+  { fil:"moduler/hva-skjer-hvis.html", id:"hva-skjer-hvis", tittel:"Hva skjer hvis …?", tekst:"Dobler du sidene, blir arealet ×4 og volumet ×8. Utforsk hvorfor.", tema:"Geometri og måling", mal:[5] },
+  { fil:"moduler/sammensatte-enheter.html", id:"sammensatte-enheter", tittel:"Sammensatte enheter", tekst:"Fart, km/h og m/s, pris per kilo og tetthet.", tema:"Geometri og måling", mal:[1] },
+  { fil:"moduler/statistikk.html", id:"statistikk", tittel:"Statistikk", tekst:"Gjennomsnitt, median, typetall og spredning, også i dine egne data.", tema:"Statistikk og sannsynlighet", mal:[8] },
+  { fil:"moduler/sannsynlighet.html", id:"sannsynlighet", tittel:"Sannsynlighet og simulering", tekst:"Kuler, terninger og spill, og simulering med egen kode.", tema:"Statistikk og sannsynlighet", mal:[10,11] },
+  { fil:"moduler/grafdetektiven.html", id:"grafdetektiven", tittel:"Grafdetektiven", tekst:"Finn ut hvordan grafer i media kan lure deg, og lag dem selv.", tema:"Statistikk og sannsynlighet", mal:[7,9] },
 ];
-const ul = document.getElementById("list");
-for (const m of moduler) {
-  const li = document.createElement("li");
-  const a = document.createElement("a");
-  a.className = "card"; a.href = m.fil;
-  a.innerHTML = `<h2></h2><p></p><span class="tag"></span>`;
-  a.querySelector("h2").textContent = m.tittel;
-  a.querySelector("p").textContent = m.tekst;
-  a.querySelector(".tag").textContent = m.tema;
-  li.appendChild(a); ul.appendChild(li);
+const DAYS=[0,1,2,4,8],DAY=864e5;
+function progress(id){
+  let s=null;
+  try{s=JSON.parse(localStorage.getItem(id.includes('-v1')?id:'verksted:'+id)||'null');}catch(e){}
+  if(!s||!s.boxes)return null;
+  const b=Object.values(s.boxes),frac=b.reduce((a,x)=>a+x,0)/(4*b.length);
+  const times=s.times||{};
+  const due=Object.keys(s.boxes).some(k=>s.boxes[k]>0&&times[k]&&Date.now()-times[k]>DAYS[s.boxes[k]]*DAY);
+  return {frac,due,seen:s.seen||0};
 }
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;};
+const groups=document.getElementById('groups');const dueList=[];
+for(const tema of [...new Set(moduler.map(m=>m.tema))]){
+  groups.appendChild(el('h2','group',tema));
+  const ul=el('ul','list');groups.appendChild(ul);
+  for(const m of moduler.filter(x=>x.tema===tema)){
+    const li=el('li');const a=el(m.kommer?'div':'a','card'+(m.kommer?' soon':''));
+    if(!m.kommer)a.href=m.fil;
+    a.appendChild(el('h3',null,m.tittel));a.appendChild(el('p',null,m.tekst));
+    const meta=el('div','meta');
+    meta.appendChild(el('span','tag',m.kommer?'Kommer':'Mål '+m.mal.join(' og ')));
+    const pr=!m.kommer&&progress(m.id);
+    if(pr){
+      if(pr.due){meta.appendChild(el('span','tag due','Klar for repetisjon'));dueList.push(m);}
+      else if(pr.frac>=.99)meta.appendChild(el('span','tag done','Sitter!'));
+      const bar=el('div','bar');const i=el('i');i.style.width=Math.round(pr.frac*100)+'%';bar.appendChild(i);
+      a.appendChild(meta);a.appendChild(bar);
+    }else a.appendChild(meta);
+    li.appendChild(a);ul.appendChild(li);
+  }
+}
+if(dueList.length){const t=document.getElementById('today');
+  t.innerHTML='<b>Dagens repetisjon:</b> ';
+  dueList.forEach((m,i)=>{const a=el('a',null,m.tittel);a.href=m.fil+'#ov';a.style.color='var(--accent)';t.appendChild(a);if(i<dueList.length-1)t.appendChild(document.createTextNode(', '));});
+  t.appendChild(document.createTextNode('. Noen minutter med oppgaver fra før gjør at det sitter lenger.'));}
 </script>
 </body>
 </html>

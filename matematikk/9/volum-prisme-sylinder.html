@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Volumverkstedet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>
+/* Layout: én kolonne med «arbeidsbenker». Hver seksjon har figuren til venstre og knappene til høyre, stablet på mobil. Rutepapir i bakgrunnen. */
+:root{
+  --paper:#f3f6fb; --surface:#ffffff; --ink:#14213a; --muted:#56627a; --line:#d2dae7; --grid:#e2e8f1;
+  --prism:#e2671f; --prism-soft:#fde6d6; --cyl:#11839a; --cyl-soft:#d4eef3; --water:#3aa6c1;
+  --accent:#3350c4; --accent-soft:#e3e8fb; --on-accent:#ffffff;
+  --good:#1d8549; --good-soft:#dcf2e4; --bad:#bf3a2e; --bad-soft:#fbe2de; --hint:#7a5d00; --hint-soft:#fff2c4;
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0e1422; --surface:#161f33; --ink:#e7ecf6; --muted:#9ba7bf; --line:#2b3753; --grid:#1a2338;
+  --prism:#f48a45; --prism-soft:#3b2618; --cyl:#3cb7cd; --cyl-soft:#123540; --water:#47b3cc;
+  --accent:#8199f5; --accent-soft:#232f55; --on-accent:#0e1422;
+  --good:#52c486; --good-soft:#15352a; --bad:#f07466; --bad-soft:#3d1d1c; --hint:#f0c94a; --hint-soft:#352c10;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#0e1422; --surface:#161f33; --ink:#e7ecf6; --muted:#9ba7bf; --line:#2b3753; --grid:#1a2338;
+  --prism:#f48a45; --prism-soft:#3b2618; --cyl:#3cb7cd; --cyl-soft:#123540; --water:#47b3cc;
+  --accent:#8199f5; --accent-soft:#232f55; --on-accent:#0e1422;
+  --good:#52c486; --good-soft:#15352a; --bad:#f07466; --bad-soft:#3d1d1c; --hint:#f0c94a; --hint-soft:#352c10;
+  color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Navigasjon */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+.nav .brand{font-family:var(--f-display);font-weight:800;margin-right:10px;white-space:nowrap}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.92rem;padding:6px 12px;border-radius:999px;border:1px solid transparent}
+.nav a:hover{color:var(--ink);border-color:var(--line)}
+.nav a b{font-family:var(--f-mono);color:var(--accent);margin-right:4px}
+
+/* Hero */
+.hero{padding-block:44px 28px}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.eyebrow{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin-block:8px 14px}
+.formula{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,7vw,4.4rem);letter-spacing:-.02em;line-height:1;display:flex;gap:.25em;align-items:baseline;flex-wrap:wrap}
+.formula .g{color:var(--accent)}
+.lead{color:var(--muted);max-width:44ch;margin-top:14px}
+.twins{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.twin{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 10px 12px;text-align:center}
+.twin p{font-size:.9rem;color:var(--muted)}
+.twin .f{font-family:var(--f-mono);color:var(--ink);font-size:.95rem}
+
+/* Seksjoner */
+section{padding-block:36px}
+.sec-head{display:flex;gap:14px;align-items:baseline;margin-bottom:6px}
+.step-no{font-family:var(--f-mono);font-weight:700;color:var(--on-accent);background:var(--accent);border-radius:8px;padding:2px 9px;font-size:.95rem;transform:translateY(-4px)}
+.sec-lead{color:var(--muted);max-width:62ch;margin-bottom:18px}
+.bench{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.figbox{background:var(--paper);border-radius:10px;display:flex;align-items:center;justify-content:center;min-height:240px}
+.fig{width:100%;height:auto;max-width:420px;display:block}
+.controls{display:flex;flex-direction:column;gap:14px;min-width:0}
+.slider{display:grid;grid-template-columns:5.5rem 1fr 3.6rem;align-items:center;gap:10px}
+.slider label{font-weight:700}
+.slider output{font-family:var(--f-mono);text-align:right}
+input[type=range]{width:100%;accent-color:var(--accent);min-width:0}
+.calc{background:var(--paper);border-radius:10px;padding:12px 14px;font-family:var(--f-mono);font-size:.98rem;line-height:1.8;overflow-x:auto}
+.calc .big{font-size:1.25rem;font-weight:700}
+.calc .c-p{color:var(--prism)} .calc .c-c{color:var(--cyl)} .calc .c-a{color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.note{font-size:.92rem;color:var(--muted)}
+
+/* Forutsi-kort */
+.predict{border:1px dashed var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.predict .tag{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 14px;cursor:pointer;font-family:var(--f-mono);font-weight:700}
+.opt:hover{border-color:var(--accent)}
+.opt.is-ok{border-color:var(--good);background:var(--good-soft)}
+.opt.is-no{border-color:var(--bad);background:var(--bad-soft)}
+.fb{border-radius:10px;padding:10px 12px;font-size:.98rem}
+.fb:empty{display:none}
+.fb.good{background:var(--good-soft);color:var(--ink);border-left:4px solid var(--good)}
+.fb.bad{background:var(--bad-soft);color:var(--ink);border-left:4px solid var(--bad)}
+.fb.hint{background:var(--hint-soft);color:var(--ink);border-left:4px solid var(--hint)}
+
+/* SVG */
+.fig .shell{fill:var(--prism);fill-opacity:.07;stroke:var(--prism);stroke-width:1.6;stroke-linejoin:round}
+.fig .shell.tp{fill-opacity:.14}
+.fig .shell.sd{fill-opacity:.1}
+.fig .fill{fill:var(--prism);stroke:var(--prism);stroke-width:1}
+.fig .fill.fr{fill-opacity:.55}.fig .fill.sd{fill-opacity:.42}.fig .fill.tp{fill-opacity:.75}
+.fig .gl{stroke:var(--prism);stroke-opacity:.35;stroke-width:.8}
+.fig .gl-fill{stroke:var(--surface);stroke-opacity:.8;stroke-width:1}
+.fig .hid{stroke:var(--muted);stroke-dasharray:4 4;stroke-width:1;fill:none;opacity:.7}
+.fig .gtop{fill:var(--accent);fill-opacity:.35;stroke:var(--accent);stroke-width:1.6}
+.fig .unit{fill:var(--accent);fill-opacity:.9;stroke:var(--surface);stroke-width:.6}
+.fig .lbl{fill:var(--ink);font-family:var(--f-mono);font-size:13px;font-weight:700}
+.fig .lbl.big{font-size:18px;fill:var(--accent)}
+.fig .lbl.small{font-size:11px;fill:var(--muted);font-weight:500}
+.fig .cshell{fill:var(--cyl);fill-opacity:.1;stroke:var(--cyl);stroke-width:1.6}
+.fig .ctop{fill:var(--cyl);fill-opacity:.22;stroke:var(--cyl);stroke-width:1.6}
+.fig .ctop.g{fill:var(--accent);fill-opacity:.35;stroke:var(--accent)}
+.fig .disc{fill:none;stroke:var(--cyl);stroke-opacity:.35;stroke-width:.9}
+.fig .water{fill:var(--water);fill-opacity:.55}
+.fig .wsurf{fill:var(--water);fill-opacity:.8;stroke:var(--surface);stroke-width:.8}
+.fig .rad{stroke:var(--ink);stroke-width:1.6}
+.fig .dot{fill:var(--ink)}
+.fig .tri.tp{fill:var(--prism);fill-opacity:.14}
+
+/* Enhetstrapp */
+.ladder{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:4px}
+.rung{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:58px;flex:1 0 auto;padding:8px 6px;border:2px solid var(--line);border-radius:12px;background:var(--surface);font-family:var(--f-mono);font-weight:700;text-align:center;line-height:1.2}
+.rung small{font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:.75rem}
+.rung.on{border-color:var(--accent);background:var(--accent-soft)}
+.rung.end{border-color:var(--accent);background:var(--accent);color:var(--on-accent)}
+.rung.end small{color:var(--on-accent)}
+.arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:36px;font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.arrow::after{content:"→";font-size:1.2rem;line-height:1}
+.arrow.on{color:var(--accent);font-weight:700}
+.conv{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.conv input{width:7.5rem}
+.field{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;min-width:0}
+.field:focus{border-color:var(--accent);outline:none}
+.result{font-family:var(--f-mono);font-size:1.3rem;font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fact{background:var(--paper);border-radius:10px;padding:10px;text-align:center}
+.fact .mono{font-size:1.05rem;font-weight:700;display:block}
+.fact span:last-child{font-size:.85rem;color:var(--muted)}
+.quiz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+
+/* Eksempler */
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:18px}
+.ex + .ex{margin-top:16px}
+.ex .tag{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.steps{list-style:none;margin:12px 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.steps li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:10px;align-items:start}
+.steps .n{font-family:var(--f-mono);font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:8px;text-align:center;padding:2px 0}
+.steps .m{font-family:var(--f-mono);font-weight:700;overflow-x:auto}
+.steps .why{display:block;font-size:.9rem;color:var(--muted);font-family:var(--f-body);font-weight:400}
+.steps li.new{animation:pop .35s ease-out}
+@keyframes pop{from{transform:translateY(6px);opacity:.3}to{transform:none;opacity:1}}
+.blank{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.blank input{width:8rem}
+
+/* Øving */
+.practice{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:18px;align-items:start}
+.task{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.tmeta{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.chip{font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tbody{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:16px;align-items:center}
+.tbody.nofig{grid-template-columns:minmax(0,1fr)}
+.tfig .fig{max-width:260px;margin:0 auto}
+.tprompt{font-size:1.12rem}
+.tprompt .mono{font-weight:700}
+.answer{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.answer input{width:10rem;font-family:var(--f-mono);font-size:1.15rem}
+.answer .unit{font-family:var(--f-mono);font-weight:700}
+.sol{font-family:var(--f-mono);line-height:1.8;margin-top:6px;overflow-x:auto}
+.side{display:flex;flex-direction:column;gap:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.panel h3{font-size:1rem;margin-bottom:10px}
+.mrow{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
+.mrow .top{display:flex;justify-content:space-between;font-size:.88rem}
+.mrow .lvl{color:var(--muted)}
+.bar{height:8px;background:var(--paper);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;background:var(--good);border-radius:99px;transition:width .4s}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center}
+.stats .num{font-size:1.5rem;font-weight:700;display:block}
+.stats span:last-child{font-size:.8rem;color:var(--muted)}
+.welcome{background:var(--accent-soft);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+
+.nojs{background:var(--hint-soft);border:2px solid var(--hint);border-radius:12px;padding:14px 16px;margin-top:16px;font-size:1rem}
+footer{padding-block:28px 48px;color:var(--muted);font-size:.88rem}
+
+@media (max-width:820px){
+  .hero-grid,.bench,.practice,.ex{grid-template-columns:minmax(0,1fr)}
+  .quiz{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  .tbody{grid-template-columns:minmax(0,1fr)}
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .slider{grid-template-columns:4.6rem 1fr 3.2rem}
+  body{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" style="text-decoration:none;color:inherit" title="Til forsiden">← Volumverkstedet</a>
+    <a href="#prisme"><b>1</b>Prisme</a>
+    <a href="#sylinder"><b>2</b>Sylinder</a>
+    <a href="#liter"><b>3</b>Liter</a>
+    <a href="#eksempel"><b>4</b>Eksempler</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen eller som vedlegg på iPhone). Åpne modulen i Safari via lenken du har fått, så virker alt.</div></div>
+<script>window.addEventListener('error',function(e){var b=document.getElementById('nojs');if(b){b.hidden=false;b.innerHTML='<b>Noe gikk galt i nettleseren.</b> Feilmelding: '+String(e.message||e).replace(/</g,'&lt;');}});</script>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Matematikk 9. trinn · Geometri og måling</p>
+      <h1>Én formel, to figurer</h1>
+      <div class="formula" aria-label="V er lik G ganger h"><span>V</span><span>=</span><span class="g">G</span><span>·</span><span>h</span></div>
+      <p class="lead">Volum er grunnflaten <b>G</b> stablet opp til høyden <b>h</b>. Det gjelder både for et rett prisme og for en sylinder. Bare grunnflaten ser forskjellig ut.</p>
+    </div>
+    <div class="twins">
+      <div class="twin"><div id="heroPrism"></div><p>Rett prisme</p><p class="f">G = l · b</p></div>
+      <div class="twin"><div id="heroCyl"></div><p>Sylinder</p><p class="f">G = π · r²</p></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 1 PRISME -->
+  <section id="prisme">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">1</span><h2>Rett prisme</h2></div>
+      <p class="sec-lead">Hver liten terning er 1 cm³. Dra i glidebryterne og se hvor mange terninger som får plass.</p>
+      <div id="film-prisme"></div>
+      <div class="bench">
+        <div class="figbox" id="pFig"></div>
+        <div class="controls">
+          <div class="slider"><label for="pl">Lengde l</label><input type="range" id="pl" min="1" max="8" value="4"><output id="plo" for="pl">4 cm</output></div>
+          <div class="slider"><label for="pb">Bredde b</label><input type="range" id="pb" min="1" max="6" value="3"><output id="pbo" for="pb">3 cm</output></div>
+          <div class="slider"><label for="ph">Høyde h</label><input type="range" id="ph" min="1" max="6" value="3"><output id="pho" for="ph">3 cm</output></div>
+          <div class="calc" id="pCalc" aria-live="polite"></div>
+          <div class="row"><button class="btn primary" type="button" id="pFill">Fyll lag for lag</button><span class="note" id="pLayer"></span></div>
+          <div class="predict" id="pPredict"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 SYLINDER -->
+  <section id="sylinder">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">2</span><h2>Sylinder</h2></div>
+      <p class="sec-lead">En sylinder er som en stabel med like store mynter. Grunnflaten er en sirkel, så <b>G = π · r²</b>.</p>
+      <div id="film-sylinder"></div>
+      <div class="bench">
+        <div class="figbox" id="cFig"></div>
+        <div class="controls">
+          <div class="slider"><label for="cr">Radius r</label><input type="range" id="cr" min="1" max="8" step="0.5" value="4"><output id="cro" for="cr">4 cm</output></div>
+          <div class="slider"><label for="ch">Høyde h</label><input type="range" id="ch" min="1" max="20" value="10"><output id="cho" for="ch">10 cm</output></div>
+          <div class="calc" id="cCalc" aria-live="polite"></div>
+          <div class="row"><button class="btn primary" type="button" id="cFill">Fyll med vann</button><span class="note">π ≈ 3,14</span></div>
+          <div class="predict" id="cPredict"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 LITER -->
+  <section id="liter">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">3</span><h2>Fra cm³ til liter</h2></div>
+      <p class="sec-lead">En terning med sider på 1 dm (10 cm) rommer nøyaktig 1 liter. Den består av 10 · 10 · 10 = 1000 små terninger på 1 cm³.</p>
+      <div id="film-liter"></div>
+      <div class="bench">
+        <div class="figbox" id="dmFig"></div>
+        <div class="controls">
+          <div class="facts">
+            <div class="fact"><span class="mono">1 L = 1 dm³</span><span>én liter</span></div>
+            <div class="fact"><span class="mono">1 dm³ = 1000 cm³</span><span>10 · 10 · 10</span></div>
+            <div class="fact"><span class="mono">1 m³ = 1000 L</span><span>en stor kube</span></div>
+          </div>
+          <h3>Enhetstrappa</h3>
+          <div class="ladder" id="ladder" aria-hidden="true"></div>
+          <form class="conv" id="convForm">
+            <label class="sr" for="cvVal">Tall</label>
+            <input class="field mono" id="cvVal" inputmode="decimal" value="2,5" autocomplete="off">
+            <label class="sr" for="cvFrom">Fra enhet</label>
+            <select class="field" id="cvFrom"></select>
+            <span>til</span>
+            <label class="sr" for="cvTo">Til enhet</label>
+            <select class="field" id="cvTo"></select>
+          </form>
+          <div class="calc" id="cvOut" aria-live="polite"></div>
+          <p class="note">Nedover trappa (mindre enhet) ganger du. Oppover (større enhet) deler du.</p>
+        </div>
+      </div>
+      <h3 style="margin-top:22px">Liter-sjekk: svar uten å se opp</h3>
+      <div class="quiz" id="quiz"></div>
+    </div>
+  </section>
+
+  <!-- 4 EKSEMPLER -->
+  <section id="eksempel">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">4</span><h2>Eksempler</h2></div>
+      <p class="sec-lead">Først ser du en ferdig løsning steg for steg. I neste eksempel gjør du de siste stegene selv.</p>
+
+      <div class="ex">
+        <div id="ex1Fig"></div>
+        <div>
+          <p class="tag">Gjennomgått eksempel</p>
+          <p class="tprompt">En bøtte har form som en sylinder. Diameteren er <span class="mono">24 cm</span> og høyden er <span class="mono">30 cm</span>. Hvor mange liter rommer bøtta?</p>
+          <ol class="steps" id="ex1Steps"></ol>
+          <button class="btn primary" type="button" id="ex1Next">Vis neste steg</button>
+        </div>
+      </div>
+
+      <div class="ex">
+        <div id="ex2Fig"></div>
+        <div>
+          <p class="tag">Din tur å fullføre</p>
+          <p class="tprompt">En juicekartong er et rett prisme med lengde <span class="mono">7 cm</span>, bredde <span class="mono">7 cm</span> og høyde <span class="mono">20 cm</span>. Hvor mange liter rommer den?</p>
+          <ol class="steps">
+            <li><span class="n">1</span><span class="m">G = l · b = 7 · 7 = 49 cm²<span class="why">Grunnflaten er et kvadrat.</span></span></li>
+            <li><span class="n">2</span><span class="m"><span class="blank"><label for="ex2a">V = G · h = 49 · 20 =</label><input class="field mono" id="ex2a" inputmode="decimal" autocomplete="off"><span>cm³</span><button class="btn" type="button" id="ex2aBtn">Sjekk</button></span></span></li>
+            <li><span class="n">3</span><span class="m"><span class="blank"><label for="ex2b"><span id="ex2bLbl">… cm³</span> =</label><input class="field mono" id="ex2b" inputmode="decimal" autocomplete="off" disabled><span>L</span><button class="btn" type="button" id="ex2bBtn" disabled>Sjekk</button></span></span></li>
+          </ol>
+          <div class="fb" id="ex2Fb" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 ØV -->
+  <section id="ov">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+      <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake. Bruk hint når du står fast, og skriv komma som vanlig (for eksempel 12,5).</p>
+      <div class="welcome" id="welcome" hidden></div>
+      <div class="practice">
+        <div class="task">
+          <div class="tmeta"><span class="chip" id="tSkill">Rett prisme</span><span class="note" id="tCount"></span></div>
+          <div class="tbody" id="tBody">
+            <div class="tfig" id="tFig"></div>
+            <p class="tprompt" id="tPrompt"></p>
+          </div>
+          <form class="answer" id="tForm">
+            <label for="tAns" class="sr">Ditt svar</label>
+            <input class="field" id="tAns" inputmode="decimal" autocomplete="off" placeholder="Svar">
+            <span class="unit" id="tUnit"></span>
+            <button class="btn primary" type="submit" id="tCheck">Sjekk</button>
+          </form>
+          <div class="row">
+            <button class="btn" type="button" id="tHint">Gi meg et hint</button>
+            <button class="btn" type="button" id="tShow" hidden>Vis løsning</button>
+            <button class="btn ghost" type="button" id="tNext">Ny oppgave</button>
+          </div>
+          <div id="tHints" style="display:flex;flex-direction:column;gap:8px"></div>
+          <div class="fb" id="tFb" aria-live="polite"></div>
+        </div>
+        <aside class="side">
+          <div class="panel">
+            <h3>Mestring</h3>
+            <div id="mastery"></div>
+          </div>
+          <div class="panel stats">
+            <div><span class="num" id="sStreak">0</span><span>på rad</span></div>
+            <div><span class="num" id="sTotal">0</span><span>riktige totalt</span></div>
+          </div>
+          <button class="btn ghost" type="button" id="reset">Nullstill fremgang</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Følger LK20, kompetansemål etter 10. trinn: beregne volum av prismer og sylindre og gjøre om mellom enheter. Fremgangen lagres bare i denne nettleseren.</div></footer>
+
+<script>
+(function(){
+document.getElementById('nojs').hidden=true;
+const $=s=>document.querySelector(s);
+const PI=Math.PI;
+const nf=(n,d=2)=>Number(n).toLocaleString('nb-NO',{maximumFractionDigits:d});
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function parseNum(str){
+  if(str==null)return NaN;
+  const s=String(str).trim().replace(/[\s  ]/g,'').replace(',', '.');
+  if(!/^-?(\d+\.?\d*|\.\d+)$/.test(s))return NaN;
+  return parseFloat(s);
+}
+const fx=v=>v.toFixed(1);
+
+/* ---------- Figurer ---------- */
+function prismSVG(l,b,h,o={}){
+  const W=o.W||340,H=o.H||270,pad=(o.pad!=null?o.pad:30),ax=.5,ay=.36;
+  const [sl,sb,sh]=o.scaleFor||[l,b,h];
+  const s=Math.min((W-2*pad)/(sl+sb*ax),(H-2*pad)/(sh+sb*ay));
+  const dx=s*ax,dy=-s*ay,tw=l*s+b*dx,th=h*s-b*dy;
+  const x0=(W-tw)/2,y0=(H+th)/2;
+  const P=(x,z,y)=>[x0+x*s+z*dx,y0-y*s+z*dy];
+  const pt=p=>fx(p[0])+','+fx(p[1]);
+  const poly=(ps,c)=>`<polygon class="${c}" points="${ps.map(pt).join(' ')}"/>`;
+  const ln=(a,c,cl)=>`<line class="${cl}" x1="${fx(a[0])}" y1="${fx(a[1])}" x2="${fx(c[0])}" y2="${fx(c[1])}"/>`;
+  const grid=(hh,cl)=>{let g='';
+    for(let i=1;i<l;i++)g+=ln(P(i,0,0),P(i,0,hh),cl)+ln(P(i,0,hh),P(i,b,hh),cl);
+    for(let j=1;j<hh;j++)g+=ln(P(0,0,j),P(l,0,j),cl)+ln(P(l,0,j),P(l,b,j),cl);
+    for(let k=1;k<b;k++)g+=ln(P(0,k,hh),P(l,k,hh),cl)+ln(P(l,k,0),P(l,k,hh),cl);
+    return g;};
+  const box=(hh,cl)=>poly([P(0,0,0),P(l,0,0),P(l,0,hh),P(0,0,hh)],cl+' fr')+poly([P(l,0,0),P(l,b,0),P(l,b,hh),P(l,0,hh)],cl+' sd')+poly([P(0,0,hh),P(l,0,hh),P(l,b,hh),P(0,b,hh)],cl+' tp');
+  let out=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.aria||'Rett prisme'}">`;
+  out+=ln(P(0,b,0),P(l,b,0),'hid')+ln(P(0,b,0),P(0,0,0),'hid')+ln(P(0,b,0),P(0,b,h),'hid');
+  const fill=o.fill||0;
+  if(fill>0){out+=box(fill,'fill');if(o.grid)out+=grid(fill,'gl-fill');}
+  out+=box(h,'shell');
+  if(o.grid)out+=grid(h,'gl');
+  if(o.gtop){out+=poly([P(0,0,h),P(l,0,h),P(l,b,h),P(0,b,h)],'gtop');const c=P(l/2,b/2,h);out+=`<text class="lbl big" x="${fx(c[0])}" y="${fx(c[1]+6)}" text-anchor="middle">G</text>`;}
+  if(o.unit){out+=poly([P(0,0,h-1),P(1,0,h-1),P(1,0,h),P(0,0,h)],'unit')+poly([P(0,0,h),P(1,0,h),P(1,1,h),P(0,1,h)],'unit');
+    const u=P(0,0,h-.5);out+=`<text class="lbl small" x="${fx(u[0]-6)}" y="${fx(u[1]+4)}" text-anchor="end">1 cm³</text>`;}
+  if(o.labels){const L=o.labels,t=(p,txt,anc,a=0,c=0)=>`<text class="lbl" x="${fx(p[0]+a)}" y="${fx(p[1]+c)}" text-anchor="${anc}">${txt}</text>`;
+    if(L.l)out+=t(P(l/2,0,0),L.l,'middle',0,20);
+    if(L.h)out+=t(P(0,0,h/2),L.h,'end',-8,5);
+    if(L.b)out+=t(P(l,b/2,0),L.b,'start',8,12);}
+  return out+'</svg>';
+}
+function triSVG(g,ht,L,o={}){
+  const W=o.W||340,H=o.H||260,pad=(o.pad!=null?o.pad:46),ax=.5,ay=.36;
+  const Lv=Math.min(L,1.5*Math.max(g,ht));
+  const s=Math.min((W-2*pad)/(g+Lv*ax),(H-2*pad)/(ht+Lv*ay));
+  const dx=s*ax,dy=-s*ay,tw=g*s+Lv*dx,th=ht*s-Lv*dy;
+  const x0=(W-tw)/2,y0=(H+th)/2;
+  const P=(x,z,y)=>[x0+x*s+z*dx,y0-y*s+z*dy];
+  const pt=p=>fx(p[0])+','+fx(p[1]);
+  const poly=(ps,c)=>`<polygon class="${c}" points="${ps.map(pt).join(' ')}"/>`;
+  const ln=(a,c,cl)=>`<line class="${cl}" x1="${fx(a[0])}" y1="${fx(a[1])}" x2="${fx(c[0])}" y2="${fx(c[1])}"/>`;
+  const leftVis=(-ht*ax+(g/2)*ay)>0;
+  let out=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prisme med trekant som grunnflate">`;
+  out+=ln(P(0,0,0),P(0,Lv,0),'hid')+ln(P(0,Lv,0),P(g,Lv,0),'hid');
+  if(!leftVis)out+=ln(P(0,Lv,0),P(g/2,Lv,ht),'hid');
+  if(leftVis)out+=poly([P(0,0,0),P(g/2,0,ht),P(g/2,Lv,ht),P(0,Lv,0)],'shell tp');
+  out+=poly([P(g,0,0),P(g,Lv,0),P(g/2,Lv,ht),P(g/2,0,ht)],'shell sd');
+  out+=poly([P(0,0,0),P(g,0,0),P(g/2,0,ht)],'shell tp');
+  out+=ln(P(g/2,0,0),P(g/2,0,ht),'hid');
+  const t=(p,txt,anc,a=0,c=0)=>`<text class="lbl" x="${fx(p[0]+a)}" y="${fx(p[1]+c)}" text-anchor="${anc}">${txt}</text>`;
+  out+=t(P(g/2,0,0),g+' cm','middle',0,20)+t(P(g/2,0,ht/2),ht+' cm','start',5,4)+t(P(g,Lv/2,0),L+' cm','start',8,12);
+  return out+'</svg>';
+}
+function cylSVG(r,h,o={}){
+  const W=o.W||340,H=o.H||300,px=(o.px!=null?o.px:70),py=(o.py!=null?o.py:20),e=.3;
+  const [sr,sh]=o.scaleFor||[r,h];
+  const k=Math.min((W-2*px)/(2*sr),(H-2*py)/(sh+2*e*sr));
+  const rx=r*k,ry=rx*e,hh=h*k,cx=W/2,yt=(H-hh)/2,yb=yt+hh;
+  const A=(y,sw)=>`M${fx(cx-rx)},${fx(y)} A${fx(rx)},${fx(ry)} 0 0 ${sw} ${fx(cx+rx)},${fx(y)}`;
+  let out=`<svg class="fig" viewBox="0 0 ${W} ${H}" role="img" aria-label="${o.aria||'Sylinder'}">`;
+  out+=`<path class="hid" d="${A(yb,1)}"/>`;
+  out+=`<path class="cshell" d="M${fx(cx-rx)},${fx(yt)} L${fx(cx-rx)},${fx(yb)} A${fx(rx)},${fx(ry)} 0 0 0 ${fx(cx+rx)},${fx(yb)} L${fx(cx+rx)},${fx(yt)} Z"/>`;
+  const fl=o.fill||0;
+  if(fl>0){const yw=yb-fl*hh;
+    out+=`<path class="water" d="M${fx(cx-rx)},${fx(yw)} L${fx(cx-rx)},${fx(yb)} A${fx(rx)},${fx(ry)} 0 0 0 ${fx(cx+rx)},${fx(yb)} L${fx(cx+rx)},${fx(yw)} Z"/>`;
+    out+=`<ellipse class="wsurf" cx="${fx(cx)}" cy="${fx(yw)}" rx="${fx(rx)}" ry="${fx(ry)}"/>`;}
+  if(o.discs&&h<=24)for(let j=1;j<h;j++)out+=`<path class="disc" d="${A(yb-j*k,0)}"/>`;
+  out+=`<ellipse class="ctop${o.gtop?' g':''}" cx="${fx(cx)}" cy="${fx(yt)}" rx="${fx(rx)}" ry="${fx(ry)}"/>`;
+  const t=(x,y,txt,anc,cl='lbl')=>`<text class="${cl}" x="${fx(x)}" y="${fx(y)}" text-anchor="${anc}">${txt}</text>`;
+  if(o.gtop)out+=t(cx-rx*.45,yt+6,'G','middle','lbl big');
+  if(o.d){out+=`<line class="rad" x1="${fx(cx-rx)}" y1="${fx(yt)}" x2="${fx(cx+rx)}" y2="${fx(yt)}"/>`+t(cx,yt-ry-6,o.d,'middle');}
+  else if(o.r!==false){out+=`<line class="rad" x1="${fx(cx)}" y1="${fx(yt)}" x2="${fx(cx+rx)}" y2="${fx(yt)}"/><circle class="dot" cx="${fx(cx)}" cy="${fx(yt)}" r="2.6"/>`;
+    if(o.r)out+=t(cx+rx/2,yt-5,o.r,'middle');}
+  if(o.h)out+=t(cx+rx+8,(yt+yb)/2+4,o.h,'start');
+  return out+'</svg>';
+}
+
+/* ---------- Hero ---------- */
+$('#heroPrism').innerHTML=prismSVG(4,3,3,{W:200,H:150,pad:14,gtop:true,aria:'Prisme med grunnflaten markert'});
+$('#heroCyl').innerHTML=cylSVG(3,4,{W:200,H:150,px:40,py:10,gtop:true,r:false,discs:true,aria:'Sylinder med grunnflaten markert'});
+
+/* ---------- Forutsi-komponent ---------- */
+function predict(el,{q,opts,ok,expl,tag='Gjett først'}){
+  el.innerHTML=`<span class="tag">${tag}</span><p>${q}</p><div class="opts">${opts.map((o,i)=>`<button type="button" class="opt" id="${el.id}-o${i}" data-i="${i}">${o}</button>`).join('')}</div><div class="fb"></div>`;
+  const fb=el.querySelector('.fb');
+  el.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+    el.querySelectorAll('.opt').forEach(x=>x.classList.remove('is-ok','is-no'));
+    if(+b.dataset.i===ok){b.classList.add('is-ok');fb.className='fb good';fb.innerHTML='Riktig! '+expl;}
+    else{b.classList.add('is-no');fb.className='fb bad';fb.innerHTML=el.dataset.retry||'Ikke helt. Test det med glidebryterne, og prøv igjen.';}
+  }));
+}
+
+/* ---------- 1 Prisme ---------- */
+const pl=$('#pl'),pb=$('#pb'),ph=$('#ph');let pFillK=0,pAnim=null;
+function drawP(){
+  const l=+pl.value,b=+pb.value,h=+ph.value,G=l*b;
+  $('#plo').textContent=l+' cm';$('#pbo').textContent=b+' cm';$('#pho').textContent=h+' cm';
+  if(pFillK>h)pFillK=h;
+  $('#pFig').innerHTML=prismSVG(l,b,h,{grid:true,fill:pFillK,scaleFor:[8,6,6],pad:40,labels:{l:'l = '+l,b:'b = '+b,h:'h = '+h},aria:`Prisme ${l} ganger ${b} ganger ${h} centimeter`});
+  $('#pCalc').innerHTML=`G = l · b = ${l} · ${b} = <span class="c-a">${G} cm²</span><br>V = G · h = ${G} · ${h} = <span class="big c-p">${G*h} cm³</span>`;
+}
+[pl,pb,ph].forEach(x=>x.addEventListener('input',()=>{stopP();pFillK=0;$('#pLayer').textContent='';drawP();}));
+function stopP(){if(pAnim){clearInterval(pAnim);pAnim=null;}}
+$('#pFill').addEventListener('click',()=>{
+  stopP();const l=+pl.value,b=+pb.value,h=+ph.value;pFillK=0;
+  const show=()=>{$('#pLayer').textContent=`Lag ${pFillK} av ${h}: ${pFillK} · ${l*b} = ${pFillK*l*b} terninger`;drawP();};
+  if(reduce){pFillK=h;show();return;}
+  pAnim=setInterval(()=>{pFillK++;show();if(pFillK>=h)stopP();},650);
+});
+drawP();
+predict($('#pPredict'),{q:'Hva skjer med volumet hvis du dobler høyden, men beholder lengden og bredden?',opts:['×2','×4','×8'],ok:0,expl:'Du får dobbelt så mange lag med like mange terninger i hvert lag. Prøv h = 2 og h = 4.'});
+
+/* ---------- 2 Sylinder ---------- */
+const cr=$('#cr'),chh=$('#ch');let cFill=0,cAnim=null;
+function drawC(){
+  const r=+cr.value,h=+chh.value,G=PI*r*r,V=G*h;
+  $('#cro').textContent=nf(r,1)+' cm';$('#cho').textContent=h+' cm';
+  $('#cFig').innerHTML=cylSVG(r,h,{fill:cFill,discs:true,scaleFor:[8,20],r:'r = '+nf(r,1),h:'h = '+h,aria:`Sylinder med radius ${nf(r,1)} og høyde ${h} centimeter`});
+  $('#cCalc').innerHTML=`G = π · r² = π · ${nf(r,1)}² ≈ <span class="c-a">${nf(G,1)} cm²</span><br>V = G · h ≈ ${nf(G,1)} · ${h} ≈ <span class="big c-c">${nf(V,0)} cm³</span><br>= ${nf(V/1000,2)} liter`;
+}
+function stopC(){if(cAnim){cancelAnimationFrame(cAnim);cAnim=null;}}
+[cr,chh].forEach(x=>x.addEventListener('input',()=>{stopC();cFill=0;drawC();}));
+$('#cFill').addEventListener('click',()=>{
+  stopC();if(reduce){cFill=1;drawC();return;}
+  const t0=performance.now();
+  const step=t=>{cFill=Math.min(1,(t-t0)/1800);drawC();if(cFill<1)cAnim=requestAnimationFrame(step);else cAnim=null;};
+  cAnim=requestAnimationFrame(step);
+});
+drawC();
+$('#cPredict').dataset.retry='Ikke helt. Sett r = 2 og se på volumet, og sett så r = 4. Prøv igjen.';
+predict($('#cPredict'),{q:'Hva skjer med volumet hvis du dobler radien, men beholder høyden?',opts:['×2','×4','×8'],ok:1,expl:'Radien står i andre potens. 2 · 2 = 4, så grunnflaten og volumet blir fire ganger så store.'});
+
+/* ---------- 3 Liter ---------- */
+$('#dmFig').innerHTML=prismSVG(10,10,10,{grid:true,unit:true,pad:40,labels:{l:'10 cm = 1 dm',h:'10 cm',b:'10 cm'},aria:'Kube på 1 dm³ delt i 1000 små kuber'});
+const UNITS=[
+  {id:'m3',lab:'m³',f:1e6,lvl:0},{id:'dm3',lab:'dm³',f:1e3,lvl:1},{id:'L',lab:'L',f:1e3,lvl:1},
+  {id:'dL',lab:'dL',f:100,lvl:2},{id:'cL',lab:'cL',f:10,lvl:3},{id:'mL',lab:'mL',f:1,lvl:4},{id:'cm3',lab:'cm³',f:1,lvl:4}];
+const RUNGS=[{t:'m³',s:'kubikkmeter'},{t:'dm³ = L',s:'liter'},{t:'dL',s:'desiliter'},{t:'cL',s:'centiliter'},{t:'cm³ = mL',s:'milliliter'}];
+const STEPF=['×1000','×10','×10','×10'];
+const U=id=>UNITS.find(u=>u.id===id);
+['cvFrom','cvTo'].forEach((id,i)=>{$('#'+id).innerHTML=UNITS.map(u=>`<option value="${u.id}">${u.lab}</option>`).join('');$('#'+id).value=i?'cm3':'L';});
+function conv(){
+  const v=parseNum($('#cvVal').value),a=U($('#cvFrom').value),b=U($('#cvTo').value);
+  const lo=Math.min(a.lvl,b.lvl),hi=Math.max(a.lvl,b.lvl);
+  let h='';RUNGS.forEach((r,i)=>{
+    const cls=(i===a.lvl||i===b.lvl)?'end':(i>lo&&i<hi?'on':'');
+    h+=`<div class="rung ${cls}">${r.t}<small>${r.s}</small></div>`;
+    if(i<STEPF.length){const on=i>=lo&&i<hi;h+=`<div class="arrow ${on?'on':''}">${STEPF[i]}</div>`;}
+  });
+  $('#ladder').innerHTML=h;
+  const out=$('#cvOut');
+  if(isNaN(v)){out.innerHTML='Skriv et tall, for eksempel 2,5';return;}
+  const fac=a.f/b.f,res=v*fac;
+  let how;
+  if(fac===1)how=`${a.lab} og ${b.lab} er like store. Tallet blir det samme.`;
+  else if(fac>1)how=`Mindre enhet, så tallet blir større: gang med ${nf(fac,0)}.`;
+  else how=`Større enhet, så tallet blir mindre: del på ${nf(1/fac,0)}.`;
+  out.innerHTML=`<span class="note" style="font-family:var(--f-body)">${how}</span><br><span class="result">${nf(v,6)} ${a.lab} = ${nf(res,6)} ${b.lab}</span>`;
+}
+$('#convForm').addEventListener('input',conv);$('#convForm').addEventListener('submit',e=>e.preventDefault());conv();
+const QUIZ=[
+  {q:'1 L = ? cm³',opts:['10','100','1000'],ok:2,expl:'1 L = 1 dm³ = 10 · 10 · 10 cm³.'},
+  {q:'2,5 dm³ = ? L',opts:['0,25','2,5','2500'],ok:1,expl:'dm³ og liter er like store.'},
+  {q:'750 cm³ = ? L',opts:['7,5','0,75','75'],ok:1,expl:'Fra cm³ til L går du opp trappa: del på 1000.'}];
+$('#quiz').innerHTML=QUIZ.map((_,i)=>`<div class="predict" id="qz${i}"></div>`).join('');
+QUIZ.forEach((q,i)=>{const el=$('#qz'+i);el.dataset.retry='Ikke helt. Tenk på trappa: hvor mange trinn, og hvilken vei?';predict(el,{...q,tag:'Spørsmål '+(i+1)});});
+
+/* ---------- 4 Eksempler ---------- */
+$('#ex1Fig').innerHTML=cylSVG(12,30,{W:220,H:240,px:34,py:16,d:'d = 24 cm',h:'30 cm',aria:'Bøtte formet som sylinder'});
+const EX1=[
+  ['r = d : 2 = 24 : 2 = 12 cm','Formelen bruker radius, ikke diameter.'],
+  ['G = π · r² = π · 12² = π · 144 ≈ 452,4 cm²','Grunnflaten er en sirkel.'],
+  ['V = G · h ≈ 452,4 · 30 ≈ 13 572 cm³','Stable grunnflaten 30 cm opp.'],
+  ['13 572 cm³ : 1000 ≈ 13,6 L','1000 cm³ = 1 L, så del på 1000.']];
+let ex1i=0;
+$('#ex1Next').addEventListener('click',()=>{
+  if(ex1i>=EX1.length)return;
+  const [m,w]=EX1[ex1i];const li=document.createElement('li');li.className='new';
+  li.innerHTML=`<span class="n">${ex1i+1}</span><span class="m">${m}<span class="why">${w}</span></span>`;
+  $('#ex1Steps').appendChild(li);ex1i++;
+  if(ex1i>=EX1.length){const b=$('#ex1Next');b.textContent='Ferdig. Bøtta rommer omtrent 13,6 liter.';b.disabled=true;}
+});
+$('#ex2Fig').innerHTML=prismSVG(7,7,20,{pad:40,W:220,H:240,labels:{l:'7 cm',b:'7 cm',h:'20 cm'},aria:'Juicekartong formet som prisme'});
+const fb2=$('#ex2Fb');
+$('#ex2aBtn').addEventListener('click',()=>{
+  const v=parseNum($('#ex2a').value);
+  if(isNaN(v)){fb2.className='fb hint';fb2.textContent='Skriv inn et tall.';return;}
+  if(v===980){fb2.className='fb good';fb2.textContent='Riktig, 980 cm³. Gjør det om til liter i siste steg.';
+    $('#ex2bLbl').textContent='980 cm³';$('#ex2b').disabled=false;$('#ex2bBtn').disabled=false;$('#ex2b').focus();}
+  else if(v===69||v===76){fb2.className='fb bad';fb2.textContent='Det ser ut som du la sammen. Volum får du ved å gange G med h.';}
+  else{fb2.className='fb bad';fb2.textContent='Ikke helt. Tips: 49 · 20 = 49 · 2 · 10.';}
+});
+$('#ex2bBtn').addEventListener('click',()=>{
+  const v=parseNum($('#ex2b').value);
+  if(isNaN(v)){fb2.className='fb hint';fb2.textContent='Skriv inn et tall, for eksempel 0,5.';return;}
+  if(Math.abs(v-.98)<1e-9){fb2.className='fb good';fb2.textContent='Helt riktig! 980 cm³ = 0,98 L. Kartongen rommer nesten 1 liter.';}
+  else if(Math.abs(v-980000)<1e-6){fb2.className='fb bad';fb2.textContent='Du ganget. Liter er en større enhet enn cm³, så tallet skal bli mindre. Del på 1000.';}
+  else if(Math.abs(v-9.8)<1e-9||Math.abs(v-98)<1e-9){fb2.className='fb bad';fb2.textContent='Nesten! Sjekk antall nuller: 1 L = 1000 cm³.';}
+  else{fb2.className='fb bad';fb2.textContent='Ikke helt. Hvor mange cm³ går det på 1 liter?';}
+});
+
+/* ---------- 5 Øving ---------- */
+const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const near=(a,b,rel=.01)=>Math.abs(a-b)<=rel*Math.abs(b)+1e-9;
+const SKILLS={
+  prisme:{name:'Rett prisme',gens:['boks','trekant']},
+  sylinder:{name:'Sylinder',gens:['syl','diam']},
+  enheter:{name:'Enheter og liter',gens:['enhet']},
+  praksis:{name:'Volum til liter',gens:['akvarium','botte']},
+  snu:{name:'Finn høyden',gens:['hoydeP','hoydeS']}};
+const LEVEL=['Ny','I gang','På vei','Nesten','Sitter!'];
+const m=s=>`<span class="mono">${s}</span>`;
+const G={
+  boks(){const l=R(2,12),b=R(2,9),h=R(2,10),V=l*b*h;return{
+    prompt:`En eske har lengde ${m(l+' cm')}, bredde ${m(b+' cm')} og høyde ${m(h+' cm')}. Finn volumet.`,
+    fig:prismSVG(l,b,h,{W:260,H:210,pad:40,labels:{l:l+' cm',b:b+' cm',h:h+' cm'}}),
+    ans:V,unit:'cm³',rel:1e-6,
+    hints:['Volum av et rett prisme: V = G · h. Grunnflaten er et rektangel, G = l · b.',`G = ${l} · ${b} = ${l*b} cm². Gang så med høyden ${h}.`],
+    sol:`V = l · b · h = ${l} · ${b} · ${h} = ${V} cm³`,
+    diag:v=>v===l*b?'Det er grunnflaten G. Husk å gange med høyden også.':v===l+b+h?'Du la sammen. Volum får du ved å gange.':v===2*(l*b+l*h+b*h)?'Det er overflaten. Volum er hvor mye som får plass inni.':null};},
+  trekant(){const g=R(2,6)*2,ht=R(2,8),L=R(5,15),Gt=g*ht/2,V=Gt*L;return{
+    prompt:`Et prisme har en trekant som grunnflate. Trekanten har grunnlinje ${m(g+' cm')} og høyde ${m(ht+' cm')}. Prismet er ${m(L+' cm')} langt. Finn volumet.`,
+    fig:triSVG(g,ht,L,{W:260,H:210}),ans:V,unit:'cm³',rel:1e-6,
+    hints:['V = G · h. Her er grunnflaten en trekant: G = g · h : 2.',`G = ${g} · ${ht} : 2 = ${Gt} cm². Gang med lengden ${L} cm.`],
+    sol:`G = ${g} · ${ht} : 2 = ${Gt} cm²<br>V = G · ${L} = ${V} cm³`,
+    diag:v=>v===g*ht*L?'Du glemte å dele på 2. Arealet av en trekant er g · h : 2.':v===Gt?'Det er grunnflaten. Gang med lengden av prismet.':null};},
+  syl(){const r=R(2,9),h=R(3,20),V=PI*r*r*h;return{
+    prompt:`En sylinder har radius ${m(r+' cm')} og høyde ${m(h+' cm')}. Finn volumet. Rund av til hele cm³.`,
+    fig:cylSVG(r,h,{W:260,H:230,px:58,r:'r = '+r,h:h+' cm'}),ans:V,unit:'cm³',rel:.01,
+    hints:['V = G · h. Grunnflaten er en sirkel: G = π · r².',`G = π · ${r}² = π · ${r*r} ≈ ${nf(PI*r*r,1)} cm². Gang med ${h}.`],
+    sol:`G = π · ${r}² ≈ ${nf(PI*r*r,1)} cm²<br>V ≈ ${nf(PI*r*r,1)} · ${h} ≈ ${nf(V,0)} cm³`,
+    diag:v=>near(v,2*PI*r*h)?'Du brukte omkretsen 2πr. Grunnflaten er π · r².':near(v,r*r*h)?'Du glemte π. G = π · r².':near(v,PI*r*h)?'Husk at r² betyr r · r.':near(v,PI*r*r)?'Det er grunnflaten. Gang med høyden også.':null};},
+  diam(){const d=R(2,9)*2,h=R(4,20),r=d/2,V=PI*r*r*h;return{
+    prompt:`En sylinder har diameter ${m(d+' cm')} og høyde ${m(h+' cm')}. Finn volumet. Rund av til hele cm³.`,
+    fig:cylSVG(r,h,{W:260,H:230,px:58,d:'d = '+d,h:h+' cm'}),ans:V,unit:'cm³',rel:.01,
+    hints:['Pass på: formelen bruker radius. Radius er halve diameteren.',`r = ${d} : 2 = ${r} cm. G = π · ${r}² ≈ ${nf(PI*r*r,1)} cm².`],
+    sol:`r = ${d} : 2 = ${r} cm<br>G = π · ${r}² ≈ ${nf(PI*r*r,1)} cm²<br>V ≈ ${nf(PI*r*r,1)} · ${h} ≈ ${nf(V,0)} cm³`,
+    diag:v=>near(v,PI*d*d*h)?'Du brukte diameteren. Del den på 2 for å få radius først.':near(v,r*r*h)?'Du glemte π.':near(v,PI*r*h)||near(v,PI*d*h)?'Husk at r² betyr r · r.':null};},
+  enhet(){const P=pick([['L','cm3',[0.5,1.5,2,2.5,3.2,0.75]],['cm3','L',[250,500,1500,3400,750,2000]],['m3','L',[1,2,0.5,1.2,3]],['dm3','cm3',[1,4,0.3,2.5]],['mL','L',[330,500,1250,50]],['dL','L',[5,12,3,25]],['m3','dm3',[2,0.4,1.5]],['L','dL',[1,2.5,0.3]]]);
+    const a=U(P[0]),b=U(P[1]),v=pick(P[2]),fac=a.f/b.f,ans=v*fac;return{
+    prompt:`Gjør om: ${m(nf(v,4)+' '+a.lab)} = ? ${b.lab}`,fig:'',ans,unit:b.lab,rel:1e-9,
+    hints:['Husk: 1 L = 1 dm³ = 1000 cm³ = 1000 mL, og 1 m³ = 1000 L. 1 L = 10 dL = 100 cL.',fac>1?`${b.lab} er en mindre enhet enn ${a.lab}. Gang med ${nf(fac,0)}.`:`${b.lab} er en større enhet enn ${a.lab}. Del på ${nf(1/fac,0)}.`],
+    sol:`${nf(v,4)} ${a.lab} ${fac>1?'· '+nf(fac,0):': '+nf(1/fac,0)} = ${nf(ans,6)} ${b.lab}`,
+    diag:x=>near(x,v/fac,1e-9)?'Du gikk feil vei i trappa. Til en mindre enhet blir tallet større, og omvendt.':[10,100,1000,.1,.01,.001].some(t=>near(x,ans*t,1e-9))?'Riktige sifre, men feil antall nuller eller feil plass for kommaet.':null};},
+  akvarium(){const l=R(4,10)*10,b=R(2,5)*10,h=R(3,6)*10,Vc=l*b*h,V=Vc/1000;return{
+    prompt:`Et akvarium er ${m(l+' cm')} langt, ${m(b+' cm')} bredt og ${m(h+' cm')} høyt. Hvor mange liter vann rommer det?`,
+    fig:prismSVG(l/10,b/10,h/10,{W:260,H:210,pad:40,labels:{l:l+' cm',b:b+' cm',h:h+' cm'}}),ans:V,unit:'L',rel:1e-9,
+    hints:['Finn volumet i cm³ først: V = l · b · h. Gjør så om til liter.',`V = ${l} · ${b} · ${h} = ${nf(Vc,0)} cm³. 1000 cm³ = 1 L.`],
+    sol:`V = ${l} · ${b} · ${h} = ${nf(Vc,0)} cm³<br>${nf(Vc,0)} : 1000 = ${nf(V,3)} L`,
+    diag:v=>v===Vc?'Svaret ditt er i cm³. Del på 1000 for å få liter.':[10,100,.1,.01].some(t=>near(v,V*t,1e-9))?'Sjekk antall nuller. 1 L = 1000 cm³.':null};},
+  botte(){const r=R(5,15),h=R(10,40),Vc=PI*r*r*h,V=Vc/1000;return{
+    prompt:`En tønne har form som en sylinder med radius ${m(r+' cm')} og høyde ${m(h+' cm')}. Hvor mange liter rommer den? Rund av til én desimal.`,
+    fig:cylSVG(r,h,{W:260,H:230,px:58,r:'r = '+r,h:h+' cm'}),ans:V,unit:'L',rel:.01,abs:.051,
+    hints:['Finn V = π · r² · h i cm³ først. Del så på 1000.',`V = π · ${r}² · ${h} ≈ ${nf(Vc,0)} cm³.`],
+    sol:`V = π · ${r}² · ${h} ≈ ${nf(Vc,0)} cm³<br>${nf(Vc,0)} : 1000 ≈ ${nf(V,1)} L`,
+    diag:v=>near(v,Vc,.01)?'Svaret ditt er i cm³. Del på 1000 for å få liter.':near(v,2*PI*r*h/1000,.01)?'Du brukte omkretsen 2πr. Grunnflaten er π · r².':near(v,PI*4*r*r*h/1000,.01)?'Det ser ut som du brukte diameteren. Bruk radius.':null};},
+  hoydeP(){const Gp=R(4,30),h=R(2,15),V=Gp*h;return{
+    prompt:`Et prisme har volum ${m(V+' cm³')} og grunnflate ${m(Gp+' cm²')}. Hvor høyt er prismet?`,fig:'',ans:h,unit:'cm',rel:1e-6,
+    hints:['V = G · h. For å finne h deler du begge sider på G: h = V : G.',`h = ${V} : ${Gp}`],
+    sol:`V = G · h  ⇒  h = V : G = ${V} : ${Gp} = ${h} cm`,
+    diag:v=>v===V*Gp?'Du ganget. Når du skal finne h, deler du V på G.':near(v,Gp/V,1e-6)?'Du delte motsatt vei. Det skal være V : G.':null};},
+  hoydeS(){const r=R(2,6),h=R(3,15),G0=PI*r*r,V=Math.round(G0*h);return{
+    prompt:`En sylinder har radius ${m(r+' cm')} og volum ${m('ca. '+nf(V,0)+' cm³')}. Hvor høy er sylinderen? Rund av til hele cm.`,
+    fig:cylSVG(r,h,{W:260,H:230,px:58,r:'r = '+r,h:'h = ?'}),ans:h,unit:'cm',rel:.02,abs:.5,
+    hints:['Finn grunnflaten først, G = π · r². Så er h = V : G.',`G = π · ${r}² ≈ ${nf(G0,1)} cm². h = ${nf(V,0)} : ${nf(G0,1)}`],
+    sol:`G = π · ${r}² ≈ ${nf(G0,1)} cm²<br>h = V : G ≈ ${nf(V,0)} : ${nf(G0,1)} ≈ ${h} cm`,
+    diag:v=>near(v,V/(r*r),.02)?'Du glemte π i grunnflaten.':near(v,V/(2*PI*r),.02)?'Du brukte omkretsen. Grunnflaten er π · r².':null};}
+};
+
+const KEY='volumverkstedet-v1';
+const blank=()=>({boxes:{prisme:0,sylinder:0,enheter:0,praksis:0,snu:0},correct:0,seen:0});
+let store=blank();let returning=false;
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.boxes){store={...store,...s,boxes:{...store.boxes,...s.boxes}};returning=s.seen>0;}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}};
+let task=null,lastSkill=null,streak=0,sessionN=0;
+
+function renderMastery(){
+  $('#mastery').innerHTML=Object.entries(SKILLS).map(([k,s])=>{const bx=store.boxes[k];return`<div class="mrow"><div class="top"><span>${s.name}</span><span class="lvl">${LEVEL[bx]}</span></div><div class="bar"><i style="width:${bx/4*100}%"></i></div></div>`;}).join('');
+  $('#sStreak').textContent=streak;$('#sTotal').textContent=store.correct;
+}
+function chooseSkill(){
+  const ids=Object.keys(SKILLS).filter(k=>k!==lastSkill);
+  const w=ids.map(k=>5-store.boxes[k]);let r=Math.random()*w.reduce((a,b)=>a+b,0);
+  for(let i=0;i<ids.length;i++){r-=w[i];if(r<=0)return ids[i];}
+  return ids[ids.length-1];
+}
+function finish(ok){
+  task.done=true;$('#tAns').disabled=true;$('#tCheck').disabled=true;$('#tHint').disabled=true;$('#tShow').hidden=true;
+  const n=$('#tNext');n.textContent='Neste oppgave';n.classList.remove('ghost');n.classList.add('primary');n.focus();
+  store.seen++;save();renderMastery();
+}
+$('#tForm').addEventListener('submit',e=>{
+  e.preventDefault();if(!task||task.done)return;
+  const v=parseNum($('#tAns').value),fb=$('#tFb');
+  if(isNaN(v)){fb.className='fb hint';fb.textContent='Skriv svaret som et tall, for eksempel 12,5.';return;}
+  const ok=Math.abs(v-task.ans)<=Math.max(task.rel*Math.abs(task.ans),task.abs||0)+1e-9;
+  if(ok){
+    const first=task.tries===0;
+    if(first&&task.hints===0){store.boxes[task.skill]=Math.min(4,store.boxes[task.skill]+1);}
+    store.correct++;streak++;
+    const praise=first&&task.hints===0?pick(['Riktig!','Helt rett!','Sterkt!','Riktig, godt jobbet!']):'Riktig! Bra at du ikke ga deg.';
+    fb.className='fb good';fb.innerHTML=`<b>${praise}</b><div class="sol">${task.sol}</div>`;
+    finish(true);
+  }else{
+    task.tries++;streak=0;
+    if(!task.lowered){store.boxes[task.skill]=Math.max(0,store.boxes[task.skill]-1);task.lowered=true;save();}
+    const d=task.diag&&task.diag(v);
+    fb.className='fb bad';fb.innerHTML=(d?d:'Ikke helt.')+' Prøv igjen'+(task.hints<task.hintText.length?', eller ta et hint.':'.');
+    if(task.tries>=2)$('#tShow').hidden=false;
+    renderMastery();
+  }
+});
+$('#tHint').addEventListener('click',()=>{
+  if(!task||task.done)return;
+  const list=task.hintText;if(task.hints>=list.length)return;
+  const d=document.createElement('div');d.className='fb hint';d.innerHTML=`<b>Hint ${task.hints+1}:</b> ${list[task.hints]}`;
+  $('#tHints').appendChild(d);task.hints++;
+  if(task.hints>=list.length){$('#tHint').disabled=true;$('#tHint').textContent='Ingen flere hint';}
+  else $('#tHint').textContent='Ett hint til';
+});
+$('#tShow').addEventListener('click',()=>{
+  if(!task||task.done)return;
+  const fb=$('#tFb');fb.className='fb hint';fb.innerHTML=`<b>Slik løser du den:</b><div class="sol">${task.sol}</div>Les gjennom stegene. En lignende oppgave kommer tilbake senere.`;
+  finish(false);
+});
+$('#tNext').addEventListener('click',()=>{newTask();$('#tAns').focus({preventScroll:true});});
+let resetArmed=false;
+$('#reset').addEventListener('click',e=>{
+  if(!resetArmed){resetArmed=true;e.currentTarget.textContent='Sikker? Trykk igjen';setTimeout(()=>{resetArmed=false;$('#reset').textContent='Nullstill fremgang';},4000);return;}
+  store=blank();streak=0;save();resetArmed=false;e.currentTarget.textContent='Nullstill fremgang';renderMastery();newTask();
+});
+if(returning){
+  const weak=Object.entries(store.boxes).sort((a,b)=>a[1]-b[1])[0][0];
+  const w=$('#welcome');w.hidden=false;
+  w.innerHTML=`<b>Velkommen tilbake!</b> Start med noen oppgaver før du ser på teorien. Å hente fram det du har lært, gjør at det sitter bedre. Mest å hente på: <b>${SKILLS[weak].name}</b>.`;
+}
+// Generatorens hint-liste blir hintText, og hints blir en teller
+function newTask(){
+  const sk=chooseSkill();lastSkill=sk;
+  const t=G[pick(SKILLS[sk].gens)]();
+  task={skill:sk,...t,hintText:t.hints,hints:0,tries:0,done:false,lowered:false};
+  sessionN++;
+  $('#tSkill').textContent=SKILLS[sk].name;$('#tCount').textContent='Oppgave '+sessionN;
+  $('#tPrompt').innerHTML=task.prompt;$('#tFig').innerHTML=task.fig;
+  $('#tBody').classList.toggle('nofig',!task.fig);$('#tFig').hidden=!task.fig;
+  $('#tUnit').textContent=task.unit;
+  const a=$('#tAns');a.value='';a.disabled=false;$('#tCheck').disabled=false;
+  $('#tHints').innerHTML='';$('#tFb').innerHTML='';$('#tFb').className='fb';
+  $('#tHint').disabled=false;$('#tHint').textContent='Gi meg et hint';$('#tShow').hidden=true;
+  const n=$('#tNext');n.textContent='Ny oppgave';n.classList.add('ghost');n.classList.remove('primary');
+}
+renderMastery();newTask();
+})();
+</script>
+<script src="../../felles/film.js?v=3"></script>
+<script src="filmer/volum.js?v=1"></script>
+</body>
+</html>

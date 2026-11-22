@@ -151,6 +151,7 @@ input[type=range]{width:100%;accent-color:var(--accent);min-width:0}
 .tfig .fig{max-width:260px;margin:0 auto}
 .tprompt{font-size:1.12rem}
 .tprompt .mono{font-weight:700}
+[hidden]{display:none!important}
 .answer{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .answer input{width:10rem;font-family:var(--f-mono);font-size:1.15rem}
 .answer .unit{font-family:var(--f-mono);font-weight:700}

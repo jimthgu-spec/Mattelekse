@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atomer og periodesystemet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .nuc-p{fill:var(--c1)}
+.fig .nuc-n{fill:var(--muted)}
+.fig .shell{fill:none;stroke:var(--line);stroke-width:1.4}
+.fig .el{fill:var(--c2)}
+.fig .el.out{fill:var(--accent)}
+.ctr{display:grid;grid-template-columns:7rem auto 2.5rem auto;gap:8px;align-items:center}
+.ctr .num{font-family:var(--f-mono);font-weight:700;text-align:center;font-size:1.2rem}
+.ctr .btn{padding:6px 14px;font-size:1.1rem}
+.ps{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-width:440px;width:100%;margin:0 auto}
+.ps .gh{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);text-align:center}
+.ps .cell{aspect-ratio:1;border-radius:6px;border:1px solid var(--line);background:var(--surface);font-family:var(--f-mono);font-size:clamp(.8rem,2.6vw,1.05rem);font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:0;line-height:1.05}
+.ps .cell small{font-size:.65em;font-weight:500;color:var(--muted)}
+.ps .cell.metall{background:var(--c1-soft)}
+.ps .cell.ikke{background:var(--c2-soft)}
+.ps .cell.edel{background:var(--c3-soft)}
+.ps .cell.halv{background:var(--accent-soft)}
+.ps .cell.on{outline:3px solid var(--accent)}
+.ps .cell.dim{opacity:.35}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--k)}
+.mission{font-weight:700}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Atomer</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#bygg"><b>2</b>Bygg atomet</a>
+    <a href="#ps"><b>3</b>Periodesystemet</a>
+    <a href="#sort"><b>4</b>Sorter</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Alt er bygget av atomer</h1>
+      <p class="lead">Et atom har en liten kjerne med <b>protoner</b> og <b>nøytroner</b>, og <b>elektroner</b> i skall rundt. Antall protoner bestemmer hvilket grunnstoff det er. Elektronene i det ytterste skallet bestemmer hvordan det reagerer.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Skallmodell av et natriumatom"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Tenk deg at kjernen i et atom var like stor som en fotball midt på en fotballbane.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="bygg"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bygg atomet</h2></div>
+    <p class="sec-lead">Legg til og fjern protoner, nøytroner og elektroner. Se hvilket grunnstoff du får, og om atomet er nøytralt eller et ion. Løs oppdragene til høyre.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="atomFig" viewBox="0 0 380 300" role="img" aria-label="Atomet du bygger"></svg>
+        <div class="calc" id="atomInfo" aria-live="polite"></div>
+      </div>
+      <div class="controls">
+        <div class="ctr"><b class="c-1">Protoner</b><button class="btn" type="button" data-k="p" data-d="-1" aria-label="Fjern proton">−</button><span class="num" id="np"></span><button class="btn" type="button" data-k="p" data-d="1" aria-label="Legg til proton">+</button></div>
+        <div class="ctr"><b style="color:var(--muted)">Nøytroner</b><button class="btn" type="button" data-k="n" data-d="-1" aria-label="Fjern nøytron">−</button><span class="num" id="nn"></span><button class="btn" type="button" data-k="n" data-d="1" aria-label="Legg til nøytron">+</button></div>
+        <div class="ctr"><b class="c-2">Elektroner</b><button class="btn" type="button" data-k="e" data-d="-1" aria-label="Fjern elektron">−</button><span class="num" id="ne"></span><button class="btn" type="button" data-k="e" data-d="1" aria-label="Legg til elektron">+</button></div>
+        <div class="card2"><span class="tag">Oppdrag <span id="mNo"></span> av <span id="mTot"></span></span><p class="mission" id="mText"></p><div class="row"><button class="btn primary" type="button" id="mCheck">Sjekk atomet</button></div><div class="fb" id="mFb" aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="ps"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Periodesystemet</h2></div>
+    <p class="sec-lead">Her er de 20 første grunnstoffene (gruppe 3–12 er utelatt, de starter først i periode 4). Trykk på et grunnstoff for å se skallene. Sammenlign grunnstoffer i samme <b>gruppe</b> (loddrett kolonne) og i samme <b>periode</b> (vannrett rad).</p>
+    <div class="bench">
+      <div class="figcol">
+        <div class="ps" id="psGrid" role="grid" aria-label="Periodesystemet, de 20 første grunnstoffene"></div>
+        <div class="legend"><span style="--k:var(--c1-soft)">Metall</span><span style="--k:var(--accent-soft)">Halvmetall</span><span style="--k:var(--c2-soft)">Ikke-metall</span><span style="--k:var(--c3-soft)">Edelgass</span></div>
+        <svg class="fig" id="psFig" viewBox="0 0 380 240" role="img" aria-label="Skallmodell av valgt grunnstoff"></svg>
+      </div>
+      <div class="controls">
+        <div class="calc" id="psInfo" aria-live="polite"></div>
+        <div id="p2"></div>
+        <div id="p3"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="sort"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Sorter grunnstoffene</h2></div>
+    <p class="sec-lead">Bruk fargene i periodesystemet hvis du står fast.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Bruk periodesystemet over hvis du trenger det.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om atommodeller og periodesystemet. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const E=[null,
+ ['H','hydrogen',1,'ikke'],['He','helium',4,'edel'],['Li','litium',7,'metall'],['Be','beryllium',9,'metall'],['B','bor',11,'halv'],
+ ['C','karbon',12,'ikke'],['N','nitrogen',14,'ikke'],['O','oksygen',16,'ikke'],['F','fluor',19,'ikke'],['Ne','neon',20,'edel'],
+ ['Na','natrium',23,'metall'],['Mg','magnesium',24,'metall'],['Al','aluminium',27,'metall'],['Si','silisium',28,'halv'],['P','fosfor',31,'ikke'],
+ ['S','svovel',32,'ikke'],['Cl','klor',35,'ikke'],['Ar','argon',40,'edel'],['K','kalium',39,'metall'],['Ca','kalsium',40,'metall']];
+const TYPE={metall:'metall',halv:'halvmetall',ikke:'ikke-metall',edel:'edelgass'};
+const shells=n=>{const cap=[2,8,8,2],r=[];let left=n;for(const c of cap){if(left<=0)break;const k=Math.min(c,left);r.push(k);left-=k;}if(left>0)r[r.length-1]+=left;return r;};
+const period=z=>shells(z).length;
+const group=z=>{if(z===1)return 1;if(z===2)return 18;const o=shells(z).slice(-1)[0];if(z>=19)return o;return o<=2?o:o+10;};
+function atomSVG(p,n,e,W=380,H=300){
+  const cx=W/2,cy=H/2,sh=shells(e),R0=Math.min(W,H)*.15;
+  let s='';
+  sh.forEach((k,i)=>{const r=R0+i*(Math.min(W,H)*.11);s+=`<circle class="shell" cx="${cx}" cy="${cy}" r="${fx(r)}"/>`;
+    for(let j=0;j<k;j++){const a=-Math.PI/2+j*2*Math.PI/k+i*.3;s+=`<circle class="el${i===sh.length-1?' out':''}" cx="${fx(cx+r*Math.cos(a))}" cy="${fx(cy+r*Math.sin(a))}" r="6"/>`;}});
+  const tot=p+n;
+  // fordel nukleonene jevnt
+  const nuc=[];let pp=p,nn=n;for(let i=0;i<tot;i++){if((i%2===0&&pp>0)||nn===0){nuc.push('p');pp--;}else{nuc.push('n');nn--;}}
+  const rr=Math.min(R0*.75,5+Math.sqrt(tot)*4.2);
+  nuc.forEach((t,i)=>{const a=i*2.39996,d=rr*Math.sqrt((i+.5)/Math.max(1,tot));s+=`<circle class="nuc-${t}" cx="${fx(cx+d*Math.cos(a))}" cy="${fx(cy+d*Math.sin(a))}" r="5.2" stroke="var(--surface)" stroke-width="1"/>`;});
+  return s;
+}
+$('#heroFig').innerHTML=atomSVG(11,12,11,380,220);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvor langt unna ville de ytterste elektronene vært?',opts:['Ved midtstreken','Ved tribunen','Flere kilometer unna'],ok:2,
+  expl:'Atomet er nesten bare tomrom! Er kjernen en fotball, er atomet omtrent 20 kilometer bredt. Likevel er nesten all massen i kjernen. Derfor tegner vi skallmodellen ikke i riktig målestokk.',
+  retry:'Lenger enn du tror. Atomet er nesten bare tomrom. Prøv igjen.'});
+
+/* ---------- 2 Atombygger ---------- */
+let A={p:6,n:6,e:6};
+const MISS=[
+  {t:'Bygg et nøytralt karbonatom med 6 nøytroner.',ok:a=>a.p===6&&a.n===6&&a.e===6,hint:'Karbon har atomnummer 6.'},
+  {t:'Bygg et nøytralt oksygenatom med massetall 16.',ok:a=>a.p===8&&a.n===8&&a.e===8,hint:'Massetall = protoner + nøytroner.'},
+  {t:'Bygg et natriumion, Na⁺.',ok:a=>a.p===11&&a.e===10&&a.n>=11&&a.n<=13,hint:'Na⁺ har mistet ett elektron. Natrium har 11 protoner.'},
+  {t:'Bygg et kloridion, Cl⁻, med 18 nøytroner.',ok:a=>a.p===17&&a.e===18&&a.n===18,hint:'Cl⁻ har tatt opp ett ekstra elektron.'},
+  {t:'Bygg en edelgass i periode 3.',ok:a=>a.p===18&&a.e===18&&a.n>=18,hint:'Edelgassene står helt til høyre. Hvilken står i rad 3?'}];
+let mi=0;
+function renderAtom(){
+  $('#np').textContent=A.p;$('#nn').textContent=A.n;$('#ne').textContent=A.e;
+  $('#atomFig').innerHTML=atomSVG(A.p,A.n,A.e);
+  const el=E[A.p],ch=A.p-A.e,chs=ch===0?'0 (nøytralt atom)':(ch>0?'+'+ch:'−'+(-ch))+' (ion)';
+  $('#atomInfo').innerHTML=A.p===0?'Uten protoner er det ikke noe grunnstoff. Legg til et proton.':
+    `Grunnstoff: <b>${el?el[1]+' ('+el[0]+')':'?'}</b><br>Atomnummer: <b>${A.p}</b> · Massetall: <b>${A.p+A.n}</b><br>Ladning: <b>${chs}</b><br>Skall: <b>${shells(A.e).join(', ')||'–'}</b>`+
+    (A.p>0&&(A.n<A.p-1||A.n>A.p*1.6+2)?'<br><span class="c-b">Denne kjernen ville vært ustabil.</span>':'');
+}
+function renderMission(){$('#mNo').textContent=Math.min(mi+1,MISS.length);$('#mTot').textContent=MISS.length;
+  $('#mText').textContent=mi<MISS.length?MISS[mi].t:'Alle oppdragene er løst!';$('#mCheck').disabled=mi>=MISS.length;}
+document.querySelectorAll('.ctr .btn').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.k;A[k]=Math.max(0,Math.min(k==='n'?24:20,A[k]+ +b.dataset.d));renderAtom();}));
+$('#mCheck').addEventListener('click',()=>{const m=MISS[mi],fb=$('#mFb');if(!m)return;
+  if(m.ok(A)){fb.className='fb good';fb.innerHTML='Riktig! '+(mi===2?'Natrium gir lett fra seg det ene elektronet i ytterste skall, og får da fulle skall.':mi===3?'Klor tar gjerne opp ett elektron for å fylle ytterste skall med 8.':'');mi++;renderMission();}
+  else{fb.className='fb bad';fb.innerHTML='Ikke helt. '+m.hint;}});
+renderAtom();renderMission();
+
+/* ---------- 3 Periodesystemet ---------- */
+let psSel=11;
+function renderPS(){
+  const GR=[1,2,13,14,15,16,17,18];let h=GR.map(g=>`<span class="gh">${g}</span>`).join('');for(let per=1;per<=4;per++)for(const g of GR){const z=E.findIndex((x,i)=>i>0&&period(i)===per&&group(i)===g);
+    h+=z>0?`<button type="button" class="cell ${E[z][3]}${z===psSel?' on':''}" data-z="${z}" aria-label="${E[z][1]}"><small>${z}</small>${E[z][0]}</button>`:'<span></span>';}
+  $('#psGrid').innerHTML=h;
+  $('#psGrid').querySelectorAll('.cell').forEach(c=>c.addEventListener('click',()=>{psSel=+c.dataset.z;renderPS();}));
+  const z=psSel,e=E[z],sh=shells(z);
+  $('#psFig').innerHTML=atomSVG(z,e[2]-z,z,380,240);
+  $('#psInfo').innerHTML=`<b>${e[1][0].toUpperCase()+e[1].slice(1)} (${e[0]})</b><br>Atomnummer ${z} · massetall ${e[2]}<br>Gruppe ${group(z)} · periode ${period(z)}<br>Skall: ${sh.join(', ')}<br>Elektroner i ytterste skall: <b>${sh[sh.length-1]}</b><br>Type: ${TYPE[e[3]]}`;
+}
+renderPS();
+V.predict($('#p2'),{tag:'Finn mønsteret',q:'Trykk på Li, Na og K. Hva har de felles?',opts:['Like mange skall','Ett elektron i ytterste skall','Like stor masse'],ok:1,
+  expl:'Alle i gruppe 1 har ett elektron i ytterste skall. Det gjør at de reagerer på samme måte: de gir lett fra seg elektronet og blir positive ioner. Derfor er alkalimetallene så reaktive.',retry:'Se på linja «Elektroner i ytterste skall» for hver av dem.'});
+V.predict($('#p3'),{tag:'Finn mønsteret',q:'Trykk på Na, Mg og Al. Hva har grunnstoffene i samme periode felles?',opts:['Samme antall skall','Samme antall elektroner i ytterste skall','Samme type'],ok:0,
+  expl:'Periodenummeret er antall elektronskall. Bortover i perioden får ytterste skall ett elektron mer for hvert grunnstoff.',retry:'Se på linja «Skall» for hver av dem.'});
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'metall',name:'Metall'},{id:'ikke',name:'Ikke-metall'},{id:'edel',name:'Edelgass'}],
+  items:[{t:'Natrium',g:'metall'},{t:'Magnesium',g:'metall'},{t:'Kalsium',g:'metall'},{t:'Oksygen',g:'ikke'},{t:'Klor',g:'ikke',why:'Klor er en giftig gass, ikke en edelgass. Edelgassene står i gruppe 18.'},{t:'Karbon',g:'ikke'},{t:'Neon',g:'edel'},{t:'Argon',g:'edel'}],
+  good:'Riktig! Metallene står til venstre og gir fra seg elektroner. Ikke-metallene står til høyre og tar opp elektroner. Edelgassene har fullt ytterste skall og reagerer nesten ikke.'});
+
+/* ---------- Øving ---------- */
+const nm=z=>E[z][1];
+const skills={
+  partikler:{name:'Protoner, nøytroner, elektroner',gens:[
+    ()=>{const z=R(1,20);return {prompt:`Hvor mange <b>protoner</b> har et ${nm(z)}atom (${E[z][0]}, atomnummer ${z})?`,ans:z,hints:['Atomnummeret er antall protoner.'],sol:`Atomnummer ${z} betyr <b>${z}</b> protoner.`};},
+    ()=>{const z=R(2,20),a=E[z][2];return {prompt:`${nm(z)[0].toUpperCase()+nm(z).slice(1)} (${E[z][0]}) har atomnummer ${z} og massetall ${a}. Hvor mange <b>nøytroner</b> har atomet?`,ans:a-z,hints:['Massetall = protoner + nøytroner.',`Nøytroner = ${a} − ${z}.`],sol:`${a} − ${z} = <b>${a-z}</b> nøytroner.`,diag:v=>v===a+z?'Du har lagt sammen. Massetallet inneholder allerede protonene.':v===z?'Det er antall protoner.':null};},
+    ()=>{const z=pick([3,11,12,19,20,9,17,8]),ch=[3,11,19].includes(z)?1:[12,20].includes(z)?2:[9,17].includes(z)?-1:-2;const sym=E[z][0]+(Math.abs(ch)>1?'²':'')+(ch>0?'⁺':'⁻');
+      return {prompt:`Ionet ${sym} har atomnummer ${z}. Hvor mange <b>elektroner</b> har ionet?`,ans:z-ch,hints:['Positivt ion har mistet elektroner. Negativt ion har fått ekstra.',`Start med ${z} elektroner, og trekk fra ladningen.`],sol:`${z} ${ch>0?'−':'+'} ${Math.abs(ch)} = <b>${z-ch}</b> elektroner.`,diag:v=>v===z+ch?'Motsatt vei: et positivt ion har færre elektroner enn protoner.':v===z?'Det er for et nøytralt atom. Husk ladningen.':null};}
+  ]},
+  skall:{name:'Elektronskall',gens:[
+    ()=>{const z=R(1,20),sh=shells(z);return {prompt:`Hvor mange elektroner har ${nm(z)} (${z} elektroner) i <b>ytterste skall</b>?`,ans:sh[sh.length-1],hints:['Første skall tar 2, andre tar 8, tredje tar 8.',`Fordel ${z} elektroner skall for skall.`],sol:`Skallene: ${sh.join(', ')}. Ytterste skall har <b>${sh[sh.length-1]}</b>.`};},
+    ()=>{const z=R(3,20);return {prompt:`Hvor mange elektronskall har ${nm(z)} (atomnummer ${z})?`,ans:period(z),hints:['Antall skall er det samme som periodenummeret.'],sol:`${nm(z)[0].toUpperCase()+nm(z).slice(1)} står i periode ${period(z)}, så atomet har <b>${period(z)}</b> skall.`};}
+  ]},
+  ps:{name:'Lese periodesystemet',gens:[
+    ()=>{const z=pick([3,11,19,4,12,20,9,17,2,10,18]);const sh=shells(z),o=sh[sh.length-1];const r=o===1?'Gir lett fra seg ett elektron':o===2&&z!==2?'Gir lett fra seg to elektroner':o===7?'Tar lett opp ett elektron':'Reagerer nesten ikke';
+      return N.mc(`Hvordan oppfører ${nm(z)} seg i kjemiske reaksjoner?`,r,['Gir lett fra seg ett elektron','Gir lett fra seg to elektroner','Tar lett opp ett elektron','Reagerer nesten ikke'].filter(x=>x!==r).slice(0,3),['Se på antall elektroner i ytterste skall.'],`${nm(z)[0].toUpperCase()+nm(z).slice(1)} har ${o} elektron${o>1?'er':''} i ytterste skall. ${r}, slik at ytterste skall blir fullt.`);},
+    ()=>N.mc('Hva bestemmer hvilket grunnstoff et atom er?','Antall protoner',['Antall nøytroner','Antall elektroner','Massetallet'],['Atomnummeret i periodesystemet.'],'Antall protoner (atomnummeret) bestemmer grunnstoffet. Antall nøytroner kan variere (isotoper), og elektroner kan gis bort eller tas opp (ioner).',{'Antall elektroner':'Elektroner kan gis bort og tas opp uten at grunnstoffet endres, da blir det bare et ion.'}),
+    ()=>N.mc('Hvem laget det første periodesystemet, der han lot det stå tomme plasser for grunnstoffer som ikke var oppdaget?','Dmitrij Mendelejev',['Albert Einstein','Marie Curie','Niels Bohr'],['Han var russisk kjemiker.'],'Mendelejev ordnet grunnstoffene i 1869 og forutså egenskapene til grunnstoffer som ble oppdaget senere. Niels Bohr laget skallmodellen.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-atomer',title:'Atomer og periodesystemet',skills});
+})();
+</script>
+</body>
+</html>

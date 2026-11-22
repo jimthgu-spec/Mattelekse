@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Immunforsvar og vaksiner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .p-s{fill:#adb5bd}
+.fig .p-i{fill:#e03131}
+.fig .p-r{fill:#4dabf7}
+.fig .p-v{fill:#2f9e44}
+.fig .ptS{stroke:#868e96;stroke-width:2.2;fill:none}
+.fig .ptI{stroke:#e03131;stroke-width:2.4;fill:none}
+.fig .ptR{stroke:#4dabf7;stroke-width:2.2;fill:none}
+.fig .ptA{stroke:var(--c3);stroke-width:2.6;fill:none}
+.fig .ptB{stroke:var(--c2);stroke-width:2.6;fill:none;stroke-dasharray:6 4}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--k)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Immunforsvar</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#forsvar"><b>2</b>Forsvarslinjene</a>
+    <a href="#antistoff"><b>3</b>Antistoffer</a>
+    <a href="#smitte"><b>4</b>Smittesimulering</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Kroppen husker fiendene sine</h1>
+      <p class="lead">Immunforsvaret stopper bakterier og virus i flere lag. Det viktigste er at det <b>husker</b>: neste gang samme virus kommer, slår det tilbake så raskt at du ikke blir syk. En <b>vaksine</b> lærer immunforsvaret opp uten at du må bli syk først.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Antistoffer som fester seg til virus"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">De fleste som har hatt vannkopper, får det aldri igjen.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="forsvar"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Forsvarslinjene</h2></div>
+    <p class="sec-lead">Et virus prøver å komme inn i kroppen. Sett forsvaret i riktig rekkefølge, fra det første det møter til det som beskytter deg neste gang.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="fill1"></div></div>
+  </div></section>
+
+  <section id="antistoff"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Antistoffer: første og andre gang</h2></div>
+    <p class="sec-lead">Grafen viser mengden antistoffer i blodet etter at du blir smittet. Velg om personen er vaksinert eller ikke, og sammenlign.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="abFig" role="img" aria-label="Graf over antistoffer i blodet"></svg>
+        <div class="legend"><span style="--k:var(--c3)">Antistoffer</span><span style="--k:var(--c2)">Mengde virus</span></div></div>
+      <div class="controls">
+        <div class="pick" id="abPick"><button class="btn on" type="button" data-v="0" aria-pressed="true">Ikke vaksinert</button><button class="btn" type="button" data-v="1" aria-pressed="false">Vaksinert</button></div>
+        <div class="calc" id="abOut" aria-live="polite" style="font-family:var(--f-body)"></div>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="smitte"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Smittesimulering</h2></div>
+    <p class="sec-lead">Hver prikk er en person. Tre personer er smittet. Velg sykdom og hvor mange som er vaksinert, og trykk <b>Start</b>. Finn ut hvor mange som må være vaksinert for at smitten ikke sprer seg.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="town" viewBox="0 0 300 300" role="img" aria-label="Byen med 400 personer"></svg>
+        <div class="legend"><span style="--k:#adb5bd">Kan smittes</span><span style="--k:#e03131">Syk</span><span style="--k:#4dabf7">Frisk igjen</span><span style="--k:#2f9e44">Vaksinert</span></div>
+      </div>
+      <div class="controls">
+        <div class="pick" id="disPick"></div>
+        <div id="vacSl"></div>
+        <div class="row"><button class="btn primary" type="button" id="go">Start</button></div>
+        <svg class="fig" id="epiFig" role="img" aria-label="Graf over antall syke"></svg>
+        <div class="fb" id="epiFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om immunforsvaret og vaksiner. Smittemodellen er forenklet. Les mer om vaksiner hos Folkehelseinstituttet (fhi.no). Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Hero ---------- */
+(function(){let s='';const vir=(x,y)=>{let t=`<circle cx="${x}" cy="${y}" r="16" fill="#e03131" opacity=".85"/>`;for(let i=0;i<8;i++){const a=i*Math.PI/4;t+=`<line x1="${fx(x+16*Math.cos(a))}" y1="${fx(y+16*Math.sin(a))}" x2="${fx(x+24*Math.cos(a))}" y2="${fx(y+24*Math.sin(a))}" stroke="#e03131" stroke-width="3"/>`;}return t;};
+  const ab=(x,y,r)=>`<g transform="translate(${x} ${y}) rotate(${r})"><path d="M0,0 V-14 M0,-14 L-8,-24 M0,-14 L8,-24" stroke="var(--c3)" stroke-width="4" stroke-linecap="round" fill="none"/></g>`;
+  s+=vir(110,90)+vir(260,130)+ab(140,95,60)+ab(90,60,-30)+ab(235,150,-120)+ab(285,100,40)+ab(200,60,10)+ab(60,160,-60);
+  $('#heroFig').innerHTML=s;})();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvorfor blir du ikke syk av vannkopper igjen?',opts:['Viruset forsvinner fra jorda','Immunforsvaret har hukommelsesceller som kjenner igjen viruset','Huden blir tykkere'],ok:1,
+  expl:'Etter en sykdom har du <b>hukommelsesceller</b> som husker akkurat det viruset. Neste gang lager de antistoffer så raskt at viruset stoppes før du merker noe. Det kalles å være <b>immun</b>.',retry:'Vannkoppeviruset finnes fortsatt. Hva er det i kroppen som har endret seg? Prøv igjen.'});
+
+/* ---------- 2 Forsvarslinjene ---------- */
+N.fill($('#fill1'),{html:'1. []<br>2. []<br>3. []<br>4. []',tokens:['Hud og slimhinner stopper viruset','Eteceller spiser inntrengere og gir betennelse','B-celler lager antistoffer som fester seg til viruset','Hukommelsesceller husker viruset til neste gang'],
+  check:v=>{const ok=['Hud og slimhinner stopper viruset','Eteceller spiser inntrengere og gir betennelse','B-celler lager antistoffer som fester seg til viruset','Hukommelsesceller husker viruset til neste gang'];const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:'Ikke helt. Det første forsvaret er utenpå kroppen. Det siste skjer etter at du er blitt frisk.'}:{ok:true,msg:'Riktig! De to første er det <b>medfødte</b> forsvaret, som angriper alt fremmed. De to siste er det <b>ervervede</b> forsvaret, som er skreddersydd for akkurat dette viruset og tar noen dager å komme i gang første gang.'};}});
+
+/* ---------- 3 Antistoffer ---------- */
+let vac=0;
+const bump=(t,t0,peak,rise,decay)=>t<t0?0:peak*(1-Math.exp(-(t-t0)/rise))*Math.exp(-(t-t0)/decay);
+function renderAB(){const A=[],Vp=[];
+  for(let t=0;t<=30;t+=.5){const ab=vac?bump(t,1,100,1.2,25):bump(t,6,60,2.5,18);A.push([t,ab]);
+    const vir=vac?Math.max(0,30*Math.exp(-Math.pow((t-2)/1.4,2))):Math.max(0,80*Math.exp(-Math.pow((t-7)/3,2)));Vp.push([t,vir]);}
+  N.graph($('#abFig'),{x:{min:0,max:30,step:5,label:'Dager etter smitte',fmt:v=>v},y:{min:0,max:100,step:25,label:'Mengde'},series:[{pts:Vp,dots:false,lineCls:'ptB'},{pts:A,dots:false,lineCls:'ptA'}],
+    marks:(X,Y)=>vac?'':`<rect x="${X(4)}" y="14" width="${X(11)-X(4)}" height="${Y(0)-14}" fill="#e03131" opacity=".08"/><text class="lbl small" x="${X(7.5)}" y="28" text-anchor="middle">syk</text>`,W:380,H:220});
+  $('#abOut').innerHTML=vac?'Vaksinert: hukommelsescellene kjenner igjen viruset. Antistoffene kommer etter 1–2 dager og blir mange flere. Viruset stoppes før du blir syk.':'Ikke vaksinert: immunforsvaret har aldri sett viruset før. Det tar rundt en uke før det er nok antistoffer. I mellomtiden formerer viruset seg, og du blir syk.';
+  $('#abPick').querySelectorAll('button').forEach(b=>{b.classList.toggle('on',+b.dataset.v===vac);b.setAttribute('aria-pressed',+b.dataset.v===vac);});}
+$('#abPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{vac=+b.dataset.v;renderAB();}));
+renderAB();
+V.predict($('#p2'),{tag:'Hva er en vaksine?',q:'Hva inneholder en vaksine som regel?',opts:['Svekket eller dødt virus, eller bare en bit av det','Antibiotika','Ferdige hukommelsesceller fra andre'],ok:0,
+  expl:'Vaksinen viser immunforsvaret hvordan viruset ser ut, uten at det kan gjøre deg syk. Kroppen lager selv antistoffer og hukommelsesceller. Noen vaksiner (mRNA) inneholder en oppskrift som får cellene dine til å lage én ufarlig bit av viruset.',retry:'Vaksinen skal trene immunforsvaret ditt. Hva trenger det å se? Prøv igjen.'});
+
+/* ---------- 4 Smittesimulering ---------- */
+const DIS={flu:{n:'Influensa',R:2},cov:{n:'Covid-19 (tidlig)',R:3},mes:{n:'Meslinger',R:15}};
+let dis='cov',vacP=0,running=null,P=[],hist=[];const NN=400,SIDE=20;
+const vS=N.slider($('#vacSl'),{id:'vac',label:'Vaksinert',min:0,max:95,step:5,value:0,fmt:v=>v+' %',on:v=>{vacP=v;if(!running)reset();}});
+$('#disPick').innerHTML=Object.entries(DIS).map(([k,d])=>`<button type="button" class="btn" data-d="${k}">${d.n}</button>`).join('');
+$('#disPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(running)return;dis=b.dataset.d;reset();}));
+function reset(){const idx=V.shuffle([...Array(NN).keys()]);const nv=Math.round(NN*vacP/100);P=Array(NN).fill('s');idx.slice(0,nv).forEach(i=>P[i]='v');idx.slice(nv,nv+3).forEach(i=>P[i]='i');hist=[[0,P.filter(p=>p==='i').length]];draw();
+  $('#disPick').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.d===dis));$('#epiFb').className='fb';$('#epiFb').innerHTML='';}
+function draw(){let s='';P.forEach((p,i)=>{s+=`<circle class="p-${p}" cx="${8+(i%SIDE)*14.6}" cy="${8+Math.floor(i/SIDE)*14.6}" r="5.5"/>`;});$('#town').innerHTML=s;
+  const mx=Math.max(20,...hist.map(h=>h[0]));
+  N.graph($('#epiFig'),{x:{min:0,max:mx,step:mx>40?10:5,label:'Dager',fmt:v=>v},y:{min:0,max:NN,step:100,label:'Syke'},series:[{pts:hist,dots:false,lineCls:'ptI'}],W:380,H:180});}
+function step(){// hver syk smitter i snitt R personer i løpet av sykdommen (5 dager), tilfeldige kontakter
+  const R=DIS[dis].R,next=P.slice();
+  P.forEach((p,i)=>{if(p!=='i')return;const contacts=R/5*(1+Math.random()*.0);let k=Math.floor(contacts)+(Math.random()<contacts%1?1:0);
+    while(k-->0){const near=Math.random()<.4;let j;if(near){const dx=Math.round((Math.random()-.5)*6),dy=Math.round((Math.random()-.5)*6);const x=i%SIDE+dx,y=Math.floor(i/SIDE)+dy;if(x<0||y<0||x>=SIDE||y>=SIDE)continue;j=y*SIDE+x;}else j=Math.floor(Math.random()*NN);
+      if(P[j]==='s'&&next[j]==='s')next[j]='i';}
+    if(Math.random()<1/5)next[i]='r';});
+  P=next;}
+$('#go').addEventListener('click',()=>{if(running)return;reset();let day=0;
+  const tick=()=>{day++;step();hist.push([day,P.filter(p=>p==='i').length]);draw();
+    if(P.includes('i')&&day<150){running=setTimeout(tick,V.reduce?0:60);return;}running=null;
+    const sick=P.filter(p=>p==='r'||p==='i').length,unv=NN-P.filter(p=>p==='v').length,thr=Math.round((1-1/DIS[dis].R)*100);
+    const fb=$('#epiFb');fb.className='fb '+(sick<25?'good':'hint');
+    fb.innerHTML=`${sick} av ${NN} ble syke (${Math.round(sick/Math.max(1,unv)*100)} % av de uvaksinerte). `+(sick<25?`Smitten døde ut! Dette er <b>flokkimmunitet</b>: de vaksinerte beskytter også de som ikke kan vaksineres, som nyfødte og syke.`:`Prøv å øke vaksinasjonsgraden. For ${DIS[dis].n.toLowerCase()} regner man at rundt ${thr} % må være immune for flokkimmunitet.`)+' Kjør flere ganger, tilfeldigheter spiller inn.';};
+  tick();});
+reset();
+
+/* ---------- Øving ---------- */
+const skills={
+  forsvar:{name:'Immunforsvaret',gens:[
+    ()=>N.mc('Hva gjør antistoffer?','Fester seg til bestemte virus og bakterier så de blir uskadelige',['Dreper alle bakterier i tarmen','Frakter oksygen','Lager feber'],['De er skreddersydde.'],'Hvert antistoff passer bare til én type inntrenger, som en nøkkel i en lås. Det merker inntrengeren så den blir ødelagt.'),
+    ()=>N.mc('Hva er forskjellen på det medfødte og det ervervede immunforsvaret?','Det medfødte angriper alt fremmed, det ervervede er spesialisert og husker',['Det medfødte har du bare som barn','Det ervervede får du fra mora'],['Tenk på forsvarslinjene.'],'Hud, slimhinner, eteceller og betennelse er medfødt. Antistoffer og hukommelsesceller er ervervet og tar tid å bygge opp første gang.'),
+    ()=>N.mc('Hvorfor får du feber når du er syk?','Høyere temperatur gjør det vanskeligere for mange mikrober og hjelper immunforsvaret',['Viruset varmer opp kroppen','Fordi du ligger under dyna'],['Feber er en del av forsvaret.'],'Feber er kroppens eget forsvar. Mange bakterier og virus formerer seg dårligere, og immuncellene jobber raskere.')
+  ]},
+  vaksine:{name:'Vaksiner og medisiner',gens:[
+    ()=>N.mc('Du har forkjølelse (et virus). Hjelper antibiotika?','Nei, antibiotika virker bare mot bakterier',['Ja, det dreper alle mikrober','Ja, men bare om natta'],['Hva er forskjellen på virus og bakterier?'],'Antibiotika angriper deler av bakteriene som virus ikke har. Unødvendig bruk gjør at bakterier blir resistente.'),
+    ()=>N.mc('Hvorfor må noen vaksiner tas på nytt hvert år?','Viruset endrer seg (muterer), som influensaviruset',['Vaksinen forsvinner ut med urinen','Fordi kroppen glemmer alt'],['Tenk på evolusjon.'],'Influensaviruset muterer raskt, så hukommelsescellene kjenner det ikke igjen neste år. Derfor lages en ny vaksine hver høst.'),
+    ()=>N.mc('Hva betyr flokkimmunitet?','Så mange er immune at smitten ikke klarer å spre seg',['At hele flokken er syk samtidig','At dyr kan smitte mennesker'],['Se på smittesimuleringen.'],'Når nok er immune, møter en smittet person stort sett bare immune. Da dør smitten ut, og også de som ikke kan vaksineres, blir beskyttet.')
+  ]},
+  tall:{name:'Regne på smitte',gens:[
+    ()=>{const R=pick([2,3,4,5,10,15]);const ans=(1-1/R)*100;return {prompt:`For flokkimmunitet må omtrent (1 − 1/R) av befolkningen være immune, der R er hvor mange én syk smitter. Hvor mange prosent må være immune hvis R = ${R}?`,ans,unit:'%',abs:.6,hints:[`1/${R} = ${nf(1/R,3)}.`,`1 − ${nf(1/R,3)}, og gang med 100.`],sol:`1 − 1/${R} = ${nf(1-1/R,3)} = <b>${nf(ans,1)} %</b>`};},
+    ()=>{const R=pick([2,3]),g=pick([3,4,5]);return {prompt:`Én person er syk. Hver syk smitter ${R} nye før de blir friske. Hvor mange blir smittet i <b>${g}. runde</b> hvis ingen er immune?`,ans:Math.pow(R,g),hints:['Runde 1: '+R+' nye. Runde 2: hver av dem smitter '+R+'.',`Det blir ${R} ganget med seg selv ${g} ganger.`],sol:`${R}<sup>${g}</sup> = <b>${Math.pow(R,g)}</b> nye smittede i runde ${g}.`,diag:v=>v===R*g?'Antallet ganges for hver runde, det legges ikke til.':null};}
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-immunforsvar',title:'Immunforsvar og vaksiner',skills});
+})();
+</script>
+</body>
+</html>

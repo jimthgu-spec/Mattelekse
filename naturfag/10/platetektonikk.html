@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Platetektonikk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .sky{fill:#dbeafe}
+.fig .sea{fill:#4dabf7;fill-opacity:.7}
+.fig .oc{fill:#495057}
+.fig .co{fill:#a9825a}
+.fig .mantle{fill:#f08c00;fill-opacity:.45}
+.fig .magma{fill:#e8590c}
+.fig .arrow{stroke:var(--ink);stroke-width:2.4;marker-end:url(#ar)}
+.fig .quake{fill:#fab005;stroke:#e67700;stroke-width:1.2}
+.fig .lab{fill:var(--ink);font-family:var(--f-body);font-size:12px;font-weight:700;paint-order:stroke;stroke:#ffffffcc;stroke-width:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Platetektonikk</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#grenser"><b>2</b>Plategrensene</a>
+    <a href="#steder"><b>3</b>Hvor i verden</a>
+    <a href="#svalbard"><b>4</b>Svalbard</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Jorda er i bevegelse</h1>
+      <p class="lead">Jordskorpa er delt i store <b>plater</b> som flyter på den seige mantelen under. De beveger seg noen centimeter i året, omtrent like fort som neglene dine vokser. Der platene møtes, får vi fjell, vulkaner og jordskjelv.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Tverrsnitt av to plater som møtes"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Fossiler av den lille ferskvannsøglen <i>Mesosaurus</i> er funnet både i Sør-Amerika og i Afrika, men ingen andre steder. Den kunne ikke svømme over et hav.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="grenser"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Plategrensene</h2></div>
+    <p class="sec-lead">Velg type plategrense og dra i tiden. Se hva som skjer i løpet av millioner av år. Gule stjerner er jordskjelv.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="pgFig" viewBox="0 0 380 260" role="img" aria-label="Tverrsnitt av plategrense"></svg></div>
+      <div class="controls">
+        <div class="pick" id="pgPick"></div>
+        <div id="pgSl"></div>
+        <div class="row"><button class="btn primary" type="button" id="pgPlay">Spill av</button></div>
+        <div class="calc" id="pgOut" aria-live="polite" style="font-family:var(--f-body);line-height:1.55"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="steder"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Hvor i verden?</h2></div>
+    <p class="sec-lead">Sorter stedene etter hvilken plategrense som har formet dem.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="svalbard"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Kull på Svalbard</h2></div>
+    <p class="sec-lead">På Svalbard er det drevet kullgruver i over hundre år. Kull er rester av store skoger og sumper. I dag vokser det nesten ingen trær på Svalbard.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om platetektonikk og hvordan jordoverflaten endres. Tverrsnittene er forenklet og ikke i målestokk. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const TYPES={
+  div:{n:'Fra hverandre (hav)',txt:t=>`Platene glir fra hverandre. Magma stiger opp i sprekken og stivner til ny havbunn. Sånn vokser Atlanterhavet med 2–3 cm i året. Etter ${nf(t,0)} millioner år er havet blitt ${nf(t*25,0)} km bredere. På Island ligger denne grensen over havet.`},
+  sub:{n:'Hav møter kontinent',txt:t=>`Havbunnsplata er tyngst og dykker ned under kontinentet (subduksjon). Den smelter i dypet, og magmaen stiger opp og lager vulkaner. Det blir kraftige jordskjelv langs grensen. Slik er Andesfjellene og vulkanene i Japan dannet.`},
+  col:{n:'Kontinent møter kontinent',txt:t=>`To kontinenter er like lette, så ingen av dem dykker ned. Skorpa presses sammen og foldes opp til høye fjell. Himalaya ble dannet da India kolliderte med Asia, og vokser fortsatt. For 400 millioner år siden ble de norske fjellene (den kaledonske fjellkjeden) dannet slik.`},
+  tra:{n:'Glir langs hverandre',txt:t=>`Platene glir forbi hverandre sidelengs. De hekter seg fast, spenningen bygger seg opp, og plutselig rykker de. Det gir jordskjelv, men ingen vulkaner. San Andreas-forkastningen i California er en slik grense.`}};
+let pt='div',tt=0,play=null;
+function pg(type,t,W=380,H=260){const p=t/100;let s=`<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="var(--ink)"/></marker></defs>`;
+  s+=`<rect class="sky" width="${W}" height="${H}" rx="10"/><rect class="mantle" x="0" y="170" width="${W}" height="${H-170}"/>`;
+  const q=(x,y)=>`<path class="quake" d="M${x},${y-7} l2,5 5,0 -4,3 2,5 -5,-3 -5,3 2,-5 -4,-3 5,0z"/>`;
+  if(type==='div'){const gap=6+p*60;
+    s+=`<rect class="sea" x="0" y="90" width="${W}" height="40"/>`;
+    s+=`<path class="oc" d="M0,130 H${W/2-gap/2} L${W/2-gap/2+6},${130-6*p} V170 H0Z"/><path class="oc" d="M${W},130 H${W/2+gap/2} L${W/2+gap/2-6},${130-6*p} V170 H${W}Z"/>`;
+    s+=`<rect class="magma" x="${W/2-gap/2-1}" y="${128-4*p}" width="${gap+2}" height="${44+4*p}"/><path class="magma" d="M${W/2-gap/2-10},172 Q${W/2},${150} ${W/2+gap/2+10},172Z"/>`;
+    s+=`<line class="arrow" x1="${W/2-40}" y1="150" x2="${W/2-110}" y2="150"/><line class="arrow" x1="${W/2+40}" y1="150" x2="${W/2+110}" y2="150"/>`;
+    s+=`<text class="lab" x="${W/2}" y="85" text-anchor="middle">midthavsrygg</text>`;if(Math.round(t)%20<10)s+=q(W/2,125);}
+  else if(type==='sub'){const off=p*60,mh=20+p*55;
+    s+=`<rect class="sea" x="0" y="100" width="${W/2}" height="30"/>`;
+    s+=`<path class="oc" d="M0,130 H${W/2-20+off*.2} Q${W/2+30},140 ${W/2+60+off*.4},${200+off*.5} L${W/2+40+off*.4},${215+off*.5} Q${W/2+10},150 ${W/2-30},150 H0Z"/>`;
+    s+=`<path class="co" d="M${W/2-10},130 L${W/2+30},${130-mh*.4} L${W/2+80},${130-mh} L${W/2+120},${130-mh*.5} L${W},120 V170 H${W/2+40}Z"/>`;
+    s+=`<path class="magma" d="M${W/2+70},${190} Q${W/2+75},${150} ${W/2+80},${130-mh}" stroke="#e8590c" stroke-width="${3+p*4}" fill="none"/>`;
+    if(p>.3)s+=`<circle class="magma" cx="${W/2+80}" cy="${125-mh}" r="${4+p*6}" opacity=".8"/>`;
+    s+=`<line class="arrow" x1="40" y1="145" x2="110" y2="145"/><text class="lab" x="${W/2+80}" y="${118-mh}" text-anchor="middle">vulkan</text><text class="lab" x="${W/2-60}" y="190" text-anchor="middle">subduksjon</text>`;
+    s+=q(W/2+10,150)+q(W/2+45,185);}
+  else if(type==='col'){const sq=p*50,mh=10+p*110;
+    s+=`<path class="co" d="M0,130 H${W/2-110+sq*.6} L${W/2-60},${130-mh*.55} L${W/2-25},${130-mh*.8} L${W/2},${130-mh} L${W/2+30},${130-mh*.7} L${W/2+65},${130-mh*.6} L${W/2+110-sq*.6},130 H${W} V170 Q${W/2},${200+p*50} 0,170Z"/>`;
+    s+=`<line class="arrow" x1="30" y1="150" x2="90" y2="150"/><line class="arrow" x1="${W-30}" y1="150" x2="${W-90}" y2="150"/>`;
+    s+=`<text class="lab" x="${W/2}" y="${118-mh}" text-anchor="middle">fjellkjede</text>`+q(W/2-30,150);}
+  else{const sh=p*120;
+    s+=`<rect class="co" x="0" y="110" width="${W}" height="60"/><line x1="0" y1="140" x2="${W}" y2="140" stroke="var(--ink)" stroke-width="2" stroke-dasharray="6 4"/>`;
+    s+=`<rect x="${(80+sh)%W}" y="116" width="40" height="18" fill="#2f8f46"/><rect x="${(80-sh+W)%W}" y="146" width="40" height="18" fill="#2f8f46"/>`;
+    s+=`<line class="arrow" x1="${W/2-40}" y1="125" x2="${W/2+40}" y2="125"/><line class="arrow" x1="${W/2+40}" y1="157" x2="${W/2-40}" y2="157"/>`;
+    s+=`<text class="lab" x="${W/2}" y="100" text-anchor="middle">sett ovenfra: forkastning</text>`;if(Math.round(t)%15<8)s+=q(W/2+70,140)+q(W/2-90,140);}
+  s+=`<text class="lab" x="10" y="${H-10}">Mantel</text><text class="lab" x="${W-10}" y="20" text-anchor="end">${nf(t,0)} mill. år</text>`;
+  return s;}
+$('#heroFig').setAttribute('viewBox','0 0 380 260');$('#heroFig').innerHTML=pg('sub',70);
+const tS=N.slider($('#pgSl'),{id:'tid',label:'Tid',min:0,max:100,step:1,value:0,fmt:v=>v+' mill. år',on:v=>{tt=v;renderPG();}});
+function renderPG(){$('#pgFig').innerHTML=pg(pt,tt);$('#pgOut').innerHTML=TYPES[pt].txt(tt);
+  $('#pgPick').querySelectorAll('button').forEach(b=>{b.classList.toggle('on',b.dataset.t===pt);b.setAttribute('aria-pressed',b.dataset.t===pt);});}
+$('#pgPick').innerHTML=Object.entries(TYPES).map(([k,v])=>`<button type="button" class="btn" data-t="${k}">${v.n}</button>`).join('');
+$('#pgPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{pt=b.dataset.t;renderPG();}));
+$('#pgPlay').addEventListener('click',()=>{if(play)return;let v=0;tS.value=0;const t0=performance.now();
+  (function st(){v=Math.min(100,(performance.now()-t0)/(V.reduce?5:40));tS.value=Math.round(v);if(v<100)play=requestAnimationFrame(st);else play=null;})();});
+renderPG();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvordan kan det ha seg?',opts:['Den ble fraktet av mennesker','Sør-Amerika og Afrika hang sammen før','Den utviklet seg to steder samtidig'],ok:1,
+  expl:'For rundt 250 millioner år siden var alle kontinentene samlet i ett superkontinent, <b>Pangea</b>. Alfred Wegener la merke til at kystene passer som puslespillbiter, og at fossilene passer sammen. Først på 1960-tallet forsto forskerne hvordan platene beveger seg.',
+  retry:i=>i===0?'Mesosaurus levde for 280 millioner år siden, lenge før mennesker fantes. Prøv igjen.':'Det er svært usannsynlig at nøyaktig samme art utvikler seg to steder. Se på et kart over Sør-Amerika og Afrika. Prøv igjen.'});
+
+/* ---------- 3 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'div',name:'Fra hverandre'},{id:'sub',name:'Hav møter kontinent'},{id:'col',name:'Kontinent møter kontinent'},{id:'tra',name:'Glir langs hverandre'}],
+  items:[{t:'Island',g:'div'},{t:'Den midtatlantiske ryggen',g:'div'},{t:'Andesfjellene',g:'sub'},{t:'Vulkanene i Japan',g:'sub'},{t:'Himalaya',g:'col'},{t:'Alpene',g:'col',why:'Alpene ble dannet da Afrika presset mot Europa.'},{t:'San Andreas i California',g:'tra'}],
+  good:'Riktig! Jordskjelv skjer ved alle grensetypene, men vulkaner finnes mest der plater glir fra hverandre og der en havplate dykker ned.'});
+
+/* ---------- 4 Svalbard ---------- */
+V.predict($('#p2'),{q:'Hvorfor finnes det kull på Svalbard?',opts:['Svalbard lå mye lenger sør da kullet ble dannet','Klimaet på Svalbard har alltid vært varmt','Kullet ble fraktet dit med isbreer'],ok:0,
+  expl:'Platen Svalbard ligger på har flyttet seg nordover i hundrevis av millioner år. Kullet på Svalbard ble dannet av skog i et varmere klima, da øygruppa lå mye lenger sør. Også Norge lå sør for ekvator for over 400 millioner år siden.',
+  retry:'Platene flytter seg. Hvor kan Svalbard ha ligget før? Prøv igjen.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  grenser:{name:'Plategrenser',gens:[
+    ()=>{const k=pick(Object.keys(TYPES)),q={div:'Magma stiger opp og lager ny havbunn.',sub:'En tung havplate dykker ned under en lettere plate, og det dannes vulkaner.',col:'Skorpa foldes opp til høye fjell, men ingen plate dykker ned.',tra:'Platene glir forbi hverandre, og det blir jordskjelv, men ikke vulkaner.'};
+      return N.mc(`Hvilken plategrense passer best? <i>${q[k]}</i>`,TYPES[k].n,Object.keys(TYPES).filter(x=>x!==k).map(x=>TYPES[x].n),['Se på tverrsnittene i laboratoriet.'],`${TYPES[k].n}. ${q[k]}`);},
+    ()=>N.mc('Hvorfor dykker havplata ned under kontinentplata, og ikke omvendt?','Havskorpa er tyngre (har større tetthet)',['Havskorpa er varmere','Kontinentet er større'],['Tenk på tetthet.'],'Havskorpa består av tung basalt. Kontinentskorpa er lettere granitt. Det tyngste synker.')
+  ]},
+  fart:{name:'Regne med platefart',gens:[
+    ()=>{const v=pick([2,3,4,5,8]),m=pick([1,2,5,10]);return {prompt:`En plate flytter seg ${v} cm i året. Hvor mange kilometer flytter den seg på ${m} million${m>1?'er':''} år?`,ans:v*m*10,unit:'km',hints:[`${v} cm · ${m} 000 000 år = ${nf(v*m*1e6)} cm.`,'1 km = 100 000 cm.'],sol:`${v} · ${nf(m*1e6)} = ${nf(v*m*1e6)} cm = <b>${nf(v*m*10)} km</b>`,diag:v2=>near(v2,v*m*1e6)?'Det er i centimeter. Gjør om til kilometer (del på 100 000).':null};},
+    ()=>{const d=pick([5000,6000,4500]),v=pick([2,2.5,3]);const ans=d*1e5/v/1e6;return {prompt:`Atlanterhavet er omtrent ${nf(d)} km bredt og vokser ${nf(v,1)} cm i året. Omtrent hvor mange millioner år har det tatt å åpne det?`,ans,unit:'millioner år',rel:.02,hints:[`Gjør ${nf(d)} km om til cm: gang med 100 000.`,'Del på farten, og del så på 1 000 000.'],sol:`${nf(d)} km = ${nf(d*1e5)} cm. ${nf(d*1e5)} : ${nf(v,1)} = ${nf(d*1e5/v)} år ≈ <b>${nf(ans,0)} millioner år</b>.`};}
+  ]},
+  bevis:{name:'Bevis og konsekvenser',gens:[
+    ()=>N.mc('Hva driver platene?','Strømninger i den varme mantelen',['Vind og havstrømmer','Månens tiltrekning','Jordskjelv'],['Tenk på en kasserolle med kokende suppe.'],'Varmen fra jordas indre gir langsomme strømninger i mantelen som drar platene med seg.'),
+    ()=>N.mc('Hvilket av dette er <b>ikke</b> et bevis for at kontinentene har flyttet seg?','At det regner mer på Vestlandet',['Kystene til Afrika og Sør-Amerika passer sammen','Like fossiler på ulike kontinenter','Havbunnen er yngst nær midthavsryggene'],['Tre av svarene handler om spor i stein og fossiler.'],'Nedbør har ingenting med platetektonikk å gjøre. De tre andre er viktige bevis.'),
+    ()=>N.mc('Hvorfor er det få store jordskjelv i Norge?','Norge ligger langt fra en plategrense',['Fjellene stopper jordskjelvene','Det er for kaldt'],['Hvor er den nærmeste plategrensen?'],'Den nærmeste plategrensen er den midtatlantiske ryggen. Norge ligger midt på den eurasiske platen og får bare små jordskjelv.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-platetektonikk',title:'Platetektonikk',skills});
+})();
+</script>
+</body>
+</html>

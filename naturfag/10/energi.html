@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Energi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .ball{fill:var(--c1)}
+.fig .floor{stroke:var(--ink);stroke-width:2}
+.fig .eP{fill:var(--accent)}
+.fig .eK{fill:var(--c2)}
+.fig .eV{fill:var(--warm)}
+.fig .eL{fill:var(--lamp)}
+.fig .bar0{fill:none;stroke:var(--line);stroke-width:1.2}
+.mixrow{display:grid;grid-template-columns:7rem 1fr 3.6rem;gap:10px;align-items:center}
+.mixrow output{font-family:var(--f-mono);text-align:right}
+.stack{display:flex;height:26px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.stack i{display:block;height:100%}
+.meter{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-family:var(--f-mono)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Energi</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#ball"><b>2</b>Sprettballen</a>
+    <a href="#lys"><b>3</b>Lyspærer</a>
+    <a href="#miks"><b>4</b>Strømmiksen</a>
+    <a href="#sort"><b>5</b>Sorter</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Energi forsvinner aldri</h1>
+      <p class="lead">Energi kan ikke lages eller ødelegges, bare gjøres om fra én form til en annen. Men hver gang den gjøres om, blir litt til <b>varme</b> som sprer seg. Energien er der fortsatt, men <b>kvaliteten</b> blir lavere.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 200" id="heroFig" role="img" aria-label="Energistolper: stillingsenergi, bevegelsesenergi og varme"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du slipper en sprettball. Den spretter lavere og lavere, og til slutt ligger den stille.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="ball"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Sprettballen</h2></div>
+    <p class="sec-lead">Stolpene viser energien. <span class="c-a"><b>Stillingsenergi</b></span> har ballen fordi den er høyt oppe. <span class="c-2"><b>Bevegelsesenergi</b></span> har den fordi den beveger seg. <b style="color:var(--warm)">Varme</b> lages i hvert sprett. Se på summen.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="ballFig" viewBox="0 0 380 280" role="img" aria-label="Sprettball og energistolper"></svg></div>
+      <div class="controls">
+        <div id="bSliders"></div>
+        <div class="row"><button class="btn primary" type="button" id="bGo">Slipp ballen</button><button class="btn" type="button" id="bStop">Stopp</button></div>
+        <div class="calc" id="bOut" aria-live="polite"></div>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="lys"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Lyspærer og virkningsgrad</h2></div>
+    <p class="sec-lead">Virkningsgrad = nyttig energi delt på tilført energi. Velg pære og se hvor energien tar veien.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="bulbFig" viewBox="0 0 380 200" role="img" aria-label="Energien som går inn og ut av pæra"></svg></div>
+      <div class="controls">
+        <div class="pick" id="bulbPick"></div>
+        <div class="calc" id="bulbOut" aria-live="polite"></div>
+        <div id="p3"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="miks"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Bygg strømmiksen</h2></div>
+    <p class="sec-lead">Du bestemmer hvor strømmen i et land skal komme fra. Prøv å få lave utslipp <i>og</i> sikker strøm når det er vindstille og mørkt. Det finnes ikke ett riktig svar, men noen valg er bedre enn andre.</p>
+    <div class="bench">
+      <div class="controls" id="mixSl"></div>
+      <div class="controls">
+        <div class="stack" id="mixBar" aria-hidden="true"></div>
+        <div class="meter" id="mixOut" aria-live="polite"></div>
+        <div class="fb" id="mixFb" aria-live="polite"></div>
+        <p class="note">Utslipp er regnet over hele levetiden (bygging, drift og riving), medianverdier fra FNs klimapanel.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="sort"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Fornybar eller ikke?</h2></div>
+    <p class="sec-lead">En fornybar energikilde fornyes like fort som vi bruker den.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om energibevaring, energikvalitet og energiproduksjon og miljø. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Energistolper ---------- */
+function bars(P,K,Q,x0,y0,h,W=40){const tot=100;let s='';[['eP',P,'Still.'],['eK',K,'Bev.'],['eV',Q,'Varme']].forEach(([c,v,l],i)=>{const x=x0+i*(W+10),hh=h*v/tot;
+  s+=`<rect class="bar0" x="${x}" y="${y0-h}" width="${W}" height="${h}" rx="4"/><rect class="${c}" x="${x}" y="${fx(y0-hh)}" width="${W}" height="${fx(hh)}" rx="4"/><text class="lbl small" x="${x+W/2}" y="${y0+14}" text-anchor="middle">${l}</text>`;});
+  s+=`<text class="lbl small" x="${x0+(W*3+20)/2}" y="${y0-h-6}" text-anchor="middle">Sum: ${Math.round(P+K+Q)} %</text>`;return s;}
+$('#heroFig').innerHTML=bars(45,30,25,110,170,130,45);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvor ble energien av?',opts:['Den forsvant','Den ble til varme og lyd','Den ble brukt opp av tyngdekraften'],ok:1,
+  expl:'Hver gang ballen treffer gulvet, blir litt energi til varme i ballen og gulvet, og til lyd. Til slutt er all energien spredt som varme. Den forsvant ikke, men den kan ikke lenger få ballen til å sprette.',
+  retry:'Energi kan ikke forsvinne. Kjenn på en ball som har sprettet mange ganger. Prøv igjen.'});
+
+/* ---------- 2 Sprettballen ---------- */
+let loss=.25,h0=4,anim=null;
+const sl=$('#bSliders');
+N.slider(sl,{id:'bh',label:'Høyde',min:1,max:5,step:.5,value:4,fmt:v=>nf(v,1)+' m',on:v=>{h0=v;if(!anim)drawBall(h0,0,0,0);}});
+N.slider(sl,{id:'bl',label:'Tap',min:0,max:50,step:5,value:25,fmt:v=>v+' %',on:v=>loss=v/100});
+function drawBall(h,P,K,Q){const W=380,H=280,floor=H-30,sc=(floor-30)/5,y=floor-10-h*sc;
+  let s=`<line class="floor" x1="20" y1="${floor}" x2="200" y2="${floor}"/><circle class="ball" cx="110" cy="${fx(y)}" r="10"/>`;
+  s+=bars(P,K,Q,215,floor,floor-50,40);$('#ballFig').innerHTML=s;
+  $('#bOut').innerHTML=`Stilling <b class="c-a">${Math.round(P)} %</b> + bevegelse <b class="c-2">${Math.round(K)} %</b> + varme <b style="color:var(--warm)">${Math.round(Q)} %</b> = <b>${Math.round(P+K+Q)} %</b>`;}
+drawBall(h0,100,0,0);
+$('#bGo').addEventListener('click',()=>{if(anim)cancelAnimationFrame(anim);
+  let E=1,Q=0,top=h0,t=0,phase=0;const g=9.81;let last=performance.now();
+  (function step(now){const dt=Math.min(.04,(now-last)/1000)*(V.reduce?20:1);last=now;t+=dt;
+    const T=Math.sqrt(2*top/g);let h;
+    if(t>=2*T||top<.01){// sprett
+      if(top<.01){drawBall(0,0,0,100);anim=null;return;}
+      Q+=E*loss;E*=1-loss;top=h0*E;t=0;h=0;
+    } else {const tt=Math.abs(t-T);h=top-0.5*g*tt*tt;if(h<0)h=0;}
+    if(top<.02){E=0;Q=1;}
+    const P=h/h0*100,K=E*100-P;drawBall(h,P,Math.max(0,K),Q*100);
+    anim=requestAnimationFrame(step);})(last);
+});
+$('#bStop').addEventListener('click',()=>{if(anim)cancelAnimationFrame(anim);anim=null;drawBall(h0,100,0,0);});
+V.predict($('#p2'),{tag:'Hva ser du?',q:'Slipp ballen og følg med på summen. Hva skjer med den?',opts:['Den synker','Den er alltid 100 %','Den øker i hvert sprett'],ok:1,
+  expl:'Dette er <b>energiloven</b> (termodynamikkens første lov): energi kan verken skapes eller forsvinne. Men varmen er spredt, og kan ikke lett brukes igjen. Det kalles at energikvaliteten synker.',retry:'Les av summen nederst flere ganger mens ballen spretter.'});
+
+/* ---------- 3 Lyspærer ---------- */
+const BULBS=[['Glødepære',5],['Sparepære',20],['LED-pære',40]];let bi=0;
+function renderBulb(){const [n,eff]=BULBS[bi];
+  $('#bulbPick').innerHTML=BULBS.map((b,i)=>`<button type="button" class="btn${i===bi?' on':''}" data-i="${i}" aria-pressed="${i===bi}">${b[0]}</button>`).join('');
+  $('#bulbPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{bi=+b.dataset.i;renderBulb();}));
+  const W=380,y=100,inW=120,lw=Math.max(4,inW*eff/100),hw=inW-lw;
+  let s=`<rect class="eP" x="20" y="${y-inW/2}" width="80" height="${inW}" rx="6"/><text class="lbl" x="60" y="${y+4}" text-anchor="middle" style="fill:#fff;stroke:none">100 J</text>`;
+  s+=`<path class="eL" d="M100,${y-inW/2} C200,${y-inW/2} 220,${y-inW/2-20} 290,${y-inW/2-20} V${fx(y-inW/2-20+lw)} C220,${fx(y-inW/2-20+lw)} 200,${fx(y-inW/2+lw)} 100,${fx(y-inW/2+lw)} Z" opacity=".9"/>`;
+  s+=`<path class="eV" d="M100,${fx(y-inW/2+lw)} C200,${fx(y-inW/2+lw)} 220,${fx(y-inW/2+lw+40)} 290,${fx(y-inW/2+lw+40)} V${fx(y-inW/2+lw+40+hw)} C220,${fx(y-inW/2+lw+40+hw)} 200,${y+inW/2} 100,${y+inW/2} Z" opacity=".8"/>`;
+  s+=`<text class="lbl" x="296" y="${fx(y-inW/2-20+lw/2+4)}">Lys ${eff} J</text><text class="lbl" x="296" y="${fx(y-inW/2+lw+40+hw/2+4)}">Varme ${100-eff} J</text>`;
+  $('#bulbFig').setAttribute('viewBox','0 0 400 200');$('#bulbFig').innerHTML=s;
+  $('#bulbOut').innerHTML=`${n}: <b>${eff} J lys</b> av 100 J strøm<br>Virkningsgrad = ${eff} : 100 = <b>${eff} %</b>`;}
+renderBulb();
+V.predict($('#p3'),{tag:'Gjett',q:'Du bytter fra glødepære til LED med like mye lys. Omtrent hvor mye mindre strøm bruker du?',opts:['Halvparten','En åttendedel','Like mye'],ok:1,
+  expl:'Glødepæra gir 5 J lys per 100 J. LED gir 40 J. For like mye lys trenger LED bare 5/40 = 1/8 av strømmen. Resten av strømmen i glødepæra ble til varme du ikke trengte.',retry:'Hvor mye lys gir hver pære per 100 J? Del dem på hverandre.'});
+
+/* ---------- 4 Strømmiksen ---------- */
+const SRC=[['vann','Vannkraft',24,'#1c7ed6',true,true],['vind','Vindkraft',11,'#20c997',true,false],['sol','Solkraft',45,'#fab005',true,false],['kjerne','Kjernekraft',12,'#7048e8',false,true],['gass','Gasskraft',490,'#868e96',false,true],['kull','Kullkraft',820,'#343a40',false,true]];
+const mix={vann:20,vind:20,sol:10,kjerne:10,gass:20,kull:20};
+SRC.forEach(([k,n])=>{const d=document.createElement('div');d.className='mixrow';d.innerHTML=`<label for="m-${k}"><b>${n}</b></label><input type="range" id="m-${k}" min="0" max="100" step="5" value="${mix[k]}"><output></output>`;$('#mixSl').appendChild(d);
+  d.querySelector('input').addEventListener('input',e=>{mix[k]=+e.target.value;renderMix();});});
+function renderMix(){
+  const tot=SRC.reduce((a,s)=>a+mix[s[0]],0)||1,sh=Object.fromEntries(SRC.map(s=>[s[0],mix[s[0]]/tot]));
+  SRC.forEach(s=>{$('#m-'+s[0]).parentElement.querySelector('output').textContent=Math.round(sh[s[0]]*100)+' %';});
+  $('#mixBar').innerHTML=SRC.map(s=>`<i style="width:${sh[s[0]]*100}%;background:${s[3]}" title="${s[1]}"></i>`).join('');
+  const co2=SRC.reduce((a,s)=>a+sh[s[0]]*s[2],0),weather=sh.vind+sh.sol,stable=SRC.filter(s=>s[5]).reduce((a,s)=>a+sh[s[0]],0),fornybar=SRC.filter(s=>s[4]).reduce((a,s)=>a+sh[s[0]],0);
+  $('#mixOut').innerHTML=`<span>Utslipp</span><b>${Math.round(co2)} g CO₂/kWh</b><span>Fornybart</span><b>${Math.round(fornybar*100)} %</b><span>Styrbar kraft (når det er vindstille og mørkt)</span><b>${Math.round(stable*100)} %</b>`;
+  const fb=$('#mixFb');
+  if(stable<.5){fb.className='fb bad';fb.innerHTML=`Mer enn halvparten kommer fra sol og vind. En kald, vindstille vinterkveld får landet for lite strøm. Du trenger mer <b>styrbar</b> kraft (vann, kjerne, gass) eller lagring.`;}
+  else if(co2>300){fb.className='fb hint';fb.innerHTML='Strømmen er sikker, men utslippene er høye. Kull og gass slipper ut mye CO₂ som bidrar til klimaendringer. Kan du bytte noe av det ut?';}
+  else if(co2<60){fb.className='fb good';fb.innerHTML=`Sikker strøm med lave utslipp! Men tenk på ulempene også: vannkraft og vindkraft tar mye natur, og kjernekraft gir radioaktivt avfall. Dette er et <b>dilemma</b> der samfunnet må veie hensyn mot hverandre.`;}
+  else{fb.className='fb hint';fb.innerHTML='Ganske bra. Hvilken kilde kan du skru ned for å få utslippene under 60 g?';}
+}
+renderMix();
+
+/* ---------- 5 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'f',name:'Fornybar'},{id:'i',name:'Ikke fornybar'}],
+  items:[{t:'Vannkraft',g:'f'},{t:'Vindkraft',g:'f'},{t:'Solenergi',g:'f'},{t:'Bioenergi (ved)',g:'f',why:'Trær vokser opp igjen, så ved er fornybart hvis vi ikke hogger mer enn som vokser.'},{t:'Olje',g:'i'},{t:'Naturgass',g:'i'},{t:'Kull',g:'i',why:'Kull ble dannet for millioner av år siden og fornyes ikke i vår tid.'},{t:'Uran (kjernekraft)',g:'i',why:'Uran er et grunnstoff som utvinnes fra gruver og blir ikke laget på nytt. Kjernekraft gir lite CO₂, men er ikke fornybar.'}],
+  good:'Riktig! Legg merke til at «fornybar» og «lite utslipp» ikke er det samme: kjernekraft har lite utslipp, men er ikke fornybar.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  virkning:{name:'Virkningsgrad',gens:[
+    ()=>{const inn=pick([100,200,400,500,1000]),eff=pick([5,10,20,25,30,40,60,80,90]),nytt=inn*eff/100;return {prompt:`En maskin får tilført ${inn} J og gir ${nytt} J nyttig energi. Hva er virkningsgraden i prosent?`,ans:eff,unit:'%',hints:['Virkningsgrad = nyttig : tilført.','Gang med 100 for å få prosent.'],sol:`${nytt} : ${inn} = ${nf(eff/100,2)} = <b>${eff} %</b>`,diag:v=>near(v,eff/100)?'Husk å gange med 100 for å få prosent.':null};},
+    ()=>{const inn=pick([100,200,500,1000]),eff=pick([10,20,25,40,70,90]);return {prompt:`En elmotor har virkningsgrad ${eff} %. Den får ${inn} J strøm. Hvor mye blir til varme?`,ans:inn*(100-eff)/100,unit:'J',hints:[`${eff} % blir til bevegelse. Resten blir varme.`],sol:`Nyttig: ${inn*eff/100} J. Varme: ${inn} − ${inn*eff/100} = <b>${inn*(100-eff)/100} J</b>.`,diag:v=>near(v,inn*eff/100)?'Det er den nyttige energien. Spørsmålet gjelder varmen.':null};}
+  ]},
+  bevaring:{name:'Energibevaring',gens:[
+    ()=>{const P=pick([200,300,500,800]),K=pick([50,100,150]);return {prompt:`En syklist på toppen av en bakke har ${P} J stillingsenergi. Nederst har hun ${P-K} J bevegelsesenergi. Hvor mange joule ble til varme (friksjon og luftmotstand)?`,ans:K,unit:'J',hints:['Summen av energi er den samme før og etter.'],sol:`${P} − ${P-K} = <b>${K} J</b> ble til varme.`};},
+    ()=>N.mc('Hva sier energiloven?','Energi kan verken skapes eller forsvinne',['Energi brukes opp når vi bruker den','All energi blir til slutt til lys','Energi kan bare lages i kraftverk'],['Tenk på sprettballen.'],'Energien gjøres om fra én form til en annen, men totalen er den samme. Kraftverk lager ikke energi, de gjør den om til elektrisk energi.')
+  ]},
+  kvalitet:{name:'Energikvalitet',gens:[
+    ()=>N.mc('Hvilken energiform har <b>lavest</b> kvalitet?','Varme i lunkent vann',['Elektrisk energi','Stillingsenergi i vann i en demning','Kjemisk energi i bensin'],['Hvilken er vanskeligst å gjøre om til noe nyttig?'],'Spredt varme på lav temperatur er nesten umulig å bruke til noe nyttig. Elektrisk energi har høy kvalitet, den kan gjøres om til nesten alt.'),
+    ()=>N.mc('Hvorfor sier vi at vi «bruker opp» energi når energien aldri forsvinner?','Fordi kvaliteten blir lavere',['Fordi energien forsvinner litt','Fordi den blir til masse'],['Hva skjer med varmen fra en lyspære?'],'Energien finnes fortsatt, men som spredt varme som vi ikke kan bruke igjen. Det vi bruker opp, er energikvaliteten.')
+  ]},
+  kilder:{name:'Energikilder og miljø',gens:[
+    ()=>{const s=pick([['vannkraft','stillingsenergi i vann'],['vindkraft','bevegelsesenergi i lufta'],['solceller','strålingsenergi fra sola'],['gasskraft','kjemisk energi i naturgass']]);return N.mc(`Hvilken energi gjøres om til elektrisk energi i ${s[0]}?`,s[1][0].toUpperCase()+s[1].slice(1),['Stillingsenergi i vann','Bevegelsesenergi i lufta','Strålingsenergi fra sola','Kjemisk energi i naturgass'].filter(x=>x.toLowerCase()!==s[1]).slice(0,3),['Hva er det som driver kraftverket?'],`I ${s[0]} er det ${s[1]} som blir til elektrisk energi.`);},
+    ()=>N.mc('Hva er en ulempe med vindkraft på land?','Den tar mye natur og påvirker dyreliv',['Den slipper ut mye CO₂','Den bruker opp vinden'],['Tenk på hvor vindturbiner bygges.'],'Vindkraft gir lite utslipp, men veier og turbiner tar natur, og fugler kan bli drept. Derfor er det et dilemma.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-energi',title:'Energi',skills});
+})();
+</script>
+</body>
+</html>

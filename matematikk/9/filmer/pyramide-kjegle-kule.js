@@ -1,4 +1,4 @@
-/* Filmsnutt til Pyramide, kjegle og kule: iskremkjeksen. Krever ../felles/film.js. */
+/* Filmsnutt til Pyramide, kjegle og kule: iskremkjeksen. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

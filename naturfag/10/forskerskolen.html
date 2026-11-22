@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forskerskolen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .ball{fill:var(--c1)}
+.fig .floor{stroke:var(--ink);stroke-width:2}
+.fig .ruler{stroke:var(--muted);stroke-width:1}
+.fig .trail{fill:var(--c1);fill-opacity:.18}
+td.avg{color:var(--c2);font-weight:700}
+td.out{color:var(--bad);text-decoration:line-through}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Forskerskolen</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#plan"><b>2</b>Planlegg</a>
+    <a href="#mal"><b>3</b>Mål</a>
+    <a href="#risiko"><b>4</b>Risiko</a>
+    <a href="#kilde"><b>5</b>Kilder</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Hvordan vet forskere noe?</h1>
+      <p class="lead">Et godt forsøk starter med et spørsmål og en <b>hypotese</b>. Så endrer du <b>én ting</b>, måler nøye, gjentar og vurderer om du kan stole på resultatet. Her trener du på alle stegene.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 200" id="heroFig" role="img" aria-label="En ball som faller ved siden av en målestokk"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Tenk deg om før du svarer.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="plan"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Planlegg forsøket</h2></div>
+    <p class="sec-lead">Spørsmålet er: <b>Smelter en isbit raskere i saltvann enn i vanlig vann?</b> Sorter tingene under. Den <b>uavhengige</b> variabelen endrer du selv. Den <b>avhengige</b> måler du. De <b>kontrollerte</b> holder du like, så testen blir rettferdig.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="mal"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Mål, gjenta og analyser</h2></div>
+    <p class="sec-lead">Du slipper en ball og tar tiden med stoppeklokke. Men reaksjonstiden din er aldri helt lik. Slipp ballen flere ganger fra hver høyde. Se hvorfor gjentatte målinger og gjennomsnitt gir et sikrere svar.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="dropFig" viewBox="0 0 380 240" role="img" aria-label="Ball som faller fra valgt høyde"></svg>
+        <div class="counter" id="dropOut" aria-live="polite">Velg høyde og trykk <b>Slipp</b>.</div>
+        <svg class="fig" id="dropGraph" role="img" aria-label="Graf over falltid og høyde"></svg>
+      </div>
+      <div class="controls">
+        <div id="hSlider"></div>
+        <div class="row"><button class="btn primary" type="button" id="drop">Slipp ballen</button><button class="btn" type="button" id="dropClear">Nullstill</button></div>
+        <div class="logwrap"><table class="log" id="dropLog"><thead><tr><th>Høyde</th><th>Måling 1</th><th>2</th><th>3</th><th>Snitt</th></tr></thead><tbody></tbody></table></div>
+        <p class="note">Én måling kan bli helt feil hvis du trykker for sent. Med tre målinger ser du lett hvilken som skiller seg ut. Den kalles en <b>uteligger</b> og strykes før du regner snitt.</p>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="risiko"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Risikovurdering</h2></div>
+    <p class="sec-lead">Før et forsøk tenker du gjennom hva som kan gå galt, og hva du gjør for å hindre det. Sorter farene etter hvilket tiltak som passer best.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort2"></div></div>
+  </div></section>
+
+  <section id="kilde"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Ny forskning i nyhetene</h2></div>
+    <p class="sec-lead">Overskrift: <b>«Ny studie: Barn som spiser frokost, får bedre karakterer.»</b> Hva bør du lure på før du tror at frokost <i>gjør</i> deg flinkere?</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p3"></div><div id="p4"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om å stille spørsmål og lage hypoteser, analysere data, vurdere risiko i forsøk og vurdere ny forskning. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Tegning ---------- */
+function dropSVG(h,frac,W=380,H=240){
+  const top=20,floor=H-24,scale=(floor-top)/5,y0=floor-h*scale,y=y0+(floor-y0)*frac*frac;
+  let s=`<line class="floor" x1="40" y1="${floor}" x2="${W-40}" y2="${floor}"/>`;
+  for(let m=0;m<=5;m++)s+=`<line class="ruler" x1="70" y1="${fx(floor-m*scale)}" x2="82" y2="${fx(floor-m*scale)}"/><text class="lbl small" x="62" y="${fx(floor-m*scale+4)}" text-anchor="end">${m} m</text>`;
+  s+=`<line class="ruler" x1="76" y1="${top}" x2="76" y2="${floor}"/>`;
+  s+=`<rect class="trail" x="${W/2-9}" y="${fx(y0)}" width="18" height="${fx(Math.max(0,y-y0))}" rx="9"/>`;
+  s+=`<circle class="ball" cx="${W/2}" cy="${fx(Math.min(y,floor-9))}" r="9"/>`;
+  s+=`<text class="lbl" x="${W/2+20}" y="${fx(y0+4)}">${nf(h,1)} m</text>`;
+  return s;
+}
+$('#heroFig').setAttribute('viewBox','0 0 380 200');$('#heroFig').innerHTML=dropSVG(3,.4,380,200);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Ida drakk sportsdrikk før løpet og løp sin beste tid noensinne. Beviser det at sportsdrikken virker?',
+  opts:['Ja, hun løp jo raskere','Nei, det kan finnes andre forklaringer','Ja, hvis hun føler seg sterkere'],ok:1,
+  expl:'Hun kan ha sovet godt, hatt medvind eller trodd at drikken virket (placeboeffekt). For å teste drikken trenger du mange løpere, noen som får sportsdrikk og noen som får en lik drikk uten virkestoff, uten at de vet hvem som får hva.',
+  retry:i=>i===2?'Følelser kan lure oss. Tro på at noe virker kan i seg selv gi bedre resultat. Det kalles placeboeffekt. Prøv igjen.':'Ett tilfelle beviser lite. Hva annet kunne gjort at hun løp fort? Prøv igjen.'});
+
+/* ---------- 2 Variabler ---------- */
+N.sorter($('#sort1'),{
+  groups:[{id:'u',name:'Uavhengig (du endrer)'},{id:'a',name:'Avhengig (du måler)'},{id:'k',name:'Kontrollert (holdes lik)'}],
+  items:[
+    {t:'Salt eller ikke salt i vannet',g:'u',why:'Det er dette spørsmålet handler om, så det er det du endrer.'},
+    {t:'Tiden til isbiten har smeltet',g:'a',why:'Det er dette du måler for å finne svaret.'},
+    {t:'Mengde vann i glasset',g:'k'},{t:'Temperaturen på vannet',g:'k',why:'Varmere vann smelter isen raskere, så den må være lik i begge glassene.'},
+    {t:'Størrelsen på isbiten',g:'k'},{t:'Samme type glass',g:'k'}],
+  good:'Riktig! Bare saltet er forskjellig. Smelter isen raskere i saltvannet, vet du at det er saltet som gjør det. <b>Hypotese</b> kan da være: «Isen smelter raskere i saltvann fordi saltet senker frysepunktet.»'});
+
+/* ---------- 3 Falltid ---------- */
+const HS=[1,2,3,4,5];let meas={},busy=false;
+const hs=N.slider($('#hSlider'),{id:'h',label:'Høyde',min:1,max:5,step:1,value:2,fmt:v=>v+' m',on:v=>{if(!busy)$('#dropFig').innerHTML=dropSVG(v,0);}});
+const trueT=h=>Math.sqrt(2*h/9.81);
+function measured(h){let r=(Math.random()+Math.random()+Math.random()-1.5)*0.08;if(Math.random()<.15)r+=0.25+Math.random()*.15;return Math.max(.1,trueT(h)+r);}
+function cleanAvg(a){if(a.length<3)return null;const s=a.slice().sort((x,y)=>x-y),med=s[1];const keep=a.filter(x=>Math.abs(x-med)<0.15);return {avg:keep.reduce((p,q)=>p+q,0)/keep.length,out:a.map(x=>Math.abs(x-med)>=0.15)};}
+function renderDrop(){
+  $('#dropLog tbody').innerHTML=HS.filter(h=>meas[h]).map(h=>{const a=meas[h],c=cleanAvg(a);
+    return `<tr><td>${h} m</td>${[0,1,2].map(i=>`<td class="${c&&c.out[i]?'out':''}">${a[i]!=null?nf(a[i],2)+' s':''}</td>`).join('')}<td class="avg">${c?nf(c.avg,2)+' s':''}</td></tr>`;}).join('')||'<tr><td colspan="5" style="text-align:center;color:var(--muted)">Ingen målinger ennå</td></tr>';
+  const raw=[],avg=[];HS.forEach(h=>{(meas[h]||[]).forEach(t=>raw.push([h,t]));const c=meas[h]&&cleanAvg(meas[h]);if(c)avg.push([h,c.avg]);});
+  N.graph($('#dropGraph'),{x:{min:0,max:5,step:1,label:'Høyde (m)'},y:{min:0,max:1.4,step:.2,label:'Falltid (s)'},
+    series:[{pts:raw,line:false,cls:'pt'},{pts:avg,cls:'pt2',lineCls:'ptline2'}],empty:'Målingene dine kommer her'});
+}
+$('#dropFig').innerHTML=dropSVG(2,0);renderDrop();
+$('#drop').addEventListener('click',()=>{
+  if(busy)return;const h=hs.value;meas[h]=meas[h]||[];
+  if(meas[h].length>=3){$('#dropOut').innerHTML=`Du har tre målinger fra ${h} m. Velg en annen høyde.`;return;}
+  const t=measured(h),dur=V.reduce?50:trueT(h)*1000*1.6,t0=performance.now();busy=true;
+  (function step(){const p=Math.min(1,(performance.now()-t0)/dur);$('#dropFig').innerHTML=dropSVG(h,p);
+    if(p<1){requestAnimationFrame(step);return;}
+    busy=false;meas[h].push(t);
+    $('#dropOut').innerHTML=`Stoppeklokka viser <b>${nf(t,2)} s</b>`+(meas[h].length<3?` · slipp ${3-meas[h].length} gang${meas[h].length===2?'':'er'} til`:'');
+    renderDrop();})();
+});
+$('#dropClear').addEventListener('click',()=>{if(busy)return;meas={};renderDrop();$('#dropOut').innerHTML='Velg høyde og trykk <b>Slipp</b>.';});
+V.predict($('#p2'),{q:'Se på grafen når du har målt fra flere høyder. Hva skjer med falltiden når høyden dobles?',opts:['Den dobles','Den øker, men mindre enn dobbelt','Den blir lik'],ok:1,
+  expl:'Ballen går fortere og fortere mens den faller. Derfor tar de siste metrene kortere tid enn de første. Fra 1 m tar det omtrent 0,45 s, fra 4 m bare omtrent 0,9 s, altså dobbelt så lang tid for fire ganger så høyt.',
+  retry:'Sammenlign snittet for 1 m og 2 m, eller 2 m og 4 m, i tabellen.'});
+
+/* ---------- 4 Risiko ---------- */
+N.sorter($('#sort2'),{
+  groups:[{id:'b',name:'Vernebriller og hansker'},{id:'f',name:'Hold unna åpen flamme'},{id:'v',name:'Bruk tang, la ting avkjøle'}],
+  items:[{t:'Saltsyre',g:'b',why:'Syre er etsende og kan skade øyne og hud.'},{t:'Natriumhydroksid (lut)',g:'b',why:'Baser er like etsende som syrer.'},{t:'Rødsprit',g:'f',why:'Rødsprit er brannfarlig, og dampen kan ta fyr.'},{t:'Bensin',g:'f'},
+    {t:'Glass som har stått på kokeplata',g:'v',why:'Varmt glass ser helt vanlig ut.'},{t:'Metallbit fra bunsenbrenneren',g:'v'}],
+  good:'Riktig! Etsende stoffer har faresymbolet med en hånd som «spises opp», brannfarlige har en flamme. Sjekk alltid faresymbolene på flasken før du starter.'});
+
+/* ---------- 5 Kilder ---------- */
+V.predict($('#p3'),{tag:'Spørsmål 1',q:'Hva er det første du bør lure på?',opts:['Om de fulgte de samme barna over tid','Om andre ting kan forklare sammenhengen','Hvilken farge frokostblandingen hadde'],ok:1,
+  expl:'Barn som spiser frokost, har kanskje også mer søvn, roligere morgener eller foreldre som hjelper med lekser. En <b>sammenheng</b> (korrelasjon) betyr ikke at det ene <b>fører til</b> det andre (årsak).',
+  retry:'Det kan være nyttig, men tenk på hva annet som er forskjellig mellom barn som spiser og ikke spiser frokost.'});
+V.predict($('#p4'),{tag:'Spørsmål 2',q:'Hvilken studie stoler du mest på?',opts:['40 elever på én skole','4000 elever på 100 skoler','En influencer som testet på seg selv'],ok:1,
+  expl:'Mange deltakere fra ulike steder gir et sikrere svar, fordi tilfeldigheter jevner seg ut. Sjekk også hvem som betalte for studien, og om andre forskere har fått samme resultat.',
+  retry:'Tenk på hvor mye tilfeldigheter betyr når få er med.'});
+
+/* ---------- Øving ---------- */
+const EXP=[
+  ['Du tester om gjødsel får planter til å vokse mer.','mengden gjødsel','plantehøyden etter tre uker',['mengden vann','lys','type jord']],
+  ['Du tester om ballens høyde påvirker hvor høyt den spretter.','slipphøyden','hvor høyt ballen spretter',['type ball','underlaget']],
+  ['Du tester om temperaturen påvirker hvor fort sukker løses opp i vann.','vanntemperaturen','tiden til sukkeret er borte',['mengden sukker','mengden vann','omrøringen']],
+  ['Du tester om musikk påvirker hvor mange gloser du husker.','om det er musikk eller ikke','antall gloser du husker',['antall gloser','tiden du øver','vanskelighetsgraden']]];
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const skills={
+  variabel:{name:'Variabler',gens:[
+    ()=>{const e=pick(EXP);return N.mc(`${e[0]} Hva er den <b>uavhengige</b> variabelen?`,cap(e[1]),[cap(e[2]),cap(e[3][0])],['Den uavhengige variabelen er den du velger å endre.'],`Du endrer ${e[1]}, så det er den uavhengige variabelen. Du måler ${e[2]}.`,{[cap(e[2])]:'Det er det du måler, altså den avhengige variabelen.'});},
+    ()=>{const e=pick(EXP);return N.mc(`${e[0]} Hva er den <b>avhengige</b> variabelen?`,cap(e[2]),[cap(e[1]),cap(e[3][0])],['Den avhengige variabelen er det du måler.'],`Du måler ${e[2]}. Den avhenger kanskje av ${e[1]}.`,{[cap(e[1])]:'Det er den du endrer, altså den uavhengige.'});},
+    ()=>{const e=pick(EXP);const k=pick(e[3]);return N.mc(`${e[0]} Hva må du gjøre med <b>${k}</b>?`,'Holde det likt hele tiden',['Endre det sammen med '+e[1],'Måle det til slutt'],['Hva skjer hvis to ting endres samtidig?'],`${cap(k)} er en kontrollert variabel. Den holdes lik, slik at bare ${e[1]} kan forklare forskjellen.`);}
+  ]},
+  snitt:{name:'Analyse av målinger',gens:[
+    ()=>{const b=R(30,80)/100,a=[b+R(-3,3)/100,b+R(-3,3)/100,b+R(-3,3)/100].map(x=>Math.round(x*100)/100);const ans=(a[0]+a[1]+a[2])/3;
+      return {prompt:`Tre målinger av falltid: <span class="mono">${a.map(x=>nf(x,2)).join(' s, ')} s</span>. Regn ut gjennomsnittet.`,ans,unit:'s',abs:.006,hints:['Legg sammen de tre målingene.','Del summen på 3.'],sol:`(${a.map(x=>nf(x,2)).join(' + ')}) : 3 = ${nf(a[0]+a[1]+a[2],2)} : 3 ≈ <b>${nf(ans,2)} s</b>`,diag:v=>near(v,a[0]+a[1]+a[2],.01)?'Det er summen. Husk å dele på antall målinger.':null};},
+    ()=>{const b=R(40,70)/100,o=Math.round((b+R(25,40)/100)*100)/100,a=V.shuffle([b,Math.round((b+.02)*100)/100,o]);
+      return N.mc(`Målinger: <span class="mono">${a.map(x=>nf(x,2)).join(' s, ')} s</span>. Hvilken er trolig en <b>uteligger</b>?`,nf(o,2)+' s',a.filter(x=>x!==o).map(x=>nf(x,2)+' s'),['Hvilken skiller seg mye fra de andre?'],`${nf(o,2)} s er mye større enn de to andre. Kanskje trykket du for sent. Den bør måles på nytt eller strykes.`);}
+  ]},
+  risiko:{name:'Risiko og sikkerhet',gens:[
+    ()=>N.mc('Du skal fortynne saltsyre. Hva er det viktigste tiltaket?','Vernebriller og hansker',['Slå av lyset','Bruke stort glass','Røre med fingeren'],['Hva skjer hvis syre spruter?'],'Saltsyre er etsende. Vernebriller beskytter øynene, hansker beskytter huden.'),
+    ()=>N.mc('Hva betyr faresymbolet med en flamme?','Brannfarlig',['Etsende','Giftig for miljøet','Eksplosivt'],['Tenk på hva en flamme viser.'],'Flammen betyr brannfarlig. Hold stoffet unna varme og åpen flamme.'),
+    ()=>N.mc('Hvorfor skal du skrive en risikovurdering før forsøket?','For å finne farer og tiltak før noe skjer',['Fordi læreren vil ha mer tekst','For å få bedre resultat'],['Når er det best å tenke på farer?'],'En risikovurdering hjelper deg å se farene på forhånd og velge tiltak, så ingen blir skadet.')
+  ]},
+  kilde:{name:'Vurdere forskning',gens:[
+    ()=>N.mc('Folk som drikker kaffe, lever lenger, viser en studie. Hva kan du konkludere?','At det er en sammenheng, ikke nødvendigvis en årsak',['At kaffe gir lengre liv','At kaffe er farlig'],['Kan noe annet forklare sammenhengen?'],'Det er en korrelasjon. Kanskje de som drikker kaffe, også har andre vaner. Bare et kontrollert forsøk kan vise årsak.'),
+    ()=>N.mc('Hvorfor gjentar forskere forsøk mange ganger?','For å se om resultatet ikke bare er tilfeldig',['For å bruke opp utstyret','Fordi første gang alltid er feil'],['Hva gjør tilfeldigheter med én måling?'],'Når mange målinger gir samme svar, er det lite trolig at det skyldes tilfeldigheter eller målefeil.'),
+    ()=>N.mc('Hva er en hypotese?','En mulig forklaring som kan testes',['Et bevist faktum','Resultatet av forsøket'],['Den kommer før forsøket.'],'En hypotese er en begrunnet gjetning du kan teste med forsøk, for eksempel «isen smelter raskere i saltvann fordi …».')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-forskerskolen',title:'Forskerskolen',skills});
+})();
+</script>
+</body>
+</html>

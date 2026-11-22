@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kroppens styring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.rt{height:200px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:1.6rem;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;text-align:center;padding:12px;color:#fff;background:#495057}
+.rt.wait{background:#c92a2a}
+.rt.go{background:#2b8a3e}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Kroppens styring</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#reaksjon"><b>2</b>Reaksjonstest</a>
+    <a href="#signal"><b>3</b>Signalveien</a>
+    <a href="#hormon"><b>4</b>Nerver og hormoner</a>
+    <a href="#rus"><b>5</b>Rus og doping</a>
+    <a href="#helse"><b>6</b>Seksuell helse</a>
+    <a href="#ov"><b>7</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>To budsystemer i kroppen</h1>
+      <p class="lead"><b>Nervesystemet</b> sender raske elektriske signaler, som telefonsamtaler. <b>Hormonsystemet</b> sender kjemiske budbringere med blodet, som brev som kommer fram etter hvert og virker lenge. Sammen styrer de alt fra reflekser til pubertet.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Nervesignal og hormon i blodet"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du kommer borti en varm kokeplate.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="reaksjon"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Test reaksjonstiden din</h2></div>
+    <p class="sec-lead">Trykk på feltet når det blir grønt. Gjør det fem ganger. Signalet går fra øyet til hjernen, som bestemmer seg, og så til musklene i fingeren.</p>
+    <div class="bench">
+      <div class="figcol">
+        <div class="rt" id="rt" role="button" tabindex="0">Trykk for å starte</div>
+        <svg class="fig" id="rtGraph" role="img" aria-label="Graf over reaksjonstidene dine"></svg>
+      </div>
+      <div class="controls">
+        <div class="calc" id="rtOut" aria-live="polite">Ingen målinger ennå.</div>
+        <div class="row"><button class="btn" type="button" id="rtReset">Nullstill</button></div>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="signal"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Signalveien</h2></div>
+    <p class="sec-lead">Sett stegene i riktig rekkefølge for det som skjer når du ser at en ball kommer mot deg og tar imot den.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="fill1"></div></div>
+  </div></section>
+
+  <section id="hormon"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Nerver eller hormoner?</h2></div>
+    <p class="sec-lead">Sorter egenskapene og eksemplene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="rus"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Rus og doping</h2></div>
+    <p class="sec-lead">Rusmidler påvirker signalene mellom nervecellene. Dopingmidler etterligner eller forsterker kroppens egne hormoner.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p3"></div><div id="p4"></div></div>
+  </div></section>
+
+  <section id="helse"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Seksuell og reproduktiv helse</h2></div>
+    <p class="sec-lead">I puberteten begynner kroppen å lage mer kjønnshormoner: <b>østrogen</b> og <b>progesteron</b> styrer menstruasjonssyklusen, <b>testosteron</b> styrer produksjonen av sædceller. Sorter prevensjonsmidlene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">7</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om nervesystemet og hormonsystemet, rusmidler og doping, og seksuell og reproduktiv helse. Har du spørsmål om kropp, sex eller rus, kan du snakke med helsesykepleier eller bruke ung.no. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Hero ---------- */
+(function(){let s='<path d="M20,70 C80,40 120,100 180,70 S300,40 360,70" stroke="var(--c2)" stroke-width="5" fill="none"/>';
+  for(let i=0;i<5;i++)s+=`<circle cx="${50+i*70}" cy="${70+Math.sin(i)*14}" r="6" fill="var(--lamp)"/>`;
+  s+='<text class="lbl" x="20" y="30">Nerve: 1–120 m/s</text><path d="M20,170 H360" stroke="#e03131" stroke-width="26" stroke-linecap="round" opacity=".35"/>';
+  for(let i=0;i<7;i++)s+=`<circle cx="${40+i*48}" cy="${170+(i%2?6:-6)}" r="5" fill="var(--c3)"/>`;
+  s+='<text class="lbl" x="20" y="135">Hormon i blodet: sekunder til dager</text>';$('#heroFig').innerHTML=s;})();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva skjer først?',opts:['Du kjenner smerten, og så trekker du hånda til deg','Du trekker hånda til deg, og så kjenner du smerten','Begge skjer nøyaktig samtidig'],ok:1,
+  expl:'Det er en <b>refleks</b>. Signalet går fra huden til ryggmargen, som sender beskjed rett tilbake til musklene i armen. Hjernen blir ikke spurt. Litt etterpå når signalet hjernen, og først da kjenner du smerten. Reflekser beskytter kroppen fordi de sparer tid.',
+  retry:'Hjernen er ikke alltid med på avgjørelsen. Prøv igjen.'});
+
+/* ---------- 2 Reaksjonstest ---------- */
+let st='idle',tGo=0,timer=null,times=[];
+const rt=$('#rt');
+function setRT(c,t){rt.className='rt'+(c?' '+c:'');rt.textContent=t;}
+function hit(){
+  if(st==='idle'||st==='done'){st='wait';setRT('wait','Vent til det blir grønt …');timer=setTimeout(()=>{st='go';tGo=performance.now();setRT('go','TRYKK NÅ!');},1200+Math.random()*2500);}
+  else if(st==='wait'){clearTimeout(timer);st='idle';setRT('','For tidlig! Trykk for å prøve igjen.');}
+  else if(st==='go'){const ms=Math.round(performance.now()-tGo);times.push(ms);st='done';setRT('',`${ms} ms. Trykk for neste.`);renderRT();}
+}
+rt.addEventListener('pointerdown',e=>{e.preventDefault();hit();});
+rt.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();hit();}});
+function renderRT(){
+  N.graph($('#rtGraph'),{x:{min:0,max:Math.max(5,times.length),step:1,label:'Forsøk',fmt:v=>v},y:{min:0,max:600,step:100,label:'Reaksjonstid (ms)'},series:[{pts:times.map((t,i)=>[i+1,Math.min(600,t)]),cls:'pt'}],empty:'Tidene dine kommer her',W:380,H:200});
+  if(!times.length){$('#rtOut').textContent='Ingen målinger ennå.';return;}
+  const avg=times.reduce((a,b)=>a+b,0)/times.length,s=times.slice().sort((a,b)=>a-b),med=s.length%2?s[(s.length-1)/2]:(s[s.length/2-1]+s[s.length/2])/2;
+  $('#rtOut').innerHTML=`Målinger: ${times.length}<br>Gjennomsnitt: <b>${Math.round(avg)} ms</b><br>Median: <b>${Math.round(med)} ms</b><br>Raskeste: ${s[0]} ms`+(times.length>=5?`<br><br>En vanlig reaksjonstid er 200–300 ms. Med ${Math.round(avg)} ms rekker en bil i 80 km/h å kjøre <b>${nf(80/3.6*avg/1000,1)} m</b> før du har reagert.`:'');
+}
+$('#rtReset').addEventListener('click',()=>{clearTimeout(timer);times=[];st='idle';setRT('','Trykk for å starte');renderRT();});
+renderRT();
+V.predict($('#p2'),{tag:'Tenk etter',q:'Hvorfor er reaksjonstiden din mye lengre enn tiden en refleks tar?',opts:['Signalet må gjennom hjernen, som må tolke og bestemme','Nervene i fingeren er treigere','Øynene er tregere enn huden'],ok:0,
+  expl:'En refleks går via ryggmargen og tar rundt 50 ms. Når du skal reagere på noe du ser, må hjernen tolke synsinntrykket og sende en beskjed. Det tar tid. Alkohol og trøtthet gjør dette enda tregere.',retry:'Tenk på hvilken vei signalet tar i hvert tilfelle.'});
+
+/* ---------- 3 Signalveien ---------- */
+N.fill($('#fill1'),{html:'[] → [] → [] → [] → []',tokens:['Synsceller i øyet','Synsnerven','Hjernen','Motoriske nerver','Musklene i armen'],
+  check:v=>{const ok=['Synsceller i øyet','Synsnerven','Hjernen','Motoriske nerver','Musklene i armen'];const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:'Ikke helt. Start med det som først registrerer ballen, og slutt med det som beveger armen.'}:{ok:true,msg:'Riktig! Sanseceller fanger opp informasjon, sensoriske nerver sender den til hjernen, og motoriske nerver sender beskjed til musklene.'};}});
+
+/* ---------- 4 Nerver og hormoner ---------- */
+N.sorter($('#sort1'),{groups:[{id:'n',name:'Nervesystemet'},{id:'h',name:'Hormonsystemet'}],
+  items:[{t:'Elektriske signaler',g:'n'},{t:'Svært raskt',g:'n'},{t:'Refleks når du snubler',g:'n'},{t:'Kjemiske stoffer i blodet',g:'h'},{t:'Virker over lang tid',g:'h'},{t:'Insulin regulerer blodsukkeret',g:'h'},{t:'Adrenalin gir hjertebank når du blir redd',g:'h',why:'Adrenalin lages i binyrene og sendes med blodet. Det er et hormon, selv om det virker raskt.'},{t:'Vekst i puberteten',g:'h'}],
+  good:'Riktig! Nervesystemet er raskt og presist. Hormonene virker saktere, men lenger, og ofte på mange organer samtidig.'});
+
+/* ---------- 5 Rus og doping ---------- */
+V.predict($('#p3'),{tag:'Alkohol',q:'Hvorfor er det farlig å kjøre bil etter å ha drukket alkohol?',opts:['Alkohol gjør signalene i nervesystemet tregere og svekker dømmekraften','Alkohol gjør deg trøtt bare i beina','Det er bare farlig om natta'],ok:0,
+  expl:'Alkohol demper signalene mellom nervecellene. Reaksjonstiden blir lengre, og du vurderer fart og avstand dårligere, samtidig som du ofte føler deg tryggere enn du er. Hjernen er under utvikling til du er rundt 25 år og er ekstra sårbar for rusmidler.',retry:'Tenk på reaksjonstesten. Prøv igjen.'});
+V.predict($('#p4'),{tag:'Doping',q:'Dopingmiddelet EPO er en kopi av et hormon som lager flere røde blodceller. Hvorfor gir det bedre utholdenhet?',opts:['Blodet kan frakte mer oksygen til musklene','Musklene blir større','Hjertet slår saktere'],ok:0,
+  expl:'Flere røde blodceller frakter mer oksygen. Men blodet blir tykkere, og risikoen for blodpropp og hjerteinfarkt øker. Anabole steroider (kopi av testosteron) gir større muskler, men kan gi akne, humørsvingninger, leverskader og redusert egen hormonproduksjon.',retry:'Hva gjør de røde blodcellene? Prøv igjen.'});
+
+/* ---------- 6 Seksuell helse ---------- */
+N.sorter($('#sort2'),{groups:[{id:'g',name:'Beskytter mot graviditet'},{id:'b',name:'Beskytter mot graviditet og kjønnssykdommer'}],
+  items:[{t:'P-piller',g:'g',why:'P-piller inneholder hormoner som hindrer eggløsning, men de beskytter ikke mot smitte.'},{t:'P-stav',g:'g'},{t:'Spiral',g:'g'},{t:'Kondom',g:'b',why:'Kondom er det eneste prevensjonsmiddelet som også beskytter mot kjønnssykdommer.'},{t:'Angrepille (nødprevensjon)',g:'g',why:'Angrepillen kan forhindre graviditet etter sex, men den er ikke vanlig prevensjon og beskytter ikke mot smitte.'}],
+  good:'Riktig! Kondom er det eneste som beskytter mot både graviditet og kjønnssykdommer som klamydia. Klamydia gir ofte ingen symptomer, men kan gi nedsatt fruktbarhet. Det er gratis å teste seg på helsestasjon for ungdom.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  nerver:{name:'Nervesystemet',gens:[
+    ()=>N.mc('Hva er en refleks?','En automatisk reaksjon som går via ryggmargen',['En vane du har lært','En reaksjon som styres av hormoner'],['Tenk på kokeplata.'],'En refleks går via ryggmargen, uten at hjernen må bestemme. Den er rask og beskytter kroppen.'),
+    ()=>N.mc('Hva gjør de motoriske nervene?','Sender beskjed fra hjernen og ryggmargen til musklene',['Sender sanseinntrykk til hjernen','Lager hormoner'],['Motor = bevegelse.'],'Motoriske nerver går ut til musklene. Sensoriske nerver går inn fra sansene.'),
+    ()=>{const v=pick([50,80,100]),d=pick([1,1.5,2]);return {prompt:`Et nervesignal går ${v} m/s. Hvor mange millisekunder bruker det på ${nf(d,1)} m, fra tåa til ryggmargen?`,ans:d/v*1000,unit:'ms',abs:.5,hints:['Tid = strekning : fart.','Gang med 1000 for å gjøre sekunder om til millisekunder.'],sol:`${nf(d,1)} : ${v} = ${nf(d/v,3)} s = <b>${nf(d/v*1000,1)} ms</b>`,diag:x=>near(x,d/v)?'Det er i sekunder. Gang med 1000.':null};}
+  ]},
+  hormoner:{name:'Hormoner',gens:[
+    ()=>{const h=pick([['Insulin','bukspyttkjertelen','senker blodsukkeret'],['Adrenalin','binyrene','gjør kroppen klar til kamp eller flukt'],['Testosteron','testiklene','styrer produksjonen av sædceller og gir mørkere stemme'],['Østrogen','eggstokkene','styrer menstruasjonssyklusen'],['Veksthormon','hypofysen','får kroppen til å vokse']]);
+      return N.mc(`Hva gjør hormonet <b>${h[0].toLowerCase()}</b>?`,h[2][0].toUpperCase()+h[2].slice(1),['Senker blodsukkeret','Gjør kroppen klar til kamp eller flukt','Styrer menstruasjonssyklusen','Får kroppen til å vokse'].filter(x=>x.toLowerCase()!==h[2]).slice(0,3),[`Det lages i ${h[1]}.`],`${h[0]} lages i ${h[1]} og ${h[2]}.`);},
+    ()=>N.mc('Hvordan kommer hormonene fram til organene de virker på?','Med blodet',['Gjennom nervene','Gjennom lymfen','Gjennom huden'],['Tenk på brevet i forklaringen øverst.'],'Hormonkjertlene skiller ut hormoner rett i blodet, som frakter dem rundt i hele kroppen.')
+  ]},
+  rus:{name:'Rus, doping og helse',gens:[
+    ()=>N.mc('Hvorfor er rusmidler ekstra skadelige for ungdom?','Hjernen er fortsatt under utvikling',['Ungdom har mindre blod','Ungdom har flere nerveceller'],['Når er hjernen ferdig utviklet?'],'Hjernen utvikles til man er rundt 25 år. Rusmidler kan påvirke utviklingen og øke risikoen for avhengighet.'),
+    ()=>N.mc('Hva er det eneste prevensjonsmiddelet som beskytter mot kjønnssykdommer?','Kondom',['P-piller','Spiral','P-stav'],['Hvilket hindrer direkte kontakt?'],'Kondom hindrer at kroppsvæsker overføres, og beskytter derfor mot både graviditet og smitte.'),
+    ()=>N.mc('Hvorfor er anabole steroider forbudt i idrett og farlige å bruke?','De gir urettferdig fordel og kan skade hjerte, lever og hormonbalansen',['De gjør deg treg','De virker ikke'],['Tenk både på rettferdighet og helse.'],'Steroider gir større muskler, men kan gi alvorlige bivirkninger. I Norge er bruk av anabole steroider forbudt ved lov.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-kroppens-styring',title:'Kroppens styring',skills});
+})();
+</script>
+</body>
+</html>

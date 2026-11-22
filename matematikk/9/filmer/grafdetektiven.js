@@ -1,4 +1,4 @@
-/* Filmsnutt til Grafdetektiven: kioskens juksegraf. Krever ../felles/film.js. */
+/* Filmsnutt til Grafdetektiven: kioskens juksegraf. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

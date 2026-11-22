@@ -1,4 +1,4 @@
-/* Filmsnutter til Volumverkstedet. Krever ../felles/film.js. */
+/* Filmsnutter til Volumverkstedet. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

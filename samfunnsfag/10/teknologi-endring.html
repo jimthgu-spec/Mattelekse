@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teknologi og endring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.imp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.imp div{background:var(--paper);border-radius:10px;padding:8px 10px;font-size:.95rem}
+.imp b{display:block;font-family:var(--f-display)}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Teknologi og endring</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#tek"><b>2</b>Teknologi</a>
+    <a href="#film"><b>3</b>Film</a>
+    <a href="#kamp"><b>4</b>Kamp for endring</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Maskiner, makt og mennesker som sa ifra</h1>
+      <p class="lead">Dampmaskinen, strømmen, bilen og internett har snudd opp ned på hvordan vi lever. Men endring kommer ikke bare fra teknologi. Den kommer også fra mennesker som har kjempet for et bedre samfunn.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Et tannhjul og en knyttneve"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Rundt år 1900 jobbet omtrent fire av ti nordmenn i jordbruket.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="tek"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Hva gjorde teknologien med oss?</h2></div>
+    <p class="sec-lead">Velg en teknologi og se hvilke konsekvenser den har hatt for <b>individet</b>, <b>samfunnet</b> og <b>naturen</b>.</p>
+<div class="bench">
+  <div class="controls"><div class="chips" id="tekBtn"></div></div>
+  <div class="controls"><div id="tekOut" aria-live="polite"></div></div>
+</div>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fyrstikkarbeiderskene streiker</h2></div>
+    <p class="sec-lead">Kristiania (Oslo), 1889. Unge kvinner jobber i en fyrstikkfabrikk.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="kamp"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>De som sa ifra</h2></div>
+    <p class="sec-lead">Mange har kjempet for endring. Hva de kjempet for, henger ofte sammen med <b>hvor</b> og <b>når</b> de levde. Trykk på kortene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: utforske hvordan teknologi har vært og er en drivkraft for endring og drøfte konsekvenser for individ, samfunn og natur, og reflektere over hvordan mennesker har kjempet for endring og blitt påvirket av geografi og historie. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<g transform="translate(120 110)"><circle r="52" fill="none" stroke="var(--muted)" stroke-width="18" stroke-dasharray="16 10"/><circle r="30" fill="var(--surface)" stroke="var(--muted)" stroke-width="6"/></g><text x="270" y="140" text-anchor="middle" font-size="90">✊</text>`;
+
+V.predict($('#p1'),{q:'Hvor mange nordmenn jobber i jordbruket i dag?',opts:['Omtrent 4 av 10','Omtrent 1 av 10','Under 3 av 100'],ok:2,expl:'Under tre av hundre. Traktorer, melkeroboter og gjødsel gjør at noen få bønder produserer mer mat enn mange gjorde før. Resten av oss jobber med noe helt annet.',retry:'Tenk på hvor mye en traktor kan gjøre.'});
+
+const TEK={
+  damp:{n:'⚙️ Dampmaskinen',y:'1800-tallet',i:'Mange flyttet fra gården til byen for å jobbe lange dager i fabrikker.',s:'Industrisamfunnet vokste frem. Arbeiderklassen og fagforeninger ble til.',n2:'Kull ble brent i store mengder. Starten på menneskeskapte klimaendringer.'},
+  strom:{n:'💡 Elektrisitet',y:'ca. 1900',i:'Lys om kvelden, og senere vaskemaskin og kjøleskap. Mindre hardt husarbeid, særlig for kvinner.',s:'Norge bygde vannkraftverk og ble et industriland med smelteverk og fabrikker.',n2:'Vannkraft er fornybar, men demninger endrer elver og natur.'},
+  bil:{n:'🚗 Bilen',y:'1900-tallet',i:'Folk kunne bo langt fra jobben og reise når de ville.',s:'Byer spredte seg utover. Butikker og arbeidsplasser flyttet etter.',n2:'Utslipp, støy og trafikkulykker. Veier deler opp naturområder.'},
+  net:{n:'🌐 Internett',y:'1990-tallet',i:'Du kan snakke med hvem som helst, når som helst, og finne all verdens informasjon.',s:'Nye jobber og nye måter å drive politikk på, men også falske nyheter og overvåking.',n2:'Datasentre bruker mye strøm. Elektronikk krever sjeldne metaller.'},
+  ki:{n:'🤖 Kunstig intelligens',y:'2020-tallet',i:'Hjelp med lekser, oversetting og bilder. Men vanskeligere å vite hva som er ekte.',s:'Mange jobber kan endres eller forsvinne, og nye kommer. Hvem eier og kontrollerer KI?',n2:'Svært mye strøm og vann til datasentre, men KI kan også hjelpe med å løse miljøproblemer.'}};
+$('#tekBtn').innerHTML=Object.entries(TEK).map(([k,t])=>`<button type="button" class="chip" data-k="${k}">${t.n}</button>`).join('');
+const tekShow=k=>{const t=TEK[k];$('#tekBtn').querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.k===k));$('#tekOut').innerHTML=`<p style="margin:0 0 8px"><b>${t.n}</b> <span class="note">(${t.y})</span></p><div class="imp"><div><b>🧍 Individ</b>${t.i}</div><div><b>🏙️ Samfunn</b>${t.s}</div><div><b>🌲 Natur</b>${t.n2}</div></div>`;};
+$('#tekBtn').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>tekShow(b.dataset.k)));tekShow('damp');
+N.sorter($('#sort1'),{intro:'Smarttelefonen: Sorter konsekvensene etter hvem eller hva de påvirker mest.',groups:[{id:'i',name:'Individ'},{id:'s',name:'Samfunn'},{id:'n',name:'Natur'}],
+  items:[{t:'Mange sover dårligere på grunn av skjermbruk.',g:'i'},{t:'Du kan alltid nå familien.',g:'i'},{t:'Bank, billetter og legetimer er blitt digitale.',g:'s'},{t:'Demonstrasjoner kan organiseres på noen timer.',g:'s'},{t:'Gruvedrift etter metaller til mobiler skader natur.',g:'n'},{t:'Elektronisk avfall havner på søppelfyllinger.',g:'n'}],
+  good:'Riktig! Teknologi er sjelden bare bra eller bare dårlig. Det er vi som bestemmer hvordan den brukes, blant annet gjennom lover og politikk.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const fab=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><rect x="0" y="30" width="400" height="${GY-30}" fill="var(--surface)" stroke="var(--muted)"/><rect x="40" y="${GY-60}" width="320" height="16" fill="var(--wood,#9a6a3a)" opacity=".6"/><text x="200" y="22" class="fm-small" text-anchor="middle">FYRSTIKKFABRIKK, KRISTIANIA 1889</text><line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const out=()=>S.bg.by()+`<text x="200" y="22" class="fm-small" text-anchor="middle">UTENFOR FABRIKKEN</text>`;
+  const girls=(o={})=>[0,1,2,3].map(i=>person(80+i*70,GY,74,{shirt:[4,3,2,4][i],skin:0,hair:i%4,armL:o.arm?160:60,walk:o.walk!=null?o.walk+i:null})).join('');
+  S.film('#film1',{title:'Fyrstikkarbeiderskene streiker',real:'1889',size:[400,250],end:{text:'Møt flere som sa ifra ↓',href:'#kamp'},poster:'Lange dager, lav lønn og giftig fosfor. Så sier arbeiderskene stopp.',
+    scenes:[
+      {dur:4400,text:'Unge jenter jobber tolv timer om dagen med å lage fyrstikker. Fosforet er giftig, og noen får kjevene ødelagt av sykdommen «fosforkjeve».',draw:p=>fab()+girls()},
+      {dur:4200,text:'Så kutter eieren lønna. Arbeiderskene har fått nok.',draw:p=>fab()+girls()+person(360,GY,100,{shirt:1,skin:0,hair:2,flip:true,armL:100})+bubble(360,GY-108,'Lavere lønn!',{opacity:seg(p,.1,.3)})},
+      {dur:1200,text:'Hva kan de gjøre? De har ingen stemmerett, og hver for seg er de lette å erstatte.',draw:()=>fab()+girls(),
+        ask:{q:'Hvordan kan arbeidere uten makt hver for seg få makt?',opts:['Gå sammen og streike, altså legge ned arbeidet samtidig','Jobbe enda hardere','Vente til eieren blir snill'],ok:0,why:'Én arbeider kan sparkes. Men når alle legger ned arbeidet samtidig, stopper fabrikken. Det er derfor fagforeninger ble så viktige.',wrong:{1:'Det gir mer penger til eieren, men ikke bedre forhold for dem.',2:'Uten press skjer det sjelden noe.'}}},
+      {dur:4600,text:'Arbeiderskene ved to fabrikker går ut i streik. Mange i byen støtter dem, og avisene skriver om saken.',draw:p=>out()+girls({arm:true,walk:p*14})+bubble(150,GY-82,'Rettferdig lønn!',{opacity:seg(p,.2,.4)})},
+      {dur:4600,text:'De fikk ikke alt de ville, men streiken ble et viktig skritt. Arbeidere organiserte seg, og senere kom lover om arbeidstid, sikkerhet og forbud mot giftig fosfor.',draw:p=>out()+girls({arm:false})}]});}
+
+S.flip($('#flip1'),[
+  {front:'<b>🗳️ Gina Krog</b>Norge, 1880–1913',back:'<b>Gina Krog</b>Kjempet for kvinners stemmerett. I et Norge der menn hadde all politisk makt, organiserte hun kvinner. I 1913 fikk kvinner stemmerett.'},
+  {front:'<b>🦌 Elsa Laula Renberg</b>Sápmi, 1904–1917',back:'<b>Elsa Laula Renberg</b>Samisk aktivist som organiserte det første samiske landsmøtet i 1917. Hun kjempet mot at samer ble fratatt land og rettigheter.'},
+  {front:'<b>✊🏿 Martin Luther King</b>USA, 1955–1968',back:'<b>Martin Luther King</b>Kjempet med fredelige midler mot raseskille i USA. Historien med slaveri i Sørstatene formet kampen hans.'},
+  {front:'<b>🏳️ Nelson Mandela</b>Sør-Afrika, 1950–1994',back:'<b>Nelson Mandela</b>Kjempet mot apartheid, et system der hvite styrte og svarte ble holdt nede. Han satt 27 år i fengsel og ble landets første svarte president.'},
+  {front:'<b>🌍 Greta Thunberg</b>Sverige, 2018–',back:'<b>Greta Thunberg</b>Startet skolestreik for klimaet som 15-åring. Med sosiale medier spredte bevegelsen seg til hele verden på få måneder.'}]);
+V.predict($('#p2'),{tag:'Drøft',q:'Hva viser kortene om forholdet mellom mennesker og samfunnet de lever i?',opts:['At samfunnet ikke påvirker hva folk kjemper for','At folk kjemper mot urett de møter der de bor, og at samfunnet endres av folk som sier ifra','At bare presidenter kan endre samfunnet'],ok:1,expl:'Mandela kjempet mot apartheid fordi han vokste opp i Sør-Afrika. Greta brukte internett, noe Gina Krog ikke kunne. Geografi, historie og teknologi former kampen, og kampen former samfunnet.',retry:'Hvorfor kjempet de akkurat for det de gjorde?'});
+
+const skills={
+  tek:{name:'Teknologi og konsekvenser',gens:[
+    ()=>{const k=pick(Object.keys(TEK)),t=TEK[k],a=pick([['i','individet'],['s','samfunnet'],['n2','naturen']]);return N.mc(`Hvilken konsekvens hadde <b>${t.n.slice(3)}</b> for ${a[1]}?`,t[a[0]],shuffle(Object.keys(TEK).filter(x=>x!==k)).slice(0,2).map(x=>TEK[x][a[0]]),['Tenk på når teknologien kom.'],t[a[0]]);},
+    ()=>N.mc('Hvorfor flyttet mange fra landet til byen på 1800-tallet?','Maskiner gjorde jordbruket mer effektivt, og fabrikkene trengte arbeidere',['Byene var gratis å bo i','Det var forbudt å bo på landet'],['Industrialisering.'],'Industrialisering og urbanisering henger sammen.'),
+    ()=>N.mc('Hvorfor kalles teknologi en <b>drivkraft</b> for endring?','Fordi ny teknologi endrer hvordan vi jobber, bor og lever',['Fordi den bruker drivstoff','Fordi den bare gir små endringer'],['Driver frem.'],'Fra dampmaskin til KI har teknologi skapt store samfunnsendringer.')]},
+  kamp:{name:'Kamp for endring',gens:[
+    ()=>{const x=pick([['Gina Krog','kvinners stemmerett'],['Martin Luther King','like rettigheter for svarte i USA'],['Nelson Mandela','å avskaffe apartheid'],['Elsa Laula Renberg','samenes rettigheter'],['Greta Thunberg','klimaet']]);const all=['kvinners stemmerett','like rettigheter for svarte i USA','å avskaffe apartheid','samenes rettigheter','klimaet'];return N.mc(`Hva kjempet <b>${x[0]}</b> for?`,x[1],shuffle(all.filter(y=>y!==x[1])).slice(0,3),['Tenk på kortene.'],`${x[0]} kjempet for ${x[1]}.`);},
+    ()=>N.mc('Hva er en <b>streik</b>?','At arbeidere legger ned arbeidet samtidig for å få bedre lønn eller vilkår',['At arbeidere får sparken','En type fabrikk'],['Fyrstikkarbeiderskene.'],'Streik er et lovlig virkemiddel i Norge, regulert i arbeidslivet.'),
+    ()=>N.mc('Når fikk kvinner i Norge stemmerett på lik linje med menn?','1913',['1814','1945','1978'],['Like før første verdenskrig.'],'Norge var et av de første landene i verden.'),
+    ()=>N.mc('Hva er et <b>fredelig</b> virkemiddel for å få endring?','Demonstrasjoner, underskrifter og boikott',['Vold','Hærverk'],['Uten vold.'],'Martin Luther King og mange andre viste at fredelig motstand kan endre samfunn.')]}
+};
+V.practice($('#practice'),{id:'saf10-teknologi',title:'Teknologi og endring',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

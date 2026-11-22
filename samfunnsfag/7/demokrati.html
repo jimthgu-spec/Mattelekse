@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demokrati og regler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.gov{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Demokrati og regler</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#tid"><b>2</b>Tidslinje</a>
+    <a href="#film"><b>3</b>Film</a>
+    <a href="#styre"><b>4</b>Styreformer</a>
+    <a href="#regler"><b>5</b>Lover og normer</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Hvem bestemmer?</h1>
+      <p class="lead">I dag kan alle over 18 år stemme ved valg i Norge. Slik har det ikke alltid vært. Finn ut hvordan demokratiet vokste frem, hvordan du kan påvirke, og hvorfor vi har lover, regler og normer.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En valgurne og stemmesedler"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Grunnloven ble skrevet på Eidsvoll i 1814. Den sa at folket skulle styre gjennom valgte representanter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="tid"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Veien til demokratiet</h2></div>
+    <p class="sec-lead">Demokratiet kom ikke på én dag. Sett hendelsene i riktig rekkefølge.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="ord1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Valg i elevrådet</h2></div>
+    <p class="sec-lead">Klassen skal bestemme hva pengene fra kakesalget skal brukes til.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="styre"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Hvordan kan du påvirke?</h2></div>
+    <p class="sec-lead">Du vil ha flere benker i parken der du bor. Velg en styreform og se hvordan du kan påvirke.</p>
+<div class="bench">
+  <div class="controls"><div class="gov" id="gov"></div></div>
+  <div class="controls"><div class="card2" id="govCard" aria-live="polite"></div></div>
+</div>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort2"></div></div>
+  </div></section>
+
+  <section id="regler"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Lov, regel eller norm?</h2></div>
+    <p class="sec-lead">En <b>lov</b> er vedtatt av Stortinget og gjelder alle. En <b>regel</b> gjelder et bestemt sted, for eksempel skolen eller hjemme. En <b>norm</b> er en uskrevet regel. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: beskrive viktige hendelser som førte til dagens demokrati, sammenligne påvirkningsmuligheter i ulike styreformer, og gi eksempler på lover, regler og normer og konsekvenser av å bryte dem. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<rect x="120" y="90" width="140" height="110" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="3"/><rect x="160" y="84" width="60" height="10" rx="3" fill="var(--ink)"/>
+<g transform="rotate(-12 190 60)"><rect x="160" y="20" width="60" height="76" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><path d="M172 56 l10 10 l20 -24" stroke="var(--accent)" stroke-width="5" fill="none"/></g><text x="190" y="160" text-anchor="middle" font-size="18" font-weight="800" fill="var(--ink)">VALG</text>`;
+
+V.predict($('#p1'),{q:'Hvem fikk stemme ved valg i 1814?',opts:['Alle over 18 år','Alle menn','Bare noen menn over 25 år, som eide jord eller var embetsmenn'],ok:2,expl:'Bare en liten del av befolkningen fikk stemme. Kvinner, fattige og menn uten jord fikk ikke. Det tok nesten hundre år før alle voksne fikk stemmerett.',retry:'Demokratiet i 1814 var langt fra slik det er i dag.'});
+
+S.order($('#ord1'),{intro:'Fra eldst øverst til nyest nederst.',label:k=>k,items:[
+  {t:'Grunnloven skrives på Eidsvoll.',k:1814},{t:'Regjeringen må ha støtte fra Stortinget (parlamentarisme).',k:1884},{t:'Alle menn over 25 år får stemmerett.',k:1898},{t:'Norge blir et selvstendig land, ut av unionen med Sverige.',k:1905},{t:'Kvinner får stemmerett på lik linje med menn.',k:1913},{t:'Krigen er over, og demokratiet kommer tilbake etter fem år med okkupasjon.',k:1945},{t:'Stemmerettsalderen settes til 18 år.',k:1978}],
+  good:'Riktig! Demokratiet ble utvidet steg for steg, fordi folk kjempet for retten til å være med og bestemme.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const kids=(o={})=>[0,1,2,3,4].map(i=>person(40+i*52,GY,70+(i%2)*6,{shirt:1+i%4,skin:i%4,hair:(i+2)%4,armL:o.vote&&o.vote.includes(i)?165:10})).join('');
+  const board=(a,b,c)=>`<text x="210" y="56" text-anchor="middle" fill="#fff" font-size="13">Ballbinge: ${a}</text><text x="210" y="80" text-anchor="middle" fill="#fff" font-size="13">Klassetur: ${b}</text><text x="210" y="104" text-anchor="middle" fill="#fff" font-size="13">Nye spill: ${c}</text>`;
+  S.film('#film1',{title:'Valg i elevrådet',real:'Demokrati',size:[400,250],end:{text:'Sammenlign styreformer ↓',href:'#styre'},poster:'Klassen har 3000 kroner. Hvem skal bestemme hva pengene brukes til?',
+    scenes:[
+      {dur:4200,text:'Klassen har tjent 3000 kroner på kakesalg. Tre forslag kom inn: ballbinge, klassetur eller nye spill.',draw:p=>S.bg.klasse()+board('','','')+kids()+person(360,GY,96,{shirt:4,skin:1,hair:3,flip:true})},
+      {dur:4200,text:'Først får alle si hva de mener. Ida argumenterer for klasseturen: – Da får alle være med!',draw:p=>S.bg.klasse()+board('','','')+kids({vote:[2]})+bubble(144,GY-82,'Alle kan bli med!',{opacity:seg(p,.1,.3)})+person(360,GY,96,{shirt:4,skin:1,hair:3,flip:true})},
+      {dur:4200,text:'Så stemmer de. Hver elev har én stemme. Klassetur får flest.',draw:p=>S.bg.klasse()+board(p>.3?'6':'',p>.5?'14':'',p>.7?'5':'')+kids({vote:p>.5?[1,2,4]:[]})+person(360,GY,96,{shirt:4,skin:1,hair:3,flip:true})},
+      {dur:1200,text:'Noen er skuffet over resultatet.',draw:()=>S.bg.klasse()+board('6','14','5')+kids()+person(360,GY,96,{shirt:4,skin:1,hair:3,flip:true}),
+        ask:{q:'Jonas ville ha ballbinge. Hva er det mest demokratiske han kan gjøre nå?',opts:['Godta resultatet, og prøve å få flertall for ballbingen neste gang','Nekte å bli med på turen','Ta pengene selv'],ok:0,why:'I et demokrati bestemmer flertallet, men mindretallet har rett til å si sin mening og prøve igjen. Det er slik valg fungerer i Norge også.',wrong:{1:'Han har rett til å være uenig, men flertallet har bestemt.',2:'Da bryter han reglene og tar fra fellesskapet.'}}},
+      {dur:4000,text:'Det er demokrati: Alle får si sin mening, alle har én stemme, flertallet bestemmer, og mindretallet blir respektert.',draw:p=>S.bg.klasse()+board('6','14','5')+kids({vote:[0,1,2,3,4]})}]});}
+
+const GOV={
+  dikt:{n:'Diktatur',e:'👤',t:'Én leder eller én gruppe har all makt. Det er ingen frie valg.',p:'Du kan nesten ikke påvirke. Hvis du protesterer, kan du bli straffet eller fengslet.',l:1},
+  enev:{n:'Enevelde',e:'👑',t:'En konge eller dronning bestemmer alt alene. Slik var det i Danmark-Norge før 1814.',p:'Du kan skrive et bønneskrift til kongen og håpe han hører på deg.',l:1},
+  dir:{n:'Direkte demokrati',e:'✋',t:'Alle stemmer direkte over hver sak, slik som i klassen eller i en folkeavstemning.',p:'Du kan stemme selv, og overbevise andre om å stemme som deg.',l:3},
+  rep:{n:'Representativt demokrati',e:'🏛️',t:'Folket velger representanter som bestemmer for dem, slik som Stortinget og kommunestyret.',p:'Du kan skrive til politikere, starte en underskriftskampanje, kontakte avisen, gå i barne- og ungdomsrådet, og stemme ved valg når du er 18.',l:3}};
+$('#gov').innerHTML=Object.entries(GOV).map(([k,g])=>`<button type="button" class="btn" data-k="${k}">${g.e} ${g.n}</button>`).join('');
+const govShow=k=>{const g=GOV[k];$('#gov').querySelectorAll('button').forEach(b=>b.classList.toggle('primary',b.dataset.k===k));$('#govCard').innerHTML=`<span class="tag">${g.n}</span><p style="margin:0">${g.t}</p><p style="margin:0"><b>Benkene i parken:</b> ${g.p}</p><div><span class="note">Hvor mye kan du påvirke?</span><div class="meter"><i style="width:${g.l*33}%"></i></div></div>`;};
+$('#gov').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>govShow(b.dataset.k)));govShow('rep');
+N.sorter($('#sort2'),{groups:[{id:'d',name:'Demokrati'},{id:'k',name:'Diktatur'}],
+  items:[{t:'Frie valg med flere partier',g:'d'},{t:'Ytringsfrihet: du kan kritisere lederne',g:'d'},{t:'Uavhengige domstoler',g:'d'},{t:'Aviser blir sensurert',g:'k'},{t:'Lederen kan ikke kastes ved valg',g:'k'},{t:'Folk som protesterer, blir fengslet',g:'k'}],
+  good:'Riktig! I et demokrati har folk mange måter å påvirke på. I et diktatur er det farlig å si imot.'});
+
+N.sorter($('#sort1'),{groups:[{id:'l',name:'Lov'},{id:'r',name:'Regel'},{id:'n',name:'Norm'}],
+  items:[{t:'Du må være 18 år for å ta lappen på bil.',g:'l'},{t:'Det er forbudt å stjele.',g:'l'},{t:'Barn har rett og plikt til grunnskole.',g:'l'},{t:'Mobilen skal ligge i skapet i skoletiden.',g:'r'},{t:'Leggetid klokka 21 på skoledager.',g:'r'},{t:'I fotball kan bare keeperen ta ballen med hendene.',g:'r'},{t:'Man sier takk for maten.',g:'n'},{t:'Man holder døra for den som kommer bak.',g:'n'},{t:'Man står i kø.',g:'n'}],
+  good:'Riktig! Bryter du en <b>lov</b>, kan du få straff av staten, for eksempel bot. Bryter du en <b>regel</b>, får du en reaksjon der regelen gjelder, for eksempel at mobilen blir tatt. Bryter du en <b>norm</b>, reagerer folk rundt deg, for eksempel ved at de synes du er uhøflig.'});
+
+const skills={
+  hist:{name:'Demokratiets historie',gens:[
+    ()=>{const x=pick([['Grunnloven ble skrevet',1814],['Kvinner fikk stemmerett',1913],['Norge ble selvstendig fra Sverige',1905],['Alle menn fikk stemmerett',1898]]);return N.mc(`Hvilket år? ${x[0]}.`,String(x[1]),['1814','1898','1905','1913','1945'].filter(y=>y!==String(x[1])).slice(0,3),['Tenk på tidslinjen.'],`${x[0]} i ${x[1]}.`);},
+    ()=>N.mc('Hvor ble Grunnloven skrevet?','På Eidsvoll',['I Bergen','I Stockholm'],['Eidsvollsbygningen.'],'Grunnloven ble skrevet på Eidsvoll og undertegnet 17. mai 1814.'),
+    ()=>N.mc('Hvor gammel må du være for å stemme ved stortingsvalg i dag?','18 år',['16 år','21 år','25 år'],['Myndighetsalder.'],'I dag er stemmerettsalderen 18 år.')]},
+  styre:{name:'Styreformer',gens:[
+    ()=>{const k=pick(Object.keys(GOV));return N.mc(`Hvilken styreform er dette? «${GOV[k].t}»`,GOV[k].n,Object.values(GOV).map(g=>g.n).filter(n=>n!==GOV[k].n),['Hvem har makten?'],`Det er ${GOV[k].n.toLowerCase()}.`);},
+    ()=>N.mc('Hva kjennetegner et demokrati?','Folket styrer gjennom frie valg, og alle har ytringsfrihet',['Én person bestemmer alt','Bare rike får stemme'],['Demos = folk, kratos = styre.'],'Demokrati betyr folkestyre.'),
+    ()=>N.mc('Hvordan kan en 12-åring påvirke i kommunen?','Gjennom elevrådet, barne- og ungdomsrådet, eller ved å skrive til politikere',['Ved å stemme ved stortingsvalg','Det går ikke'],['Du kan ikke stemme ennå, men...'],'Barn har rett til å bli hørt i saker som gjelder dem.')]},
+  regler:{name:'Lover, regler og normer',gens:[
+    ()=>{const x=pick([['Det er forbudt å kjøre for fort.','Lov'],['Man hilser når man møter noen man kjenner.','Norm'],['Ingen løping i gangene på skolen.','Regel'],['Det er forbudt å slå andre.','Lov'],['Man snakker ikke med mat i munnen.','Norm'],['Leksene skal være gjort før gaming.','Regel']]);return N.mc(`Er dette en lov, en regel eller en norm? «${x[0]}»`,x[1],['Lov','Regel','Norm'].filter(y=>y!==x[1]),['Hvem har bestemt det, og hvor gjelder det?'],`Det er en ${x[1].toLowerCase()}.`);},
+    ()=>N.mc('Hva kan skje hvis du bryter en lov?','Du kan få straff, for eksempel bot',['Ingenting','Du mister stemmeretten for alltid'],['Staten reagerer.'],'Lovbrudd kan gi straff fra staten.'),
+    ()=>N.mc('Hvorfor har vi lover og regler?','For at samfunnet skal være trygt og rettferdig for alle',['For å gjøre livet kjedelig','For at politiet skal ha noe å gjøre'],['Hva ville skjedd uten?'],'Lover og regler beskytter oss og gjør det mulig å leve sammen.')]}
+};
+V.practice($('#practice'),{id:'saf7-demokrati',title:'Demokrati og regler',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

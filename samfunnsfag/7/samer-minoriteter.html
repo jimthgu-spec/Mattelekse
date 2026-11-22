@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samer og minoriteter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style></style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Samer og minoriteter</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#film"><b>2</b>Film</a>
+    <a href="#tid"><b>3</b>Tidslinje</a>
+    <a href="#min"><b>4</b>Minoritetene</a>
+    <a href="#rett"><b>5</b>Rettigheter</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Samene og de nasjonale minoritetene</h1>
+      <p class="lead">Samene er Norges urfolk. I tillegg har fem grupper med lang historie i Norge status som nasjonale minoriteter. Lenge ble de presset til å slutte å bruke språket og kulturen sin. I dag har de egne rettigheter.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Det samiske flagget"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Samene har bodd i nord lenge før det fantes landegrenser. Området kalles <b>Sápmi</b>.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bestemor forteller</h2></div>
+    <p class="sec-lead">Elle besøker áhkku, bestemoren sin. Hun forteller om da hun var liten.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="tid"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fra fornorsking til rettigheter</h2></div>
+    <p class="sec-lead"><b>Fornorsking</b> betyr at staten prøvde å gjøre samer og minoriteter «norske», ved å forby språket og kulturen deres. Sett hendelsene i riktig rekkefølge.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="ord1"></div></div>
+  </div></section>
+
+  <section id="min"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>De fem nasjonale minoritetene</h2></div>
+    <p class="sec-lead">Jøder, kvener/norskfinner, rom, romanifolk/tatere og skogfinner har bodd i Norge i over hundre år og er nasjonale minoriteter. Dra hver opplysning til riktig gruppe.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="rett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Rettigheter i dag</h2></div>
+    <p class="sec-lead">Trykk på kortene og se hvilke rettigheter samene og minoritetene har i dag.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: utforske hovedlinjer i historien til samene og de nasjonale minoritetene i Norge og presentere rettighetene deres i dag. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<rect x="70" y="30" width="240" height="160" rx="6" fill="#d52b1e"/><rect x="150" y="30" width="16" height="160" fill="#007a3d"/><rect x="166" y="30" width="16" height="160" fill="#ffce00"/><rect x="182" y="30" width="16" height="160" fill="#0039a6"/>
+<path d="M174 70 a40 40 0 0 0 0 80" fill="none" stroke="#0039a6" stroke-width="10"/><path d="M174 70 a40 40 0 0 1 0 80" fill="none" stroke="#d52b1e" stroke-width="10"/>`;
+
+V.predict($('#p1'),{q:'Hvor mange land strekker Sápmi seg over i dag?',opts:['Bare Norge','To: Norge og Sverige','Fire: Norge, Sverige, Finland og Russland'],ok:2,expl:'Sápmi strekker seg over fire land. Flest samer bor i Norge. Samene var her før grensene ble trukket, og derfor er de et <b>urfolk</b>.',retry:'Tenk på hele Nordkalotten.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const ahkku=(o={})=>person(130,GY,90,Object.assign({shirt:2,skin:0,hair:0,sit:true},o));
+  const elle=(o={})=>person(250,GY,72,Object.assign({shirt:3,skin:0,hair:1,flip:true},o));
+  const old=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><rect x="140" y="60" width="200" height="${GY-60}" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/><text x="240" y="50" class="fm-small" text-anchor="middle">INTERNATSKOLE, 1955</text>${[0,1,2].map(k=>`<rect x="${160+k*60}" y="80" width="36" height="30" fill="var(--c2-soft)" stroke="var(--c2)"/>`).join('')}<line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  S.film('#film1',{title:'Bestemor forteller',real:'Fornorsking',size:[400,250],end:{text:'Lag tidslinjen ↓',href:'#tid'},poster:'Áhkku forteller om skolen hun gikk på. Hvorfor fikk hun ikke snakke sitt eget språk?',
+    scenes:[
+      {dur:4200,text:'Elle viser bestemor at hun har lært en ny sang på samisk på skolen. Bestemor blir stille.',draw:p=>S.bg.stue()+ahkku()+elle({armL:lerp(10,130,seg(p,.1,.4))})+bubble(250,GY-80,'♪ Mii leat...',{opacity:seg(p,.2,.4)})},
+      {dur:4600,text:'– Da jeg var sju år, måtte jeg bo på internatskole langt hjemmefra. Der fikk vi straff hvis vi snakket samisk.',draw:p=>old()+person(lerp(40,110,seg(p,0,.6)),GY,60,{shirt:2,skin:0,hair:0,walk:p*14})+person(200,GY,98,{shirt:4,skin:0,hair:2,flip:true,armL:120})+bubble(200,GY-104,'Bare norsk her!',{opacity:seg(p,.5,.7)})},
+      {dur:1200,text:'Mange samiske barn opplevde det samme.',draw:()=>old()+person(110,GY,60,{shirt:2,skin:0,hair:0})+person(200,GY,98,{shirt:4,skin:0,hair:2,flip:true}),
+        ask:{q:'Hvorfor fikk ikke samiske barn snakke samisk på skolen?',opts:['Staten ville at alle skulle bli «norske», og så ned på samisk språk og kultur','Lærerne var bare strenge','Det fantes ikke samiske ord'],ok:0,why:'Dette kalles fornorsking. Staten hadde en politikk i over hundre år for å få samer og minoriteter til å slutte med språket og kulturen sin.',wrong:{1:'Det var mer enn strenge lærere. Det var statens politikk.',2:'Samisk er et rikt språk, med mange ord for snø og rein.'}}},
+      {dur:4400,text:'– Etterpå skammet jeg meg over å være samisk. Jeg lærte ikke barna mine språket. Mange samer mistet språket sitt på den måten.',draw:p=>S.bg.stue()+ahkku({armL:30})+elle()},
+      {dur:4400,text:'I dag har Elle rett til å lære samisk på skolen. Bestemor lærer seg sangen sammen med henne. Det er ikke for sent å ta språket tilbake.',draw:p=>S.bg.stue()+ahkku({armL:120})+elle({armL:130})+bubble(190,GY-110,'♪ Mii leat... ♪',{opacity:seg(p,.3,.6)})}]});}
+
+S.order($('#ord1'),{intro:'Fra eldst øverst til nyest nederst.',label:k=>k,items:[
+  {t:'Samiske og kvenske barn får ikke bruke sitt eget språk i skolen.',k:1880},{t:'Ny lov: Bare de som snakker norsk, kan kjøpe jord i Finnmark.',k:1902},
+  {t:'Alta-saken: samer protesterer mot en kraftutbygging.',k:1980},{t:'Sametinget åpner i Karasjok.',k:1989},
+  {t:'Jøder, kvener, rom, romanifolk og skogfinner blir anerkjent som nasjonale minoriteter.',k:1999},{t:'Sannhets- og forsoningskommisjonen legger frem rapporten om fornorskingen.',k:2023}],
+  good:'Riktig! Etter mange år med fornorsking begynte det å snu rundt 1980. I 2023 slo en kommisjon fast at fornorskingen var urett, og at følgene merkes fortsatt.'});
+
+N.sorter($('#sort1'),{groups:[{id:'j',name:'Jøder'},{id:'k',name:'Kvener/norskfinner'},{id:'r',name:'Rom'},{id:'t',name:'Romanifolk/tatere'},{id:'s',name:'Skogfinner'}],
+  items:[{t:'Grunnloven fra 1814 nektet dem å komme til Norge. Forbudet ble opphevet i 1851.',g:'j'},{t:'Mange ble drept i Holocaust under andre verdenskrig.',g:'j',why:'Over 770 jøder ble deportert fra Norge, og de fleste ble drept.'},
+    {t:'Kom fra Nord-Finland og Nord-Sverige til Nord-Norge på 1700- og 1800-tallet.',g:'k'},{t:'Språket deres heter kvensk.',g:'k'},
+    {t:'Ble nektet å reise inn i Norge fra 1927 til 1956.',g:'r'},{t:'Språket deres heter romanes.',g:'r'},
+    {t:'Har reist rundt i Norge i over 500 år og drevet med handel og håndverk.',g:'t'},{t:'Mange barn ble tatt fra foreldrene og plassert på barnehjem.',g:'t'},
+    {t:'Kom fra Finland på 1600-tallet og ryddet skog på Østlandet.',g:'s'},{t:'Brente skog for å dyrke rug (svedjebruk) på Finnskogen.',g:'s'}],
+  good:'Riktig! Alle de fem gruppene ble utsatt for fornorsking eller forfølgelse. I dag har de rett til å bevare og utvikle språket og kulturen sin.'});
+
+S.flip($('#flip1'),[
+  {front:'<b>🏛️ Sametinget</b>Hva er det?',back:'<b>Sametinget</b>Samenes eget folkevalgte organ, åpnet i 1989. Samer i Norge velger representanter hvert fjerde år.'},
+  {front:'<b>📜 Grunnloven § 108</b>Hva står det?',back:'<b>Grunnloven § 108</b>Staten skal legge til rette for at samene kan sikre og utvikle språket, kulturen og samfunnslivet sitt.'},
+  {front:'<b>🗣️ Språk</b>Hvilke rettigheter?',back:'<b>Språk</b>Samiske barn har rett til opplæring i og på samisk. Kvensk, romani og romanes er også vernet som minoritetsspråk.'},
+  {front:'<b>🎉 6. februar</b>Hvilken dag er det?',back:'<b>6. februar</b>Samefolkets dag. Da flagges det samiske flagget, og samisk kultur feires i hele landet.'}]);
+V.predict($('#p2'),{tag:'Tenk etter',q:'Hvorfor er det viktig at samer og minoriteter har egne rettigheter?',opts:['For at de skal få mer enn alle andre','For at språk og kultur som nesten ble borte, kan leve videre','Det er ikke viktig'],ok:1,expl:'Rettighetene skal rette opp urett og sikre at små språk og kulturer ikke forsvinner. De gir like muligheter, ikke fordeler.',retry:'Hva skjedde med språket under fornorskingen?'});
+
+const skills={
+  same:{name:'Samene',gens:[
+    ()=>N.mc('Hva betyr det at samene er et <b>urfolk</b>?','De bodde i området før landegrensene ble trukket, og har sin egen kultur',['De kom til Norge for kort tid siden','De bor bare i byer'],['Hvem var her først?'],'Urfolk er folk som har bodd i et område før dagens stater ble til.'),
+    ()=>N.mc('Hva var <b>fornorskingen</b>?','En politikk der staten prøvde å få samer og minoriteter til å gi opp språket og kulturen sin',['En skole for å lære norsk som fremmedspråk','En fest for norsk kultur'],['Gjøre noen «norske».'],'Fornorskingen varte i over hundre år, fra rundt 1850.'),
+    ()=>N.mc('Når åpnet Sametinget?','1989',['1814','1905','2023'],['Etter Alta-saken.'],'Sametinget åpnet i 1989 i Karasjok.'),
+    ()=>N.mc('Når er samefolkets dag?','6. februar',['17. mai','24. desember'],['Februar.'],'6. februar, til minne om det første samiske landsmøtet i 1917.'),
+    ()=>N.mc('Hva var Alta-saken?','Protester mot en kraftutbygging i Altaelva, som førte til mer oppmerksomhet om samenes rettigheter',['En fotballkamp','En skole i Alta'],['Rundt 1980.'],'Alta-saken ble et vendepunkt for samiske rettigheter.')]},
+  min:{name:'Nasjonale minoriteter',gens:[
+    ()=>N.mc('Hvilken av disse er IKKE en nasjonal minoritet i Norge?','Svensker',['Kvener/norskfinner','Skogfinner','Rom'],['Det er fem grupper med lang historie i Norge.'],'De fem er jøder, kvener/norskfinner, rom, romanifolk/tatere og skogfinner.'),
+    ()=>{const x=pick([['kvensk','Kvener/norskfinner'],['romanes','Rom'],['romani','Romanifolk/tatere']]);return N.mc(`Hvilken gruppe har språket <b>${x[0]}</b>?`,x[1],['Kvener/norskfinner','Rom','Romanifolk/tatere','Skogfinner'].filter(y=>y!==x[1]).slice(0,3),['Ligner navnet?'],`${x[0][0].toUpperCase()+x[0].slice(1)} er språket til ${x[1].toLowerCase()}.`);},
+    ()=>N.mc('Hvorfor kalles de <b>nasjonale</b> minoriteter?','De har bodd i Norge i over hundre år',['De bor i hele verden','De har eget land'],['Lang historie i Norge.'],'Gruppene må ha hatt lang tilknytning til landet, minst rundt hundre år.'),
+    ()=>N.mc('Hvilken gruppe kom fra Finland og ryddet skog på Østlandet på 1600-tallet?','Skogfinner',['Kvener/norskfinner','Rom'],['Finnskogen.'],'Skogfinnene bosatte seg blant annet på Finnskogen.')]}
+};
+V.practice($('#practice'),{id:'saf7-samer',title:'Samer og minoriteter',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

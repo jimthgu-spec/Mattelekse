@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slik levde folk før</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.era{display:flex;gap:6px;flex-wrap:wrap}
+.era button{flex:1 1 0;min-width:5.5rem}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Slik levde folk før</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#tid"><b>2</b>Tidsmaskin</a>
+    <a href="#film"><b>3</b>Film</a>
+    <a href="#sorter"><b>4</b>Sorter</a>
+    <a href="#mote"><b>5</b>Møter</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Fra fangst til fabrikk</h1>
+      <p class="lead">For lenge siden levde alle av det naturen ga. Så kom jordbruket, maskinene og byene. Ny teknologi har forandret hvor folk bor, hva de jobber med og hvor lenge de lever. Reis i tid og se hvordan.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Et gårdshus og en fabrikk med pipe"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Tenk deg Norge for 200 år siden, rundt år 1800.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="tid"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Reis i tid</h2></div>
+    <p class="sec-lead">Velg en tid. Se hvordan folk skaffet seg mat og penger, hvor de bodde og hvor lenge de levde. Tallene for Norge er omtrentlige.</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="tFig" viewBox="0 0 380 220" role="img" aria-label="Bilde av samfunnet i valgt tid"></svg></div>
+  <div class="controls">
+    <div class="era" id="tBtn"></div>
+    <div id="tTxt" aria-live="polite"></div>
+    <div class="stat" id="tStat"></div>
+  </div>
+</div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Anna flytter til byen</h2></div>
+    <p class="sec-lead">Året er 1900. Anna er 12 år og bor på en gård. Se hvorfor familien flytter.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="sorter"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Hvilken tid hører det til?</h2></div>
+    <p class="sec-lead">Hver tid har sin teknologi. Dra hver ting til den tiden den først ble vanlig i Norge.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="mote"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Når folk møtes, endres samfunnet</h2></div>
+    <p class="sec-lead">Når mennesker fra ulike steder møtes, tar de med seg varer, ideer, mat og tro. Trykk på kortene og se hva som endret seg.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: utforske hvordan folk har forsørget seg før, og hvordan teknologi og endringer i livsgrunnlag har påvirket befolkning, levekår og bosetting, og hvordan møter mellom mennesker har endret samfunn. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<line x1="0" y1="190" x2="380" y2="190" stroke="var(--line)" stroke-width="2"/>
+<path d="M40 190v-60l45-35 45 35v60z" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="2"/><rect x="72" y="150" width="24" height="40" fill="var(--c1)"/>
+<rect x="210" y="110" width="140" height="80" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/><rect x="310" y="50" width="18" height="60" fill="var(--muted)"/>
+<circle cx="322" cy="38" r="12" fill="var(--line)"/><circle cx="338" cy="22" r="10" fill="var(--line)"/>${[0,1,2].map(i=>`<rect x="${226+i*30}" y="130" width="18" height="18" fill="var(--c2-soft)" stroke="var(--c2)"/>`).join('')}
+<path d="M150 150 h40" stroke="var(--accent)" stroke-width="4" marker-end="url(#a)"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker></defs>`;
+
+V.predict($('#p1'),{q:'Hvor bodde de fleste i Norge rundt år 1800?',opts:['I byer','På landet, på gårder og i fiskevær','Halvparten i byer, halvparten på landet'],ok:1,
+  expl:'Omtrent ni av ti bodde på landet. De fleste var bønder eller fiskere og laget nesten alt selv. I dag er det omvendt: over åtte av ti bor i byer og tettsteder.',retry:'Det fantes ingen fabrikker, biler eller butikker med alt mulig. Hvordan skaffet folk seg mat?'});
+
+/* Tidsmaskin */
+const ERA=[
+  {n:'Steinalder',y:'før ca. 4000 f.Kr.',liv:'Folk levde av <b>jakt, fangst, fiske og sanking</b> av bær og planter. De flyttet etter dyrene og årstidene.',tek:'Spyd, pil og bue, båter og redskaper av stein og bein.',bo:'Små grupper i hytter og telt langs kysten.',pop:'noen få tusen',by:0,leve:'ca. 30 år',barn:'mange, men mange døde små'},
+  {n:'Bondesamfunnet',y:'ca. 4000 f.Kr.–1850',liv:'De fleste var <b>bønder</b>. De dyrket korn og hadde husdyr. Langs kysten var fiske viktig. Barna jobbet på gården.',tek:'Plog, ljå, rokk, vannkvern og seilbåter.',bo:'På gårder spredt rundt i landet.',pop:'ca. 900 000 (år 1800)',by:10,leve:'ca. 45 år',barn:'5–6 per kvinne'},
+  {n:'Industrisamfunnet',y:'ca. 1850–1970',liv:'<b>Maskiner</b> gjorde at færre trengtes på gårdene. Mange flyttet til byene og jobbet i <b>fabrikker</b>. Mange utvandret også til Amerika.',tek:'Dampmaskin, jernbane, elektrisitet, telefon og bil.',bo:'Flere og flere i byer og tettsteder.',pop:'ca. 2,2 millioner (år 1900)',by:35,leve:'ca. 55 år (år 1900)',barn:'ca. 4 per kvinne'},
+  {n:'I dag',y:'ca. 1970–nå',liv:'De fleste jobber med <b>tjenester</b>: skole, helse, butikk, data og transport. Olje og fisk er viktig for økonomien.',tek:'Datamaskin, internett, mobil og roboter.',bo:'Over 8 av 10 i byer og tettsteder.',pop:'ca. 5,5 millioner',by:83,leve:'ca. 83 år',barn:'ca. 1,4 per kvinne'}];
+function scene(i){let s=`<rect width="380" height="220" fill="var(--paper)"/><line x1="0" y1="190" x2="380" y2="190" stroke="var(--line)" stroke-width="2"/>`;
+  if(i===0)s+=`<path d="M60 190 l40 -70 l40 70z" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="2"/><path d="M230 200 q40 12 90 0" stroke="var(--c2)" stroke-width="6" fill="none"/><text x="290" y="180" font-size="34">🦌</text><text x="160" y="186" font-size="30">🔥</text><text x="40" y="60" font-size="30">🐟</text>`;
+  if(i===1)s+=`<path d="M40 190v-50l40-30 40 30v50z" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="2"/>${[0,1,2,3,4].map(k=>`<line x1="${170+k*30}" y1="190" x2="${185+k*30}" y2="150" stroke="var(--lamp)" stroke-width="4"/>`).join('')}<text x="320" y="188" font-size="34">🐄</text><text x="130" y="188" font-size="28">🐑</text>`;
+  if(i===2)s+=`<rect x="160" y="100" width="170" height="90" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/><rect x="290" y="40" width="18" height="60" fill="var(--muted)"/><circle cx="300" cy="30" r="12" fill="var(--line)"/><circle cx="318" cy="16" r="9" fill="var(--line)"/>${[0,1,2,3].map(k=>`<rect x="${176+k*36}" y="120" width="20" height="20" fill="var(--c2-soft)" stroke="var(--c2)"/>`).join('')}<path d="M30 190 h120" stroke="var(--ink)" stroke-width="3"/><text x="40" y="180" font-size="30">🚂</text>`;
+  if(i===3)s+=[[20,90],[80,140],[150,110],[220,160],[290,120]].map(([x,h])=>`<rect x="${x}" y="${190-h}" width="56" height="${h}" fill="var(--c2-soft)" stroke="var(--c2)" stroke-width="2"/>`).join('')+`<text x="320" y="50" font-size="30">📱</text><text x="40" y="40" font-size="28">✈️</text>`;
+  s+=`<rect x="10" y="10" width="${8+ERA[i].n.length*9}" height="26" rx="6" fill="var(--surface)" stroke="var(--line)"/><text x="18" y="28" font-weight="700" fill="var(--ink)" font-size="15">${ERA[i].n}</text>`;
+  return s;}
+$('#tBtn').innerHTML=ERA.map((e,i)=>`<button type="button" class="btn" data-i="${i}">${e.n}</button>`).join('');
+function showE(i){const e=ERA[i];$('#tFig').innerHTML=scene(i);$('#tBtn').querySelectorAll('button').forEach((b,j)=>b.classList.toggle('primary',j===i));
+  $('#tTxt').innerHTML=`<p style="margin:0"><b>${e.n}</b> <span class="note">(${e.y})</span></p><p>${e.liv}</p><p class="note"><b>Teknologi:</b> ${e.tek}<br><b>Bosetting:</b> ${e.bo}</p>`;
+  $('#tStat').innerHTML=`<div><b>${e.pop}</b><span>folk i Norge</span></div><div><b>${e.by} %</b><span>bodde i byer</span><div class="meter" style="margin-top:4px"><i style="width:${e.by}%"></i></div></div><div><b>${e.leve}</b><span>forventet levealder</span></div><div><b>${e.barn}</b><span>barn</span></div>`;}
+$('#tBtn').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>showE(+b.dataset.i)));showE(1);
+
+/* Film */
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const farm=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><path d="M20 ${GY}v-70l50-40 50 40v70z" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="2"/>${[0,1,2,3,4,5].map(k=>`<line x1="${170+k*34}" y1="${GY}" x2="${184+k*34}" y2="${GY-40}" stroke="var(--lamp)" stroke-width="4"/>`).join('')}<line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const town=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><rect x="190" y="90" width="200" height="${GY-90}" fill="var(--surface)" stroke="var(--muted)" stroke-width="2"/><rect x="340" y="30" width="20" height="60" fill="var(--muted)"/>${[0,1,2,3].map(k=>`<rect x="${206+k*44}" y="110" width="24" height="24" fill="var(--c2-soft)" stroke="var(--c2)"/>`).join('')}<text x="290" y="80" class="fm-small" text-anchor="middle">FABRIKK</text><line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const anna=(x,o={})=>person(x,GY,70,Object.assign({shirt:3,skin:0,hair:1},o)),far=(x,o={})=>person(x,GY,100,Object.assign({shirt:1,skin:0,hair:0},o)),mor=(x,o={})=>person(x,GY,94,Object.assign({shirt:4,skin:0,hair:3},o));
+  S.film('#film1',{title:'Anna flytter til byen',real:'År 1900',size:[400,250],end:{text:'Sorter teknologi etter tid ↓',href:'#sorter'},poster:'Anna bor på en gård i 1900. Snart må familien flytte. Hvorfor?',
+    scenes:[
+      {dur:4200,text:'Anna bor på en gård med foreldrene og fem søsken. Alle hjelper til med å høste kornet for hånd.',draw:p=>farm()+far(150,{armL:lerp(20,90,(Math.sin(p*12)+1)/2)})+mor(110)+anna(80)},
+      {dur:4400,text:'Naboen kjøper en <b>slåmaskin</b> trukket av hest. Den gjør jobben til ti mennesker. Snart trenger ingen å leie Annas far til slåtten.',draw:p=>farm()+`<text x="${lerp(400,240,seg(p,0,.6))}" y="${GY-6}" font-size="40">🐎</text>`+far(150)+mor(110)+anna(80)+bubble(150,GY-108,'Hva skal vi leve av?',{opacity:seg(p,.6,.85)})},
+      {dur:1200,text:'Familien må finne en ny måte å tjene penger på.',draw:()=>farm()+far(150)+mor(110)+anna(80),
+        ask:{q:'Hva gjorde mange familier i denne situasjonen rundt 1900?',opts:['Flyttet til byen for å jobbe i fabrikk, eller utvandret til Amerika','Kjøpte flere hester','Sluttet å jobbe'],ok:0,why:'Maskinene gjorde at færre trengtes på gårdene. Byene vokste fordi fabrikkene trengte arbeidere. Nesten 800 000 nordmenn utvandret til Amerika.',wrong:{1:'Familien hadde lite penger. Problemet var at maskiner tok over jobbene.',2:'Uten arbeid fikk de ikke mat. De måtte finne ny jobb.'}}},
+      {dur:4600,text:'Familien flytter til byen. Far og mor jobber i en fabrikk, ofte tolv timer om dagen. Anna begynner på skolen i byen.',draw:p=>town()+far(lerp(-40,140,seg(p,0,.6)),{walk:p*20})+mor(lerp(-80,100,seg(p,0,.6)),{walk:p*20})+anna(lerp(-110,70,seg(p,0,.6)),{walk:p*20})},
+      {dur:4200,text:'Ny teknologi endret <b>hva folk jobbet med</b> og <b>hvor de bodde</b>. Slik vokste byene i Norge.',draw:p=>town()+far(140)+mor(100)+anna(70,{armL:150})+bubble(70,GY-80,'Ny skole!',{opacity:seg(p,.2,.5)})}]});}
+
+/* Sorter */
+N.sorter($('#sort1'),{groups:[{id:'s',name:'Steinalder'},{id:'b',name:'Bondesamfunnet'},{id:'i',name:'Industrisamfunnet'},{id:'d',name:'I dag'}],
+  items:[{t:'🏹 Pil og bue',g:'s'},{t:'🪨 Steinøks',g:'s'},{t:'🌾 Ljå og plog',g:'b'},{t:'🧶 Rokk til å spinne ull',g:'b'},{t:'🚂 Damplokomotiv',g:'i'},{t:'💡 Lyspære',g:'i',why:'Elektrisk lys kom til norske byer rundt 1890–1900.'},{t:'📱 Smarttelefon',g:'d'},{t:'🤖 Robotstøvsuger',g:'d'}],
+  good:'Riktig! Hver ny teknologi endret hvordan folk jobbet. Plogen gjorde at folk kunne bli boende fast. Dampmaskinen og elektrisiteten skapte fabrikkene. Datamaskinen og mobilen skapte mange av jobbene vi har i dag.'});
+
+/* Møter */
+S.flip($('#flip1'),[
+  {front:'<b>⛵ Vikinger på tokt</b>Rundt år 800–1050',back:'<b>Vikinger på tokt</b>Vikingene handlet og plyndret i Europa. De møtte kristne og tok med seg <b>kristendommen</b> hjem. Den endret lover, høytider og hvordan folk tenkte.'},
+  {front:'<b>🐟 Hanseatene i Bergen</b>Rundt 1350–1750',back:'<b>Hanseatene i Bergen</b>Tyske kjøpmenn byttet korn mot tørrfisk. Bergen ble en stor handelsby, og mange tyske ord kom inn i norsk.'},
+  {front:'<b>🚢 Utvandring til Amerika</b>Rundt 1825–1930',back:'<b>Utvandring til Amerika</b>Brev fra slektninger i Amerika fortalte om frihet og stemmerett. Nye ideer om likhet og demokrati kom tilbake til Norge.'},
+  {front:'<b>🌍 Innvandring til Norge</b>Fra ca. 1970',back:'<b>Innvandring til Norge</b>Folk fra mange land kom for å jobbe, studere eller søke trygghet. Nye matretter, språk, religioner og idretter ble en del av Norge.'}]);
+V.predict($('#p2'),{tag:'Tenk etter',q:'Hva har alle kortene til felles?',opts:['Møtene endret bare maten','Møter mellom mennesker førte med seg nye varer og nye måter å tenke på','Bare krig fører til endring'],ok:1,expl:'Riktig. Handel, reiser og flytting fører til at ideer, tro og vaner spres. Slik endres både tankesett og hvordan samfunnet er organisert.',retry:'Les kortene en gang til. Hva tok folk med seg?'});
+
+/* Øving */
+const skills={
+  tid:{name:'Hvordan folk levde',gens:[
+    ()=>{const e=pick([[0,'Jakt, fangst og sanking'],[1,'Jordbruk og husdyr'],[2,'Arbeid i fabrikker'],[3,'Tjenester som skole, helse og data']]);return N.mc(`Hva levde de fleste av i <b>${ERA[e[0]].n.toLowerCase()}</b>?`,e[1],['Jakt, fangst og sanking','Jordbruk og husdyr','Arbeid i fabrikker','Tjenester som skole, helse og data'].filter(x=>x!==e[1]),['Hvilken teknologi fantes?'],`I ${ERA[e[0]].n.toLowerCase()} levde de fleste av ${e[1].toLowerCase()}.`);},
+    ()=>N.mc('Hvorfor flyttet mange fra landet til byene rundt 1900?','Maskiner gjorde at færre trengtes på gårdene, og fabrikkene trengte arbeidere',['Det var for kaldt på landet','Det ble forbudt å være bonde'],['Tenk på slåmaskinen i filmen.'],'Ny teknologi endret livsgrunnlaget. Det gjorde at folk flyttet.'),
+    ()=>N.mc('Hvorfor lever vi mye lenger i dag enn for 200 år siden?','Bedre mat, rent vann, medisiner og vaksiner',['Vi sover mer','Vi har mobiltelefoner'],['Hva gjør at færre blir syke?'],'Bedre levekår og helsevesen har gitt oss mange flere leveår.'),
+    ()=>N.mc('Hva betyr <b>demografi</b>?','Hvor mange som bor et sted, og hvor gamle de er',['Hvordan været er','Hvor mye penger landet har'],['Demo betyr folk.'],'Demografi handler om befolkningen: antall, alder, fødsler, dødsfall og flytting.'),
+    ()=>N.mc('Hva er <b>bosetting</b>?','Hvor folk bor i et land',['Hva folk spiser','Når folk står opp'],['Å bosette seg.'],'Bosetting handler om hvor folk bor, for eksempel spredt på gårder eller tett i byer.')]},
+  tek:{name:'Teknologi i ulike tider',gens:[
+    ()=>{const t=pick([['Dampmaskinen','Industrisamfunnet'],['Plogen','Bondesamfunnet'],['Internett','I dag'],['Steinøksa','Steinalder'],['Jernbanen','Industrisamfunnet'],['Mobiltelefonen','I dag']]);return N.mc(`I hvilken tid ble <b>${t[0].toLowerCase()}</b> viktig i Norge?`,t[1],ERA.map(e=>e.n).filter(x=>x!==t[1]),['Tenk på tidsmaskinen.'],`${t[0]} hører til ${t[1].toLowerCase()}.`);}]},
+  mote:{name:'Møter mellom mennesker',gens:[
+    ()=>N.mc('Hvordan kom kristendommen til Norge?','Vikinger og konger møtte kristne i Europa og tok troen med hjem',['Den ble funnet opp i Norge','Den kom med internett'],['Tenk på vikingtoktene.'],'Møtet med Europa endret troen og lovene i Norge.'),
+    ()=>N.mc('Hva er et eksempel på at innvandring har endret Norge?','Nye matretter, språk og religioner',['Fjellene ble høyere','Det ble kaldere vintre'],['Hva tar folk med seg?'],'Folk tar med seg vaner og kultur. Det gjør samfunnet mer mangfoldig.'),
+    ()=>N.mc('Hvem handlet tørrfisk i Bergen i middelalderen?','Hanseatene, tyske kjøpmenn',['Vikinger fra Island','Amerikanere'],['Tyskebryggen.'],'Hanseatene byttet korn mot tørrfisk og gjorde Bergen til en stor handelsby.')]}
+};
+V.practice($('#practice'),{id:'saf7-folk-for',title:'Slik levde folk før',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

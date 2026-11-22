@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konflikter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.stairs{display:flex;flex-direction:column-reverse;gap:4px}
+.stairs button{border:2px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 10px;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.stairs button.on{border-color:var(--accent);background:var(--accent-soft)}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Konflikter</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#film"><b>2</b>Film</a>
+    <a href="#trapp"><b>3</b>Konflikttrappa</a>
+    <a href="#valg"><b>4</b>Du velger</a>
+    <a href="#aarsak"><b>5</b>Årsaker</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Når vi blir uenige</h1>
+      <p class="lead">Konflikter skjer overalt: i skolegården, i familien og mellom land. De er ikke alltid farlige, men de kan vokse hvis ingen gjør noe. Finn ut hvorfor konflikter oppstår, og hvordan de kan løses.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="To personer med snakkebobler"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Tenk på en gang du var uenig med noen.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Krangel om fotballbanen</h2></div>
+    <p class="sec-lead">Det er friminutt, og to grupper vil bruke fotballbanen samtidig.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="trapp"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Konflikttrappa</h2></div>
+    <p class="sec-lead">En konflikt kan trappes opp, trinn for trinn. Jo høyere opp, jo vanskeligere er den å løse. Trykk på trinnene, og sett så eksemplene i riktig rekkefølge.</p>
+<div class="bench">
+  <div class="controls"><div class="stairs" id="stairs"></div></div>
+  <div class="controls"><div class="card2" id="stCard" aria-live="polite"></div></div>
+</div>
+<div class="bench" style="grid-template-columns:1fr"><div id="ord1"></div></div>
+  </div></section>
+
+  <section id="valg"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Gruppearbeidet</h2></div>
+    <p class="sec-lead">Du og Sara skal lage en presentasjon sammen. Hva gjør du? Prøv ulike valg og se hva som skjer.</p>
+<div id="scen1"></div>
+  </div></section>
+
+  <section id="aarsak"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Hvorfor oppstår konflikter?</h2></div>
+    <p class="sec-lead">Konflikter har ofte en av disse årsakene: noen vil ha det samme (<b>ressurser</b>), noen vil bestemme (<b>makt</b>), folk mener ulikt om hva som er rett (<b>verdier</b>), eller noen misforstår hverandre. Sorter eksemplene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: reflektere over årsaker til konflikter og drøfte hvordan enkeltpersoner og samfunn kan håndtere konflikter. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<rect x="30" y="40" width="130" height="60" rx="16" fill="var(--c1-soft)" stroke="var(--c1)" stroke-width="2"/><text x="95" y="78" text-anchor="middle" font-size="26">😠 !</text>
+<rect x="220" y="40" width="130" height="60" rx="16" fill="var(--c2-soft)" stroke="var(--c2)" stroke-width="2"/><text x="285" y="78" text-anchor="middle" font-size="26">😤 ?</text>
+<rect x="120" y="130" width="140" height="56" rx="16" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><text x="190" y="166" text-anchor="middle" font-size="24">🤝</text>`;
+
+V.predict($('#p1'),{q:'Hva er en konflikt?',opts:['Bare slåssing','Når noen er uenige eller vil ha ulike ting, og det skaper spenning','Når alle er enige'],ok:1,expl:'En konflikt er en uenighet der noen har ulike ønsker, behov eller meninger. De fleste konflikter løses med prat. Konflikter kan til og med være nyttige, fordi vi får høre andre synspunkter.',retry:'Kan man ha en konflikt uten å slåss?'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const field=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><rect x="120" y="${GY-30}" width="160" height="30" fill="var(--good-soft)" stroke="var(--good)"/><rect x="100" y="${GY-70}" width="8" height="70" fill="var(--muted)"/><rect x="292" y="${GY-70}" width="8" height="70" fill="var(--muted)"/><line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const A=(o={})=>person(60,GY,80,Object.assign({shirt:1,skin:0,hair:2},o))+person(30,GY,76,{shirt:1,skin:2,hair:0});
+  const B=(o={})=>person(340,GY,80,Object.assign({shirt:2,skin:3,hair:2,flip:true},o))+person(370,GY,76,{shirt:2,skin:1,hair:1,flip:true});
+  const ball=x=>`<circle cx="${x}" cy="${GY-8}" r="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>`;
+  S.film('#film1',{title:'Krangel om fotballbanen',real:'Friminutt',size:[400,250],end:{text:'Klatre i konflikttrappa ↓',href:'#trapp'},poster:'Sjuende og sjette trinn vil begge ha banen. Hvordan løser de det?',
+    scenes:[
+      {dur:3800,text:'Sjuende trinn løper ut for å spille fotball. Men sjette trinn er allerede på banen.',draw:p=>field()+A({walk:p*14})+B()+ball(200)},
+      {dur:4200,text:'– Det er vår bane! – Nei, vi var her først! Stemmene blir høyere, og noen begynner å kalle hverandre stygge ting.',draw:p=>field()+A({armL:120})+B({armL:120})+ball(200)+bubble(60,GY-86,'Vår bane!',{opacity:seg(p,0,.2)})+bubble(340,GY-86,'Vi var her først!',{opacity:seg(p,.3,.5)})},
+      {dur:1200,text:'Konflikten er i ferd med å vokse.',draw:()=>field()+A({armL:120})+B({armL:120})+ball(200),
+        ask:{q:'Hva er den beste måten å løse dette på?',opts:['Den sterkeste gruppa får banen','Snakke sammen og finne en ordning, for eksempel å bytte dager','Ingen får spille'],ok:1,why:'Når begge parter blir hørt og finner en løsning sammen, blir det rettferdig, og konflikten kommer ikke tilbake i morgen.',wrong:{0:'Da vinner den ene, men den andre føler seg urettferdig behandlet. Konflikten kommer trolig tilbake.',2:'Da taper begge. Det finnes bedre løsninger.'}}},
+      {dur:4600,text:'En lærer hjelper dem å snakke sammen. De blir enige: Sjette trinn har banen mandag, onsdag og fredag. Sjuende har tirsdag og torsdag, og på fredag spiller de en kamp sammen.',draw:p=>field()+A()+B()+person(200,GY,96,{shirt:4,skin:1,hair:3})+ball(260)+bubble(200,GY-104,'Hva trenger dere?',{opacity:seg(p,0,.3)})},
+      {dur:3800,text:'Å lytte, si hva du trenger og finne en løsning sammen kalles <b>mekling</b>. Det brukes både i skolegården og mellom land.',draw:p=>field()+A({armL:150})+B({armL:150})+ball(lerp(260,200,seg(p,0,1)))}]});}
+
+const ST=[
+  ['Uenighet','Vi er uenige om en sak, men snakker fortsatt sammen.'],
+  ['Det blir personlig','Vi slutter å snakke om saken og begynner å irritere oss over personen.'],
+  ['Problemet vokser','Flere gamle saker dras inn. «Du gjør jo alltid sånn!»'],
+  ['Vi slutter å snakke','Vi unngår hverandre og snakker om den andre bak ryggen.'],
+  ['Fiendebilder','Vi ser på den andre som en fiende. Andre trekkes inn, og noen kan bli skadet.']];
+$('#stairs').innerHTML=ST.map((s,i)=>`<button type="button" data-i="${i}" style="margin-left:${i*7}%">${i+1}. ${s[0]}</button>`).join('');
+const stShow=i=>{$('#stairs').querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===i));$('#stCard').innerHTML=`<span class="tag">Trinn ${i+1}: ${ST[i][0]}</span><p style="margin:0">${ST[i][1]}</p><p class="note" style="margin:0">${i<2?'Her er det lett å løse konflikten ved å snakke sammen.':i<4?'Nå trengs ofte hjelp fra en voksen eller en megler.':'Her trengs hjelp fra voksne med en gang.'}</p>`;};
+$('#stairs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>stShow(+b.dataset.i)));stShow(0);
+S.order($('#ord1'),{intro:'Jonas og Ali er uenige om hvem som fikk mål. Sett hendelsene i rekkefølge fra lavest til høyest i trappa.',items:[{t:'De krangler om målet var gyldig.',k:1},{t:'Jonas sier at Ali alltid jukser.',k:2},{t:'Ali tar opp at Jonas ikke ga ham ballen i går heller.',k:3},{t:'De går forbi hverandre i gangen uten å si noe.',k:4},{t:'Jonas får vennene sine til å utestenge Ali.',k:5}],good:'Riktig! Det startet med en liten uenighet om et mål og endte med utestenging. Jo tidligere noen griper inn, jo lettere er det.'});
+
+S.scenario($('#scen1'),{start:'a',nodes:{
+  a:{ava:'👧',who:'Sara',text:'Jeg har allerede laget alle lysbildene i går kveld. Du kan bare lese opp!',choices:[
+    {t:'«Flott, da slipper jeg å gjøre noe.»',tone:'mid',cons:'Det går fint denne gangen, men du lærer lite, og læreren merker at du ikke har jobbet. Sara blir kanskje irritert senere.'},
+    {t:'«Du bestemmer alltid alt! Jeg gidder ikke.»',tone:'bad',go:'b',cons:'Sara blir lei seg og sint. Nå handler det om personen, ikke om saken. Konflikten har gått opp et trinn.'},
+    {t:'«Takk! Men jeg vil også bidra. Kan jeg lage den siste delen og finne bildene?»',tone:'good',go:'c',cons:'Du sier hva du trenger, uten å angripe. Sara får vite at du vil være med.'}]},
+  b:{ava:'👧',who:'Sara',text:'Greit, så gjør jeg alt alene, da. Jeg skal si til læreren at du ikke gjør noe.',choices:[
+    {t:'Gå derfra og ikke snakke med Sara resten av uka.',tone:'bad',cons:'Nå har dere sluttet å snakke sammen, trinn 4 i trappa. Presentasjonen blir dårlig for begge.'},
+    {t:'«Unnskyld, det var dumt sagt. Jeg ble bare litt sur fordi jeg ikke fikk være med.»',tone:'good',go:'c',cons:'Å be om unnskyldning og forklare følelsen din tar konflikten ned igjen. Det er modig.'}]},
+  c:{ava:'👧',who:'Sara',text:'Å, jeg tenkte ikke på det. Jeg var bare stressa. Du kan ta de to siste lysbildene og avslutningen!',choices:[
+    {t:'Dere deler arbeidet og øver sammen.',tone:'good',cons:'Begge har bidratt, og presentasjonen blir bra. Dere løste konflikten ved å lytte og si hva dere trengte.'}]}}});
+
+N.sorter($('#sort1'),{groups:[{id:'r',name:'Ressurser'},{id:'m',name:'Makt'},{id:'v',name:'Verdier og tro'},{id:'f',name:'Misforståelse'}],
+  items:[{t:'To land krangler om vannet i en elv.',g:'r'},{t:'Søsken krangler om hvem som får spille på PS-en.',g:'r'},{t:'To grupper vil bestemme i elevrådet.',g:'m'},{t:'To partier vil styre landet.',g:'m'},{t:'Folk er uenige om det er greit å spise kjøtt.',g:'v'},{t:'Naboer er uenige om hva som er riktig religion.',g:'v'},{t:'En melding med «ok.» blir lest som at du er sur.',g:'f',why:'Uten tonefall og ansiktsuttrykk er det lett å misforstå meldinger.'},{t:'Venner tror de skulle møtes på ulike steder.',g:'f'}],
+  good:'Riktig! Når du vet hva konflikten egentlig handler om, er det lettere å løse den. En konflikt om ressurser kan løses ved å dele. En konflikt om verdier krever at vi respekterer hverandre selv om vi er uenige.'});
+
+const skills={
+  trapp:{name:'Konflikttrappa',gens:[
+    ()=>{const i=R(0,4);return N.mc(`Hvilket trinn i konflikttrappa er dette? «${ST[i][1]}»`,`${i+1}. ${ST[i][0]}`,ST.map((s,j)=>`${j+1}. ${s[0]}`).filter((_,j)=>j!==i).slice(0,3),['Er det fortsatt saken det handler om?'],`Det er trinn ${i+1}: ${ST[i][0]}.`);},
+    ()=>N.mc('Når er det lettest å løse en konflikt?','Tidlig, mens det fortsatt handler om saken',['Når alle er skikkelig sinte','Når man har sluttet å snakke sammen'],['Se på trappa.'],'Jo lavere i trappa, jo lettere er det å løse konflikten.')]},
+  aarsak:{name:'Årsaker til konflikter',gens:[
+    ()=>{const x=pick([['To land vil ha den samme oljen i havet.','Ressurser'],['To ledere vil styre det samme området.','Makt'],['Folk er uenige om hvilke regler som er rettferdige.','Verdier og tro'],['En vits blir oppfattet som mobbing.','Misforståelse'],['To bønder vil bruke det samme beitet.','Ressurser']]);return N.mc(`Hva er årsaken til denne konflikten? «${x[0]}»`,x[1],['Ressurser','Makt','Verdier og tro','Misforståelse'].filter(y=>y!==x[1]),['Handler det om ting, styring, hva som er rett, eller at noen tolket feil?'],`Årsaken er ${x[1].toLowerCase()}.`);}]},
+  loese:{name:'Løse konflikter',gens:[
+    ()=>N.mc('Hva gjør en <b>megler</b>?','Hjelper partene å snakke sammen og finne en løsning',['Bestemmer hvem som vinner','Straffer den som startet'],['En megler tar ikke parti.'],'En megler er nøytral og hjelper begge parter å bli hørt.'),
+    ()=>N.mc('Hva kan land gjøre for å løse konflikter uten krig?','Forhandle, for eksempel med hjelp fra FN',['Bygge flere våpen','Slutte å snakke sammen'],['Hva gjør en megler mellom land?'],'Forhandlinger, mekling og internasjonale avtaler kan hindre krig. Norge har ofte hjulpet til som megler.'),
+    ()=>N.mc('Hvilken setning hjelper i en konflikt?','«Jeg ble lei meg da du sa det. Kan vi snakke om det?»',['«Du er alltid så dum!»','«Jeg gidder ikke å snakke med deg.»'],['Snakk om deg selv, ikke angrip.'],'Jeg-setninger viser hva du føler uten å angripe den andre.'),
+    ()=>N.mc('Hvem kan avgjøre en konflikt i samfunnet når partene ikke blir enige?','En domstol',['Den sterkeste','Den som roper høyest'],['Rettssystemet.'],'I et rettssamfunn avgjør domstolene saker etter loven.')]}
+};
+V.practice($('#practice'),{id:'saf7-konflikter',title:'Konflikter',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

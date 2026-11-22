@@ -6,7 +6,8 @@
 window.KATALOG = {
   fag: [
     { id:"matematikk", navn:"Matematikk", tekst:"Geometri, måling, statistikk og sannsynlighet.", laereplan:"MAT01-06", farge:"#3350c4", ikon:"∑", trinn:[9] },
-    { id:"naturfag", navn:"Naturfag", tekst:"Forsøk, kropp, energi, stoffer, jorda og livet på jorda.", laereplan:"NAT01-05", farge:"#2f8f46", ikon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/></svg>', trinn:[10,7,4,2] }
+    { id:"naturfag", navn:"Naturfag", tekst:"Forsøk, kropp, energi, stoffer, jorda og livet på jorda.", laereplan:"NAT01-05", farge:"#2f8f46", ikon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/></svg>', trinn:[10,7,4,2] },
+    { id:"samfunnsfag", navn:"Samfunnsfag", tekst:"Kilder, demokrati, rettigheter, historie, penger og bærekraft.", laereplan:"SAF01-05", farge:"#b5452a", ikon:'<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>', trinn:[10,7] }
   ],
   moduler: [
     // Matematikk 9. trinn (sorteres etter laveste mål)
@@ -46,6 +47,9 @@ window.KATALOG = {
     { fag:"naturfag", trinn:7, fil:"naturfag/7/kroppen.html", id:"nat7-kroppen", tittel:"Kroppen og puberteten", tekst:"Finn organene, mål puls ved ulike aktiviteter og lær om puberteten.", tema:"Kropp og helse", mal:["organsystemer","puls og pust","puberteten"] },
     { fag:"naturfag", trinn:7, fil:"naturfag/7/teknologi.html", id:"nat7-teknologi", tittel:"Teknologi og kunnskap", tekst:"Programmer en robot, bygg en foliebåt og sammenlign ulike typer kunnskap.", tema:"Teknologi", mal:["programmering","teknologisk design","tradisjonskunnskap"] },
     { fag:"naturfag", trinn:4, kommer:true, tittel:"Naturfag 4. trinn", tekst:"8 moduler: bland og se, energikjeden, vannets kretsløp, kroppen min og mer.", tema:"Kommer" },
-    { fag:"naturfag", trinn:2, kommer:true, tittel:"Naturfag 2. trinn", tekst:"4 moduler: sansene, vær og årstider, sorter og bygg, frisk og miljøvennlig.", tema:"Kommer" }
+    { fag:"naturfag", trinn:2, kommer:true, tittel:"Naturfag 2. trinn", tekst:"4 moduler: sansene, vær og årstider, sorter og bygg, frisk og miljøvennlig.", tema:"Kommer" },
+
+    // Samfunnsfag 7. trinn
+    { fag:"samfunnsfag", trinn:7, fil:"samfunnsfag/7/kilder.html", id:"saf7-kilder", tittel:"Kildedetektiven", tekst:"Fakta, mening eller reklame? Sammenlign kilder og lag din egen undersøkelse.", tema:"Undring og utforsking", mal:["undersøkelse","fakta, mening og reklame","kildebruk"] }
   ]
 };

@@ -1,0 +1,53 @@
+/* Felles stil for samfunnsfagmodulene (brukes sammen med verksted.css og natur.css). */
+:root{--accent:#b5452a;--accent-soft:#fbe5dc;--on-accent:#ffffff;--sam:#b5452a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#ff9472;--accent-soft:#3a2018;--on-accent:#1a0e0a;--sam:#ff9472}}
+:root[data-theme="dark"]{--accent:#ff9472;--accent-soft:#3a2018;--on-accent:#1a0e0a;--sam:#ff9472}
+/* Svaralternativer er ofte setninger her, ikke tall */
+.opt{font-family:var(--f-body);text-align:left;line-height:1.35}
+.opts.col{flex-direction:column;align-items:stretch}
+/* Dilemma med valg og konsekvenser */
+.scen{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.scen .who{display:flex;gap:10px;align-items:flex-start}
+.scen .ava{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--accent-soft)}
+.scen .say{background:var(--paper);border-radius:4px 14px 14px 14px;padding:8px 12px}
+.scen .cons{border-left:4px solid var(--line);padding:6px 12px;border-radius:4px}
+.scen .cons.good{border-color:var(--good);background:var(--good-soft)}
+.scen .cons.bad{border-color:var(--bad);background:var(--bad-soft)}
+.scen .cons.mid{border-color:var(--hint);background:var(--hint-soft)}
+.scen .trail{font-size:.85rem;color:var(--muted)}
+/* Tidslinje */
+.tl{position:relative;margin:6px 0 4px;padding-left:22px}
+.tl::before{content:"";position:absolute;left:8px;top:4px;bottom:4px;width:3px;background:var(--line);border-radius:3px}
+.tl li{list-style:none;position:relative;margin:0 0 10px}
+.tl li::before{content:"";position:absolute;left:-19px;top:.45em;width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.tl .yr{font-family:var(--f-mono);font-weight:700;color:var(--accent);margin-right:6px}
+.tl li.dim{opacity:.4}
+/* Ordne i rekkefølge */
+.sorder .eq{flex-direction:column;align-items:stretch;gap:6px}
+.sorder .ln{display:flex;gap:8px;align-items:center}
+.sorder .ln .n{font-family:var(--f-mono);font-weight:700;color:var(--muted);width:1.6rem;text-align:right}
+.sorder .slot{flex:1;justify-content:flex-start;min-width:0}
+/* Kort som vendes */
+.flip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.flip button{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;text-align:left;cursor:pointer;font:inherit;color:inherit;min-height:5.5rem;touch-action:manipulation}
+.flip button b{display:block;font-family:var(--f-display);margin-bottom:4px}
+.flip button.on{border-color:var(--accent);background:var(--accent-soft)}
+/* Mål / måler */
+.meter{height:16px;border-radius:99px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.stat div{background:var(--paper);border-radius:10px;padding:8px 10px}
+.stat b{display:block;font-family:var(--f-mono);font-size:1.25rem}
+.stat span{font-size:.85rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;color:inherit;font-weight:700;touch-action:manipulation}
+.chip.on{border-color:var(--accent);background:var(--accent-soft)}
+.chip:disabled{opacity:.45;cursor:default}
+.feed{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto}
+.post{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);display:flex;gap:10px;align-items:flex-start}
+.post .e{font-size:1.6rem;line-height:1}
+.post .k{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.warnbox{border-left:4px solid var(--c2);background:var(--c2-soft);padding:10px 14px;border-radius:6px}
+.fig text{font-family:var(--f-body)}
+.fig .land{stroke:var(--surface);stroke-width:2;cursor:pointer}
+.fig .land:focus-visible,.fig .land.on{stroke:var(--ink);stroke-width:3}

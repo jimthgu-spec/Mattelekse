@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Penger og reklame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.ad{border:2px solid var(--c1);background:var(--c1-soft);border-radius:12px;padding:12px}
+.ad .big{font-family:var(--f-display);font-size:1.2rem;font-weight:800}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Penger og reklame</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#spar"><b>2</b>Spar</a>
+    <a href="#film"><b>3</b>Film</a>
+    <a href="#triks"><b>4</b>Triks</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Hvem bestemmer hva du kjøper?</h1>
+      <p class="lead">Reklame er overalt: i spill, på YouTube, hos influensere og på bussen. Den er laget av smarte folk som vet hvordan de skal få deg til å ville ha noe. Lær triksene, så blir det lettere å bestemme selv.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En mobil med en reklame og en sparegris"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Mange spill og apper er gratis å laste ned. Likevel tjener selskapene som lager dem milliarder.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="spar"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Klarer du å spare?</h2></div>
+    <p class="sec-lead">Du får 300 kroner i lommepenger hver uke i fire uker. Du vil spare til en konsertbillett som koster <b>650 kr</b>. Hver uke møter du en fristende reklame. Kjøper du eller lar du være?</p>
+<div class="bench">
+  <div class="controls"><div id="spStat" class="stat"></div><div class="meter"><i id="spBar" style="width:0%"></i></div><p class="note" id="spGoal"></p></div>
+  <div class="controls"><div id="spCard" aria-live="polite"></div></div>
+</div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Mia og den perfekte huden</h2></div>
+    <p class="sec-lead">Mia scroller på mobilen før hun skal sove.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="triks"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Reklametriks</h2></div>
+    <p class="sec-lead">Reklame bruker ofte de samme triksene. Dra hver reklame til trikset den bruker.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: reflektere over hvordan kommersiell påvirkning kan prege forbruk, privatøkonomi og selvbilde. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=S.phone(40,20,120,190,`<rect x="10" y="20" width="100" height="70" rx="6" fill="var(--c1-soft)"/><text x="60" y="62" text-anchor="middle" font-size="26">👟</text><rect x="14" y="100" width="92" height="22" rx="11" fill="var(--c1)"/><text x="60" y="116" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">KJØP NÅ!</text><text x="60" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">Bare i dag</text>`)+`<text x="270" y="140" text-anchor="middle" font-size="90">🐷</text><text x="270" y="190" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">Spare?</text>`;
+
+V.predict($('#p1'),{q:'Hvordan tjener selskapene penger på gratis spill og apper?',opts:['De tjener ikke penger','På reklame, kjøp inne i spillet og informasjon om deg','Staten betaler dem'],ok:1,expl:'Når noe er gratis, er det ofte <b>du</b> som er produktet. Selskapene selger reklameplass, får deg til å kjøpe skins og ekstra liv, og samler informasjon om hva du liker, slik at reklamen treffer deg bedre.',retry:'Hva dukker opp mens du spiller?'});
+
+const ADS=[
+  {e:'🎮',t:'Legendarisk skin',p:149,trick:'Hastverk',txt:'«Bare i 24 timer! Forsvinner for alltid i kveld!»',why:'Hastverk gjør at du ikke rekker å tenke deg om. Skins kommer ofte tilbake senere.'},
+  {e:'👟',t:'Sko som alle har',p:450,trick:'Alle andre har det',txt:'«Alle i klassen din har dem allerede. Ikke vær den eneste uten!»',why:'Vi vil gjerne høre til. Reklamen spiller på frykten for å bli utenfor.'},
+  {e:'💄',t:'Hudkrem fra influenser',p:229,trick:'Kjendis',txt:'«Jeg bruker denne hver dag, derfor er huden min perfekt!» #reklame',why:'Influenseren får betalt. Huden ser perfekt ut på grunn av lys og filter, ikke kremen.'},
+  {e:'🍫',t:'Godtepose',p:39,trick:'Billig',txt:'«Kjøp 3, betal for 2!»',why:'Små beløp føles ufarlige, men blir mye til sammen. Og du kjøper mer enn du trengte.'}];
+let week=0,money=0,bought=[];
+function spDraw(){const saved=money;$('#spStat').innerHTML=`<div><b>Uke ${Math.min(week+1,4)} av 4</b><span>tid</span></div><div><b>${saved} kr</b><span>i sparegrisen</span></div><div><b>650 kr</b><span>billetten koster</span></div>`;$('#spBar').style.width=Math.min(100,saved/650*100)+'%';$('#spGoal').textContent=saved>=650?'Du har nok til billetten!':`Du mangler ${650-saved} kr.`;}
+function spWeek(){if(week>=4)return spEnd();money+=300;spDraw();const a=ADS[week];
+  $('#spCard').innerHTML=`<p style="margin:0 0 8px">Uke ${week+1}: Du fikk 300 kr. Så dukker dette opp:</p><div class="ad"><div style="font-size:2rem">${a.e}</div><div class="big">${a.t}: ${a.p} kr</div><p style="margin:.3em 0 0">${a.txt}</p></div><div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="spBuy">Kjøp</button><button type="button" class="btn" id="spNo">La være</button></div><div id="spFb" aria-live="polite"></div>`;
+  const done=buy=>{if(buy){money-=a.p;bought.push(a);}spDraw();$('#spBuy').disabled=$('#spNo').disabled=true;
+    $('#spFb').innerHTML=`<div class="fb hint" style="margin-top:8px"><b>Trikset: ${a.trick}.</b> ${a.why}</div><div class="row" style="margin-top:8px"><button type="button" class="btn primary" id="spNext">${week<3?'Neste uke →':'Se resultatet'}</button></div>`;
+    $('#spNext').addEventListener('click',()=>{week++;spWeek();});};
+  $('#spBuy').addEventListener('click',()=>done(true));$('#spNo').addEventListener('click',()=>done(false));}
+function spEnd(){const ok=money>=650,spent=bought.reduce((s,a)=>s+a.p,0);
+  $('#spCard').innerHTML=`<div class="fb ${ok?'good':'bad'}">${ok?`Du klarte det! Du har ${money} kr og kan kjøpe billetten.`:`Du har bare ${money} kr. Du brukte ${spent} kr på reklameting og har ikke råd til billetten.`}</div><p>Å vite hva du sparer til, gjør det lettere å si nei. Spør deg selv: <b>Trenger jeg dette, eller vil reklamen at jeg skal ville ha det?</b></p><div class="row"><button type="button" class="btn" id="spRe">Prøv igjen</button></div>`;
+  $('#spRe').addEventListener('click',()=>{week=0;money=0;bought=[];spWeek();});}
+spWeek();
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const mia=(o={})=>person(90,GY,86,Object.assign({shirt:3,skin:1,hair:3,sit:true,armL:110},o));
+  const face=(filter,x=200,y=30)=>S.phone(x,y,140,180,`<circle cx="70" cy="70" r="36" fill="${filter?'#f6d7bd':'#e3b48f'}"/>${filter?'':'<circle cx="56" cy="80" r="3" fill="#c0786a"/><circle cx="84" cy="66" r="2.5" fill="#c0786a"/><circle cx="78" cy="88" r="2" fill="#c0786a"/>'}<circle cx="58" cy="64" r="3" fill="#222"/><circle cx="82" cy="64" r="3" fill="#222"/><path d="M58 84 q12 8 24 0" stroke="#a5503c" stroke-width="2" fill="none"/>${filter?'<text x="70" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">Perfekt hud! 💕</text><text x="70" y="148" text-anchor="middle" font-size="9" fill="var(--muted)">#reklame</text>':'<text x="70" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">Uten filter</text>'}`);
+  S.film('#film1',{title:'Mia og den perfekte huden',real:'Influenser',size:[400,250],end:{text:'Lær reklametriksene ↓',href:'#triks'},poster:'Influenseren har perfekt hud. Mia ser i speilet og blir lei seg. Men hva er egentlig sant?',
+    scenes:[
+      {dur:4200,text:'Mia ser en video av en influenser med helt perfekt hud. – Jeg bruker denne kremen hver dag, sier hun.',draw:p=>S.bg.stue()+mia()+`<g opacity="${seg(p,0,.3)}">${face(true)}</g>`},
+      {dur:4200,text:'Mia ser i speilet. Hun har noen kviser. Plutselig føler hun seg stygg, og hun vil kjøpe kremen til 229 kroner.',draw:p=>S.bg.stue()+mia({armL:30})+face(true)+bubble(90,GY-80,'Jeg er så stygg...',{opacity:seg(p,.3,.6)})},
+      {dur:1200,text:'Se nøye på videoen.',draw:()=>S.bg.stue()+mia()+face(true),
+        ask:{q:'Hva står det nederst i videoen?',opts:['#reklame','#helt ærlig','Ingenting'],ok:0,why:'#reklame betyr at influenseren har fått betalt for å vise kremen. Det skal alltid merkes.',wrong:{1:'Se nøye. Det står #reklame.',2:'Det står #reklame med små bokstaver.'}}},
+      {dur:4600,text:'Influenseren har brukt et <b>filter</b> og godt lys. Uten filter har hun også kviser, akkurat som de fleste tenåringer.',draw:p=>S.bg.stue()+mia()+`<g opacity="${1-seg(p,.3,.6)}">${face(true)}</g><g opacity="${seg(p,.3,.6)}">${face(false)}</g>`},
+      {dur:4200,text:'Reklame kan få oss til å tro at vi ikke er gode nok, slik at vi kjøper mer. Det påvirker både <b>lommeboka</b> og <b>selvbildet</b>.',draw:p=>S.bg.stue()+mia({armL:10})+face(false)+bubble(90,GY-80,'Jeg er bra som jeg er!',{opacity:seg(p,.3,.6)})}]});}
+
+N.sorter($('#sort1'),{groups:[{id:'h',name:'Hastverk'},{id:'a',name:'Alle andre har det'},{id:'k',name:'Kjendis eller influenser'},{id:'f',name:'Perfekt bilde'}],
+  items:[{t:'«Tilbudet gjelder bare i dag!»',g:'h'},{t:'«Bare 3 igjen på lager!»',g:'h'},{t:'«Den mest populære leken blant 12-åringer!»',g:'a'},{t:'«Bli med i gjengen, last ned appen nå!»',g:'a'},{t:'En fotballstjerne smiler med en energidrikk.',g:'k'},{t:'En YouTuber pakker opp en gave fra en butikk.',g:'k'},{t:'Burgeren på plakaten ser mye større ut enn i virkeligheten.',g:'f'},{t:'Modellen i klesreklamen er redigert for å se slankere ut.',g:'f',why:'Bilder i reklame er ofte redigert. I Norge må retusjerte bilder i reklame merkes.'}],
+  good:'Riktig! Når du kjenner triksene, kan du stoppe opp og tenke: Vil jeg egentlig ha dette, eller er det bare reklamen som virker?'});
+
+const skills={
+  triks:{name:'Reklametriks',gens:[
+    ()=>{const x=pick([['«Kun i dag!»','Hastverk'],['«Alle vennene dine spiller allerede!»','Alle andre har det'],['En kjent artist anbefaler en mobil.','Kjendis eller influenser'],['Pizzaen på reklamen ser enorm og perfekt ut.','Perfekt bilde'],['«Siste sjanse!»','Hastverk']]);return N.mc(`Hvilket triks bruker denne reklamen? ${x[0]}`,x[1],['Hastverk','Alle andre har det','Kjendis eller influenser','Perfekt bilde'].filter(y=>y!==x[1]),['Hva vil reklamen at du skal føle?'],`Trikset er: ${x[1].toLowerCase()}.`);},
+    ()=>N.mc('Hva betyr #reklame eller «annonse» i et innlegg?','At personen har fått betalt eller gratis varer for å vise produktet',['At produktet er testvinner','At innlegget er en nyhet'],['Hvem betaler?'],'Det er påbudt å merke reklame, slik at du vet at noen vil selge deg noe.'),
+    ()=>N.mc('Hvordan kan reklame påvirke selvbildet?','Den viser perfekte mennesker, så vi kan føle at vi ikke er gode nok',['Den gjør alle mer fornøyde','Den har ingen påvirkning'],['Tenk på Mia.'],'Redigerte bilder gir et falskt bilde av hvordan folk ser ut.')]},
+  penger:{name:'Lommepenger og sparing',gens:[
+    ()=>{const uke=pick([50,100,150,200]),n=R(3,8);return{prompt:`Du får <b>${uke} kr</b> i uka og sparer alt i <b>${n} uker</b>. Hvor mye har du spart?`,ans:uke*n,unit:'kr',hints:['Gang beløpet med antall uker.'],sol:`${uke} · ${n} = <b>${uke*n} kr</b>`};},
+    ()=>{const g=pick([500,600,800,1000]),u=pick([50,100]);return{prompt:`Du sparer <b>${u} kr</b> i uka til noe som koster <b>${g} kr</b>. Hvor mange uker tar det?`,ans:g/u,unit:'uker',hints:['Del prisen på det du sparer hver uke.'],sol:`${g} : ${u} = <b>${g/u} uker</b>`};},
+    ()=>{const p=pick([39,49,59]),d=R(3,6);return{prompt:`Du kjøper en brus til <b>${p} kr</b> ${d} dager i uka. Hvor mye bruker du på en uke?`,ans:p*d,unit:'kr',hints:['Gang prisen med antall dager.'],sol:`${p} · ${d} = <b>${p*d} kr</b>. Små kjøp blir mye til sammen!`};},
+    ()=>N.mc('Hva er et godt spørsmål å stille før du kjøper noe?','Trenger jeg dette, eller vil jeg bare ha det akkurat nå?',['Hvor mange likes får jeg?','Har reklamen mange farger?'],['Behov eller ønske?'],'Å skille mellom behov og ønsker hjelper deg å bruke pengene på det som er viktig for deg.')]}
+};
+V.practice($('#practice'),{id:'saf7-reklame',title:'Penger og reklame',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

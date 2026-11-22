@@ -1,0 +1,44 @@
+# Lager innspilt opplesing (mp3) til filmsnuttene når filmtekstene endres.
+# Med hemmelighetene AZURE_SPEECH_KEY og AZURE_SPEECH_REGION brukes Azure sin naturlige
+# norske stemme (Pernille). Uten dem brukes Piper (åpen kildekode, ingen nøkkel).
+name: Lag lyd til filmer
+on:
+  push:
+    paths: ['moduler/filmer/**.js', 'felles/film.js', 'verktoy/lyd/**', '.github/workflows/lyd.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: lyd-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  lyd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Samle tekster
+        run: node verktoy/lyd/samle.js
+      - name: Hent Piper-stemme
+        run: |
+          pip install --quiet 'piper-tts>=1.3'
+          mkdir -p ~/piper && cd ~/piper
+          base=https://huggingface.co/rhasspy/piper-voices/resolve/main/no/no_NO/talesyntese/medium/no_NO-talesyntese-medium
+          curl -sSfL -o stemme.onnx "$base.onnx" && curl -sSfL -o stemme.onnx.json "$base.onnx.json"
+          command -v ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null)
+      - name: Lag mp3
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+        run: PIPER_MODEL=~/piper/stemme.onnx python verktoy/lyd/lag_lyd.py
+      - name: Lagre lydfilene
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add moduler/filmer
+          git diff --cached --quiet && exit 0
+          git commit -m "Lydfiler til filmer"
+          git push

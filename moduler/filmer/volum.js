@@ -203,5 +203,5 @@
   };
 
   const slots = [['#film-prisme', film1], ['#film-sylinder', film2], ['#film-liter', film3]];
-  slots.forEach(([sel, film]) => { const el = $(sel); if (el) F.mount(el, film); });
+  slots.forEach(([sel, film]) => { const el = $(sel); if (el) F.mount(el, Object.assign({ audio: 'filmer/lyd/' }, film)); });
 })();

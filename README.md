@@ -10,6 +10,8 @@ felles/verksted.css        felles stil (farger, lys/mørk modus, layout)
 felles/verksted.js         felles verktøy: V.predict, V.walk, V.check, V.practice
 felles/film.js + film.css  filmspiller for animerte filmsnutter (Film.mount)
 moduler/filmer/*.js        filmsnuttene til hver modul
+moduler/filmer/lyd/        innspilt opplesing (mp3), lages automatisk av GitHub Actions
+verktoy/lyd/               samle.js (finner tekstene) og lag_lyd.py (lager mp3)
 moduler/*.html             én fil per modul
 ```
 
@@ -33,3 +35,7 @@ Fremgang lagres i `localStorage` under `verksted:<id>`, bare i elevens egen nett
 ## Filmsnutter
 
 Korte animasjoner fra virkelige situasjoner (akvarium, regntønne, melkekartong) bygget med SVG, uten videofiler. Spilleren har play/pause, scener eleven kan hoppe mellom, tekst, valgfri opplesing med nettleserens norske stemme og «Hva tror du?»-stopp der filmen venter på svar. Lag en ny film med `Film.mount(element, {title, scenes:[{dur, text, draw(p), ask?}]})`, se `moduler/filmer/volum.js`.
+
+### Opplesing
+
+Filmene bruker ferdig innspilte mp3-filer når de finnes, og ellers nettleserens talesyntese. Når en filmtekst endres og pushes, lager GitHub Actions (`.github/workflows/lyd.yml`) nye lydfiler automatisk. Uten nøkkel brukes Piper (åpen kildekode). Legger du inn hemmelighetene `AZURE_SPEECH_KEY` og `AZURE_SPEECH_REGION` i repoet, brukes Azure sin naturlige norske stemme Pernille, og alle filene lages på nytt.

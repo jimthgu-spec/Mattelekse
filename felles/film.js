@@ -118,13 +118,42 @@
       .replace(/π/g, 'pi').replace(/→/g, ', ').replace(/\s+/g, ' ').trim();
   }
 
+  /* ---------- Innspilt lyd ----------
+     Filmene kan ha ferdige lydfiler (mp3) laget med en naturlig nevral stemme.
+     Filnavnet er en hash av teksten som leses, så samme tekst gir samme fil.
+     manifest.json lages av verktoy/lyd/samle.js, lydfilene av GitHub Actions.
+     Finnes ikke filen, brukes nettleserens talesyntese som reserve. */
+  const SAMPLE = 'Hei! Slik høres denne stemmen ut. Volumet er grunnflaten ganger høyden.';
+  function hash(str) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return ('0000000' + h.toString(16)).slice(-8);
+  }
+  const audioKey = str => hash(speechText(str));
+  const manifests = {};
+  function loadManifest(base) {
+    if (!manifests[base]) {
+      manifests[base] = { files: null, voice: '' };
+      if (window.fetch) fetch(base + 'manifest.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(m => {
+        if (m && m.lyd) { manifests[base].files = m.lyd; manifests[base].voice = m.stemme || 'Innspilt stemme'; listeners.forEach(f => f()); }
+      }).catch(() => {});
+    }
+    return manifests[base];
+  }
+  let au = null;
+  const getAudio = () => { if (!au && window.Audio) { au = new Audio(); au.preload = 'auto'; } return au; };
+  const recPreferred = () => { try { const v = localStorage.getItem('film:stemme'); return !v || v === 'innspilt'; } catch (e) { return true; } };
+
   /* ---------- Spilleren ---------- */
   const players = [];
   function mount(host, film) {
     const W = (film.size || [400, 250])[0], H = (film.size || [400, 250])[1];
     const scenes = film.scenes;
     let idx = 0, t = 0, playing = false, last = 0, raf = 0, spoken = true, speakTimer = 0, started = false, state = 'idle';
-    let sound = store.get('lyd', true) && canSpeak(), captions = store.get('tekst', true);
+    const rec = film.audio ? loadManifest(film.audio) : { files: null };
+    const hasRec = () => !!rec.files && Object.keys(rec.files).length > 0;
+    const can = () => hasRec() || canSpeak();
+    let sound = store.get('lyd', true) && can(), captions = store.get('tekst', true);
     const answered = {};
 
     host.classList.add('film');
@@ -180,14 +209,33 @@
     }
     function stopSpeech() {
       clearTimeout(speakTimer);
+      if (au) { au.onended = au.onerror = null; try { au.pause(); } catch (e) {} }
       if (synth) try { synth.cancel(); } catch (e) {}
+    }
+    function speakRec(str, end, fallback) {
+      const k = audioKey(str);
+      const a = getAudio();
+      if (!a || !rec.files || !rec.files[k] || !recPreferred()) return false;
+      a.onended = end;
+      a.onerror = () => { a.onerror = a.onended = null; fallback(); };
+      a.src = film.audio + k + '.mp3';
+      try { a.currentTime = 0; } catch (e) {}
+      const pr = a.play();
+      if (pr && pr.catch) pr.catch(() => { a.onerror = a.onended = null; fallback(); });
+      speakTimer = setTimeout(end, 60000);
+      return true;
     }
     function speak(str, done) {
       stopSpeech();
-      if (!sound || !synth) { if (done) done(); return; }
+      if (!sound) { if (done) done(); return; }
       const said = speechText(str);
       let fin = false;
       const end = () => { if (fin) return; fin = true; clearTimeout(speakTimer); if (done) done(); };
+      if (speakRec(str, end, () => synthSay(said, end))) return;
+      synthSay(said, end);
+    }
+    function synthSay(said, end) {
+      if (!synth) { end(); return; }
       try {
         const u = new SpeechSynthesisUtterance(said);
         u.lang = voice ? voice.lang : 'nb-NO';
@@ -293,12 +341,12 @@
       }
     }
     function setSound(on) {
-      if (on && !canSpeak()) on = false;
+      if (on && !can()) on = false;
       sound = on; store.set('lyd', on);
       sndBtn.textContent = on ? '🔊' : '🔇';
       sndBtn.setAttribute('aria-pressed', String(on));
       sndBtn.setAttribute('aria-label', on ? 'Opplesing på' : 'Opplesing av');
-      sndBtn.title = canSpeak() ? (on ? 'Opplesing på' : 'Opplesing av') : 'Fant ingen norsk stemme på denne enheten';
+      sndBtn.title = can() ? (on ? 'Opplesing på' : 'Opplesing av') : 'Fant ingen norsk stemme på denne enheten';
       if (!on) { stopSpeech(); spoken = true; }
       else if (playing) narrate();
     }
@@ -318,14 +366,22 @@
 
     const setBtn = $('.film-set'), vBox = $('.film-voice'), vSel = $('.film-voice select');
     function fillVoices() {
-      setBtn.hidden = !synth || voices.length < 1;
-      vSel.innerHTML = voices.map(v => `<option value="${esc(v.voiceURI)}"${v === voice ? ' selected' : ''}>${esc(v.name)}</option>`).join('');
-      if (!sound && canSpeak() && store.get('lyd', true)) setSound(true);
+      const opts = [];
+      if (hasRec()) opts.push(`<option value="innspilt"${recPreferred() ? ' selected' : ''}>${esc(rec.voice)} (anbefalt)</option>`);
+      voices.forEach(v => opts.push(`<option value="${esc(v.voiceURI)}"${!(hasRec() && recPreferred()) && v === voice ? ' selected' : ''}>${esc(v.name)} (enheten)</option>`));
+      setBtn.hidden = opts.length === 0;
+      vSel.innerHTML = opts.join('');
+      vBox.querySelector('.note').hidden = hasRec() && recPreferred();
+      if (!sound && can() && store.get('lyd', true)) setSound(true);
     }
     listeners.push(fillVoices);
     setBtn.addEventListener('click', () => { vBox.hidden = !vBox.hidden; setBtn.setAttribute('aria-expanded', String(!vBox.hidden)); });
-    vSel.addEventListener('change', () => { setVoice(vSel.value); if (!sound) setSound(true); speak('Hei! Slik høres denne stemmen ut.'); });
-    $('.film-try').addEventListener('click', () => { if (!sound) setSound(true); speak('Hei! Slik høres denne stemmen ut. Volumet er grunnflaten ganger høyden.'); });
+    vSel.addEventListener('change', () => {
+      if (vSel.value === 'innspilt') { try { localStorage.setItem('film:stemme', 'innspilt'); } catch (e) {} listeners.forEach(f => f()); }
+      else setVoice(vSel.value);
+      if (!sound) setSound(true); speak(SAMPLE);
+    });
+    $('.film-try').addEventListener('click', () => { if (!sound) setSound(true); speak(SAMPLE); });
     fillVoices();
     setSound(sound); setCaptions(captions);
     /* Plakat: første scene ferdig tegnet */
@@ -336,7 +392,7 @@
     return api;
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) players.forEach(p => p.pause()); });
-  window.addEventListener('pagehide', () => { if (synth) try { synth.cancel(); } catch (e) {} });
+  window.addEventListener('pagehide', () => { if (au) try { au.pause(); } catch (e) {} if (synth) try { synth.cancel(); } catch (e) {} });
 
-  window.Film = { players, mount, ease, seg, lerp, clamp, nf, proj, poly, line, text, box, backEdges, cylinder, speechText };
+  window.Film = { players, SAMPLE, audioKey, mount, ease, seg, lerp, clamp, nf, proj, poly, line, text, box, backEdges, cylinder, speechText };
 })();

@@ -80,3 +80,8 @@
 .film-svg .fm-icon-w{fill:var(--fw);fill-opacity:.75}
 .film-svg .fm-card{fill:var(--surface);stroke:var(--line);stroke-width:1.2}
 .film-svg .fm-plant{fill:none;stroke:var(--good);stroke-width:2.5;stroke-linecap:round}
+.film-voice{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;background:var(--paper);border-radius:10px;padding:10px 12px}
+.film-voice[hidden]{display:none}
+.film-voice label{display:flex;gap:8px;align-items:center;font-weight:700;min-width:0;flex:1 1 14rem}
+.film-voice select{min-width:0;flex:1 1 auto;max-width:100%}
+.film-voice .note{flex-basis:100%;margin:0;font-size:.85rem;color:var(--muted)}

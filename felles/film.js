@@ -67,14 +67,41 @@
   }
 
   /* ---------- Tale ---------- */
-  let voice = null, voiceChecked = false;
+  let voice = null, voiceChecked = false, voices = [];
+  const listeners = [];
+  /* iOS/macOS lister også «morostemmer» (Eloquence: Eddy, Flo, Reed …) som høres hakkete ut.
+     Vi rangerer stemmene og velger den mest naturlige. Eleven kan også velge selv. */
+  const ROBOT = /\b(eddy|flo|grandma|grandpa|bestemor|bestefar|reed|rocko|sandy|shelley|albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|eloquence)\b/i;
+  function score(v) {
+    const n = (v.name + ' ' + (v.voiceURI || '')).toLowerCase();
+    let s = 0;
+    if (ROBOT.test(n)) s -= 100;
+    if (/premium/.test(n)) s += 40;
+    if (/enhanced|forbedret|neural|natural|online/.test(n)) s += 30;
+    if (/siri/.test(n)) s += 25;
+    if (/nora|pernille|iselin|finn|google/.test(n)) s += 10;
+    if (/compact|kompakt/.test(n)) s -= 5;
+    if (/^nb/i.test(v.lang)) s += 2;
+    return s;
+  }
+  const isNo = v => /^(nb|no|nn)([-_]|$)/i.test(v.lang) || /norsk|norwegian|bokm/i.test(v.name);
   function pickVoice() {
     if (!synth) return;
     const vs = synth.getVoices() || [];
     if (!vs.length) return;
     voiceChecked = true;
-    voice = vs.find(v => /^nb([-_]|$)/i.test(v.lang)) || vs.find(v => /^(no|nn)([-_]|$)/i.test(v.lang)) ||
-      vs.find(v => /norsk|norwegian|bokm/i.test(v.name)) || null;
+    voices = vs.filter(isNo).sort((a, b) => score(b) - score(a));
+    let saved = null;
+    try { saved = localStorage.getItem('film:stemme'); } catch (e) {}
+    voice = (saved && voices.find(v => v.voiceURI === saved)) || voices.find(v => score(v) > -50) || voices[0] || null;
+    listeners.forEach(f => f());
+  }
+  function setVoice(uri) {
+    const v = voices.find(x => x.voiceURI === uri);
+    if (!v) return;
+    voice = v;
+    try { localStorage.setItem('film:stemme', uri); } catch (e) {}
+    listeners.forEach(f => f());
   }
   if (synth) { pickVoice(); try { synth.addEventListener('voiceschanged', pickVoice); } catch (e) { synth.onvoiceschanged = pickVoice; } }
   const canSpeak = () => !!synth && (!voiceChecked || !!voice);
@@ -116,6 +143,12 @@
         <button class="film-btn film-next" type="button" aria-label="Neste scene">⏭</button>
         <button class="film-btn film-snd" type="button" aria-pressed="false"></button>
         <button class="film-btn film-cc" type="button" aria-pressed="false" aria-label="Tekst">T</button>
+        <button class="film-btn film-set" type="button" aria-expanded="false" aria-label="Velg stemme" title="Velg stemme" hidden>⚙</button>
+      </div>
+      <div class="film-voice" hidden>
+        <label>Stemme <select class="field"></select></label>
+        <button class="btn film-try" type="button">Hør</button>
+        <p class="note">Hakkete stemme? På iPhone: Innstillinger → Tilgjengelighet → Opplest innhold → Stemmer → Norsk → Nora → last ned «Forbedret». Last så siden på nytt.</p>
       </div>`;
     const $ = s => host.querySelector(s);
     const g = $('.film-g'), big = $('.film-big'), cap = $('.film-cap'), askEl = $('.film-ask'), segs = $('.film-segs');
@@ -159,7 +192,7 @@
         const u = new SpeechSynthesisUtterance(said);
         u.lang = voice ? voice.lang : 'nb-NO';
         if (voice) u.voice = voice;
-        u.rate = 0.95;
+        u.rate = 1; u.pitch = 1;
         u.onend = end; u.onerror = end;
         synth.speak(u);
         /* Reserve i tilfelle nettleseren ikke sier fra når den er ferdig */
@@ -283,6 +316,17 @@
     ccBtn.addEventListener('click', () => setCaptions(!captions));
     $('.film-stage').addEventListener('click', ev => { if (ev.target.closest('.film-big')) return; if (started && state !== 'ask') (playing ? pause() : play()); });
 
+    const setBtn = $('.film-set'), vBox = $('.film-voice'), vSel = $('.film-voice select');
+    function fillVoices() {
+      setBtn.hidden = !synth || voices.length < 1;
+      vSel.innerHTML = voices.map(v => `<option value="${esc(v.voiceURI)}"${v === voice ? ' selected' : ''}>${esc(v.name)}</option>`).join('');
+      if (!sound && canSpeak() && store.get('lyd', true)) setSound(true);
+    }
+    listeners.push(fillVoices);
+    setBtn.addEventListener('click', () => { vBox.hidden = !vBox.hidden; setBtn.setAttribute('aria-expanded', String(!vBox.hidden)); });
+    vSel.addEventListener('change', () => { setVoice(vSel.value); if (!sound) setSound(true); speak('Hei! Slik høres denne stemmen ut.'); });
+    $('.film-try').addEventListener('click', () => { if (!sound) setSound(true); speak('Hei! Slik høres denne stemmen ut. Volumet er grunnflaten ganger høyden.'); });
+    fillVoices();
     setSound(sound); setCaptions(captions);
     /* Plakat: første scene ferdig tegnet */
     t = scenes[0].dur; render(); t = 0; showCaption(); spoken = !sound;

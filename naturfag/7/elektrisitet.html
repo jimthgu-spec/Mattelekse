@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elektrisitet og magnetisme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .wire{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.fig .e{fill:var(--lamp)}
+.fig .bat{fill:var(--c2)}
+.fig .coil{fill:none;stroke:#c76b1c;stroke-width:3}
+.fig .nail{fill:#9aa3ad;stroke:var(--ink);stroke-width:1}
+.fig .clipb{fill:none;stroke:var(--muted);stroke-width:2}
+.mat{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
+.mat .btn{font-size:.95rem}
+.mat .btn.yes{border-color:var(--good);background:var(--good-soft)}
+.mat .btn.no{border-color:var(--line);background:var(--paper)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Strøm og magneter</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#krets"><b>2</b>Strømkrets</a>
+    <a href="#emag"><b>3</b>Elektromagnet</a>
+    <a href="#magnet"><b>4</b>Magneter</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Strøm og magneter</h1>
+      <p class="lead">Strøm må gå i en <b>lukket krets</b>, fra batteriet, gjennom lampa og tilbake. Strøm kan også lage magnetisme. Det bruker vi i elektromagneter, høyttalere og motorer.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En enkel strømkrets med lampe"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du har et batteri, en lyspære og <b>én</b> ledning. Ledningen går fra pluss på batteriet til lyspæra.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="krets"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Test hva som leder strøm</h2></div>
+    <p class="sec-lead">Det er et hull i kretsen. Legg ulike ting i hullet og se om lampa lyser. Ting som slipper strømmen gjennom kalles <b>ledere</b>. Ting som stopper strømmen kalles <b>isolatorer</b>.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="cFig" viewBox="0 0 380 250" role="img" aria-label="Strømkrets med batteri, lampe, bryter og et hull"></svg>
+        <div class="counter" id="cOut" aria-live="polite">Velg en ting å teste.</div>
+      </div>
+      <div class="controls">
+        <div class="mat" id="mat"></div>
+        <div class="row"><button class="btn" type="button" id="bSw">Bryter: PÅ</button></div>
+        <div class="fb" id="cFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="emag"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Bygg en elektromagnet</h2></div>
+    <p class="sec-lead">Vikle ledning rundt en spiker og send strøm gjennom. Da blir spikeren en magnet. Hvor mange binders klarer du å løfte? Endre én ting om gangen.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="eFig" viewBox="0 0 380 280" role="img" aria-label="Elektromagnet som løfter binders"></svg>
+        <div class="counter" id="eOut" aria-live="polite">Binders løftet: <b>0</b></div>
+      </div>
+      <div class="controls">
+        <div id="eSl"></div>
+        <div class="row"><button class="btn primary" type="button" id="bOn">Slå på strømmen</button></div>
+        <div class="logwrap"><table class="log"><thead><tr><th>Forsøk</th><th>Viklinger</th><th>Batterier</th><th>Binders</th></tr></thead><tbody id="eLog"></tbody></table></div>
+        <div class="fb" id="eFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="magnet"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Hva fester seg til en magnet?</h2></div>
+    <p class="sec-lead">Ikke alt metall blir tiltrukket av en magnet. Sorter tingene.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om å utforske elektrisitet og magnetisme og bruke dem i enkle teknologiske løsninger. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Kretsen ---------- */
+const PATH=[[60,200],[60,50],[320,50],[320,200],[60,200]];
+function lamp(x,y,b){return (b>0?`<circle cx="${x}" cy="${y}" r="${fx(20+b*22)}" fill="var(--lamp)" opacity="${fx(.15+b*.35)}"/>`:'')+`<circle cx="${x}" cy="${y}" r="16" fill="${b>0?'var(--lamp)':'var(--surface)'}" stroke="var(--ink)" stroke-width="2.5"/><path d="M${x-8} ${y-8}L${x+8} ${y+8}M${x+8} ${y-8}L${x-8} ${y+8}" stroke="var(--ink)" stroke-width="2"/>`;}
+function battery(x,y){return `<rect x="${x-14}" y="${y-36}" width="28" height="72" rx="5" class="bat"/><rect x="${x-6}" y="${y-42}" width="12" height="7" fill="var(--ink)"/><text x="${x}" y="${y-14}" text-anchor="middle" fill="#fff" font-weight="700">+</text><text x="${x}" y="${y+26}" text-anchor="middle" fill="#fff" font-weight="700">−</text>`;}
+const MAT=[['Spiker (jern)',1,'🔩'],['Aluminiumsfolie',1,'🥈'],['Kobbertråd',1,'🟠'],['Mynt',1,'🪙'],['Blyant-stift (grafitt)',.45,'✏️'],['Saltvann',.3,'🧂'],['Plastlinjal',0,'📏'],['Ispinne (tre)',0,'🪵'],['Viskelær',0,'⬜'],['Glass',0,'🥛'],['Papir',0,'📄'],['Gummistrikk',0,'⭕']];
+let mSel=null,sw=true,tested=new Set(),ph=0;
+$('#heroFig').innerHTML=`<path class="wire" d="M60 180 L60 40 L320 40 L320 180 L60 180"/>`+battery(60,110)+lamp(190,40,1);
+function drawC(){const m=mSel!=null?MAT[mSel]:null,b=sw&&m?m[1]:0;
+  let s=`<path class="wire" d="M60 200 L60 50 L320 50 L320 112 M320 150 L320 200 L222 200 M158 200 L60 200"/>`;
+  s+=battery(60,125)+lamp(190,50,b);
+  s+=`<circle cx="320" cy="112" r="4" fill="var(--ink)"/><circle cx="320" cy="150" r="4" fill="var(--ink)"/><line x1="320" y1="150" x2="${sw?320:300}" y2="${sw?112:118}" stroke="var(--ink)" stroke-width="3"/><text class="lbl small" x="332" y="136">bryter</text>`;
+  s+=`<rect x="158" y="185" width="64" height="30" rx="6" fill="none" stroke="var(--muted)" stroke-dasharray="4 3"/>`;
+  s+=m?`<text x="190" y="208" text-anchor="middle" font-size="22">${m[2]}</text>`:`<text class="lbl small" x="190" y="235" text-anchor="middle">legg noe her</text>`;
+  if(b>0){const L=[[60,200,60,50],[60,50,320,50],[320,50,320,200],[320,200,60,200]];let tot=0;const segs=L.map(q=>{const l=Math.hypot(q[2]-q[0],q[3]-q[1]);tot+=l;return l;});
+    for(let k=0;k<14;k++){let d=((k/14)+ph)%1*tot,i=0;while(d>segs[i]){d-=segs[i];i++;}const q=L[i],f=d/segs[i];s+=`<circle class="e" cx="${fx(q[0]+(q[2]-q[0])*f)}" cy="${fx(q[1]+(q[3]-q[1])*f)}" r="4"/>`;}}
+  $('#cFig').innerHTML=s;}
+function renderMat(){$('#mat').innerHTML=MAT.map((m,i)=>`<button type="button" class="btn${tested.has(i)?(m[1]>0?' yes':' no'):''}${mSel===i?' on':''}" data-i="${i}">${m[2]} ${m[0]}</button>`).join('');
+  $('#mat').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{mSel=+b.dataset.i;tested.add(mSel);renderMat();test();}));}
+function test(){const m=MAT[mSel],fb=$('#cFb');drawC();if(!m)return;
+  if(!sw){$('#cOut').textContent='Bryteren er av.';fb.className='fb hint';fb.innerHTML='Bryteren er av, så kretsen er <b>åpen</b>. Da kan ingen strøm gå, uansett hva som ligger i hullet.';return;}
+  $('#cOut').innerHTML=m[1]>=1?'Lampa lyser! <b>Leder</b>':m[1]>0?'Lampa lyser svakt. <b>Leder litt</b>':'Lampa lyser ikke. <b>Isolator</b>';
+  fb.className='fb '+(m[1]>0?'good':'hint');
+  fb.innerHTML=m[1]>=1?`${m[0]} er et metall. Metaller leder strøm godt.`:m[1]>0?(m[0].startsWith('Salt')?'Saltvann leder litt strøm. Derfor er det farlig med strøm og vann!':'Grafitt er ikke et metall, men leder likevel litt strøm.'):`${m[0]} slipper ikke strømmen gjennom. Isolatorer brukes rundt ledninger så vi ikke får støt.`;
+  if(tested.size===MAT.length)fb.innerHTML+=' <b>Du har testet alt!</b> Grønne knapper er ledere.';}
+$('#bSw').addEventListener('click',()=>{sw=!sw;$('#bSw').textContent='Bryter: '+(sw?'PÅ':'AV');if(mSel!=null)test();else drawC();});
+renderMat();drawC();
+let cvis=true;if('IntersectionObserver' in window)new IntersectionObserver(e=>{cvis=e[0].isIntersecting;}).observe($('#cFig'));
+(function an(){if(cvis&&!V.reduce&&sw&&mSel!=null&&MAT[mSel][1]>0){ph=(ph+.004*MAT[mSel][1])%1;drawC();}requestAnimationFrame(an);})();
+
+/* ---------- Elektromagnet ---------- */
+let on=false,n=0;const eLog=[];
+const sl={};
+sl.w=N.slider($('#eSl'),{id:'eW',label:'Viklinger',min:10,max:50,step:10,value:20,fmt:v=>v,on:()=>{if(sl.b)setOff();}});
+sl.b=N.slider($('#eSl'),{id:'eB',label:'Batterier',min:1,max:3,step:1,value:1,fmt:v=>v+' stk',on:()=>{if(sl.b)setOff();}});
+const lift=(w,b)=>Math.floor(w*b/12);
+function drawE(k){const w=sl.w.value;let s=`<rect class="nail" x="170" y="20" width="16" height="170" rx="3"/><path class="nail" d="M170 190 L178 214 L186 190Z"/><rect class="nail" x="160" y="14" width="36" height="8" rx="2"/>`;
+  const nw=w/2;for(let i=0;i<nw;i++){const y=40+i*(140/nw);s+=`<ellipse class="coil" cx="178" cy="${fx(y)}" rx="14" ry="3"/>`;}
+  const bb=90+sl.b.value*34-4;s+=`<path class="wire" d="M164 40 Q90 40 90 90"/><path class="wire" d="M164 180 Q90 180 90 ${bb}"/>`;
+  for(let i=0;i<sl.b.value;i++)s+=`<rect class="bat" x="${70+i*0}" y="${90+i*34}" width="40" height="30" rx="4"/>`;
+  s+=`<text class="lbl small" x="90" y="${100+sl.b.value*34+8}" text-anchor="middle">${on?'strøm på':'strøm av'}</text>`;
+  for(let i=0;i<k;i++){s+=`<rect class="clipb" x="${158+(i%2)*20}" y="${214+Math.floor(i/2)*9}" width="20" height="10" rx="4"/>`;}
+  for(let i=0;i<14-k;i++)s+=`<rect class="clipb" x="${230+(i%5)*24}" y="${250+Math.floor(i/5)*-10}" width="20" height="10" rx="4" transform="rotate(${(i*37)%60-30} ${240+(i%5)*24} 255)"/>`;
+  $('#eFig').innerHTML=s;}
+function setOff(){on=false;$('#bOn').textContent='Slå på strømmen';$('#eOut').innerHTML='Binders løftet: <b>0</b>';drawE(0);}
+$('#bOn').addEventListener('click',()=>{if(on){setOff();return;}on=true;$('#bOn').textContent='Slå av strømmen';const w=sl.w.value,b=sl.b.value,k=Math.min(14,lift(w,b));
+  drawE(k);$('#eOut').innerHTML=`Binders løftet: <b>${k}</b>`;eLog.push([w,b,k]);
+  $('#eLog').innerHTML=eLog.map((r,i)=>`<tr><td>${i+1}</td><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  const fb=$('#eFb');
+  if(eLog.length>=2){const a=eLog[eLog.length-2],c=eLog[eLog.length-1];const dw=a[0]!==c[0],db=a[1]!==c[1];
+    if(dw&&db){fb.className='fb bad';fb.innerHTML='Du endret både viklinger og batterier. Da vet du ikke hva som gjorde forskjellen. Endre én ting om gangen.';return;}
+    if(dw){fb.className='fb good';fb.innerHTML=`${c[0]>a[0]?'Flere':'Færre'} viklinger ga ${c[2]>a[2]?'flere':c[2]<a[2]?'færre':'like mange'} binders. Flere viklinger gir en sterkere magnet.`;}
+    else if(db){fb.className='fb good';fb.innerHTML=`${c[1]>a[1]?'Flere':'Færre'} batterier ga ${c[2]>a[2]?'flere':c[2]<a[2]?'færre':'like mange'} binders. Mer strøm gir en sterkere magnet.`;}
+    else{fb.className='fb hint';fb.innerHTML='Samme oppsett som sist. Endre viklinger eller batterier.';}}
+  else{fb.className='fb hint';fb.innerHTML='Slå av, endre én ting og prøv igjen.';}
+  if(k>=12)fb.innerHTML+=' <b>Supersterk magnet!</b> Når du slår av strømmen, faller bindersene. Det er det fine med en elektromagnet.';});
+drawE(0);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Lyser lyspæra?',opts:['Ja, strømmen kommer fra pluss','Nei, strømmen må kunne gå i ring tilbake til minus','Ja, men svakt'],ok:1,
+  expl:'Strøm går bare når det er en <b>lukket krets</b>: fra batteriet, gjennom pæra og tilbake til batteriets andre pol. Med én ledning blir kretsen åpen, og ingenting lyser.',
+  retry:'Tenk på ordet «krets». Hvor skal strømmen gå etter pæra? Prøv igjen.'});
+
+/* ---------- 4 Magnet-sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'j',name:'Fester seg'},{id:'n',name:'Fester seg ikke'}],
+  items:[{t:'Binders',g:'j'},{t:'Spiker',g:'j'},{t:'Saks av stål',g:'j'},{t:'Brusboks (aluminium)',g:'n',why:'Aluminium er et metall, men ikke magnetisk. Bare jern, nikkel og kobolt (og stål med jern i) fester seg.'},{t:'Kobberledning',g:'n'},{t:'Gullring',g:'n'},{t:'Plastskje',g:'n'},{t:'Kjøleskapsdør',g:'j'}],
+  good:'Riktig! Magneter trekker på jern, og stål som har jern i seg. De fleste andre metaller, som aluminium, kobber og gull, fester seg ikke.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  leder:{name:'Ledere og isolatorer',gens:[
+    ()=>{const m=pick(MAT.filter(x=>x[1]!==.45&&x[1]!==.3));const ans=m[1]>0?'Leder':'Isolator';return N.mc(`Er <b>${m[0].toLowerCase()}</b> en leder eller en isolator?`,ans,[ans==='Leder'?'Isolator':'Leder'],['Er det metall?'],m[1]>0?`${m[0]} leder strøm. Metaller er gode ledere.`:`${m[0]} er en isolator. Den stopper strømmen.`);},
+    ()=>N.mc('Hvorfor er ledninger dekket med plast?','Plast er en isolator, så vi ikke får støt',['Plast leder strømmen bedre','For at de skal se fine ut'],['Hva gjør en isolator?'],'Kobberet inni leder strømmen. Plasten rundt er en isolator som beskytter oss.')
+  ]},
+  krets:{name:'Lukket krets',gens:[
+    ()=>N.mc('Hva skjer når du slår av en bryter?','Kretsen blir åpen, og strømmen stopper',['Strømmen går ut av ledningen','Batteriet lades opp'],['Bryteren lager et brudd.'],'En bryter åpner kretsen. Da kan ikke strømmen gå rundt.'),
+    ()=>{const ok=pick(['Begge ledningene går fra batteriet til lampa','Kretsen går i ring uten brudd']);return N.mc('Når lyser lampa?',ok,['Bare én ledning er koblet til','Det er et viskelær i kretsen'],['Strømmen må komme tilbake.'],'Lampa lyser bare i en lukket krets uten brudd og uten isolatorer.');}
+  ]},
+  emag:{name:'Elektromagnet',gens:[
+    ()=>{const w=pick([10,20,30,40]),b=pick([1,2]);return N.mc(`En elektromagnet har ${w} viklinger og ${b} batteri${b>1?'er':''}. Hvordan kan du gjøre den <b>sterkere</b>?`,'Flere viklinger eller flere batterier',['Færre viklinger','Bruke en plastpinne i stedet for spiker'],['Se tabellen fra forsøket.'],'Flere viklinger og mer strøm gir en sterkere elektromagnet. Spikeren av jern gjør den enda sterkere.');},
+    ()=>N.mc('Hva er det smarte med en elektromagnet?','Du kan slå magnetismen av og på',['Den trenger ikke strøm','Den fester seg til plast'],['Hva skjedde da du slo av strømmen?'],'En elektromagnet virker bare når det går strøm. Kranene på skraphandelen bruker det til å løfte og slippe biler.')
+  ]},
+  poler:{name:'Magnetpoler',gens:[
+    ()=>{const a=pick(['N','S']),b=pick(['N','S']);const ans=a===b?'De skyver hverandre bort':'De trekker hverandre til seg';return N.mc(`Du holder ${a==='N'?'nordpolen':'sørpolen'} på én magnet mot ${b==='N'?'nordpolen':'sørpolen'} på en annen. Hva skjer?`,ans,[a===b?'De trekker hverandre til seg':'De skyver hverandre bort','Ingenting'],['Like poler, ulike poler?'],'Like poler frastøter hverandre. Ulike poler tiltrekker hverandre.');},
+    ()=>N.mc('Hvorfor peker kompassnåla mot nord?','Jorda er en stor magnet',['Nåla er tung i den ene enden','Vinden blåser fra nord'],['Kompassnåla er en liten magnet.'],'Jorda er en stor magnet. Kompassnåla er en liten magnet som retter seg etter jordas magnetfelt.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-elektrisitet',title:'Strøm og magneter',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

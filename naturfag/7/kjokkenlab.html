@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kjøkkenlaboratoriet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .glass{fill:none;stroke:var(--ink);stroke-width:2.5}
+.fig .bub{fill:none;stroke:var(--ink);stroke-opacity:.55;stroke-width:1.5}
+.fig .ball{stroke:var(--ink);stroke-width:1.5}
+.ingr{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
+.ingr .btn{justify-content:flex-start;font-size:.95rem}
+.ingr .btn.on{border-color:var(--accent);background:var(--accent-soft)}
+.found{display:flex;flex-wrap:wrap;gap:6px}
+.found span{border-radius:999px;padding:3px 10px;font-size:.85rem;background:var(--paper);color:var(--muted)}
+.found span.got{background:var(--leaf-soft);color:var(--ink);font-weight:700}
+.phbar{height:22px;border-radius:8px;background:linear-gradient(90deg,#d6336c,#c2255c 15%,#9c36b5 35%,#7048e8 50%,#1c7ed6 62%,#0ca678 78%,#f2c94c);position:relative}
+.phbar b{position:absolute;top:-6px;width:4px;height:34px;background:var(--ink);border-radius:2px;transition:left .4s}
+.phlab{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Kjøkkenlaboratoriet</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#lab"><b>2</b>Bland</a>
+    <a href="#rodkal"><b>3</b>Rødkål</a>
+    <a href="#tegn"><b>4</b>Reaksjon?</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Kjemi på kjøkkenet</h1>
+      <p class="lead">Når du baker, koker eller blander ting, kan det skje en <b>kjemisk reaksjon</b>. Da blir det laget nye stoffer. Bobler, ny farge, lukt eller varme er tegn på at noe nytt er laget.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En flaske med en ballong som blåses opp"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du har eddik i en flaske og natron i en ballong. Du trer ballongen over flaskehalsen og lar natronet drysse ned i eddiken.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="lab"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bland og se</h2></div>
+    <p class="sec-lead">Velg to ting fra kjøkkenskapet og bland dem. Se etter tegn på en kjemisk reaksjon. Klarer du å finne alle fire reaksjonene?</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="lFig" viewBox="0 0 380 260" role="img" aria-label="Et glass med det du blander"></svg>
+        <div class="counter" id="lOut" aria-live="polite">Velg to ting.</div>
+      </div>
+      <div class="controls">
+        <div class="ingr" id="ingr"></div>
+        <div class="row"><button class="btn primary" type="button" id="bMix">Bland</button><button class="btn" type="button" id="bEmpty">Tøm glasset</button></div>
+        <div class="fb" id="lFb" aria-live="polite"></div>
+        <div class="card2"><span class="tag">Reaksjoner du har funnet</span><div class="found" id="found"></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="rodkal"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Rødkålsaft viser surt og basisk</h2></div>
+    <p class="sec-lead">Saft fra kokt rødkål skifter farge. I noe <b>surt</b> blir den rosa, i noe <b>basisk</b> blir den blå, grønn eller gul. Drypp den i ulike stoffer.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="rFig" viewBox="0 0 380 200" role="img" aria-label="Et reagensrør med rødkålsaft"></svg>
+        <div><div class="phbar"><b id="phMark" style="left:50%"></b></div><div class="phlab"><span>Veldig surt</span><span>Nøytralt</span><span>Veldig basisk</span></div></div>
+      </div>
+      <div class="controls">
+        <div class="pick" id="rPick"></div>
+        <div class="fb" id="rFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="tegn"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Kjemisk eller fysisk?</h2></div>
+    <p class="sec-lead">Ved en <b>fysisk endring</b> er stoffet det samme, bare i en annen form. Ved en <b>kjemisk reaksjon</b> blir det laget nye stoffer. Sorter.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om å utforske kjemiske reaksjoner med stoffer fra hverdagen og skille dem fra fysiske endringer. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Tegning ---------- */
+function glass(fill,level,bubbles,extra){let s=`<path class="glass" d="M120 40 L135 230 Q190 245 245 230 L260 40"/>`;
+  if(level>0){const y=230-level*180;s+=`<path d="M${fx(120+(y-40)*15/190)} ${fx(y)} L135 230 Q190 245 245 230 L${fx(260-(y-40)*15/190)} ${fx(y)}Z" fill="${fill}" opacity=".85"/>`;}
+  for(let i=0;i<bubbles;i++){const x=150+Math.random()*80,y=230-Math.random()*level*175;s+=`<circle class="bub" cx="${fx(x)}" cy="${fx(y)}" r="${fx(2+Math.random()*5)}"/>`;}
+  return s+(extra||'');}
+$('#heroFig').innerHTML=`<path class="glass" d="M160 200 L160 110 Q160 90 175 85 L175 60 L205 60 L205 85 Q220 90 220 110 L220 200Z"/><path d="M162 198 L162 150 L218 150 L218 198Z" fill="#f1e4b0" opacity=".8"/><ellipse class="ball" cx="190" cy="30" rx="34" ry="30" fill="var(--c1)"/><path d="M180 58 L200 58 L205 62 L175 62Z" fill="var(--c1)"/>`;
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva skjer med ballongen?',opts:['Ingenting','Den blåses opp','Den suges inn i flasken'],ok:1,
+  expl:'Natron og eddik reagerer og lager en ny gass, <b>karbondioksid</b> (CO₂). Gassen fyller flasken og blåser opp ballongen. Det er et tegn på en kjemisk reaksjon: et nytt stoff er laget.',
+  retry:'Tenk på hva som skjer når du blander natron og eddik. Prøv igjen.'});
+
+/* ---------- 2 Lab ---------- */
+const ING={eddik:['Eddik','#f4f0d8','sur'],natron:['Natron','#ffffff','base'],sitron:['Sitronsaft','#f7ef9b','sur'],melk:['Melk','#fbfbf5','noyt'],vann:['Vann','#cfe8f3','noyt'],sukker:['Sukker','#ffffff','noyt'],salt:['Salt','#ffffff','noyt'],gjar:['Gjær og sukkervann','#e9d9b4','noyt'],olje:['Matolje','#f3d36b','noyt']};
+const KEY=(a,b)=>[a,b].sort().join('+');
+const RX={
+  [KEY('eddik','natron')]:{f:'#f1ecd6',b:40,ball:true,t:'Det bruser kraftig! Eddik og natron lager gassen <b>karbondioksid</b>.',rx:'Eddik + natron'},
+  [KEY('sitron','natron')]:{f:'#f5eca0',b:30,t:'Det bruser! Sitronsaft er sur, akkurat som eddik, og reagerer med natron. Det blir laget karbondioksid.',rx:'Sitron + natron'},
+  [KEY('melk','eddik')]:{f:'#f6f3e6',b:0,lumps:true,t:'Melka skiller seg og det blir klumper! Syra får proteinene i melka til å klumpe seg. Slik lager man ost og kesam.',rx:'Melk + syre'},
+  [KEY('melk','sitron')]:{f:'#f6f3e6',b:0,lumps:true,t:'Melka skiller seg og det blir klumper! Syra får proteinene i melka til å klumpe seg.',rx:'Melk + syre'},
+  [KEY('gjar','vann')]:{f:'#e7d6ad',b:18,slow:true,t:'Etter en stund bobler det. Gjær er levende sopp som spiser sukker og lager karbondioksid. Det er derfor brøddeigen hever seg.',rx:'Gjær'},
+  [KEY('gjar','sukker')]:{f:'#e7d6ad',b:18,slow:true,t:'Etter en stund bobler det. Gjæren spiser sukkeret og lager karbondioksid. Det er derfor brøddeigen hever seg.',rx:'Gjær'}
+};
+const PHYS={
+  [KEY('vann','sukker')]:'Sukkeret <b>løses</b> i vannet og blir borte. Men det er ikke en kjemisk reaksjon: sukkeret er der fortsatt. Smak, så kjenner du det. Det er en fysisk endring.',
+  [KEY('vann','salt')]:'Saltet løses i vannet. Hvis du lar vannet fordampe, får du saltet tilbake. Ingen nye stoffer, altså en fysisk endring.',
+  [KEY('vann','olje')]:'Oljen legger seg oppå vannet. De blander seg ikke, og ingen nye stoffer blir laget.',
+  [KEY('vann','natron')]:'Natronet løses i vannet. Ingen bobler, ingen nye stoffer. Prøv å blande natron med noe surt.',
+  [KEY('vann','eddik')]:'Eddiken blandes med vannet og blir tynnere. Ingen nye stoffer.'
+};
+const ALL=['Eddik + natron','Sitron + natron','Melk + syre','Gjær'];
+const got=new Set();let sel=[],busy=false;
+function renderIng(){$('#ingr').innerHTML=Object.entries(ING).map(([k,v])=>`<button type="button" class="btn${sel.includes(k)?' on':''}" data-k="${k}" aria-pressed="${sel.includes(k)}">${v[0]}</button>`).join('');
+  $('#ingr').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{if(busy)return;const k=b.dataset.k;if(sel.includes(k))sel=sel.filter(x=>x!==k);else{sel.push(k);if(sel.length>2)sel.shift();}renderIng();
+    $('#lOut').innerHTML=sel.length?sel.map(x=>ING[x][0]).join(' + '):'Velg to ting.';}));
+  $('#found').innerHTML=ALL.map(x=>`<span class="${got.has(x)?'got':''}">${got.has(x)?'✓ '+x:'?'}</span>`).join('');}
+function balloon(r){return `<path class="ball" d="M116 42 Q190 ${fx(40-r*2.4)} 264 42 Q190 50 116 42Z" fill="var(--c1)" opacity=".9"/>`;}
+$('#lFig').innerHTML=glass('#fff',0,0);
+$('#bMix').addEventListener('click',()=>{if(busy)return;const fb=$('#lFb');if(sel.length<2){fb.className='fb hint';fb.textContent='Velg to ting først.';return;}
+  const k=KEY(sel[0],sel[1]),r=RX[k];busy=true;fb.className='fb';fb.innerHTML='';
+  const c0=ING[sel[0]][1];const t0=performance.now(),dur=V.reduce?60:(r&&r.slow?3200:2000);
+  (function an(){const p=Math.min(1,(performance.now()-t0)/dur);let extra='';
+    if(r&&r.ball)extra=balloon(p*28);
+    if(r&&r.lumps)for(let i=0;i<Math.round(p*14);i++)extra+=`<circle cx="${150+(i*29)%80}" cy="${200-(i*17)%60}" r="${4+i%3}" fill="#fffef5" stroke="var(--muted)"/>`;
+    const nb=r?Math.round(r.b*(r.slow?Math.max(0,p-.4)/.6:Math.max(.3,Math.sin(Math.PI*Math.min(1,p*1.3))))):0;
+    $('#lFig').innerHTML=glass(r?r.f:c0,.55,nb,'')+extra;
+    if(p<1){requestAnimationFrame(an);return;}busy=false;
+    if(r){fb.className='fb good';fb.innerHTML='<b>Kjemisk reaksjon!</b> '+r.t;got.add(r.rx);renderIng();if(got.size===ALL.length)fb.innerHTML+=' <b>Du har funnet alle fire!</b>';}
+    else{fb.className='fb hint';fb.innerHTML=(PHYS[k]||'Ingenting skjer. Ingen bobler, ingen ny farge, ingen klumper. Det er ikke en kjemisk reaksjon.')+(got.size<ALL.length?' Tips: prøv noe surt sammen med noe annet.':'');}})();});
+$('#bEmpty').addEventListener('click',()=>{if(busy)return;sel=[];renderIng();$('#lFig').innerHTML=glass('#fff',0,0);$('#lOut').textContent='Velg to ting.';$('#lFb').className='fb';$('#lFb').innerHTML='';});
+renderIng();
+
+/* ---------- 3 Rødkål ---------- */
+const RK=[['Sitronsaft',2,'#d6336c','surt'],['Eddik',3,'#c2255c','surt'],['Brus',3.5,'#c2255c','surt'],['Vann',7,'#7048e8','nøytralt'],['Melk',6.7,'#7b4fd8','omtrent nøytralt'],['Natron i vann',8.5,'#1c7ed6','svakt basisk'],['Såpevann',10,'#0ca678','basisk'],['Oppvaskmaskinmiddel',12,'#f2c94c','sterkt basisk']];
+function tube(c){return `<rect x="160" y="20" width="60" height="150" rx="28" fill="none" stroke="var(--ink)" stroke-width="2.5"/><rect x="163" y="70" width="54" height="97" rx="25" fill="${c}" opacity=".9"/>`;}
+$('#rFig').innerHTML=tube('#7048e8');
+$('#rPick').innerHTML=RK.map((r,i)=>`<button type="button" class="btn" data-i="${i}">${r[0]}</button>`).join('');
+$('#rPick').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{const r=RK[+b.dataset.i];$('#rPick').querySelectorAll('.btn').forEach(x=>x.classList.toggle('on',x===b));
+  $('#rFig').innerHTML=tube(r[2]);$('#phMark').style.left=fx((r[1]-1)/13*100)+'%';
+  $('#rFb').className='fb good';$('#rFb').innerHTML=`<b>${r[0]}</b> gjør saften ${({'#d6336c':'rosa','#c2255c':'rosa','#7048e8':'lilla','#7b4fd8':'lilla','#1c7ed6':'blå','#0ca678':'grønn','#f2c94c':'gul'})[r[2]]}. Det er <b>${r[3]}</b>.`+(r[1]>=11?' Sterke baser kan etse. Se etter faresymbolet!':'');}));
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'k',name:'Kjemisk reaksjon'},{id:'f',name:'Fysisk endring'}],
+  items:[{t:'Et egg blir kokt',g:'k',why:'Et kokt egg blir aldri rått igjen. Proteinene er blitt til noe nytt.'},{t:'Brødet blir ristet og brunt',g:'k'},{t:'En fyrstikk brenner',g:'k'},{t:'Sykkelen ruster',g:'k',why:'Rust er et nytt stoff som blir laget når jern reagerer med oksygen og vann.'},{t:'Sjokolade smelter',g:'f',why:'Smeltet sjokolade blir fast igjen i kjøleskapet. Det er det samme stoffet.'},{t:'Sukker løses i te',g:'f'},{t:'Et glass knuses',g:'f'},{t:'Vann fryser til is',g:'f'}],
+  good:'Riktig! Tegn på kjemisk reaksjon: bobler (gass), ny farge, ny lukt, lys eller varme, og at det ikke går an å få tilbake det du startet med.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  tegn:{name:'Tegn på reaksjon',gens:[
+    ()=>{const t=pick(['Det bruser og lages bobler','Fargen endrer seg','Det lukter noe nytt','Det blir varmt og lyser']);return N.mc('Hvilket av disse er et tegn på en kjemisk reaksjon?',t,['Stoffet blir delt i to','Stoffet smelter','Stoffet løses i vann'],['Blir det laget et nytt stoff?'],`«${t}» tyder på at et nytt stoff er laget.`);},
+    ()=>N.mc('Natron og eddik bruser. Hva er boblene?','Karbondioksid (CO₂)',['Luft som var i eddiken','Vanndamp'],['Det er en ny gass.'],'Boblene er karbondioksid, en ny gass som blir laget i reaksjonen.')
+  ]},
+  type:{name:'Kjemisk eller fysisk',gens:[
+    ()=>{const it=pick([['Pannekaker stekes','k'],['Melk blir sur','k'],['Ved brenner i peisen','k'],['En spiker ruster','k'],['Smør smelter','f'],['Salt løses i vann','f'],['Papir rives i biter','f'],['Vann koker','f']]);const ans=it[1]==='k'?'Kjemisk reaksjon':'Fysisk endring';
+      return N.mc(`${it[0]}. Hva slags endring er det?`,ans,[it[1]==='k'?'Fysisk endring':'Kjemisk reaksjon'],['Blir det laget nye stoffer?'],it[1]==='k'?'Det blir laget nye stoffer, så det er en kjemisk reaksjon.':'Stoffet er det samme, bare i en annen form. Det er en fysisk endring.',{'Kjemisk reaksjon':'Når noe smelter, koker eller løses, er det fortsatt det samme stoffet.'});}
+  ]},
+  syre:{name:'Surt og basisk',gens:[
+    ()=>{const r=pick(RK.filter(x=>x[1]<5||x[1]>8));const ans=r[1]<7?'Surt':'Basisk';return N.mc(`Rødkålsaft blir ${r[1]<5?'rosa':r[1]>11?'gul':r[1]>9?'grønn':'blå'} i ${r[0].toLowerCase()}. Er ${r[0].toLowerCase()} surt eller basisk?`,ans,[ans==='Surt'?'Basisk':'Surt','Nøytralt'],['Rosa betyr surt.'],`Rosa betyr surt, blått, grønt og gult betyr basisk. ${r[0]} er ${r[3]}.`);},
+    ()=>N.mc('Hvilket stoff er surt?','Sitronsaft',['Såpe','Natron'],['Smaker det surt?'],'Sitronsaft er surt. Såpe og natron er basiske.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-kjokkenlab',title:'Kjøkkenlaboratoriet',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

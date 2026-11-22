@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Den levende jorda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.fig .rnode circle{fill:var(--surface);stroke:var(--line);stroke-width:2}
+.fig .rnode.cur circle{stroke:var(--accent);stroke-width:4;fill:var(--accent-soft)}
+.fig .rarr{stroke:var(--muted);stroke-width:1.6;fill:none;marker-end:url(#ra)}
+.fig .rarr.last{stroke:var(--accent);stroke-width:3}
+.fig .mtn{fill:#8d7b68}
+.fig .snow{fill:#fff}
+.fig .sea{fill:var(--water);opacity:.5}
+.fig .sed{stroke:var(--surface);stroke-width:.6}
+.proc{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.proc .btn{font-size:.92rem}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Den levende jorda</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#krets"><b>2</b>Steinens reise</a>
+    <a href="#erosjon"><b>3</b>Fjellet slites</a>
+    <a href="#bergarter"><b>4</b>Bergarter</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Steinen er på reise</h1>
+      <p class="lead">Fjell ser ut som de står stille for alltid. Men over millioner av år blir stein smeltet, presset, slitt ned og bygget opp igjen. Det kalles <b>det geologiske kretsløpet</b>.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Fjell, elv og hav med sandlag"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du står på en sandstrand og tar en håndfull sand.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="krets"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Steinens reise</h2></div>
+    <p class="sec-lead">Du er en stein. Velg hva som skal skje med deg, og løs oppdragene. Noen prosesser går ikke an fra alle steder.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="cFig" viewBox="0 0 380 320" role="img" aria-label="Det geologiske kretsløpet"></svg><div class="counter" id="cTime">Tid brukt: <b>0</b> millioner år</div></div>
+      <div class="controls">
+        <div class="card2"><span class="tag">Oppdrag</span><p id="mis"></p></div>
+        <div class="proc" id="proc"></div>
+        <div class="fb" id="cFb" aria-live="polite"></div>
+        <div class="row"><button class="btn" type="button" id="cReset">Start som magma</button></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="erosjon"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fjellet slites ned</h2></div>
+    <p class="sec-lead">Regn, frost, is og elver bryter fjellet ned bit for bit. Dra i tiden og se hva som skjer med fjellet og havbunnen.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="eFig" viewBox="0 0 380 220" role="img" aria-label="Fjell som slites ned, og lag på havbunnen"></svg></div>
+      <div class="controls"><div id="eSl"></div><div class="counter" id="eOut"></div><div class="fb" id="eFb" aria-live="polite"></div></div>
+    </div>
+  </div></section>
+
+  <section id="bergarter"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Tre typer bergarter</h2></div>
+    <p class="sec-lead"><b>Magmatiske</b> bergarter er størknet magma. <b>Sedimentære</b> er sammenpresset sand, leire og skjell. <b>Metamorfe</b> er bergarter som er omdannet av trykk og varme. Sorter.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om det geologiske kretsløpet: hvordan bergarter dannes, brytes ned og blir til nye bergarter over lang tid. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Kretsløpet ---------- */
+const ST={magma:['Magma','🔥',190,40,'flytende stein dypt i jorda'],mag:['Magmatisk','🪨',305,130,'for eksempel granitt'],sed:['Sand og leire','⏳',260,265,'løse korn'],sedb:['Sedimentær','🧱',120,265,'for eksempel sandstein'],met:['Metamorf','💎',75,130,'for eksempel gneis']};
+const PR={stor:['Kjøles og størkner',0],forv:['Forvitring og erosjon',0],avs:['Avsetning og sammenpressing',0],trykk:['Trykk og varme',0],smelt:['Smelting',0]};
+const MOVE={magma:{stor:['mag',1]},mag:{forv:['sed',10],trykk:['met',20],smelt:['magma',5]},sedb:{forv:['sed',10],trykk:['met',20],smelt:['magma',5]},met:{forv:['sed',10],smelt:['magma',5]},sed:{avs:['sedb',15]}};
+const WHY={stor:'Bare flytende magma kan størkne.',forv:'Løs sand kan ikke forvitre mer. Den må presses sammen først.',avs:'Bare løse korn av sand og leire kan avsettes og presses sammen.',trykk:'Det går ikke herfra. Magma må størkne først, og løs sand må bli fast stein.',smelt:'Du er allerede magma, eller løse korn. Prøv noe annet.'};
+const MIS=[['Lag en magmatisk bergart.',s=>s==='mag'],['Gjør granitten om til sand.',s=>s==='sed'],['Lag sandstein av sanden.',s=>s==='sedb'],['Gjør sandsteinen om til en metamorf bergart.',s=>s==='met'],['Kom tilbake til magma. Da har du gått hele kretsløpet!',s=>s==='magma']];
+let st='magma',mi=0,yrs=0,lastE=null;
+function drawC(){let s=`<defs><marker id="ra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>`;
+  Object.entries(MOVE).forEach(([a,m])=>Object.entries(m).forEach(([p,[b]])=>{const A=ST[a],B=ST[b];const dx=B[2]-A[2],dy=B[3]-A[3],l=Math.hypot(dx,dy),nx=-dy/l*8,ny=dx/l*8;
+    s+=`<line class="rarr${lastE===a+b?' last':''}" x1="${fx(A[2]+dx/l*34+nx)}" y1="${fx(A[3]+dy/l*34+ny)}" x2="${fx(B[2]-dx/l*36+nx)}" y2="${fx(B[3]-dy/l*36+ny)}"/>`;}));
+  Object.entries(ST).forEach(([k,v])=>{s+=`<g class="rnode${k===st?' cur':''}"><circle cx="${v[2]}" cy="${v[3]}" r="30"/><text x="${v[2]}" y="${v[3]+9}" text-anchor="middle" font-size="26">${v[1]}</text><text class="lbl small" x="${v[2]}" y="${v[3]+44}" text-anchor="middle">${v[0]}</text></g>`;});
+  $('#cFig').innerHTML=s;$('#cTime').innerHTML=`Tid brukt: <b>${yrs}</b> millioner år`;
+  $('#mis').innerHTML=mi<MIS.length?`${mi+1}/${MIS.length}: ${MIS[mi][0]}`:'Alle oppdrag er løst! Stein går i et evig kretsløp.';
+  $('#proc').innerHTML=Object.entries(PR).map(([k,p])=>`<button type="button" class="btn" data-p="${k}">${p[0]}</button>`).join('');
+  $('#proc').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>doP(b.dataset.p)));}
+const TXT={stor:'Magmaen kjøles langsomt ned og blir til fast stein med krystaller. Nå er du en <b>magmatisk bergart</b>, for eksempel granitt.',
+  forv:'Frost sprenger, regn løser og elver river med seg biter. Over lang tid blir steinen til <b>sand og leire</b> som havner i havet.',
+  avs:'Lag på lag med sand legger seg på havbunnen. Vekten fra lagene over presser kornene sammen. Nå er du en <b>sedimentær bergart</b>, sandstein.',
+  trykk:'Du blir presset dypt ned der fjellkjeder dannes. Trykk og varme omdanner deg uten at du smelter. Nå er du en <b>metamorf bergart</b>, gneis.',
+  smelt:'Du synker dypt ned der to jordplater møtes. Det er så varmt at du smelter. Nå er du <b>magma</b> igjen.'};
+function doP(p){const fb=$('#cFb'),m=MOVE[st][p];
+  if(!m){fb.className='fb bad';fb.innerHTML=WHY[p];return;}
+  lastE=st+m[0];st=m[0];yrs+=m[1];fb.className='fb good';fb.innerHTML=TXT[p];
+  if(mi<MIS.length&&MIS[mi][1](st)){mi++;fb.innerHTML+=' <b>Oppdrag løst!</b>';}
+  drawC();}
+$('#cReset').addEventListener('click',()=>{st='magma';mi=0;yrs=0;lastE=null;$('#cFb').className='fb';$('#cFb').innerHTML='';drawC();});
+drawC();
+
+/* ---------- 3 Erosjon ---------- */
+function land(t){const h=150*Math.exp(-t/30)+25,layers=Math.floor(t/12);
+  let s=`<rect class="sea" x="240" y="185" width="140" height="35"/>`;
+  const cols=['#d8c27a','#c9a86a','#b9935b','#d1b483','#bfa070','#c8ad7a','#aa8a5a','#d8c27a','#b9935b'];
+  for(let i=0;i<layers&&i<9;i++)s+=`<rect class="sed" x="240" y="${fx(216-i*3.5)}" width="140" height="3.5" fill="${cols[i]}"/>`;
+  s+=`<path class="mtn" d="M0 220 L0 ${fx(200-h*.4)} L110 ${fx(200-h)} L240 185 L240 220Z"/>`;
+  const yy=x=>200-h+(x-110)*(h-15)/130;s+=`<path d="M130 ${fx(yy(130)+4)} Q185 ${fx(yy(185)+4)} 242 186" stroke="var(--water)" stroke-width="3" fill="none"/>`;
+  return {s,h};}
+$('#heroFig').innerHTML=land(30).s;
+const eS=N.slider($('#eSl'),{id:'eT',label:'Millioner år',min:0,max:100,step:5,value:0,fmt:v=>v,on:v=>{
+  const r=land(+v);if(!$('#eFig'))return;$('#eFig').innerHTML=r.s;$('#eOut').innerHTML=`Fjellets høyde: <b>${nf(Math.round(r.h*20/100)*100,0)} m</b>`;
+  const fb=$('#eFb');if(+v===0){fb.className='fb';fb.innerHTML='';}
+  else{fb.className='fb good';fb.innerHTML=+v<60?'Fjellet blir lavere og rundere. Elva frakter sand og grus ut i havet, der det legger seg i lag.':'Etter svært lang tid er fjellet nesten borte. På havbunnen er det mange lag. De nederste lagene presses sammen til <b>sedimentær bergart</b>. Fjellene i Norge var en gang like høye som Alpene!';}}});
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvor kommer sanden fra?',opts:['Den har alltid vært der','Den er biter av fjell som er slitt ned','Den kommer fra havet'],ok:1,
+  expl:'Sand er bittesmå biter av stein. Frost, regn og elver har brutt ned fjell over tusenvis av år, og bølgene har slipt kornene runde. Mange sandkorn er bittesmå biter av mineralet kvarts fra granitt.',
+  retry:'Se godt på et sandkorn med lupe. Ligner det på noe? Prøv igjen.'});
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'ma',name:'Magmatisk'},{id:'se',name:'Sedimentær'},{id:'me',name:'Metamorf'}],
+  items:[{t:'Granitt',g:'ma'},{t:'Basalt (størknet lava)',g:'ma'},{t:'Sandstein',g:'se'},{t:'Kalkstein med fossiler',g:'se',why:'Fossiler finnes nesten bare i sedimentære bergarter. De blir begravd i lag på havbunnen.'},{t:'Leirstein',g:'se'},{t:'Gneis',g:'me'},{t:'Marmor (omdannet kalkstein)',g:'me',why:'Marmor blir laget når kalkstein blir utsatt for trykk og varme.'},{t:'Skifer på taket',g:'me'}],
+  good:'Riktig! I Norge er det mest gneis og granitt, men i Oslo-området finner du sedimentære bergarter med fossiler fra et gammelt hav.'});
+
+/* ---------- Øving ---------- */
+const PNAME=Object.fromEntries(Object.entries(PR).map(([k,v])=>[k,v[0]]));
+const skills={
+  krets:{name:'Det geologiske kretsløpet',gens:[
+    ()=>{const opts=[];Object.entries(MOVE).forEach(([a,m])=>Object.entries(m).forEach(([p,[b]])=>opts.push([a,p,b])));const [a,p,b]=pick(opts);
+      return N.mc(`Hva blir <b>${ST[a][0].toLowerCase()}</b> til ved <b>${PNAME[p].toLowerCase()}</b>?`,ST[b][0],Object.values(ST).map(x=>x[0]).filter(x=>x!==ST[b][0]&&x!==ST[a][0]).slice(0,3),['Se på kretsløpet.'],`${ST[a][0]} + ${PNAME[p].toLowerCase()} → ${ST[b][0].toLowerCase()}.`);},
+    ()=>{const t=pick([['sedb','avs'],['met','trykk'],['mag','stor'],['magma','smelt'],['sed','forv']]);return N.mc(`Hvilken prosess lager <b>${ST[t[0]][0].toLowerCase()}</b>?`,PNAME[t[1]],Object.values(PNAME).filter(x=>x!==PNAME[t[1]]).slice(0,3),['Tenk på steinens reise.'],`${ST[t[0]][0]} dannes ved ${PNAME[t[1]].toLowerCase()}.`);}
+  ]},
+  typer:{name:'Bergartstyper',gens:[
+    ()=>{const b=pick([['Granitt','Magmatisk'],['Basalt','Magmatisk'],['Sandstein','Sedimentær'],['Kalkstein','Sedimentær'],['Gneis','Metamorf'],['Marmor','Metamorf']]);return N.mc(`Hva slags bergart er <b>${b[0].toLowerCase()}</b>?`,b[1],['Magmatisk','Sedimentær','Metamorf'].filter(x=>x!==b[1]),['Størknet, sammenpresset eller omdannet?'],`${b[0]} er ${b[1].toLowerCase()}.`);},
+    ()=>N.mc('I hvilken type bergart finner du oftest fossiler?','Sedimentær',['Magmatisk','Metamorf'],['Hvor blir døde dyr begravd?'],'Døde dyr og planter blir begravd i lag av sand og slam. Derfor finnes fossiler i sedimentære bergarter.')
+  ]},
+  tid:{name:'Krefter som former landskapet',gens:[
+    ()=>{const k=pick([['Frost sprenger stein når vann fryser i sprekker','Forvitring'],['Elva frakter med seg sand ut i havet','Erosjon'],['Sand legger seg i lag på havbunnen','Avsetning'],['En isbre høvler ut en dal','Erosjon']]);return N.mc(`${k[0]}. Hva kalles dette?`,k[1],['Forvitring','Erosjon','Avsetning','Smelting'].filter(x=>x!==k[1]).slice(0,3),['Brytes noe ned, flyttes noe, eller legger noe seg?'],`${k[1]}: ${k[1]==='Forvitring'?'stein brytes ned der den er':k[1]==='Erosjon'?'materiale flyttes bort av vann, vind eller is':'materialet legger seg i lag'}.`);},
+    ()=>N.mc('Hvor lang tid tar det å slite ned en høy fjellkjede?','Mange millioner år',['Noen hundre år','Noen tusen år'],['Se simuleringen.'],'Det tar mange millioner år. Geologiske prosesser er svært langsomme.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat7-levende-jorda',title:'Den levende jorda',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

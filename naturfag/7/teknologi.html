@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teknologi og kunnskap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<style>.blk{border:none;border-radius:8px;padding:8px 12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--f-body);font-size:1rem}
+.blk.F{background:#1c7ed6}.blk.V{background:#7048e8}.blk.H{background:#ae3ec9}.blk.R2,.blk.R3{background:#e8590c}
+.blk.run{outline:3px solid var(--lamp)}
+.palette,.prog{display:flex;flex-wrap:wrap;gap:6px;min-height:46px;padding:8px;border-radius:10px;background:var(--paper)}
+.fig .cell{fill:var(--surface);stroke:var(--grid)}
+.fig .boat{fill:#c9ced6;stroke:var(--ink);stroke-width:1.5}
+.fig .water{fill:var(--water);opacity:.45}
+.fig .marble{fill:var(--c3);stroke:var(--ink);stroke-width:.6}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Teknologi og kunnskap</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#robot"><b>2</b>Programmer</a>
+    <a href="#design"><b>3</b>Bygg en båt</a>
+    <a href="#kunnskap"><b>4</b>Kunnskap</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 7. trinn</p>
+      <h1>Lag, test og forbedre</h1>
+      <p class="lead">Ingeniører og programmerere får sjelden ting riktig første gang. De lager noe, tester det, finner feil og gjør det bedre. Det gjelder både en robot og en båt.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En robot på et rutenett og en båt"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">En robot står og ser oppover. Programmet er: <span class="mono">Frem, Frem, Høyre, Frem</span>.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="robot"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Programmer roboten</h2></div>
+    <p class="sec-lead">Lag et program som kjører roboten til stjerna uten å krasje i trærne. <b>🔁 ×3</b> gjentar blokka før, slik at den kjøres 3 ganger til sammen. Trykk på en blokk i programmet for å fjerne den.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="gFig" viewBox="0 0 300 300" role="img" aria-label="Rutenett med robot, trær og stjerne"></svg><div class="counter" id="lvl"></div></div>
+      <div class="controls">
+        <div><p style="font-weight:700;margin-bottom:6px">Blokker</p><div class="palette" id="pal"></div></div>
+        <div><p style="font-weight:700;margin-bottom:6px">Programmet ditt <span class="note" id="nBlk"></span></p><div class="prog" id="progList" aria-live="polite"></div></div>
+        <div class="row"><button class="btn primary" type="button" id="bRun">▶ Kjør</button><button class="btn" type="button" id="bClr">Tøm</button><button class="btn" type="button" id="bNext" hidden>Neste bane →</button></div>
+        <div class="fb" id="rFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="design"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Bygg en båt av folie</h2></div>
+    <p class="sec-lead">Du har et kvadrat av aluminiumsfolie, 20 × 20 cm. Du bretter opp kantene. Hvor bred skal bunnen være for at båten skal bære flest mulig klinkekuler? Test, se på resultatet og forbedre.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="bFig" viewBox="0 0 380 200" role="img" aria-label="Foliebåt i vann med klinkekuler"></svg>
+        <svg class="fig" id="bGraph" role="img" aria-label="Antall klinkekuler for ulike bunnbredder"></svg>
+      </div>
+      <div class="controls">
+        <div id="bSl"></div>
+        <div class="counter" id="bInfo"></div>
+        <div class="row"><button class="btn primary" type="button" id="bTest">Test båten</button></div>
+        <div class="fb" id="bFb" aria-live="polite"></div>
+        <div class="card2"><span class="tag">Designprosessen</span><div id="fill1"></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="kunnskap"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Ulike typer kunnskap</h2></div>
+    <p class="sec-lead"><b>Naturvitenskapelig kunnskap</b> kommer fra forsøk og målinger som andre kan sjekke. <b>Tradisjonskunnskap</b>, som samisk kunnskap om rein og natur, er erfaring som er samlet og gitt videre gjennom mange generasjoner. Sorter.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 7. trinn om programmering, teknologisk design og forskjellen på naturvitenskapelig kunnskap og annen kunnskap, som samisk tradisjonskunnskap. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Robot ---------- */
+const C=50,DX=[0,1,0,-1],DY=[-1,0,1,0];
+const LV=[{s:[0,5,0],g:[0,2],t:[[1,5],[1,3],[2,2],[3,4]],max:3,tip:'Bruk Frem og 🔁 ×3.'},
+  {s:[0,5,0],g:[3,2],t:[[1,4],[2,3],[1,1],[4,2],[3,4]],max:5,tip:'Først opp, så til høyre.'},
+  {s:[0,5,0],g:[5,0],t:[[1,3],[2,1],[4,1],[4,3],[1,0],[5,4],[2,4]],max:12,tip:'Gå opp 3, høyre 3, opp 2, høyre 2. Husk at roboten snur seg på stedet.'}];
+const BL={F:'⬆ Frem',V:'↰ Venstre',H:'↱ Høyre',R2:'🔁 ×2',R3:'🔁 ×3'};
+let lv=0,prog=[],run=false;
+function robot(x,y,d){const cx=x*C+25,cy=y*C+25;return `<g transform="translate(${fx(cx)} ${fx(cy)}) rotate(${d*90})"><rect x="-15" y="-15" width="30" height="30" rx="7" fill="var(--accent)"/><path d="M0 -21 L8 -12 L-8 -12Z" fill="var(--accent)"/><circle cx="-6" cy="-4" r="3.5" fill="#fff"/><circle cx="6" cy="-4" r="3.5" fill="#fff"/></g>`;}
+function grid(L,pos,trail,boom){let s='';for(let i=0;i<6;i++)for(let j=0;j<6;j++)s+=`<rect class="cell" x="${i*C}" y="${j*C}" width="${C}" height="${C}"/>`;
+  (trail||[]).forEach(p=>s+=`<circle cx="${p[0]*C+25}" cy="${p[1]*C+25}" r="5" fill="var(--lamp)"/>`);
+  L.t.forEach(t=>s+=`<text x="${t[0]*C+25}" y="${t[1]*C+36}" text-anchor="middle" font-size="30">🌲</text>`);
+  s+=`<text x="${L.g[0]*C+25}" y="${L.g[1]*C+36}" text-anchor="middle" font-size="30">⭐</text>`;
+  s+=robot(pos[0],pos[1],pos[2]);if(boom)s+=`<text x="${boom[0]*C+25}" y="${boom[1]*C+36}" text-anchor="middle" font-size="32">💥</text>`;return s;}
+$('#heroFig').innerHTML=`<g transform="translate(20 10) scale(.66)">${grid(LV[1],[0,3,1],[[0,5],[0,4],[0,3]])}</g><path d="M230 150 L360 150 L345 185 L245 185Z" fill="#c9ced6" stroke="var(--ink)"/><rect x="215" y="180" width="160" height="30" fill="var(--water)" opacity=".45"/>${[0,1,2,3,4].map(i=>`<circle cx="${258+i*20}" cy="142" r="8" fill="var(--c3)"/>`).join('')}`;
+function expand(p){const out=[];p.forEach((k,i)=>{if(k==='R2'||k==='R3'){const prev=p[i-1];if(prev&&prev[0]!=='R')for(let n=0;n<(k==='R2'?1:2);n++)out.push({k:prev,src:i});}else out.push({k,src:i});});return out;}
+function renderProg(){const L=LV[lv];$('#progList').innerHTML=prog.map((k,i)=>`<button type="button" class="blk ${k}" data-i="${i}" aria-label="Fjern ${BL[k]}">${BL[k]}</button>`).join('')||'<span class="note">Tomt. Trykk på blokkene over.</span>';
+  $('#progList').querySelectorAll('.blk').forEach(b=>b.addEventListener('click',()=>{if(run)return;prog.splice(+b.dataset.i,1);renderProg();}));
+  $('#nBlk').textContent=`(${prog.length} av maks ${L.max} blokker)`;}
+function renderLv(){const L=LV[lv];$('#gFig').innerHTML=grid(L,L.s);$('#lvl').innerHTML=`Bane <b>${lv+1}</b> av ${LV.length}`;prog=[];renderProg();$('#bNext').hidden=true;$('#rFb').className='fb';$('#rFb').innerHTML='';}
+$('#pal').innerHTML=Object.entries(BL).map(([k,t])=>`<button type="button" class="blk ${k}" data-k="${k}">${t}</button>`).join('');
+$('#pal').querySelectorAll('.blk').forEach(b=>b.addEventListener('click',()=>{if(run)return;const k=b.dataset.k,fb=$('#rFb');
+  if(prog.length>=LV[lv].max){fb.className='fb hint';fb.innerHTML=`Du kan bruke maks ${LV[lv].max} blokker på denne banen. Kan du bruke 🔁 for å spare blokker?`;return;}
+  if(k[0]==='R'&&(!prog.length||prog[prog.length-1][0]==='R')){fb.className='fb hint';fb.innerHTML='🔁 gjentar blokka før. Legg inn en Frem, Venstre eller Høyre først.';return;}
+  prog.push(k);renderProg();}));
+$('#bClr').addEventListener('click',()=>{if(run)return;prog=[];renderProg();renderLvFig();});
+function renderLvFig(){const L=LV[lv];$('#gFig').innerHTML=grid(L,L.s);}
+$('#bNext').addEventListener('click',()=>{lv=(lv+1)%LV.length;renderLv();});
+$('#bRun').addEventListener('click',()=>{if(run)return;const L=LV[lv],fb=$('#rFb'),seq=expand(prog);if(!seq.length){fb.className='fb hint';fb.textContent='Lag et program først.';return;}
+  run=true;let [x,y,d]=L.s,i=0;const trail=[[x,y]];fb.className='fb';fb.innerHTML='';
+  const step=()=>{$('#progList').querySelectorAll('.blk').forEach(b=>b.classList.remove('run'));
+    if(i>=seq.length){run=false;const ok=x===L.g[0]&&y===L.g[1];fb.className='fb '+(ok?'good':'hint');
+      fb.innerHTML=ok?`<b>Robot i mål!</b> ${prog.length<=L.max?'':''}${lv<LV.length-1?'Prøv neste bane.':'Du har klart alle banene! Du har brukt sekvenser (rekkefølge) og løkker (gjentakelse), to av de viktigste ideene i programmering.'}`:`Roboten stoppet på feil sted. Finn feilen i programmet (det kalles å <b>feilsøke</b>) og prøv igjen. Tips: ${L.tip}`;
+      if(ok)$('#bNext').hidden=false;return;}
+    const s=seq[i++];const b=$('#progList').querySelectorAll('.blk')[s.src];if(b)b.classList.add('run');
+    if(s.k==='V')d=(d+3)%4;else if(s.k==='H')d=(d+1)%4;else{const nx=x+DX[d],ny=y+DY[d];
+      if(nx<0||ny<0||nx>5||ny>5||L.t.some(t=>t[0]===nx&&t[1]===ny)){$('#gFig').innerHTML=grid(L,[x,y,d],trail,[Math.max(0,Math.min(5,nx)),Math.max(0,Math.min(5,ny))]);run=false;fb.className='fb bad';
+        fb.innerHTML=`Krasj! Roboten kjørte ${nx<0||ny<0||nx>5||ny>5?'ut av brettet':'inn i et tre'} på steg ${i}. Feilsøk programmet. Tips: ${L.tip}`;return;}
+      x=nx;y=ny;trail.push([x,y]);}
+    $('#gFig').innerHTML=grid(L,[x,y,d],trail);setTimeout(step,V.reduce?60:380);};
+  step();});
+renderLv();
+
+/* ---------- Båten ---------- */
+const cap=b=>{const h=(20-b)/2;if(h<1)return 0;return Math.floor(b*b*h*.75/5*Math.min(1,h/2));};
+const bLog=[];
+const bS=N.slider($('#bSl'),{id:'bB',label:'Bunnbredde',min:4,max:18,step:1,value:8,fmt:v=>v+' cm',on:()=>{if(typeof drawBoat==='function'&&$('#bInfo'))drawBoat(0,false);}});
+function drawBoat(n,sunk){const b=+$('#bB').value,h=(20-b)/2,W=b*9,H=h*9,x0=190-W/2,wl=130;const sink=sunk?40:Math.min(H-2,n/Math.max(1,cap(b))*H*.95);const y0=wl-H+sink;
+  let s=`<rect class="water" x="0" y="${wl}" width="380" height="${200-wl}"/>`;
+  s+=`<g ${sunk?`transform="rotate(14 190 ${fx(y0+H)})"`:''}><path class="boat" d="M${fx(x0)} ${fx(y0)} L${fx(x0)} ${fx(y0+H)} L${fx(x0+W)} ${fx(y0+H)} L${fx(x0+W)} ${fx(y0)}"/>`;
+  const per=Math.max(1,Math.floor((W-4)/10)),rows=Math.max(1,Math.floor((H-2)/8)),show=Math.round(per*rows*Math.min(1,n/Math.max(1,cap(b))));
+  for(let i=0;i<show;i++)s+=`<circle class="marble" cx="${fx(x0+7+(i%per)*10)}" cy="${fx(y0+H-5-Math.floor(i/per)*8)}" r="4.5"/>`;
+  s+='</g>';
+  $('#bFig').innerHTML=s;$('#bInfo').innerHTML=`Bunn: <b>${b} × ${b} cm</b>, kanter: <b>${nf(h,1)} cm</b> høye`;}
+function drawBG(){N.graph($('#bGraph'),{x:{min:4,max:18,step:2,label:'Bunnbredde (cm)',fmt:v=>v},y:{min:0,max:100,step:20,label:'Klinkekuler'},series:[{pts:bLog.slice().sort((a,b)=>a[0]-b[0]),cls:'pt'}],empty:'Resultatene dine kommer her',W:380,H:200});}
+$('#bTest').addEventListener('click',()=>{const b=+$('#bB').value,c=cap(b),fb=$('#bFb');let n=0;$('#bTest').disabled=true;
+  const tick=()=>{n++;if(n<=c){drawBoat(n,false);setTimeout(tick,V.reduce?0:Math.max(8,600/Math.max(1,c)));return;}
+    drawBoat(Math.min(n,c),true);$('#bTest').disabled=false;if(!bLog.some(r=>r[0]===b))bLog.push([b,c]);drawBG();
+    const best=bLog.reduce((m,r)=>r[1]>m[1]?r:m,[0,0]);fb.className='fb '+(bLog.length>=4&&(best[0]===13||best[0]===14)?'good':'hint');
+    fb.innerHTML=`Båten bar <b>${c}</b> klinkekuler før den sank.`+(b<10?' Kantene er høye, men bunnen er liten.':b>15?' Bunnen er stor, men kantene er så lave at vannet renner inn.':'')+
+      (bLog.length<4?' Test flere bredder og se på grafen.':(best[0]===13||best[0]===14)?` <b>Beste design så langt: ${best[0]} cm.</b> Du har brukt designprosessen: test, se på resultatet, forbedre!`:' Se på grafen. Hvor tror du toppen er?');};
+  tick();});
+drawBoat(0,false);drawBG();
+N.fill($('#fill1'),{html:'<div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">[] → [] → [] → [] → []</div>',
+  tokens:['Finn problemet','Lag ideer','Bygg en prototype','Test','Forbedre'],
+  check:v=>{const ok=['Finn problemet','Lag ideer','Bygg en prototype','Test','Forbedre'];const bad=v.map((x,i)=>x===ok[i]?-1:i).filter(i=>i>=0);
+    return bad.length?{ok:false,bad,msg:'Ikke helt. Du må vite hva problemet er før du lager ideer, og du kan ikke teste noe som ikke er bygget.'}:{ok:true,msg:'Riktig! Etter «Forbedre» starter du ofte på nytt med å teste. Det kalles å <b>iterere</b>.'};}});
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvor havner roboten i forhold til der den startet?',opts:['2 ruter opp og 1 rute til høyre','3 ruter opp','1 rute opp og 2 til høyre'],ok:0,
+  expl:'Roboten går 2 ruter opp. «Høyre» snur den på stedet, uten å flytte den. Så går den 1 rute til høyre. En datamaskin gjør nøyaktig det du sier, i den rekkefølgen du sier det. Rekkefølgen kalles en <b>sekvens</b>.',
+  retry:'Husk at «Høyre» bare snur roboten, den flytter seg ikke. Prøv igjen.'});
+
+/* ---------- 4 Kunnskap ---------- */
+N.sorter($('#sort1'),{groups:[{id:'n',name:'Naturvitenskapelig metode'},{id:'t',name:'Tradisjonskunnskap'}],
+  items:[{t:'Reindriftsutøvere leser snøen for å vite om reinen finner mat under den',g:'t'},{t:'Samiske ord for snø beskriver hvor hard og dyp den er',g:'t',why:'Samisk har mange ord for snø. Ordene bærer på kunnskap som er samlet over mange hundre år.'},{t:'Fiskere vet hvor fisken står på ulike tider av året',g:'t'},{t:'Bestemors råd om å plante potetene når bjørka får museører',g:'t'},{t:'Meteorologer måler lufttrykk og bruker datamodeller',g:'n'},{t:'Forskere tester en medisin på tusenvis av frivillige',g:'n'},{t:'Forskere setter GPS-sender på reinen for å følge vandringen',g:'n'},{t:'En hypotese testes med et rettferdig forsøk',g:'n'}],
+  good:'Riktig! Begge typer kunnskap er verdifulle. I dag samarbeider forskere og reindriftsutøvere: GPS-målinger og flere hundre år med erfaring gir sammen et bedre bilde av hva reinen trenger.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  prog:{name:'Les et program',gens:[
+    ()=>{const n=R(2,4),m=R(1,3),turn=pick(['Høyre','Venstre']);const ans=`${n} opp og ${m} til ${turn.toLowerCase()}`;
+      return N.mc(`Roboten ser oppover. Programmet er: <span class="mono">Frem ×${n}, ${turn}, Frem ×${m}</span>. Hvor havner den?`,cap2(ans),[cap2(`${m} opp og ${n} til ${turn.toLowerCase()}`),cap2(`${n} opp og ${m} til ${turn==='Høyre'?'venstre':'høyre'}`),cap2(`${n+m} opp`)],['«'+turn+'» snur roboten på stedet.'],`${n} ruter opp, snu ${turn.toLowerCase()}, ${m} ruter til ${turn.toLowerCase()}.`);},
+    ()=>{const n=R(3,6);return {prompt:`Programmet er: <span class="mono">Frem, 🔁 ×${n}</span>. Hvor mange ruter går roboten?`,ans:n,unit:'ruter',abs:.01,hints:['🔁 gjør at blokka før kjøres så mange ganger til sammen.'],sol:`Frem kjøres ${n} ganger til sammen: <b>${n} ruter</b>.`,diag:v=>v===n+1?'🔁 ×'+n+' betyr '+n+' ganger til sammen, ikke '+n+' ekstra.':null};},
+    ()=>N.mc('Hva er en løkke i programmering?','At noe gjentas flere ganger',['At programmet stopper','At roboten snur'],['🔁-blokka.'],'En løkke gjentar en eller flere instruksjoner. Da slipper du å skrive det samme mange ganger.'),
+    ()=>N.mc('Programmet ditt virker ikke. Hva heter det å lete etter feilen?','Feilsøking',['Programmering','Prototyping'],['På engelsk heter det «debugging».'],'Å finne og rette feil i et program heter å feilsøke.')
+  ]},
+  design:{name:'Designprosessen',gens:[
+    ()=>{const s=['Finn problemet','Lag ideer','Bygg en prototype','Test','Forbedre'];const i=R(0,3);return N.mc(`Hva kommer etter <b>${s[i].toLowerCase()}</b> i designprosessen?`,s[i+1],s.filter((_,j)=>j!==i+1&&j!==i).slice(0,3),['Tenk på foliebåten.'],`Etter «${s[i]}» kommer «${s[i+1]}».`);},
+    ()=>N.mc('Hva er en prototype?','En første versjon man kan teste',['Det ferdige produktet','En tegning av problemet'],['Den er ikke ferdig ennå.'],'En prototype er en tidlig versjon som man tester og forbedrer.'),
+    ()=>N.mc('Foliebåten med 18 cm bunn sank fort. Hvorfor?','Kantene var for lave',['Folien var for tung','Bunnen var for liten'],['Hvor høye ble kantene?'],'Med 18 cm bunn ble kantene bare 1 cm. Da renner vannet over kanten.')
+  ]},
+  kunn:{name:'Typer kunnskap',gens:[
+    ()=>{const t=pick([['En forsker gjør samme forsøk mange ganger og regner gjennomsnitt','Naturvitenskapelig metode'],['En reineier vet når reinen må flyttes, fra erfaring i familien','Tradisjonskunnskap'],['Kystfolk leser været ut fra skyene, slik foreldrene lærte dem','Tradisjonskunnskap'],['Forskere måler hvor mye isen i Arktis smelter hvert år','Naturvitenskapelig metode']]);
+      return N.mc(`${t[0]}. Hva slags kunnskap er det?`,t[1],[t[1]==='Tradisjonskunnskap'?'Naturvitenskapelig metode':'Tradisjonskunnskap'],['Er det målinger og forsøk, eller erfaring gjennom generasjoner?'],`Det er ${t[1].toLowerCase()}.`);},
+    ()=>N.mc('Hva kjennetegner naturvitenskapelig kunnskap?','Den bygger på forsøk og målinger som andre kan sjekke',['Den er alltid riktig og endres aldri','Den kommer fra bøker'],['Kan andre gjøre samme forsøk?'],'Naturvitenskapelig kunnskap kan testes og sjekkes av andre. Den kan endres når vi får nye målinger.')
+  ]}
+};
+function cap2(s){return s[0].toUpperCase()+s.slice(1);}
+V.practice($('#practice'),{id:'nat7-teknologi',title:'Teknologi og kunnskap',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

@@ -42,3 +42,6 @@ table.log td:first-child,table.log th:first-child{text-align:left}
 .chem{font-family:var(--f-mono);font-size:1rem;color:var(--muted)}
 .big-num{font-family:var(--f-mono);font-size:1.6rem;font-weight:700}
 @media (max-width:760px){.bench,.hero-grid,.ex{grid-template-columns:1fr}}
+.lesopp{align-self:flex-start;margin:-8px 0 14px;font-size:.85rem}
+.predict .lesopp{margin:0}
+.hero .lesopp{margin-top:10px}

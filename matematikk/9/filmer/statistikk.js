@@ -1,4 +1,4 @@
-/* Filmsnutt til Statistikk: skjermtid, gjennomsnitt og median. Krever ../felles/film.js. */
+/* Filmsnutt til Statistikk: skjermtid, gjennomsnitt og median. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

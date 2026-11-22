@@ -1,4 +1,4 @@
-/* Filmsnutt til Hva skjer hvis: stor eller liten pizza. Krever ../felles/film.js. */
+/* Filmsnutt til Hva skjer hvis: stor eller liten pizza. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

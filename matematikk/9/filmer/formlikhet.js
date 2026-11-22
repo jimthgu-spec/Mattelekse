@@ -1,4 +1,4 @@
-/* Filmsnutt til Formlikhet: mål treet med skyggen. Krever ../felles/film.js. */
+/* Filmsnutt til Formlikhet: mål treet med skyggen. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

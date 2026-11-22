@@ -1,4 +1,4 @@
-/* Filmsnutt til Pytagoras: stigen mot vinduet. Krever ../felles/film.js. */
+/* Filmsnutt til Pytagoras: stigen mot vinduet. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

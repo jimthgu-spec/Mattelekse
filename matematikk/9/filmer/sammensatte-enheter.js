@@ -1,4 +1,4 @@
-/* Filmsnutt til Sammensatte enheter: sykkelturen til skolen. Krever ../felles/film.js. */
+/* Filmsnutt til Sammensatte enheter: sykkelturen til skolen. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

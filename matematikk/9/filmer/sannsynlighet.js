@@ -1,4 +1,4 @@
-/* Filmsnutt til Sannsynlighet: venter på sekseren i ludo. Krever ../felles/film.js. */
+/* Filmsnutt til Sannsynlighet: venter på sekseren i ludo. Krever ../../felles/film.js. */
 (function () {
   'use strict';
   if (!window.Film) return;

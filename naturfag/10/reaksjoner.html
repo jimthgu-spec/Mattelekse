@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kjemiske reaksjoner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .flask{fill:var(--water);fill-opacity:.15;stroke:var(--ink);stroke-width:1.6}
+.fig .liq{fill:var(--water);fill-opacity:.45}
+.fig .scale{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}
+.fig .disp{fill:var(--ink)}
+.fig .disptxt{fill:#7CFC9A;font-family:var(--f-mono);font-size:20px;font-weight:700}
+.fig .balloon{fill:var(--c1);fill-opacity:.75;stroke:var(--c1)}
+.fig .gas{fill:var(--muted);fill-opacity:.5}
+.fig .bub{fill:var(--surface);stroke:var(--c2);stroke-width:1.2}
+.fig .atom{stroke:var(--surface);stroke-width:1.2}
+.fig .atxt{fill:#fff;font-family:var(--f-mono);font-size:10px;font-weight:700;pointer-events:none}
+.coef{display:flex;align-items:center;gap:6px;background:var(--paper);border-radius:10px;padding:4px 6px}
+.coef .num{font-family:var(--f-mono);font-weight:700;font-size:1.2rem;min-width:1.4rem;text-align:center}
+.coef .btn{padding:2px 10px}
+.coef .f{font-family:var(--f-mono);font-weight:700}
+.eqrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.count{display:grid;grid-template-columns:auto 1fr 1fr;gap:4px 12px;font-family:var(--f-mono)}
+.count .ok{color:var(--good);font-weight:700}
+.count .no{color:var(--bad);font-weight:700}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Kjemiske reaksjoner</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#vekt"><b>2</b>Vekta</a>
+    <a href="#balanse"><b>3</b>Balanser</a>
+    <a href="#sort"><b>4</b>Sorter</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Atomene bytter bare partner</h1>
+      <p class="lead">I en kjemisk reaksjon blir stoffer til nye stoffer. Men ingen atomer forsvinner, og ingen nye kommer til. De bare kobles sammen på nye måter. Derfor er massen den samme før og etter.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 200" id="heroFig" role="img" aria-label="Hydrogen og oksygen blir til vann"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du heller eddik på natron i en kolbe som står på en vekt. Det bruser kraftig. Kolben er <b>åpen</b>.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="vekt"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Forsøk på vekta</h2></div>
+    <p class="sec-lead">Test selv. Gjør forsøket med åpen kolbe og med en ballong over åpningen. Følg med på vekta.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="scaleFig" viewBox="0 0 380 280" role="img" aria-label="Kolbe på vekt"></svg></div>
+      <div class="controls">
+        <div class="pick" id="lid"><button class="btn on" type="button" data-l="0" aria-pressed="true">Åpen kolbe</button><button class="btn" type="button" data-l="1" aria-pressed="false">Med ballong</button></div>
+        <div class="row"><button class="btn primary" type="button" id="mix">Bland eddik og natron</button><button class="btn" type="button" id="mixReset">Start på nytt</button></div>
+        <div class="calc" id="scaleOut" aria-live="polite"></div>
+        <div class="fb" id="scaleFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="balanse"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Balanser likningen</h2></div>
+    <p class="sec-lead">Det må være like mange atomer av hvert slag på begge sider av pila. Endre tallene foran stoffene (koeffisientene) til tellingen stemmer. Du kan ikke endre formlene, bare hvor mange molekyler det er.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="molFig" viewBox="0 0 380 260" role="img" aria-label="Molekylene i reaksjonen"></svg></div>
+      <div class="controls">
+        <div class="pick" id="rxPick"></div>
+        <div class="eqrow" id="eqRow"></div>
+        <div class="count" id="count"></div>
+        <div class="fb" id="balFb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="sort"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Kjemisk eller fysisk?</h2></div>
+    <p class="sec-lead">I en <b>kjemisk</b> endring blir det nye stoffer. I en <b>fysisk</b> endring er det samme stoff, bare i en annen form.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om kjemiske reaksjoner, reaksjonslikninger og bevaring av masse. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const COL={H:'#8a94a6',O:'#e03131',C:'#343a40',N:'#3b5bdb',Mg:'#2b8a3e',Fe:'#a0522d',Na:'#7048e8',Cl:'#37b24d'};
+function parse(f){const o={};f.replace(/([A-Z][a-z]?)(\d*)/g,(m,e,n)=>{o[e]=(o[e]||0)+(+n||1);});return o;}
+function mol(f,x,y,r=10){const a=parse(f),list=[];Object.entries(a).forEach(([e,n])=>{for(let i=0;i<n;i++)list.push(e);});
+  const k=list.length;let s='';list.forEach((e,i)=>{const ang=i*2*Math.PI/k,d=k>1?r*1.05:0;const cx=x+d*Math.cos(ang),cy=y+d*Math.sin(ang);
+    s+=`<circle class="atom" cx="${fx(cx)}" cy="${fx(cy)}" r="${r}" fill="${COL[e]||'#888'}"/><text class="atxt" x="${fx(cx)}" y="${fx(cy+3.5)}" text-anchor="middle">${e}</text>`;});return s;}
+$('#heroFig').innerHTML=mol('H2',60,70)+mol('H2',60,130)+mol('O2',130,100)+`<text class="lbl big" x="190" y="106" text-anchor="middle">→</text>`+mol('H2O',270,70)+mol('H2O',270,130);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva viser vekta etter at det har sluttet å bruse?',opts:['Mer enn før','Like mye som før','Mindre enn før'],ok:2,
+  expl:'Det dannes karbondioksidgass, og den forsvinner ut av den åpne kolben. Massen er ikke borte, den er bare ikke på vekta lenger. Test det under, også med ballong.',
+  retry:'Tenk på hva boblene består av, og hvor de tar veien. Prøv igjen.'});
+
+/* ---------- 2 Vekta ---------- */
+const START=245.6,GAS=2.2;let lid=0,prog=0,anim=null;
+function scaleSVG(p,l){
+  const W=380,H=280;let s='';
+  // vekt
+  s+=`<rect class="scale" x="80" y="220" width="220" height="40" rx="6"/><rect class="disp" x="150" y="228" width="90" height="26" rx="4"/>`;
+  const m=START-(l?0:GAS*p);
+  s+=`<text class="disptxt" x="195" y="248" text-anchor="middle">${m.toFixed(1)} g</text>`;
+  // kolbe
+  s+=`<path class="flask" d="M172,60 h36 v50 l50,96 q4,14 -10,14 h-116 q-14,0 -10,-14 l50,-96 z"/>`;
+  s+=`<path class="liq" d="M${fx(140-p*0)},170 h100 l17,33 q3,10 -8,10 h-118 q-11,0 -8,-10 z"/>`;
+  for(let i=0;i<Math.round(p<1?p*40*(1-p)+6*p*(1-p)*4:0);i++){const x=150+((i*37)%80),y=200-((i*53+Math.round(p*400))%60);s+=`<circle class="bub" cx="${x}" cy="${y}" r="3"/>`;}
+  if(l){const r=10+p*38;s+=`<path class="balloon" d="M178,60 q-${fx(r)},-${fx(r*1.6)} 12,-${fx(r*2)} q${fx(r+12)},${fx(r*.4)} 12,${fx(r*2)} z"/>`;}
+  else if(p>0&&p<1){for(let i=0;i<6;i++){const y=50-((i*17+p*300)%60);s+=`<circle class="gas" cx="${190+Math.sin(i+p*10)*14}" cy="${fx(y)}" r="${4+i%3}"/>`;}}
+  return s;
+}
+function renderScale(){$('#scaleFig').innerHTML=scaleSVG(prog,lid);
+  $('#scaleOut').innerHTML=`Før: <b>${START.toFixed(1)} g</b><br>Nå: <b>${(START-(lid?0:GAS*prog)).toFixed(1)} g</b>`;}
+$('#lid').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(anim)return;lid=+b.dataset.l;prog=0;
+  $('#lid').querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b);});$('#scaleFb').className='fb';$('#scaleFb').innerHTML='';renderScale();}));
+$('#mix').addEventListener('click',()=>{if(anim||prog>=1)return;const t0=performance.now(),dur=V.reduce?50:3500;
+  (function step(){prog=Math.min(1,(performance.now()-t0)/dur);renderScale();if(prog<1){anim=requestAnimationFrame(step);return;}anim=null;
+    const fb=$('#scaleFb');fb.className='fb good';
+    fb.innerHTML=lid?'Vekta viser det samme! Gassen er fanget i ballongen. Alle atomene er fortsatt på vekta. Dette er <b>loven om massebevaring</b>: total masse før = total masse etter.':
+      `Vekta viser ${GAS.toFixed(1)} g mindre. Karbondioksiden slapp ut i lufta. Prøv med ballong, så ser du at massen egentlig ikke forsvant.`;})();});
+$('#mixReset').addEventListener('click',()=>{if(anim)return;prog=0;$('#scaleFb').className='fb';$('#scaleFb').innerHTML='';renderScale();});
+renderScale();
+
+/* ---------- 3 Balanser ---------- */
+const RX=[
+  {n:'Vann',L:['H2','O2'],R:['H2O'],ans:[2,1,2],txt:'Hydrogen brenner og blir til vann.'},
+  {n:'Rust',L:['Fe','O2'],R:['Fe2O3'],ans:[4,3,2],txt:'Jern reagerer med oksygen og blir rust.'},
+  {n:'Metan brenner',L:['CH4','O2'],R:['CO2','H2O'],ans:[1,2,1,2],txt:'Naturgass (metan) brenner og gir karbondioksid og vann.'},
+  {n:'Magnesium',L:['Mg','O2'],R:['MgO'],ans:[2,1,2],txt:'Magnesium brenner med et sterkt hvitt lys.'},
+  {n:'Ammoniakk',L:['N2','H2'],R:['NH3'],ans:[1,3,2],txt:'Nitrogen og hydrogen blir ammoniakk, som brukes i kunstgjødsel.'},
+  {n:'Propan',L:['C3H8','O2'],R:['CO2','H2O'],ans:[1,5,3,4],txt:'Propan i gassgrillen brenner.'}];
+let ri=0,co=[1,1,1];
+const sub=f=>f.replace(/(\d+)/g,m=>m.split('').map(d=>'₀₁₂₃₄₅₆₇₈₉'[d]).join(''));
+function tally(side,cs){const t={};side.forEach((f,i)=>{const a=parse(f);for(const e in a)t[e]=(t[e]||0)+a[e]*cs[i];});return t;}
+function renderBal(){
+  const r=RX[ri],all=[...r.L,...r.R];
+  $('#rxPick').innerHTML=RX.map((x,i)=>`<button type="button" class="btn${i===ri?' on':''}" data-i="${i}">${x.n}</button>`).join('');
+  $('#rxPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ri=+b.dataset.i;co=RX[ri].L.concat(RX[ri].R).map(()=>1);renderBal();}));
+  $('#eqRow').innerHTML=all.map((f,i)=>`${i===r.L.length?'<span class="lbl big" style="font-size:1.4rem">→</span>':i>0?'+':''}<span class="coef"><button class="btn" type="button" data-i="${i}" data-d="-1" aria-label="Færre ${f}">−</button><span class="num">${co[i]}</span><button class="btn" type="button" data-i="${i}" data-d="1" aria-label="Flere ${f}">+</button><span class="f">${sub(f)}</span></span>`).join('');
+  $('#eqRow').querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i;co[i]=Math.max(1,Math.min(8,co[i]+ +b.dataset.d));renderBal();}));
+  const tl=tally(r.L,co.slice(0,r.L.length)),tr=tally(r.R,co.slice(r.L.length)),els=[...new Set([...Object.keys(tl),...Object.keys(tr)])];
+  $('#count').innerHTML='<b>Atom</b><b>Venstre</b><b>Høyre</b>'+els.map(e=>{const ok=tl[e]===tr[e];return `<span>${e}</span><span class="${ok?'ok':'no'}">${tl[e]||0}</span><span class="${ok?'ok':'no'}">${tr[e]||0}</span>`;}).join('');
+  // tegning
+  let s='',W=380,H=260,nL=r.L.length,nR=r.R.length;
+  const col=(side,base,width)=>{let x=base;side.forEach((f,i)=>{const c=co[side===r.L?i:nL+i];for(let k=0;k<c;k++){const cx=x+width/side.length*(i+.5),cy=30+k*(H-50)/Math.max(...co);s+=mol(f,cx,cy+10,8);} });};
+  col(r.L,0,W*.45);col(r.R,W*.55,W*.45);
+  s+=`<text class="lbl big" x="${W/2}" y="${H/2}" text-anchor="middle">→</text>`;
+  $('#molFig').innerHTML=s;
+  const fb=$('#balFb');
+  if(els.every(e=>tl[e]===tr[e])){const g=co.reduce((a,b)=>{const gcd=(x,y)=>y?gcd(y,x%y):x;return gcd(a,b);});
+    fb.className='fb '+(g>1?'hint':'good');fb.innerHTML=g>1?`Atomene stemmer, men alle tallene kan deles på ${g}. Bruk de minste hele tallene.`:`Balansert! ${r.txt} Like mange atomer av hvert slag før og etter, så massen er bevart.`;}
+  else{fb.className='fb';fb.innerHTML='';}
+}
+co=[1,1,1];renderBal();
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'k',name:'Kjemisk endring'},{id:'f',name:'Fysisk endring'}],
+  items:[{t:'Ved brenner',g:'k'},{t:'Jern ruster',g:'k'},{t:'Kake stekes',g:'k'},{t:'Melk blir sur',g:'k'},
+    {t:'Is smelter',g:'f',why:'Smeltet is er fortsatt vann, bare flytende.'},{t:'Sukker løses i te',g:'f',why:'Sukkeret er der fortsatt, du kan smake det. Det er en blanding.'},{t:'Vann koker',g:'f'},{t:'Glass knuses',g:'f'}],
+  good:'Riktig! Tegn på kjemisk reaksjon: ny farge, gass, lys eller varme, og at det ikke enkelt kan gå tilbake.'});
+
+/* ---------- Øving ---------- */
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const skills={
+  masse:{name:'Massebevaring',gens:[
+    ()=>{const a=R(20,80),b=R(5,40);return {prompt:`${a} g jern reagerer med ${b} g svovel i en lukket beholder. Alt reagerer. Hvor stor masse har produktet?`,ans:a+b,unit:'g',hints:['Massen er den samme før og etter.'],sol:`${a} g + ${b} g = <b>${a+b} g</b>. Ingen atomer forsvinner.`};},
+    ()=>{const a=R(150,300),g=R(2,9)+R(0,9)/10;const ans=Math.round(g*10)/10;return {prompt:`En åpen kolbe med eddik og natron veier ${a} g før reaksjonen og ${nf(a-ans,1)} g etter. Hvor mye karbondioksid slapp ut?`,ans,unit:'g',abs:.05,hints:['Forskjellen er gassen som forsvant ut.'],sol:`${a} − ${nf(a-ans,1)} = <b>${nf(ans,1)} g</b> karbondioksid.`};},
+    ()=>{const m=R(1,5)*12,p=m*5/3;return {prompt:`Når ${m} g magnesium brenner, blir det ${p} g magnesiumoksid. Hvor mange gram oksygen ble tatt opp fra lufta?`,ans:p-m,unit:'g',hints:['Produktet er tyngre enn magnesiumet. Hvor kom den ekstra massen fra?'],sol:`${p} − ${m} = <b>${p-m} g</b> oksygen. Asken er tyngre fordi oksygen fra lufta ble bundet.`};}
+  ]},
+  atomer:{name:'Telle atomer',gens:[
+    ()=>{const f=pick([['H2O','H'],['CO2','O'],['CH4','H'],['C6H12O6','H'],['NH3','H'],['Fe2O3','O'],['C3H8','H']]);const c=R(1,4);const n=parse(f[0])[f[1]]*c;
+      return {prompt:`Hvor mange ${f[1]}-atomer er det i <span class="mono">${c>1?c:''}${sub(f[0])}</span>?`,ans:n,hints:['Det lille tallet gjelder atomet rett foran.',c>1?`Det store tallet foran ganger hele molekylet med ${c}.`:'Ingen tall foran betyr ett molekyl.'],sol:`${parse(f[0])[f[1]]} ${f[1]} per molekyl${c>1?' · '+c+' molekyler':''} = <b>${n}</b>.`,diag:v=>v===parse(f[0])[f[1]]&&c>1?'Husk å gange med tallet foran.':null};},
+    ()=>{const r=pick(RX),k=R(0,r.ans.length-1),all=[...r.L,...r.R];const eq=all.map((f,i)=>(i===r.L.length?' → ':i>0?' + ':'')+(i===k?'<b>?</b>':(r.ans[i]>1?r.ans[i]:''))+sub(f)).join('');
+      return {prompt:`Hvilket tall skal stå der spørsmålstegnet er? <span class="mono">${eq}</span>`,ans:r.ans[k],hints:['Tell atomene på hver side.','Det må være like mange av hvert slag på begge sider.'],sol:`Balansert: <span class="mono">${all.map((f,i)=>(i===r.L.length?' → ':i>0?' + ':'')+(r.ans[i]>1?r.ans[i]:'')+sub(f)).join('')}</span>. Svaret er <b>${r.ans[k]}</b>.`};}
+  ]},
+  endring:{name:'Kjemisk eller fysisk',gens:[
+    ()=>{const k=pick(['Et fyrstikkhode tennes','Et egg kokes','En banan blir brun','Brus lages av natron og sitronsyre']),f=pick(['Smør smelter','Vann fryser','Salt løses i vann','Papir klippes']);
+      const q=Math.random()<.5;return N.mc(`Hvilken er en <b>${q?'kjemisk':'fysisk'}</b> endring?`,q?k:f,[q?f:k,q?pick(['Is smelter','Vann fordamper']):pick(['Ved brenner','Jern ruster'])],['Blir det et nytt stoff?'],q?`${k}: det dannes nye stoffer.`:`${f}: det er fortsatt samme stoff.`);},
+    ()=>N.mc('Hva er et tegn på at en kjemisk reaksjon skjer?','Det dannes gass eller ny farge',['Stoffet blir mindre','Stoffet skifter form','Stoffet blir vått'],['Tenk på natron og eddik.'],'Gass, ny farge, lys, varme eller et bunnfall er tegn på at nye stoffer dannes.'),
+    ()=>N.mc('Hvorfor kan du ikke endre det lille tallet i en formel for å balansere en likning?','Da blir det et annet stoff',['Det er ikke lov i matte','Da blir massen større'],['Hva er forskjellen på H₂O og H₂O₂?'],'H₂O er vann, H₂O₂ er hydrogenperoksid, et helt annet stoff. Du kan bare endre hvor mange molekyler det er.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-reaksjoner',title:'Kjemiske reaksjoner',skills});
+})();
+</script>
+</body>
+</html>

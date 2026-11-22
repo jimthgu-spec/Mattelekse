@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Økosystemer og stoffkretsløp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .s-g{fill:var(--leaf)}
+.fig .s-h{fill:var(--c1)}
+.fig .s-r{fill:var(--c3)}
+.fig .ptG{stroke:var(--leaf);stroke-width:2.2;fill:none}
+.fig .ptH{stroke:var(--c1);stroke-width:2.2;fill:none}
+.fig .ptR{stroke:var(--c3);stroke-width:2.2;fill:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.9rem}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--k)}
+.arg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.arg div{background:var(--paper);border-radius:10px;padding:10px 12px}
+.arg h3{font-size:1rem;margin-bottom:4px}
+.arg ul{margin:0;padding-left:1.1rem}
+@media (max-width:560px){.arg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Økosystemer</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#nett"><b>2</b>Næringsnettet</a>
+    <a href="#karbon"><b>3</b>Karbonet</a>
+    <a href="#rein"><b>4</b>Reindrift</a>
+    <a href="#dilemma"><b>5</b>Dilemma</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Alt henger sammen</h1>
+      <p class="lead">Et <b>økosystem</b> er alle levende ting på et sted, og miljøet de lever i. Energien strømmer gjennom næringskjedene og forsvinner som varme. Stoffene, som karbon, går i <b>kretsløp</b> og brukes om igjen.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Næringspyramide"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">I en nasjonalpark ble alle ulvene skutt. Hjortene fikk ingen fiender.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="nett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Næringsnettet i aksjon</h2></div>
+    <p class="sec-lead">Gress, hare og rev i et skogområde. Trykk på knappene og se hvordan bestandene endrer seg over 30 år. Legg merke til at en endring i én art påvirker alle de andre.</p>
+    <div class="bench">
+      <div class="figcol">
+        <svg class="fig" id="popFig" role="img" aria-label="Graf over bestander over tid"></svg>
+        <div class="legend"><span style="--k:var(--leaf)">Gress (tonn)</span><span style="--k:var(--c1)">Hare</span><span style="--k:var(--c3)">Rev (×5)</span></div>
+      </div>
+      <div class="controls">
+        <div class="pick" id="scen"></div>
+        <div class="calc" id="popOut" aria-live="polite"></div>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="karbon"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Karbonets kretsløp</h2></div>
+    <p class="sec-lead">Karbonatomene i kroppen din har vært i lufta, i planter, i dyr og kanskje i en dinosaur. Sorter prosessene: tar de CO₂ <b>ut av</b> lufta, eller slipper de CO₂ <b>ut i</b> lufta?</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="rein"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Samisk tradisjonskunnskap</h2></div>
+    <p class="sec-lead">Reindriftssamer har i generasjoner flyttet med reinflokkene mellom vinterbeite i innlandet og sommerbeite ved kysten. Kunnskapen om snø, lav og beite er gått i arv muntlig. Det samiske ordet <i>guohtun</i> betyr beite der reinen kan grave seg ned til mat gjennom snøen.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p3"></div><div id="p4"></div></div>
+  </div></section>
+
+  <section id="dilemma"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Ressursdilemma</h2></div>
+    <p class="sec-lead">Et selskap vil åpne en kobbergruve i en fjord i Nord-Norge. Kobber trengs i elbiler, vindturbiner og strømnett. Avfallet fra gruva skal legges i fjorden. Området brukes til reindrift og fiske. Hva mener du?</p>
+    <div class="bench" style="grid-template-columns:1fr">
+      <div class="pick" id="dPick"></div>
+      <div id="dOut" aria-live="polite"></div>
+    </div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om økosystemer, stoffkretsløp, ressursdilemmaer og samisk tradisjonskunnskap. Bestandsmodellen er forenklet. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Hero: næringspyramide ---------- */
+(function(){let s='';const L=[['Produsenter (planter)',10000,'s-g'],['Planteetere',1000,'s-h'],['Rovdyr',100,'s-r'],['Toppredatorer',10,'s-r']];
+  L.forEach((l,i)=>{const w=340-i*80,y=180-i*42;s+=`<rect class="${l[2]}" x="${190-w/2}" y="${y}" width="${w}" height="36" rx="6" opacity="${1-i*.15}"/><text class="lbl small" x="190" y="${y+22}" text-anchor="middle" style="fill:#fff;stroke:none;font-weight:700">${l[0]} · ${nf(l[1])} kJ</text>`;});
+  $('#heroFig').innerHTML=s;})();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva skjedde med trærne langs elvene?',opts:['De vokste bedre','De ble færre','Ingen endring'],ok:1,
+  expl:'Uten ulv ble det mange flere hjort, og de spiste opp de unge trærne. Da ulven kom tilbake til Yellowstone i USA i 1995, vokste trærne igjen, og bever, fisk og fugler kom tilbake. Et rovdyr kan påvirke hele økosystemet.',
+  retry:'Tenk på hva hjortene spiser når det blir veldig mange av dem. Prøv igjen.'});
+
+/* ---------- 2 Bestandsmodell ---------- */
+const SC=[['normal','Normalt'],['norev','Fjern reven'],['nohare','Sykdom tar halvparten av harene'],['tørke','Tørkeår (lite gress)'],['jakt','Jakt på rev hvert år']];
+let sc='normal';
+function sim(sc){let G=160,H=40,F=11;const out=[];
+  for(let y=0;y<=30;y++){out.push([y,G,H,F*5]);
+    let r=.8,K=200;if(sc==='tørke'&&y>=10&&y<13){r=.1;K=80;}
+    if(sc==='norev'&&y===10)F=0;if(sc==='nohare'&&y===10)H*=.5;if(sc==='jakt'&&y>=10)F*=.7;
+    const eG=.004*G*H,eH=.02*H*F;
+    G=Math.max(2,G+r*G*(1-G/K)-eG);H=Math.max(0,H+.5*eG-.1*H-eH);F=Math.max(0,F+.1*eH-.08*F);if(F<.05)F=0;}
+  return out;}
+function renderPop(){const d=sim(sc);
+  N.graph($('#popFig'),{x:{min:0,max:30,step:5,label:'År',fmt:v=>v},y:{min:0,max:200,step:50,label:'Bestand'},
+    series:[{pts:d.map(r=>[r[0],r[1]]),dots:false,lineCls:'ptG'},{pts:d.map(r=>[r[0],r[2]]),dots:false,lineCls:'ptH'},{pts:d.map(r=>[r[0],r[3]]),dots:false,lineCls:'ptR'}],
+    marks:(X,Y)=>sc!=='normal'?`<line x1="${X(10)}" y1="14" x2="${X(10)}" y2="190" stroke="var(--muted)" stroke-dasharray="4 4"/><text class="lbl small" x="${X(10)+4}" y="26">endring</text>`:''});
+  const last=d[30];$('#popOut').innerHTML=`Etter 30 år: gress <b>${Math.round(last[1])}</b> · harer <b>${Math.round(last[2])}</b> · rev <b>${nf(last[3]/5,1)}</b>`;
+  $('#scen').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.s===sc));}
+$('#scen').innerHTML=SC.map(s=>`<button type="button" class="btn" data-s="${s[0]}">${s[1]}</button>`).join('');
+$('#scen').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{sc=b.dataset.s;renderPop();}));
+renderPop();
+V.predict($('#p2'),{tag:'Hva ser du?',q:'Trykk «Fjern reven». Hva skjer med gresset etter noen år?',opts:['Det øker, fordi det er færre dyr','Det minker, fordi harene blir mange og spiser mer','Ingenting, reven spiser ikke gress'],ok:1,
+  expl:'Reven spiser ikke gress, men den holder harebestanden nede. Uten rev blir det mange flere harer, som beiter ned gresset. Arter som ikke spiser hverandre, kan likevel påvirke hverandre gjennom næringsnettet.',retry:'Følg den grønne kurven etter den stiplede streken.'});
+
+/* ---------- 3 Karbon ---------- */
+N.sorter($('#sort1'),{groups:[{id:'ut',name:'Tar CO₂ ut av lufta'},{id:'inn',name:'Slipper CO₂ ut i lufta'}],
+  items:[{t:'Fotosyntese i skogen',g:'ut'},{t:'Alger i havet',g:'ut'},{t:'Havet løser opp CO₂',g:'ut',why:'Havet tar opp omtrent en firedel av CO₂-en vi slipper ut. Men da blir havet surere.'},
+    {t:'Celleånding hos dyr',g:'inn'},{t:'Nedbrytere (sopp og bakterier) bryter ned døde blader',g:'inn',why:'Nedbryterne driver celleånding når de bryter ned dødt materiale.'},{t:'Bilen brenner bensin',g:'inn'},{t:'Skogbrann',g:'inn'},{t:'Myr som graves opp og tørker',g:'inn',why:'Myr lagrer mye karbon. Når den tørker, brytes karbonet ned og blir CO₂.'}],
+  good:'Riktig! I naturen er det balanse mellom det som tas ut og slippes ut. Når vi brenner fossilt karbon som har vært lagret i millioner av år, slipper vi ut mer enn naturen klarer å ta opp.'});
+
+/* ---------- 4 Reindrift ---------- */
+V.predict($('#p3'),{tag:'Spørsmål 1',q:'Reinlav vokser bare noen millimeter i året. Hvorfor flytter reindriftssamene flokken mellom ulike beiter gjennom året?',opts:['Så laven får tid til å vokse opp igjen','Fordi reinen kjeder seg','Fordi det er kaldere ved kysten om vinteren'],ok:0,
+  expl:'Hvis flokken beitet på samme sted hele året, ville laven blitt borte i mange tiår. Ved å flytte gir reindriften beitene tid til å hente seg inn. Dette er bærekraftig ressursbruk som var kjent lenge før ordet «bærekraft» fantes.',retry:'Tenk på hvor sakte laven vokser. Prøv igjen.'});
+V.predict($('#p4'),{tag:'Spørsmål 2',q:'Reindriftssamer har mange ord for ulike typer snø, for eksempel snø med en hard skare som reinen ikke kommer gjennom. Hvorfor er slik kunnskap nyttig for forskere i dag?',opts:['Den gir lange observasjoner av hvordan klimaet i nord endrer seg','Den er bare en tradisjon uten nytte','Den kan erstatte alle målinger'],ok:0,
+  expl:'Samisk tradisjonskunnskap bygger på observasjoner gjennom mange generasjoner. Reindriftsutøvere har for eksempel sett at regn om vinteren gir oftere islag på beitene, noe som stemmer med klimamålinger. Tradisjonskunnskap og naturvitenskap kan utfylle hverandre.',retry:'Tenk på hvor lenge kunnskapen er samlet. Prøv igjen.'});
+
+/* ---------- 5 Dilemma ---------- */
+const D={
+  ja:{n:'Gruva bør åpnes',mot:['Avfall i fjorden kan skade fisk og gyteområder i mange år','Reinens flytteveier og kalvingsland kan bli ødelagt','Inntektene går til selskapet, mens ulempene blir lokale'],for:['Kobber trengs for å kutte klimagassutslipp','Gir arbeidsplasser i en liten kommune','Bedre at kobberet utvinnes med norske miljøkrav enn i land med svakere regler']},
+  nei:{n:'Gruva bør ikke åpnes',mot:['Kobberet må da komme fra gruver andre steder, kanskje med verre forhold','Kommunen mister arbeidsplasser og skatteinntekter','Det grønne skiftet trenger mineraler'],for:['Fjorden og fisket er en fornybar ressurs, gruva er det ikke','Reindrift er en del av samisk kultur som er beskyttet','Avfall i fjorden kan ikke fjernes igjen']},
+  kanskje:{n:'Bare med strenge krav',mot:['Kravene kan bli dyre, så gruva kanskje ikke lønner seg','Det er vanskelig å kontrollere at kravene følges'],for:['Avfallet kan legges på land i stedet for i fjorden','Reindriften kan få medbestemmelse og erstatning','Gir kobber og arbeidsplasser med mindre skade']}};
+$('#dPick').innerHTML=Object.entries(D).map(([k,v])=>`<button type="button" class="btn" data-k="${k}">${v.n}</button>`).join('');
+$('#dPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const d=D[b.dataset.k];
+  $('#dPick').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  $('#dOut').innerHTML=`<div class="arg" style="margin-top:12px"><div><h3 class="c-g">Argumenter for ditt syn</h3><ul>${d.for.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h3 class="c-b">Motargumenter du må svare på</h3><ul>${d.mot.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>`+
+    `<div class="fb hint" style="margin-top:10px">I et dilemma finnes det gode grunner på begge sider. Et godt standpunkt viser at du har tenkt på motargumentene. Velg det motargumentet du synes er sterkest, og skriv to setninger om hvordan du svarer på det.</div>`;}));
+
+/* ---------- Øving ---------- */
+const skills={
+  energi:{name:'Energi i næringskjeder',gens:[
+    ()=>{const e=pick([10000,20000,50000,100000]),l=pick([1,2,3]);const ans=e/Math.pow(10,l);const names=['planteeterne','rovdyrene som spiser planteetere','toppredatorene'];
+      return {prompt:`Plantene i et område har ${nf(e)} kJ energi. Omtrent 10 % går videre til hvert nytt ledd. Hvor mye energi når ${names[l-1]}?`,ans,unit:'kJ',hints:['Del på 10 for hvert ledd oppover.',`Det er ${l} steg fra plantene.`],sol:`${nf(e)}${' : 10'.repeat(l)} = <b>${nf(ans)} kJ</b>`,diag:v=>near(v,e*.9)?'90 % går tapt, det er bare 10 % som går videre.':null};},
+    ()=>N.mc('Hvorfor er det færre rovdyr enn planteetere i et område?','Mesteparten av energien går tapt som varme i hvert ledd',['Rovdyr får færre unger','Rovdyr dreper hverandre'],['Tenk på 10 %-regelen.'],'Bare rundt 10 % av energien går videre til neste ledd. Resten blir til varme i celleåndingen. Derfor kan hvert ledd ha mindre total masse enn leddet under.')
+  ]},
+  roller:{name:'Roller i økosystemet',gens:[
+    ()=>{const r=pick([['Blåbærlyng','produsent'],['Elg','konsument'],['Rev','konsument'],['Meitemark','nedbryter'],['Sopp','nedbryter'],['Alger','produsent'],['Gaupe','konsument']]);
+      return N.mc(`Hvilken rolle har <b>${r[0].toLowerCase()}</b> i økosystemet?`,r[1][0].toUpperCase()+r[1].slice(1),['Produsent','Konsument','Nedbryter'].filter(x=>x.toLowerCase()!==r[1]),['Lager den sin egen mat, spiser den andre, eller bryter den ned dødt materiale?'],`${r[0]} er ${r[1]}.`);},
+    ()=>N.mc('Hva ville skjedd hvis alle nedbryterne forsvant?','Dødt materiale ville hopet seg opp, og næringsstoffene ville ikke kommet tilbake til jorda',['Ingenting','Det ville blitt flere planter'],['Hvor får plantene næringsstoffer fra?'],'Nedbryterne gjør døde planter og dyr om til næringsstoffer og CO₂. Uten dem stopper kretsløpet.')
+  ]},
+  kretslop:{name:'Stoffkretsløp',gens:[
+    ()=>N.mc('Hvilken prosess tar karbon <b>ut av</b> lufta?','Fotosyntese',['Celleånding','Forbrenning','Nedbrytning'],['Hva bruker planter for å lage sukker?'],'Fotosyntesen bruker CO₂ fra lufta og bygger karbonet inn i sukker.'),
+    ()=>N.mc('Hvor er det mest karbon lagret på jorda?','I havet og i bergarter',['I lufta','I dyrene'],['Tenk på kalkstein og hav.'],'Det aller meste av karbonet er lagret i bergarter som kalkstein og i havet. Bare en liten del er i lufta, men den lille delen har stor betydning for klimaet.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-okosystemer',title:'Økosystemer og stoffkretsløp',skills});
+})();
+</script>
+</body>
+</html>

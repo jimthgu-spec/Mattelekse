@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../felles/film.css?v=1">
 <style>
 /* Layout: én kolonne med «arbeidsbenker». Hver seksjon har figuren til venstre og knappene til høyre, stablet på mobil. Rutepapir i bakgrunnen. */
 :root{
@@ -245,6 +246,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:.88rem}
     <div class="wrap">
       <div class="sec-head"><span class="step-no">1</span><h2>Rett prisme</h2></div>
       <p class="sec-lead">Hver liten terning er 1 cm³. Dra i glidebryterne og se hvor mange terninger som får plass.</p>
+      <div id="film-prisme"></div>
       <div class="bench">
         <div class="figbox" id="pFig"></div>
         <div class="controls">
@@ -264,6 +266,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:.88rem}
     <div class="wrap">
       <div class="sec-head"><span class="step-no">2</span><h2>Sylinder</h2></div>
       <p class="sec-lead">En sylinder er som en stabel med like store mynter. Grunnflaten er en sirkel, så <b>G = π · r²</b>.</p>
+      <div id="film-sylinder"></div>
       <div class="bench">
         <div class="figbox" id="cFig"></div>
         <div class="controls">
@@ -282,6 +285,7 @@ footer{padding-block:28px 48px;color:var(--muted);font-size:.88rem}
     <div class="wrap">
       <div class="sec-head"><span class="step-no">3</span><h2>Fra cm³ til liter</h2></div>
       <p class="sec-lead">En terning med sider på 1 dm (10 cm) rommer nøyaktig 1 liter. Den består av 10 · 10 · 10 = 1000 små terninger på 1 cm³.</p>
+      <div id="film-liter"></div>
       <div class="bench">
         <div class="figbox" id="dmFig"></div>
         <div class="controls">
@@ -757,5 +761,7 @@ function newTask(){
 renderMastery();newTask();
 })();
 </script>
+<script src="../felles/film.js?v=1"></script>
+<script src="filmer/volum.js?v=1"></script>
 </body>
 </html>

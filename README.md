@@ -8,6 +8,8 @@ Interaktive lekse-moduler etter LK20 (kompetansemål etter 9. trinn, MAT01-06). 
 index.html                 forside (lista «moduler» nederst)
 felles/verksted.css        felles stil (farger, lys/mørk modus, layout)
 felles/verksted.js         felles verktøy: V.predict, V.walk, V.check, V.practice
+felles/film.js + film.css  filmspiller for animerte filmsnutter (Film.mount)
+moduler/filmer/*.js        filmsnuttene til hver modul
 moduler/*.html             én fil per modul
 ```
 
@@ -27,3 +29,7 @@ moduler/*.html             én fil per modul
 - **Spredt repetisjon**: Leitner-bokser per ferdighet, og det eleven kan, kommer tilbake etter 1, 2, 4 og 8 dager.
 
 Fremgang lagres i `localStorage` under `verksted:<id>`, bare i elevens egen nettleser. Ingen personopplysninger sendes noe sted.
+
+## Filmsnutter
+
+Korte animasjoner fra virkelige situasjoner (akvarium, regntønne, melkekartong) bygget med SVG, uten videofiler. Spilleren har play/pause, scener eleven kan hoppe mellom, tekst, valgfri opplesing med nettleserens norske stemme og «Hva tror du?»-stopp der filmen venter på svar. Lag en ny film med `Film.mount(element, {title, scenes:[{dur, text, draw(p), ask?}]})`, se `moduler/filmer/volum.js`.

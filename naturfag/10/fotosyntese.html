@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fotosyntesens laboratorium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<style>
+:root{--leaf:#2f8f46;--leaf-soft:#dcf1e1;--lamp:#f2b705}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--leaf:#5cc777;--leaf-soft:#173322;--lamp:#f5cc4a}}
+:root[data-theme="dark"]{--leaf:#5cc777;--leaf-soft:#173322;--lamp:#f5cc4a}
+.fig .glass{fill:var(--water);fill-opacity:.16;stroke:var(--ink);stroke-width:1.6}
+.fig .glassline{stroke:var(--ink);stroke-width:1.6;fill:none}
+.fig .stem{stroke:var(--leaf);stroke-width:4;fill:none;stroke-linecap:round}
+.fig .leaf{fill:var(--leaf);fill-opacity:.85}
+.fig .bub{fill:var(--surface);stroke:var(--c2);stroke-width:1.4}
+.fig .lampbody{fill:var(--muted)}
+.fig .bulb{fill:var(--lamp)}
+.fig .ray{stroke:var(--lamp);stroke-width:2;stroke-linecap:round}
+.fig .soda{fill:var(--ink);fill-opacity:.25}
+.fig .ax{stroke:var(--ink);stroke-width:1.4}
+.fig .gl2{stroke:var(--grid);stroke-width:1}
+.fig .pt{fill:var(--c1);stroke:var(--surface);stroke-width:1.4}
+.fig .ptline{stroke:var(--c1);stroke-width:1.6;fill:none;stroke-opacity:.5}
+.figcol{display:flex;flex-direction:column;gap:10px;background:var(--paper);border-radius:10px;padding:10px;min-width:0}
+.counter{font-family:var(--f-mono);font-size:1.05rem;text-align:center}
+.counter b{font-size:1.5rem;color:var(--c2)}
+.pick{display:flex;gap:6px;flex-wrap:wrap}
+table.log{width:100%;border-collapse:collapse;font-family:var(--f-mono);font-size:.92rem}
+table.log th,table.log td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:right}
+table.log th{color:var(--muted);font-weight:500;font-family:var(--f-body)}
+table.log td.x{color:var(--c1);font-weight:700}
+.logwrap{max-height:190px;overflow:auto;background:var(--surface);border-radius:10px;padding:4px 8px}
+.eq{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:var(--f-display);font-weight:700;font-size:1.1rem}
+.slot{min-width:8.5rem;min-height:2.6rem;border:2px dashed var(--line);border-radius:10px;display:inline-flex;align-items:center;justify-content:center;padding:4px 10px;cursor:pointer;background:var(--surface);font-family:var(--f-body);font-size:1rem;touch-action:manipulation}
+.slot.filled{border-style:solid;border-color:var(--leaf);background:var(--leaf-soft)}
+.slot.bad{border-color:var(--bad);background:var(--bad-soft)}
+.tokens{display:flex;flex-wrap:wrap;gap:8px}
+.token{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;cursor:grab;font-weight:700;touch-action:none;user-select:none;-webkit-user-select:none}
+.token.sel{border-color:var(--accent);background:var(--accent-soft)}
+.token.used{opacity:.35}
+.token.drag{position:fixed;z-index:50;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.arrow{font-family:var(--f-mono);color:var(--lamp)}
+.chem{font-family:var(--f-mono);font-size:1rem;color:var(--muted)}
+.hypo{border:1px dashed var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.hypo .tag{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+@media (max-width:760px){.bench,.hero-grid,.ex{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" title="Til forsiden">← Fotosyntese</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#lab"><b>2</b>Laboratoriet</a>
+    <a href="#likning"><b>3</b>Likningen</a>
+    <a href="#ov"><b>4</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag 10. trinn · Prøvemodul</p>
+      <h1>Hvordan lager planter mat av lys?</h1>
+      <p class="lead">Planter lager sukker av <b>karbondioksid</b> og <b>vann</b>, med energi fra <b>lyset</b>. Oksygenet slipper de ut. I laboratoriet under teller du oksygenboblene og finner ut hva som får planta til å jobbe raskere.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 200" id="heroFig" role="img" aria-label="Vannplante i et glass under en lampe, med bobler"></svg></div>
+  </div>
+</header>
+
+<main>
+  <section id="gjett">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+      <p class="sec-lead">Et lite frø blir til et tre som veier flere tonn. Tenk deg om før du svarer, og ikke se på svaret før du har valgt.</p>
+      <div class="bench" style="grid-template-columns:1fr">
+        <div id="p1"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lab">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">2</span><h2>Laboratoriet</h2></div>
+      <p class="sec-lead">Vannpest er en vannplante. Når den driver fotosyntese, kommer det små oksygenbobler ut av stilken. Flere bobler betyr raskere fotosyntese. Velg én ting du vil teste, lag en hypotese, og mål.</p>
+      <div class="bench">
+        <div class="figcol">
+          <svg class="fig" viewBox="0 0 380 260" id="labFig" role="img" aria-label="Forsøksoppsett: lampe, glass med vannpest og bobler"></svg>
+          <div class="counter" id="counter" aria-live="polite">Trykk <b>Mål i 1 minutt</b> for å telle bobler.</div>
+          <svg class="fig" viewBox="0 0 380 230" id="graph" role="img" aria-label="Graf over målingene"></svg>
+        </div>
+        <div class="controls">
+          <div>
+            <p style="font-weight:700;margin-bottom:6px">1. Hva vil du teste?</p>
+            <div class="pick" id="varPick"></div>
+          </div>
+          <div class="hypo" id="hypo"></div>
+          <div>
+            <p style="font-weight:700;margin-bottom:6px">3. Still inn og mål</p>
+            <div class="slider"><label for="sL">Lys</label><input type="range" id="sL" min="0" max="100" step="10" value="50"><output id="oL"></output></div>
+            <div class="slider"><label for="sC">CO₂</label><input type="range" id="sC" min="0" max="4" step="1" value="2"><output id="oC"></output></div>
+            <div class="slider"><label for="sT">Temp.</label><input type="range" id="sT" min="5" max="45" step="5" value="25"><output id="oT"></output></div>
+            <p class="note">CO₂ tilsettes som natron (teskjeer) i vannet.</p>
+          </div>
+          <div class="row"><button class="btn primary" type="button" id="measure">Mål i 1 minutt</button><button class="btn" type="button" id="clear">Ny måleserie</button></div>
+          <div class="fb" id="labFb" aria-live="polite"></div>
+          <div class="logwrap"><table class="log" id="log"><thead><tr><th>#</th><th>Lys</th><th>CO₂</th><th>Temp.</th><th>Bobler/min</th></tr></thead><tbody></tbody></table></div>
+          <div class="row"><button class="btn" type="button" id="conclude" disabled>4. Sjekk hypotesen</button></div>
+          <div class="fb" id="concFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="likning">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">3</span><h2>Bygg likningen</h2></div>
+      <p class="sec-lead">Dra ordene til riktig plass, eller trykk på et ord og så på en boks. To av ordene hører ikke hjemme her.</p>
+      <div class="bench" style="grid-template-columns:1fr">
+        <div>
+          <p class="tag" id="eqTitle" style="font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-size:.75rem">Fotosyntese</p>
+          <div class="eq" id="eq"></div>
+          <div class="tokens" id="tokens" style="margin-top:14px"></div>
+          <div class="row" style="margin-top:12px"><button class="btn primary" type="button" id="eqCheck">Sjekk</button><button class="btn" type="button" id="eqReset">Tøm</button></div>
+          <div class="fb" id="eqFb" aria-live="polite" style="margin-top:10px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ov">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">4</span><h2>Øv</h2></div>
+      <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake, og det du kan, kommer tilbake om noen dager.</p>
+      <div id="practice"></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Prøvemodul i naturfag. Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om fotosyntese og celleånding, og om å utforske med hypoteser og variabler. Fremgangen lagres bare i denne nettleseren. <a href="../../index.html">Til forsiden</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx}=V;V.ready();
+
+/* ---------- Modellen ----------
+   Bobler per minutt ut fra lys (0–100 %), CO₂ (0–4 teskjeer natron) og temperatur (°C).
+   Lys og CO₂ gir metning (begrensende faktor), temperatur har et optimum rundt 27 °C. */
+function rate(L,C,T){
+  const l=L/(L+25), c=(C+0.3)/(C+1.3), t=Math.exp(-Math.pow((T-27)/9,2));
+  return 44*l*c*t;
+}
+const noisy=r=>r<0.5?0:Math.max(0,Math.round(r+(Math.random()*2-1)*Math.max(1,r*.06)));
+
+/* ---------- Tegning av forsøket ---------- */
+function setup(L,C,bubbles,o={}){
+  const W=o.W||380,H=o.H||260,gx=W*.52,gw=130,gy=H*.18,gh=H*.72;
+  const lampX=gx-40-(100-L)*0.9-30, lampY=gy+gh*.35;
+  let s='';
+  // lampe
+  s+=`<rect class="lampbody" x="${fx(lampX-26)}" y="${fx(lampY-10)}" width="26" height="20" rx="4"/>`;
+  s+=`<circle class="bulb" cx="${fx(lampX+2)}" cy="${fx(lampY)}" r="${L>0?11:7}" style="opacity:${L>0?1:.35}"/>`;
+  if(L>0){const n=3+Math.round(L/25);for(let i=0;i<n;i++){const a=(i/(n-1)-.5)*1.1;const r1=16,r2=16+8+L*.14;
+    s+=`<line class="ray" x1="${fx(lampX+2+r1*Math.cos(a))}" y1="${fx(lampY+r1*Math.sin(a))}" x2="${fx(lampX+2+r2*Math.cos(a))}" y2="${fx(lampY+r2*Math.sin(a))}" style="opacity:${.3+L/150}"/>`;}}
+  // glass
+  s+=`<rect class="glass" x="${gx}" y="${fx(gy+14)}" width="${gw}" height="${fx(gh-14)}" rx="6"/>`;
+  s+=`<path class="glassline" d="M${gx},${fx(gy)} V${fx(gy+gh-6)} q0,6 6,6 H${gx+gw-6} q6,0 6,-6 V${fx(gy)}"/>`;
+  // natron på bunnen
+  for(let i=0;i<C*6;i++)s+=`<circle class="soda" cx="${fx(gx+12+((i*37)%(gw-24)))}" cy="${fx(gy+gh-5-((i*13)%5))}" r="2.2"/>`;
+  // plante
+  const px=gx+gw/2, top=gy+gh*.28;
+  s+=`<path class="stem" d="M${px},${fx(gy+gh-4)} C${px-14},${fx(gy+gh*.7)} ${px+12},${fx(gy+gh*.5)} ${px},${fx(top)}"/>`;
+  for(let i=0;i<7;i++){const y=top+i*(gh*.62/7)+6,side=i%2?1:-1;
+    s+=`<ellipse class="leaf" cx="${fx(px+side*12)}" cy="${fx(y)}" rx="12" ry="4.5" transform="rotate(${side*-28} ${fx(px+side*12)} ${fx(y)})"/>`;}
+  // bobler (posisjon 0..1 fra stilktopp til overflaten)
+  bubbles.forEach(b=>{const y=top-4-b.p*(top-4-(gy+16));s+=`<circle class="bub" cx="${fx(px+b.dx+Math.sin(b.p*9+b.dx)*2)}" cy="${fx(y)}" r="${fx(2.5+b.p*1.5)}"/>`;});
+  return s;
+}
+$('#heroFig').innerHTML=setup(80,2,[{p:.2,dx:0},{p:.5,dx:2},{p:.8,dx:-1}],{W:380,H:200});
+
+/* ---------- Laboratoriet ---------- */
+const VARS={
+  L:{name:'Lys',unit:'%',min:0,max:100,fmt:v=>v+' %',el:'#sL'},
+  C:{name:'CO₂',unit:'ts',min:0,max:4,fmt:v=>v+' ts',el:'#sC'},
+  T:{name:'Temperatur',unit:'°C',min:5,max:45,fmt:v=>v+' °C',el:'#sT'}
+};
+const TRUTH={L:'up',C:'up',T:'peak'};
+const HYP=[['up','øke'],['down','minke'],['same','ikke endre seg'],['peak','øke og så minke']];
+let testVar='L',hyp=null,rows=[],bubbles=[],running=false;
+const val=k=>+$(VARS[k].el).value;
+function outputs(){$('#oL').textContent=VARS.L.fmt(val('L'));$('#oC').textContent=VARS.C.fmt(val('C'));$('#oT').textContent=VARS.T.fmt(val('T'));}
+
+function renderPick(){
+  $('#varPick').innerHTML=Object.entries(VARS).map(([k,v])=>`<button type="button" class="btn${k===testVar?' on':''}" data-k="${k}" aria-pressed="${k===testVar}">${v.name}</button>`).join('');
+  $('#varPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(running)return;testVar=b.dataset.k;hyp=null;rows=[];renderAll();}));
+}
+function renderHypo(){
+  const n=VARS[testVar].name.toLowerCase();
+  $('#hypo').innerHTML=`<span class="tag">2. Hypotese</span><p>Når <b>${n}</b> øker, tror jeg at antall bobler vil …</p><div class="opts">${HYP.map(([k,t])=>`<button type="button" class="opt${hyp===k?' is-ok':''}" data-h="${k}">${t}</button>`).join('')}</div>`+
+    (hyp?`<p class="note">Din hypotese er lagret. Mål minst fire ganger med ulik ${n}, og hold de andre innstillingene like.</p>`:'');
+  $('#hypo').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{hyp=b.dataset.h;renderHypo();renderButtons();}));
+}
+function renderLog(){
+  $('#log tbody').innerHTML=rows.map((r,i)=>`<tr><td>${i+1}</td>${['L','C','T'].map(k=>`<td class="${k===testVar?'x':''}">${r[k]}</td>`).join('')}<td><b>${r.b}</b></td></tr>`).join('')||`<tr><td colspan="5" style="text-align:center;color:var(--muted)">Ingen målinger ennå</td></tr>`;
+}
+function renderGraph(){
+  const W=380,H=230,L=46,Rr=14,T=14,B=40,v=VARS[testVar];
+  const X=x=>L+(x-v.min)/(v.max-v.min)*(W-L-Rr),Y=y=>H-B-y/45*(H-B-T);
+  let s='';
+  for(let y=0;y<=40;y+=10)s+=`<line class="gl2" x1="${L}" y1="${fx(Y(y))}" x2="${W-Rr}" y2="${fx(Y(y))}"/><text class="lbl small" x="${L-6}" y="${fx(Y(y)+4)}" text-anchor="end">${y}</text>`;
+  const step=testVar==='L'?20:testVar==='C'?1:10;
+  for(let x=v.min;x<=v.max;x+=step)s+=`<text class="lbl small" x="${fx(X(x))}" y="${H-B+16}" text-anchor="middle">${x}</text>`;
+  s+=`<line class="ax" x1="${L}" y1="${H-B}" x2="${W-Rr}" y2="${H-B}"/><line class="ax" x1="${L}" y1="${T}" x2="${L}" y2="${H-B}"/>`;
+  s+=`<text class="lbl small" x="${(L+W-Rr)/2}" y="${H-6}" text-anchor="middle">${v.name} (${v.unit})</text>`;
+  s+=`<text class="lbl small" x="12" y="${(T+H-B)/2}" text-anchor="middle" transform="rotate(-90 12 ${(T+H-B)/2})">Bobler per minutt</text>`;
+  const pts=rows.map(r=>[r[testVar],r.b]).sort((a,b)=>a[0]-b[0]);
+  if(pts.length>1)s+=`<polyline class="ptline" points="${pts.map(p=>fx(X(p[0]))+','+fx(Y(p[1]))).join(' ')}"/>`;
+  pts.forEach(p=>s+=`<circle class="pt" cx="${fx(X(p[0]))}" cy="${fx(Y(p[1]))}" r="5"/>`);
+  if(!pts.length)s+=`<text class="lbl small" x="${(L+W)/2}" y="${(T+H-B)/2}" text-anchor="middle">Målingene dine kommer her</text>`;
+  $('#graph').innerHTML=s;
+}
+function renderButtons(){
+  $('#measure').disabled=running||!hyp;
+  $('#measure').title=hyp?'':'Velg en hypotese først';
+  const distinct=new Set(rows.map(r=>r[testVar])).size;
+  $('#conclude').disabled=running||distinct<4;
+}
+function draw(){$('#labFig').innerHTML=setup(val('L'),val('C'),bubbles);}
+function renderAll(){renderPick();renderHypo();renderLog();renderGraph();renderButtons();outputs();draw();$('#labFb').innerHTML='';$('#labFb').className='fb';$('#concFb').innerHTML='';$('#concFb').className='fb';
+  $('#counter').innerHTML=hyp?'Trykk <b>Mål i 1 minutt</b> for å telle bobler.':'Velg hva du vil teste og en hypotese først.';}
+
+['#sL','#sC','#sT'].forEach(id=>$(id).addEventListener('input',()=>{outputs();draw();}));
+
+/* Bobler beveger seg hele tiden, men telles bare under måling */
+let last=performance.now(),acc=0,ambient=0;
+function tick(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;
+  if(!running){ambient+=dt*rate(val('L'),val('C'),val('T'))/12;while(ambient>=1){ambient--;bubbles.push({p:0,dx:R(-3,3)});}}
+  bubbles.forEach(b=>b.p+=dt*.55);bubbles=bubbles.filter(b=>b.p<1);
+  draw();requestAnimationFrame(tick);
+}
+if(!V.reduce)requestAnimationFrame(tick);
+
+$('#measure').addEventListener('click',()=>{
+  if(running||!hyp)return;
+  const r={L:val('L'),C:val('C'),T:val('T')};
+  // Rettferdig test: de andre variablene skal være som i første måling
+  if(rows.length){const f=rows[0];const changed=['L','C','T'].filter(k=>k!==testVar&&r[k]!==f[k]);
+    if(changed.length){const fb=$('#labFb');fb.className='fb bad';
+      fb.innerHTML=`Du har endret <b>${changed.map(k=>VARS[k].name.toLowerCase()).join(' og ')}</b> også. Da vet du ikke hva som ga forskjellen. I en <b>rettferdig test</b> endrer du bare én ting. Sett ${changed.map(k=>VARS[k].name.toLowerCase()+' til '+VARS[k].fmt(f[k])).join(' og ')}, eller start en ny måleserie.`;return;}}
+  if(rows.some(x=>x[testVar]===r[testVar])){const fb=$('#labFb');fb.className='fb hint';fb.innerHTML=`Du har allerede målt med ${VARS[testVar].fmt(r[testVar])}. Prøv en annen verdi, så får du flere punkter på grafen.`;return;}
+  const count=noisy(rate(r.L,r.C,r.T));
+  running=true;renderButtons();$('#labFb').innerHTML='';$('#labFb').className='fb';
+  const dur=V.reduce?300:4000,t0=performance.now();let shown=0;
+  (function step(){
+    const p=Math.min(1,(performance.now()-t0)/dur),target=Math.round(count*p);
+    while(shown<target){shown++;bubbles.push({p:0,dx:R(-3,3)});}
+    const sek=Math.round(p*60);
+    $('#counter').innerHTML=`Tid: <span class="mono">${sek} s</span> · Bobler: <b>${shown}</b>`;
+    if(p<1){setTimeout(step,40);return;}
+    r.b=count;rows.push(r);running=false;
+    $('#counter').innerHTML=`Resultat: <b>${count}</b> bobler på ett minutt`+(count===0&&r.L===0?' (i mørket stopper fotosyntesen)':'');
+    renderLog();renderGraph();renderButtons();
+    if(rows.length===1){const fb=$('#labFb');fb.className='fb hint';fb.innerHTML=`Første måling er gjort. Endre nå bare <b>${VARS[testVar].name.toLowerCase()}</b> og mål igjen.`;}
+  })();
+});
+$('#clear').addEventListener('click',()=>{if(running)return;rows=[];renderLog();renderGraph();renderButtons();$('#labFb').innerHTML='';$('#labFb').className='fb';$('#concFb').innerHTML='';$('#concFb').className='fb';});
+
+const EXPL={
+  L:'Mer lys gir mer energi til fotosyntesen, så boblene øker. Men kurven flater ut: når det er nok lys, er det mengden CO₂ eller temperaturen som <b>begrenser</b> farten. Det kalles en begrensende faktor.',
+  C:'Mer CO₂ gir mer råstoff til sukker, så boblene øker. Men kurven flater ut: med mye CO₂ er det lyset som begrenser. Gartnere tilsetter CO₂ i drivhus av denne grunnen.',
+  T:'Fotosyntesen styres av enzymer. De jobber raskere når det blir varmere, men over omtrent 30 °C begynner de å ødelegges, og farten faller. Derfor øker kurven og så minker den.'
+};
+$('#conclude').addEventListener('click',()=>{
+  const fb=$('#concFb'),ok=hyp===TRUTH[testVar];
+  fb.className='fb '+(ok?'good':'hint');
+  fb.innerHTML=(ok?'<b>Hypotesen din stemmer med målingene.</b> ':`<b>Målingene viser noe annet enn hypotesen din.</b> Det er helt vanlig i naturfag, og det er slik vi lærer. Se på grafen: boblene ${HYP.find(h=>h[0]===TRUTH[testVar])[1]} når ${VARS[testVar].name.toLowerCase()} øker. `)+EXPL[testVar]+
+    `<br><br>Prøv gjerne en annen variabel, eller test om du får flere bobler med maks lys når CO₂ er 0.`;
+});
+renderAll();
+
+/* ---------- 1 Gjett først ---------- */
+V.predict($('#p1'),{q:'Hvor kommer mesteparten av massen i et tre fra?',opts:['Fra jorda','Fra vannet','Fra lufta','Fra sollyset'],ok:2,
+  expl:'Det overrasker de fleste. Treet tar opp <b>karbondioksid fra lufta</b> og bygger karbonatomene inn i sukker og cellulose. Vann bidrar også, men jorda gir bare litt mineraler. Sollyset gir energien, men ikke masse.',
+  retry:i=>i===0?'Mange tror det. Men en forsker plantet et tre i en bøtte jord på 90 kilo. Etter fem år veide treet 74 kilo mer, mens jorda bare hadde mistet noen gram. Prøv igjen.':
+    i===3?'Lyset gir energien som trengs, men lys har nesten ingen masse. Hva er det treet bygger seg av? Prøv igjen.':
+    'Vann er med, men det meste av vannet går ut igjen gjennom bladene. Hva mer tar treet opp? Prøv igjen.'});
+
+/* ---------- 3 Bygg likningen (tapp eller dra) ---------- */
+const EQS={
+  foto:{title:'Fotosyntese',left:['karbondioksid','vann'],right:['glukose','oksygen'],arrow:'—lys→',chem:'6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂',
+    good:'Riktig! Planta bruker lysenergi til å lage glukose (sukker) av karbondioksid og vann. Oksygenet er et «avfallsstoff» for planta. Nå: hva skjer når planta, eller du, bruker sukkeret?'},
+  celle:{title:'Celleånding',left:['glukose','oksygen'],right:['karbondioksid','vann'],arrow:'→ energi +',chem:'C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + energi',
+    good:'Riktig! Celleånding er fotosyntesen baklengs. Alle levende celler, også plantenes, bryter ned glukose med oksygen for å få energi. Derfor puster du ut karbondioksid.'}
+};
+const WORDS=['karbondioksid','vann','glukose','oksygen','nitrogen','jord'];
+let eqKey='foto',slots=[],sel=null;
+function renderEq(){
+  const e=EQS[eqKey];$('#eqTitle').textContent=e.title;
+  $('#eq').innerHTML=`<span class="slot" data-s="0"></span>+<span class="slot" data-s="1"></span><span class="arrow">${e.arrow}</span><span class="slot" data-s="2"></span>+<span class="slot" data-s="3"></span>`;
+  $('#tokens').innerHTML=shuffle(WORDS).map(w=>`<span class="token" data-w="${w}" role="button" tabindex="0">${w}</span>`).join('');
+  slots=[null,null,null,null];sel=null;$('#eqFb').innerHTML='';$('#eqFb').className='fb';
+  $('#eq').querySelectorAll('.slot').forEach(s=>s.addEventListener('click',()=>{const i=+s.dataset.s;if(sel){place(sel,i);}else if(slots[i]){slots[i]=null;paint();}}));
+  $('#tokens').querySelectorAll('.token').forEach(bindToken);
+  paint();
+}
+function paint(){
+  $('#eq').querySelectorAll('.slot').forEach(s=>{const w=slots[+s.dataset.s];s.textContent=w||'';s.classList.toggle('filled',!!w);s.classList.remove('bad');s.setAttribute('aria-label',w?w+' (trykk for å fjerne)':'tom boks');});
+  $('#tokens').querySelectorAll('.token').forEach(t=>{t.classList.toggle('used',slots.includes(t.dataset.w));t.classList.toggle('sel',sel===t.dataset.w);});
+}
+function place(w,i){const j=slots.indexOf(w);if(j>=0)slots[j]=null;slots[i]=w;sel=null;paint();}
+function bindToken(t){
+  const w=t.dataset.w;
+  t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();sel=sel===w?null:w;paint();}});
+  t.addEventListener('pointerdown',e=>{
+    e.preventDefault();const sx=e.clientX,sy=e.clientY;let ghost=null;
+    const move=ev=>{
+      if(!ghost&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>6){ghost=t.cloneNode(true);ghost.classList.add('drag');document.body.appendChild(ghost);}
+      if(ghost){ghost.style.left=(ev.clientX-ghost.offsetWidth/2)+'px';ghost.style.top=(ev.clientY-ghost.offsetHeight/2)+'px';}
+    };
+    const up=ev=>{
+      document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);
+      if(ghost){ghost.remove();const el=document.elementFromPoint(ev.clientX,ev.clientY);const s=el&&el.closest&&el.closest('.slot');if(s)place(w,+s.dataset.s);}
+      else{sel=sel===w?null:w;paint();}
+    };
+    document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
+  });
+}
+$('#eqReset').addEventListener('click',()=>{slots=[null,null,null,null];sel=null;paint();$('#eqFb').innerHTML='';$('#eqFb').className='fb';});
+$('#eqCheck').addEventListener('click',()=>{
+  const e=EQS[eqKey],fb=$('#eqFb');
+  if(slots.some(s=>!s)){fb.className='fb hint';fb.textContent='Fyll alle fire boksene først.';return;}
+  const L=slots.slice(0,2),Rt=slots.slice(2);
+  const okL=e.left.every(w=>L.includes(w)),okR=e.right.every(w=>Rt.includes(w));
+  if(okL&&okR){fb.className='fb good';fb.innerHTML=`${e.good}<div class="chem" style="margin-top:6px">Med kjemiske formler: ${e.chem}</div>`+
+    (eqKey==='foto'?`<div class="row" style="margin-top:10px"><button class="btn primary" type="button" id="eqNext">Bygg celleåndingen</button></div>`:'');
+    const nb=$('#eqNext');if(nb)nb.addEventListener('click',()=>{eqKey='celle';renderEq();});return;}
+  $('#eq').querySelectorAll('.slot').forEach(s=>{const i=+s.dataset.s,w=slots[i];if(!(i<2?e.left:e.right).includes(w))s.classList.add('bad');});
+  fb.className='fb bad';
+  const wrongW=slots.find(w=>!e.left.includes(w)&&!e.right.includes(w));
+  fb.innerHTML=wrongW==='nitrogen'?'Nitrogen er det mest vanlige stoffet i lufta, men planta bruker det ikke i fotosyntesen. Prøv igjen.':
+    wrongW==='jord'?'Jord er ikke et stoff som inngår i reaksjonen. Husk gjetteoppgaven: massen kommer fra lufta. Prøv igjen.':
+    'Du har de riktige stoffene, men noen står på feil side. Hva bruker reaksjonen opp, og hva lager den?';
+});
+renderEq();
+
+/* ---------- 4 Øving ---------- */
+function mc(prompt,right,wrongs,hints,sol,why){
+  const choices=shuffle([right,...wrongs]);
+  return {prompt,choices,ok:choices.indexOf(right),hints,sol,diag:i=>why&&why[choices[i]]||null};
+}
+const skills={
+  likning:{name:'Fotosyntese og celleånding',gens:[
+    ()=>mc('Hvilket stoff tar planta opp fra <b>lufta</b> i fotosyntesen?','Karbondioksid',['Oksygen','Nitrogen','Glukose'],['Planta slipper ut oksygen. Hva tar den inn?'],'Planta tar opp karbondioksid (CO₂) gjennom små åpninger i bladene.',{'Oksygen':'Oksygen er det planta lager og slipper ut.'}),
+    ()=>mc('Hva er <b>produktene</b> i fotosyntesen?','Glukose og oksygen',['Karbondioksid og vann','Glukose og vann','Oksygen og nitrogen'],['Produkter er det som lages. Hva bobler ut av vannpesten?'],'Karbondioksid + vann → glukose + oksygen.',{'Karbondioksid og vann':'Det er utgangsstoffene, det fotosyntesen bruker opp.'}),
+    ()=>mc('Hvor i cellen skjer fotosyntesen?','I grønnkornene (kloroplastene)',['I mitokondriene','I cellekjernen','I cellemembranen'],['Det grønne stoffet klorofyll fanger lyset. Hvor finnes det?'],'Fotosyntesen skjer i grønnkornene, som inneholder klorofyll.',{'I mitokondriene':'I mitokondriene skjer celleåndingen.'}),
+    ()=>mc('Hvilke organismer driver <b>celleånding</b>?','Både planter og dyr',['Bare dyr','Bare planter','Bare sopp'],['Trenger planter energi om natta, når det er mørkt?'],'Alle levende celler trenger energi, så både planter, dyr og sopp driver celleånding hele døgnet.',{'Bare dyr':'En vanlig misoppfatning. Planter driver celleånding også, hele døgnet.'}),
+    ()=>mc('Hvor kommer <b>energien</b> fra som planta bruker til å lage glukose?','Fra lyset',['Fra jorda','Fra vannet','Fra oksygenet'],['Se på pila i likningen.'],'Lysenergi fanges av klorofyll og lagres som kjemisk energi i glukosen.')
+  ]},
+  faktor:{name:'Begrensende faktorer',gens:[
+    ()=>{const T=pick([10,15]);return mc(`Vannpesten står i sterkt lys med mye CO₂, men vannet er bare ${T} °C. Hva gir trolig <b>flest ekstra bobler</b>?`,'Varme vannet til rundt 25 °C',['Enda sterkere lys','Mer CO₂','Mørklegge glasset'],['Hva er det som er «for lite» her?'],`Lys og CO₂ er allerede høye. Det som begrenser, er temperaturen på ${T} °C. Det kalles den begrensende faktoren.`);},
+    ()=>mc('Lyset er svakt, men det er mye CO₂ og 25 °C. Hva gir flest ekstra bobler?','Sterkere lys',['Mer CO₂','Kaldere vann','Mindre CO₂'],['Hvilken av de tre er lavest?'],'Lyset er den begrensende faktoren. Mer CO₂ hjelper lite så lenge lyset er svakt.'),
+    ()=>mc('Hva skjer med fotosyntesen hvis vannet varmes til 45 °C?','Den går saktere',['Den går raskere enn noen gang','Ingen endring','Planta lager mer CO₂ enn oksygen i lyset'],['Fotosyntesen styres av enzymer. Tåler de alt?'],'Over omtrent 30 °C begynner enzymene å ødelegges, og fotosyntesen går saktere.',{'Den går raskere enn noen gang':'Varme hjelper bare opp til et visst punkt. Test det i laboratoriet.'}),
+    ()=>mc('En gartner tilsetter CO₂ i et drivhus. Når lønner det seg mest?','Når det er sterkt lys',['Om natta','Når det er mørkt og kaldt','Det lønner seg aldri'],['Om natta er det ingen fotosyntese.'],'Med sterkt lys er det ofte CO₂ som begrenser, så ekstra CO₂ gir raskere vekst.')
+  ]},
+  variabel:{name:'Variabler og rettferdig test',gens:[
+    ()=>{const v=pick([['lysstyrken','antall bobler'],['temperaturen','antall bobler'],['mengden natron','antall bobler']]);
+      return mc(`Du endrer <b>${v[0]}</b> og teller <b>${v[1]}</b>. Hva er den <b>avhengige</b> variabelen?`,v[1][0].toUpperCase()+v[1].slice(1),[v[0][0].toUpperCase()+v[0].slice(1),'Størrelsen på glasset','Tiden på døgnet'],['Den avhengige variabelen er det du måler, som kanskje avhenger av det du endrer.'],`Du måler ${v[1]}. Den avhenger (kanskje) av ${v[0]}, som er den uavhengige variabelen.`,{[v[0][0].toUpperCase()+v[0].slice(1)]:'Det er den du endrer selv, altså den uavhengige variabelen.'});},
+    ()=>{const v=pick(['lysstyrken','temperaturen']);const o=v==='lysstyrken'?'temperaturen':'lysstyrken';
+      return mc(`Du vil teste om <b>${v}</b> påvirker fotosyntesen. Hva må du gjøre med <b>${o}</b>?`,'Holde den lik i alle målingene',['Endre den samtidig','Øke den litt for hver måling','Det spiller ingen rolle'],['Hvis to ting endres, hvordan vet du hva som virket?'],`${o[0].toUpperCase()+o.slice(1)} er en kontrollert variabel. Den holdes lik, så forskjellen må komme av ${v}.`);},
+    ()=>mc('Lina måler 12 bobler med lampa 20 cm unna og 30 bobler med lampa 5 cm unna. Samtidig byttet hun til varmere vann. Hva kan hun konkludere?','Ingenting sikkert, hun endret to ting',['Lys øker fotosyntesen','Varme øker fotosyntesen','Avstanden spiller ingen rolle'],['Hvor mange ting endret hun mellom målingene?'],'Hun endret både lys og temperatur. Da er det ikke en rettferdig test, og hun vet ikke hva som ga flere bobler.')
+  ]},
+  regn:{name:'Regne med målinger',gens:[
+    ()=>{const s=pick([10,15,20,30]);const n=R(3,12);const ans=n*60/s;
+      return {prompt:`Du teller <b>${n}</b> bobler på <b>${s} sekunder</b>. Hvor mange bobler blir det per minutt?`,ans,unit:'bobler/min',hints:[`Hvor mange ganger går ${s} s opp i 60 s?`,`60 : ${s} = ${60/s}. Gang ${n} med det.`],sol:`60 : ${s} = ${60/s}, så ${n} · ${60/s} = <b>${nf(ans)}</b> bobler per minutt.`,
+        diag:v=>V.near(v,n*s)?'Du har ganget med sekundene. Tenk: hvor mange slike perioder er det i ett minutt?':V.near(v,n)?'Det er antallet på '+s+' sekunder. Gang opp til 60 sekunder.':null};},
+    ()=>{const a=R(3,8)*2,b=a+R(2,6)*2;const ans=b-a;
+      return {prompt:`Med 2 teskjeer natron fikk du <b>${a}</b> bobler per minutt. Med 4 teskjeer fikk du <b>${b}</b>. Hvor mange flere bobler per minutt ga de to ekstra teskjeene?`,ans,unit:'bobler/min',hints:['Trekk den minste målingen fra den største.'],sol:`${b} − ${a} = <b>${ans}</b> flere bobler per minutt.`,diag:v=>V.near(v,a+b)?'Du har lagt sammen. Forskjellen finner du med minus.':null};}
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-fotosyntese',title:'Fotosyntese',skills});
+})();
+</script>
+</body>
+</html>

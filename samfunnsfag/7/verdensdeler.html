@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verdensdelene</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<style>.fig .land{fill:var(--c2-soft)}
+.fig .land.on{fill:var(--accent-soft)}
+.fig .land.ok{fill:var(--good-soft)}
+.fig .land.no{fill:var(--bad-soft)}
+.fig .sea{fill:color-mix(in srgb,var(--water) 18%,var(--surface))}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Verdensdelene</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#kart"><b>2</b>Kart</a>
+    <a href="#sorter"><b>3</b>Sorter</a>
+    <a href="#folk"><b>4</b>Natur og folk</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Natur som former livet</h1>
+      <p class="lead">Ørken, regnskog, fjell og elver. Naturen i hver verdensdel er forskjellig, og den påvirker hvor folk bor, hva de dyrker og hvordan de lever. Utforsk kartet.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Et forenklet verdenskart"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Det bor over 8 milliarder mennesker på jorda.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="kart"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Utforsk verdensdelene</h2></div>
+    <p class="sec-lead">Trykk på en verdensdel og les om naturen og folket der. Prøv så kartleken.</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="map" viewBox="0 0 380 225" role="img" aria-label="Verdenskart med sju verdensdeler"></svg>
+    <div class="row"><button class="btn primary" type="button" id="mGame">Kartlek: finn verdensdelen</button></div></div>
+  <div class="controls"><div class="card2" id="mCard" aria-live="polite"></div></div>
+</div>
+  </div></section>
+
+  <section id="sorter"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Hvor ligger det?</h2></div>
+    <p class="sec-lead">Dra hvert naturfenomen til riktig verdensdel.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="folk"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Hvordan påvirker naturen folk?</h2></div>
+    <p class="sec-lead">Klima, elver, fjell og hav avgjør mye om hvor folk bor og hva de lever av. Svar på spørsmålene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="q0"></div><div id="q1"></div><div id="q2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: beskrive viktige geografiske kjennetegn ved ulike verdensdeler og reflektere over hvordan de påvirker menneskene som bor der. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const C={
+  na:{n:'Nord-Amerika',d:'M18 42 L70 30 L125 28 L150 48 L128 62 L118 84 L100 104 L88 118 L74 106 L62 86 L34 72 Z M140 16 L172 14 L168 38 L148 40 Z',lx:80,ly:66,pop:'ca. 600 millioner',nat:'Store sletter (prærien), Klippefjellene, store innsjøer og elva Mississippi. Kaldt i nord, varmt i sør.',folk:'Prærien er en av verdens største kornåkre. De fleste bor i byer langs kysten og ved innsjøene.'},
+  sa:{n:'Sør-Amerika',d:'M98 124 L124 126 L142 146 L134 170 L118 200 L108 206 L104 176 L96 146 Z',lx:118,ly:160,pop:'ca. 440 millioner',nat:'Amazonas, verdens største regnskog og elv med mest vann. Andesfjellene, verdens lengste fjellkjede.',folk:'De fleste bor langs kysten. Regnskogen hugges for å få plass til kveg og soya, og det er en stor miljøsak.'},
+  eu:{n:'Europa',d:'M172 44 L196 36 L222 34 L226 58 L214 72 L196 74 L180 70 L172 60 Z',lx:199,ly:56,pop:'ca. 750 millioner',nat:'Liten verdensdel med mye kyst, Alpene og mange elver. Golfstrømmen gir mildt klima i nord.',folk:'Tett befolket med mange byer. Det milde klimaet gjør at folk kan bo langt nord, også i Norge.'},
+  af:{n:'Afrika',d:'M174 84 L222 80 L244 102 L238 128 L226 150 L210 176 L198 160 L190 132 L176 112 Z',lx:208,ly:120,pop:'ca. 1,5 milliarder',nat:'Sahara, verdens største varme ørken. Nilen, verdens lengste elv. Savanne og regnskog rundt ekvator.',folk:'Få bor i Sahara. I Egypt bor nesten alle langs Nilen. Afrika har den yngste befolkningen i verden.'},
+  as:{n:'Asia',d:'M228 30 L290 22 L340 26 L364 46 L346 70 L322 84 L300 100 L282 118 L268 100 L248 92 L234 78 L228 60 Z',lx:296,ly:60,pop:'ca. 4,8 milliarder',nat:'Verdens største verdensdel. Himalaya med Mount Everest, store elver, ørkener, tundra og monsun.',folk:'Mer enn halvparten av alle mennesker bor her. Mange bor ved de store elvene der det er lett å dyrke ris.'},
+  oc:{n:'Oseania',d:'M300 150 L330 144 L350 152 L354 174 L330 182 L306 176 Z M360 180 L368 176 L370 192 L362 196 Z',lx:328,ly:164,pop:'ca. 45 millioner',nat:'Australia og tusenvis av øyer i Stillehavet. Innlandet i Australia er ørken, og Great Barrier Reef er verdens største korallrev.',folk:'De fleste australiere bor langs kysten i sørøst. Mange småøyer er truet av at havet stiger.'},
+  an:{n:'Antarktis',d:'M50 210 L330 208 L310 220 L70 220 Z',lx:190,ly:216,pop:'ingen fast bosatte',nat:'Dekket av is, opptil flere kilometer tykk. Verdens kaldeste, tørreste og mest vindfulle sted.',folk:'Bare forskere bor her en periode. Norge har en forskningsstasjon som heter Troll.'}};
+const K=Object.keys(C);
+let sel=null,game=null,score=0,tries=0;
+function drawMap(){let s=`<rect class="sea" x="0" y="0" width="380" height="225" rx="8"/><line x1="0" y1="118" x2="380" y2="118" stroke="var(--muted)" stroke-dasharray="4 4" opacity=".5"/><text x="374" y="114" text-anchor="end" font-size="10" fill="var(--muted)">ekvator</text>`;
+  K.forEach(k=>{s+=`<path class="land${sel===k?' on':''}" data-k="${k}" d="${C[k].d}" tabindex="0" role="button" aria-label="${C[k].n}"/>`;});
+  if(!game)K.forEach(k=>s+=`<text x="${C[k].lx}" y="${C[k].ly}" text-anchor="middle" font-size="${k==='an'?9:10.5}" font-weight="700" fill="var(--ink)" pointer-events="none">${C[k].n}</text>`);
+  $('#map').innerHTML=s;
+  $('#map').querySelectorAll('.land').forEach(p=>{const go=()=>tap(p.dataset.k,p);p.addEventListener('click',go);p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});}
+function info(k){const c=C[k];$('#mCard').innerHTML=`<span class="tag">${c.n}</span><p style="margin:0"><b>Folketall:</b> ${c.pop}</p><p style="margin:0"><b>Natur:</b> ${c.nat}</p><p style="margin:0"><b>Folk:</b> ${c.folk}</p>`;}
+const CLUE={na:'Her ligger prærien og Klippefjellene.',sa:'Her ligger Amazonas og Andesfjellene.',eu:'Her ligger Norge og Alpene.',af:'Her ligger Sahara og Nilen.',as:'Her ligger Himalaya og over halvparten av alle mennesker.',oc:'Her ligger Australia og Great Barrier Reef.',an:'Her er det bare is og forskere.'};
+function newGame(){game=pick(K.filter(k=>k!==game));sel=null;drawMap();$('#mCard').innerHTML=`<span class="tag">Kartlek · ${score} av ${tries}</span><p style="margin:0">Trykk på verdensdelen: <b>${CLUE[game]}</b></p><div class="row"><button class="btn" type="button" id="mStop">Avslutt leken</button></div>`;$('#mStop').addEventListener('click',()=>{game=null;drawMap();info(sel||'eu');});}
+function tap(k,p){if(!game){sel=k;drawMap();info(k);return;}
+  tries++;const ok=k===game;if(ok)score++;p.classList.add(ok?'ok':'no');
+  $('#mCard').innerHTML=`<span class="tag">Kartlek · ${score} av ${tries}</span><div class="fb ${ok?'good':'bad'}">${ok?'Riktig! Det er '+C[game].n+'.':'Det var '+C[k].n+'. Riktig svar er '+C[game].n+'.'}</div><div class="row"><button class="btn primary" type="button" id="mNext">Neste</button></div>`;
+  $('#mNext').addEventListener('click',newGame);}
+$('#mGame').addEventListener('click',()=>{score=0;tries=0;newGame();});
+sel='eu';drawMap();info('eu');
+$('#heroFig').innerHTML=`<g transform="translate(0,-2) scale(1)">${K.map(k=>`<path d="${C[k].d}" fill="var(--c2-soft)" stroke="var(--c2)" stroke-width="1.5"/>`).join('')}</g><circle cx="199" cy="44" r="5" fill="var(--accent)"/><text x="206" y="38" font-size="11" font-weight="700" fill="var(--accent)">Norge</text>`;
+
+V.predict($('#p1'),{q:'I hvilken verdensdel bor flest mennesker?',opts:['Afrika','Europa','Asia','Nord-Amerika'],ok:2,expl:'Asia! Omtrent 4,8 milliarder mennesker, mer enn halvparten av alle, bor i Asia. India og Kina har hver over 1,4 milliarder innbyggere.',retry:'Tenk på hvilke land som har flest innbyggere i verden.'});
+
+N.sorter($('#sort1'),{groups:K.filter(k=>k!=='an').map(k=>({id:k,name:C[k].n})),
+  items:[{t:'🏜️ Sahara',g:'af'},{t:'🌊 Nilen',g:'af'},{t:'🌳 Amazonas',g:'sa'},{t:'⛰️ Andesfjellene',g:'sa'},{t:'🏔️ Mount Everest',g:'as'},{t:'🌾 Prærien',g:'na'},{t:'🗻 Klippefjellene',g:'na'},{t:'⛷️ Alpene',g:'eu'},{t:'🐠 Great Barrier Reef',g:'oc'},{t:'🦘 Australias ørken',g:'oc'}],
+  good:'Riktig! Nå vet du hvor noen av de viktigste naturområdene i verden ligger.'});
+
+V.predict($('#q0'),{tag:'Spørsmål 1',q:'Hvorfor bor nesten alle i Egypt langs elva Nilen?',opts:['Fordi det er kaldt andre steder','Fordi resten av landet er ørken, og elva gir vann til mat og jordbruk','Fordi det er forbudt å bo i ørkenen'],ok:1,expl:'Egypt ligger i Sahara. Uten vann kan man ikke dyrke mat. Langs Nilen er jorda fruktbar.',retry:'Hva trenger mennesker for å dyrke mat?'});
+V.predict($('#q1'),{tag:'Spørsmål 2',q:'Hvorfor kan folk bo så langt nord som i Norge, når andre steder like langt nord er nesten tomme?',opts:['Golfstrømmen gir varmt vann og mildt klima','Norge har mange fjell','Det er mye sol om vinteren'],ok:0,expl:'Golfstrømmen fører varmt vann fra Mexicogolfen til kysten vår. Derfor fryser ikke havnene, og vi kan bo, fiske og dyrke mat langt nord.',retry:'Hva gjør havet langs norskekysten varmere?'});
+V.predict($('#q2'),{tag:'Spørsmål 3',q:'Hvorfor er monsunregnet viktig for millioner av mennesker i Sør-Asia?',opts:['Det gir vann til risåkrene','Det gjør det lettere å fly','Det gjør at de slipper å gå på skole'],ok:0,expl:'Monsunen er en vind som gir mye regn om sommeren. Bøndene trenger regnet for å dyrke ris. Kommer det for lite, blir det tørke. Kommer det for mye, blir det flom.',retry:'Hva trenger ris for å vokse?'});
+
+const skills={
+  del:{name:'Verdensdelene',gens:[
+    ()=>{const it=pick([['Sahara','af'],['Amazonas','sa'],['Himalaya','as'],['Alpene','eu'],['Klippefjellene','na'],['Great Barrier Reef','oc'],['Nilen','af'],['Andesfjellene','sa']]);const r=C[it[1]].n;return N.mc(`I hvilken verdensdel ligger <b>${it[0]}</b>?`,r,shuffle(K.filter(k=>k!==it[1]&&k!=='an')).slice(0,3).map(k=>C[k].n),['Tenk på kartet.'],`${it[0]} ligger i ${r}.`);},
+    ()=>N.mc('Hvilken verdensdel har ingen fast bosatte mennesker?','Antarktis',['Oseania','Europa','Sør-Amerika'],['Den er dekket av is.'],'Antarktis. Bare forskere bor der en periode.'),
+    ()=>N.mc('Hvilken verdensdel er størst, og har flest mennesker?','Asia',['Afrika','Nord-Amerika','Europa'],['Kina og India ligger der.'],'Asia er både størst og har flest innbyggere.')]},
+  natur:{name:'Natur og levesett',gens:[
+    ()=>N.mc('Hvorfor bor det få mennesker i store ørkener?','Det er lite vann, og det er vanskelig å dyrke mat',['Det er for mange dyr der','Det er for mange fjell'],['Hva mangler i ørkenen?'],'Vann er nødvendig for jordbruk og liv.'),
+    ()=>N.mc('Hvor bor de fleste mennesker i Australia?','Langs kysten i sørøst',['Midt i ørkenen','På Antarktis'],['Innlandet er tørt.'],'Kysten har mildere klima og mer regn.'),
+    ()=>N.mc('Hva er en viktig grunn til at regnskogen i Amazonas hugges?','For å få plass til kveg og soya',['For å lage snø','Fordi skogen er farlig'],['Hva trenger landbruket?'],'Store områder ryddes til landbruk. Det truer mangfoldet og klimaet.'),
+    ()=>N.mc('Hva er ekvator?','En tenkt linje rundt midten av jorda, der det er varmt hele året',['En elv i Afrika','Et fjell i Asia'],['Se på den stiplede linja på kartet.'],'Ekvator deler jorda i en nordlig og en sørlig halvdel.'),
+    ()=>N.mc('Hva gjør at Norge har mildere klima enn mange andre steder like langt nord?','Golfstrømmen',['Monsunen','Sahara'],['En havstrøm.'],'Golfstrømmen fører varmt vann nordover.')]}
+};
+V.practice($('#practice'),{id:'saf7-verdensdeler',title:'Verdensdelene',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

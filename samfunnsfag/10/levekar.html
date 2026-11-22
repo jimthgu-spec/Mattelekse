@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Levekår i verden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<style>.cmp{display:flex;flex-direction:column;gap:8px}
+.cmp .r{display:grid;grid-template-columns:5.5rem 1fr 3.5rem;gap:8px;align-items:center}
+.cmp .bar{height:18px;border-radius:6px;background:var(--accent)}
+.cmp .v{font-family:var(--f-mono);font-weight:700;text-align:right}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Levekår i verden</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#pyr"><b>2</b>Pyramide</a>
+    <a href="#land"><b>3</b>Sammenlign</a>
+    <a href="#hvorfor"><b>4</b>Forklaringer</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Hvorfor lever folk så ulikt?</h1>
+      <p class="lead">En jente født i Norge i dag kan regne med å bli over 80 år. I noen land er forventet levealder over 20 år lavere. Forskjellene skyldes ikke flaks alene, men geografi, historie og politikk.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En befolkningspyramide"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">I Norge er forventet levealder rundt 83 år.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="pyr"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bygg en befolkningspyramide</h2></div>
+    <p class="sec-lead">En befolkningspyramide viser hvor mange som er i hver aldersgruppe. Endre antall barn per kvinne og hvor god helsen er, og se hvordan formen endrer seg. Prøv også landene.</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="pyrFig" viewBox="0 0 380 300" role="img" aria-label="Befolkningspyramide"></svg></div>
+  <div class="controls"><div id="pyrSl"></div><div class="row" id="pyrPre"></div><div class="card2" id="pyrNote" aria-live="polite"></div></div>
+</div>
+  </div></section>
+
+  <section id="land"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fire land, fire hverdager</h2></div>
+    <p class="sec-lead">Velg hva du vil sammenligne. Tallene er omtrentlige og avrundet.</p>
+<div class="bench">
+  <div class="controls"><div class="chips" id="mBtn"></div><div class="cmp" id="cmp"></div></div>
+  <div class="controls"><div id="q1"></div></div>
+</div>
+  </div></section>
+
+  <section id="hvorfor"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Geografi, historie eller politikk?</h2></div>
+    <p class="sec-lead">Forskjeller i levekår har ulike årsaker. Sorter forklaringene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: sammenligne hvilken betydning politikk, geografi og historie har for levekår, bosetting og befolkningsforhold i ulike regioner i dag. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const AG=['0','5','10','15','20','25','30','35','40','45','50','55','60','65','70','75','80+'];
+function pop(tfr,h){const r=Math.log(tfr/2.05)/28*5*(tfr<2.05?.35:1);let surv=1;const out=[];
+  for(let i=0;i<AG.length;i++){const age=i*5;if(i>0){const d=age<=5?(.25-.22*h):age<60?(.04-.032*h):Math.min(.9,(.18-.12*h)*Math.pow(1.5,(age-60)/5));surv*=1-d;}out.push(surv*Math.exp(-r*i));}
+  const m=Math.max(...out);return out.map(v=>v/m);}
+function drawPyr(tfr,health){const p=pop(tfr,health);const W=380,mid=190,H=16,top=8;let s='';
+  p.forEach((v,i)=>{const y=top+(AG.length-1-i)*H,w=v*150;s+=`<rect x="${fx(mid-6-w)}" y="${y}" width="${fx(w)}" height="${H-3}" rx="2" fill="var(--c2)"/><rect x="${mid+6}" y="${y}" width="${fx(w)}" height="${H-3}" rx="2" fill="var(--c1)"/>`;
+    if(i%2===0)s+=`<text x="${mid}" y="${y+12}" text-anchor="middle" font-size="9" fill="var(--muted)">${AG[i]}</text>`;});
+  s+=`<text x="60" y="${top+AG.length*H+14}" text-anchor="middle" font-size="12" fill="var(--c2)" font-weight="700">Menn</text><text x="320" y="${top+AG.length*H+14}" text-anchor="middle" font-size="12" fill="var(--c1)" font-weight="700">Kvinner</text><text x="${mid}" y="${top+AG.length*H+14}" text-anchor="middle" font-size="10" fill="var(--muted)">alder</text>`;
+  return s;}
+let sT=null,sH=null;
+const upd=()=>{if(!sT||!sH)return;const t=sT.value,h=sH.value;$('#pyrFig').innerHTML=drawPyr(t,h);
+  const shape=t>=4?'<b>Pyramideform</b>: mange barn og unge, få eldre. Typisk for land der mange er fattige, og der barn er viktige for å hjelpe familien. Befolkningen vokser raskt, og det trengs mange nye skoler.':t<1.8&&h>.6?'<b>Urneform</b>: få barn, mange eldre. Typisk for rike land. Færre i arbeid skal betale for pensjon og omsorg til mange eldre.':'<b>Søyleform</b>: omtrent like mange i hver aldersgruppe. Befolkningen er ganske stabil.';
+  $('#pyrNote').innerHTML=`<span class="tag">Formen</span><p style="margin:0">${shape}</p>`;};
+sT=N.slider($('#pyrSl'),{id:'tfr',label:'Barn per kvinne',min:1,max:7,step:.1,value:1.4,fmt:v=>V.nf(v,1),on:upd});
+sH=N.slider($('#pyrSl'),{id:'hel',label:'Helse og levekår',min:0,max:1,step:.05,value:.9,fmt:v=>v<.35?'dårlig':v<.7?'middels':'god',on:upd});
+const PRE=[['🇳🇴 Norge',1.4,.92],['🇳🇪 Niger',6.5,.15],['🇯🇵 Japan',1.2,1],['🇧🇷 Brasil',1.6,.65]];
+$('#pyrPre').innerHTML=PRE.map((p,i)=>`<button type="button" class="btn" data-i="${i}">${p[0]}</button>`).join('');
+$('#pyrPre').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const p=PRE[+b.dataset.i];sT.value=p[1];sH.value=p[2];}));
+upd();
+$('#heroFig').innerHTML=`<g transform="translate(0,-6) scale(1,.75)">${drawPyr(5,.2)}</g>`;
+
+V.predict($('#p1'),{q:'Hva tror du forventet levealder er i Niger, et av verdens fattigste land?',opts:['Rundt 80 år','Rundt 62 år','Rundt 40 år'],ok:1,expl:'Rundt 62 år, altså over 20 år kortere enn i Norge. Mange barn dør før de fyller fem år, av sykdommer som lett kan behandles i Norge.',retry:'Det er lavere enn i Norge, men det har økt mye de siste tiårene.'});
+
+const LAND=[['🇳🇴 Norge'],['🇳🇪 Niger'],['🇯🇵 Japan'],['🇧🇷 Brasil']];
+const M={leve:{n:'Forventet levealder',u:'år',v:[83,62,84,76],max:90},barn:{n:'Barn per kvinne',u:'',v:[1.4,6.5,1.2,1.6],max:7},by:{n:'Andel som bor i byer',u:'%',v:[83,17,92,88],max:100},skole:{n:'År på skole (snitt, voksne)',u:'år',v:[13,2,13,8],max:14}};
+$('#mBtn').innerHTML=Object.entries(M).map(([k,m])=>`<button type="button" class="chip" data-k="${k}">${m.n}</button>`).join('');
+const cmp=k=>{const m=M[k];$('#mBtn').querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
+  $('#cmp').innerHTML=LAND.map((l,i)=>`<div class="r"><span>${l[0]}</span><div class="bar" style="width:${m.v[i]/m.max*100}%"></div><span class="v">${V.nf(m.v[i],1)}${m.u?' '+m.u:''}</span></div>`).join('');};
+$('#mBtn').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>cmp(b.dataset.k)));cmp('leve');
+V.predict($('#q1'),{tag:'Tenk etter',q:'I Brasil bor nesten ni av ti i byer, men mange bor i slumområder (favelaer). Hva viser det?',opts:['At alle som bor i byer, har det bra','At bosetting i byer ikke alene sier noe om levekår, fordi forskjellene innad i et land kan være store','At Brasil er like rikt som Japan'],ok:1,expl:'Brasil har både svært rike og svært fattige. Historien med slaveri og store jordeiendommer, og politikk som har fordelt ulikt, har gitt store forskjeller.',retry:'Er alle i en by like rike?'});
+
+N.sorter($('#sort1'),{groups:[{id:'g',name:'Geografi'},{id:'h',name:'Historie'},{id:'p',name:'Politikk'}],
+  items:[{t:'Landet ligger i Sahel, og tørke ødelegger avlingene.',g:'g'},{t:'Landet har kyst og gode havner som gir handel.',g:'g'},{t:'Det ble funnet olje på havbunnen.',g:'g'},
+    {t:'Kolonimakter trakk grenser og tok ut ressursene.',g:'h'},{t:'Apartheid ga svarte dårligere skoler i generasjoner.',g:'h'},{t:'Landet ble ødelagt av krig for 30 år siden.',g:'h'},
+    {t:'Staten tilbyr gratis skole og helsehjelp til alle.',g:'p'},{t:'Korrupsjon gjør at pengene ikke når frem.',g:'p'},{t:'Oljeinntektene spares i et fond for fremtiden.',g:'p',why:'Oljen er geografi, men å spare pengene i Oljefondet er et politisk valg.'}],
+  good:'Riktig! Ofte virker alle tre sammen. Norge har olje (geografi), men det var politiske valg som gjorde at inntektene kom alle til gode.'});
+
+const skills={
+  pyr:{name:'Befolkningspyramider',gens:[
+    ()=>N.mc('En pyramide er bred nederst og smal øverst. Hva betyr det?','Mange barn og unge, få eldre',['Mange eldre, få barn','Like mange i alle aldre'],['Nederst er de yngste.'],'Det er typisk for land med høye fødselstall og kortere levetid.'),
+    ()=>N.mc('Hvilken utfordring har land med mange eldre og få barn?','Færre i arbeid skal betale for pensjon og omsorg til mange',['For mange skoler','For mange barnehager'],['Hvem jobber, og hvem trenger hjelp?'],'Dette kalles ofte eldrebølgen. Norge og Japan har denne utfordringen.'),
+    ()=>N.mc('Hvorfor får familier i fattige land ofte mange barn?','Barn hjelper til med arbeid, tar vare på foreldrene når de blir gamle, og mange barn dør unge',['Fordi de liker store familier mer enn andre','Fordi det er påbudt'],['Det handler om trygghet.'],'Når helse, skole og pensjon blir bedre, synker fødselstallene.')]},
+  land:{name:'Sammenlign land',gens:[
+    ()=>{const k=pick(Object.keys(M)),m=M[k],i=R(0,3);return N.mc(`Hvilket land har høyest «${m.n.toLowerCase()}» av disse?`,LAND[m.v.indexOf(Math.max(...m.v))][0].slice(5),LAND.map(l=>l[0].slice(5)).filter(n=>n!==LAND[m.v.indexOf(Math.max(...m.v))][0].slice(5)),['Se på sammenligningen.'],`${LAND[m.v.indexOf(Math.max(...m.v))][0].slice(5)} har høyest.`);},
+    ()=>{const d=pick([[83,62],[84,62],[76,62]]);return{prompt:`Forventet levealder er <b>${d[0]} år</b> i ett land og <b>${d[1]} år</b> i et annet. Hvor stor er forskjellen?`,ans:d[0]-d[1],unit:'år',hints:['Trekk fra.'],sol:`${d[0]} − ${d[1]} = <b>${d[0]-d[1]} år</b>`};}]},
+  aarsak:{name:'Geografi, historie og politikk',gens:[
+    ()=>{const x=pick([['Tørke og ørken','Geografi'],['Kolonitiden','Historie'],['Gratis skole for alle','Politikk'],['Korrupsjon','Politikk'],['Fruktbar jord langs en elv','Geografi'],['Borgerkrig for 20 år siden','Historie']]);return N.mc(`Er «${x[0].toLowerCase()}» en forklaring knyttet til geografi, historie eller politikk?`,x[1],['Geografi','Historie','Politikk'].filter(y=>y!==x[1]),['Natur, fortid eller valg som tas i dag?'],`${x[1]}.`);},
+    ()=>N.mc('Hva er <b>levekår</b>?','Forholdene folk lever under, som helse, utdanning, bolig og inntekt',['Hvor lenge man har levd','Hvilket land man liker'],['Kår = forhold.'],'Levekår måles ofte med levealder, utdanning og inntekt.')]}
+};
+V.practice($('#practice'),{id:'saf10-levekar',title:'Levekår i verden',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

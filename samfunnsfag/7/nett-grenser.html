@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nett og grenser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style></style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Nett og grenser</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#chat"><b>2</b>Gruppechatten</a>
+    <a href="#dele"><b>3</b>Dele?</a>
+    <a href="#film"><b>4</b>Film</a>
+    <a href="#id"><b>5</b>Identitet</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Dømmekraft på nett og i livet</h1>
+      <p class="lead">På nettet kan én melding nå hele skolen på et sekund. Både på nett og ellers gjelder de samme reglene: Behandle andre slik du vil bli behandlet selv, og respekter grensene til andre. Du har også rett til dine egne grenser.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En mobil med en chat og et stoppskilt"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Snapchat, TikTok og Instagram har en aldersgrense i vilkårene sine.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="chat"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Hva gjør du i gruppechatten?</h2></div>
+    <p class="sec-lead">Du er med i klassechatten. Plutselig skjer dette. Prøv ulike valg og se konsekvensene.</p>
+<div id="scen1"></div>
+  </div></section>
+
+  <section id="dele"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Dele, spørre først eller ikke dele?</h2></div>
+    <p class="sec-lead">Noe er greit å dele. Noe må du spørre om lov til først. Og noe skal du aldri dele. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Stopp betyr stopp</h2></div>
+    <p class="sec-lead">Jonas og Emma tuller i friminuttet. Se hva som skjer.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="id"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Hvem er du?</h2></div>
+    <p class="sec-lead">Alle har rett til å være seg selv. Trykk på kortene og lær hva ordene betyr.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+<div class="warnbox" style="margin-top:14px">Har noen gått over grensene dine, på nett eller i virkeligheten? Si det til en voksen du stoler på. Du kan også ringe eller chatte anonymt med <b>Alarmtelefonen for barn og unge, 116 111</b>, eller gå inn på <b>ung.no</b>. Det er aldri din feil.</div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: reflektere over egen og andres deltakelse i digitalt samspill og drøfte dømmekraft ut fra regler, normer og grenser, og reflektere over identitet, seksuell orientering, kjønnsuttrykk og grenser for kropp og følelser. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=S.phone(40,14,130,196,`<rect x="10" y="20" width="80" height="22" rx="10" fill="var(--paper)"/><text x="16" y="35" font-size="11" fill="var(--ink)">Haha se her 😂</text><rect x="36" y="50" width="80" height="22" rx="10" fill="var(--c2-soft)"/><text x="42" y="65" font-size="11" fill="var(--ink)">Ikke del det!</text>`)+`<polygon points="250,40 300,40 335,75 335,125 300,160 250,160 215,125 215,75" fill="#c8102e"/><text x="275" y="108" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">STOPP</text>`;
+
+V.predict($('#p1'),{q:'Hva er aldersgrensen i vilkårene til Snapchat, TikTok og Instagram?',opts:['10 år','13 år','18 år'],ok:1,expl:'13 år. Det er fordi selskapene samler inn opplysninger om brukerne, og fordi innhold og kontakt med fremmede kan være vanskelig for barn. Mange under 13 bruker dem likevel, så det er viktig å kunne reglene og normene som gjelder.',retry:'Det er ikke 18, men heller ikke helt for barn.'});
+
+S.scenario($('#scen1'),{start:'a',nodes:{
+  a:{ava:'📱',who:'Klassechatten',text:'Martin legger ut et bilde av Sofie som sovner på bussen, med teksten «Hahaha se på henne 😂😂». Ti stykker reagerer med latter.',choices:[
+    {t:'Reagere med 😂 du også, alle andre gjør det.',tone:'bad',go:'b',cons:'Du var med på å spre bildet. Sofie ser at også du lo. Det føles som om hele klassen er mot henne.'},
+    {t:'Ikke gjøre noe.',tone:'mid',go:'b',cons:'Du deltok ikke, men bildet ligger der fortsatt. Den som er stille, kan virke enig.'},
+    {t:'Skrive: «Slett det, det er ikke greit å legge ut bilder av folk uten lov.»',tone:'good',go:'c',cons:'Du sa ifra. Det krever mot. Det er faktisk ulovlig å dele bilder av andre uten samtykke når bildet kan krenke dem.'}]},
+  b:{ava:'😢',who:'Sofie (melding til deg)',text:'Så du bildet? Jeg skammer meg sånn. Jeg vil ikke gå på skolen i morgen.',choices:[
+    {t:'«Slapp av, det var jo bare tull.»',tone:'bad',cons:'For Sofie er det ikke tull. Det som er morsomt for noen, kan være vondt for andre. Det er den som blir krenket, som bestemmer om det var greit.'},
+    {t:'«Det var ikke greit av Martin. Vil du at vi sier ifra til læreren sammen?»',tone:'good',go:'c',cons:'Du viser at du bryr deg, og at hun ikke er alene. Skolen har plikt til å hjelpe når elever ikke har det trygt.'}]},
+  c:{ava:'🧑‍🏫',who:'Læreren',text:'Takk for at dere sa ifra. Martin har slettet bildet og beklaget. I morgen snakker vi i klassen om hvilke regler vi skal ha i chatten.',choices:[
+    {t:'Foreslå en regel: «Vi legger aldri ut bilder av andre uten å spørre.»',tone:'good',cons:'Bra! Regler som klassen lager sammen, blir lettere å følge. Det er en <b>norm</b>: en uskrevet regel for hvordan vi oppfører oss.'}]}}});
+
+N.sorter($('#sort1'),{groups:[{id:'d',name:'Greit å dele'},{id:'s',name:'Spør først'},{id:'i',name:'Aldri del'}],
+  items:[{t:'🎨 En tegning du har laget',g:'d'},{t:'🌅 Bilde av en solnedgang',g:'d'},{t:'📸 Bilde av en venn',g:'s'},{t:'🎥 Video fra bursdagen der andre er med',g:'s'},{t:'🔑 Passordet ditt',g:'i'},{t:'🏠 Adressen og telefonnummeret ditt til en fremmed',g:'i'},{t:'😳 Et pinlig bilde av en klassekamerat',g:'i',why:'Bilder som kan krenke andre, skal ikke deles, selv om du synes de er morsomme.'},{t:'🔞 Nakenbilder',g:'i',why:'Det er straffbart å dele nakenbilder av noen under 18 år, også av seg selv. Får du et slikt bilde, si det til en voksen, og ikke del det videre.'}],
+  good:'Riktig! En god regel er: Ikke del noe om andre som du ikke ville likt at noen delte om deg. Og husk at det du legger ut på nett, kan bli liggende for alltid.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const jonas=(o={})=>person(170,GY,84,Object.assign({shirt:1,skin:0,hair:1},o)),emma=(o={})=>person(230,GY,80,Object.assign({shirt:4,skin:2,hair:2,flip:true},o));
+  S.film('#film1',{title:'Stopp betyr stopp',real:'Friminutt',size:[400,250],end:{text:'Lær om identitet ↓',href:'#id'},poster:'Det er moro å kile, helt til det ikke er det lenger.',
+    scenes:[
+      {dur:3600,text:'Jonas og Emma tuller og ler. Jonas begynner å kile Emma.',draw:p=>S.bg.skole()+jonas({armL:lerp(40,80,(Math.sin(p*20)+1)/2)})+emma({armL:140})+bubble(230,GY-88,'Hahaha!',{opacity:seg(p,.1,.3)})},
+      {dur:3800,text:'Emma slutter å le. – Stopp, nå er det nok! Men Jonas fortsetter litt til.',draw:p=>S.bg.skole()+jonas({armL:70})+emma({armL:-40})+bubble(230,GY-88,'Stopp!',{opacity:seg(p,0,.2)})},
+      {dur:1200,text:'Emma har sagt stopp.',draw:()=>S.bg.skole()+jonas({armL:70})+emma({armL:-40}),
+        ask:{q:'Hva bør Jonas gjøre?',opts:['Fortsette, de tullet jo','Stoppe med en gang, og spørre om det går bra','Le og si at hun er sur'],ok:1,why:'Når noen sier stopp, eller viser at de ikke vil, skal du stoppe med en gang. Det gjelder også selv om det var gøy for litt siden.',wrong:{0:'Det som var greit i stad, er ikke greit lenger når Emma sier stopp.',2:'Da overser han grensene hennes.'}}},
+      {dur:4200,text:'Jonas stopper. – Sorry, jeg skjønte ikke at det ble for mye. Går det bra? Emma nikker. – Takk for at du stoppet.',draw:p=>S.bg.skole()+person(140,GY,84,{shirt:1,skin:0,hair:1})+emma()+bubble(140,GY-92,'Sorry! Går det bra?',{opacity:seg(p,0,.3)})},
+      {dur:3800,text:'Alle har rett til å bestemme over sin egen kropp. Din grense er like viktig som andres, og den kan endre seg underveis.',draw:p=>S.bg.skole()+person(140,GY,84,{shirt:1,skin:0,hair:1,armL:140})+emma({armL:140})}]});}
+
+S.flip($('#flip1'),[
+  {front:'<b>🪞 Identitet</b>Hva betyr det?',back:'<b>Identitet</b>Hvem du er og opplever at du er: interesser, familie, kultur, språk, kjønn og mye mer. Identiteten endrer seg gjennom livet.'},
+  {front:'<b>💞 Seksuell orientering</b>Hva betyr det?',back:'<b>Seksuell orientering</b>Hvem du blir forelsket i. Heterofile blir forelsket i noen av motsatt kjønn, homofile i noen av samme kjønn, og bifile i begge.'},
+  {front:'<b>👕 Kjønnsuttrykk</b>Hva betyr det?',back:'<b>Kjønnsuttrykk</b>Hvordan du viser kjønn, for eksempel med klær, hår og måten du er på. Det finnes mange måter å være gutt, jente eller noe annet på.'},
+  {front:'<b>🛑 Grenser</b>Hva betyr det?',back:'<b>Grenser</b>Hva som føles greit for deg når det gjelder kropp, følelser og nærhet. Det er bare du som bestemmer dine grenser.'}]);
+V.predict($('#p2'),{tag:'Tenk etter',q:'Ali går med neglelakk. Noen i klassen sier at «gutter ikke kan gå med neglelakk». Hva er riktig?',opts:['Ali må slutte','Det er Alis kjønnsuttrykk, og han har rett til å være seg selv uten å bli mobbet','Neglelakk er forbudt for gutter'],ok:1,expl:'Det finnes ingen regel for hvordan gutter eller jenter skal se ut. Det er forbudt å diskriminere noen på grunn av kjønnsuttrykk eller seksuell orientering.',retry:'Hvem bestemmer hvordan Ali skal se ut?'});
+
+const skills={
+  nett:{name:'Dømmekraft på nett',gens:[
+    ()=>N.mc('Hva må du gjøre før du legger ut et bilde av en venn?','Spørre om lov',['Ingenting','Legge til et filter'],['Vennen bestemmer over sitt eget bilde.'],'Du må ha samtykke, altså lov, fra dem som er på bildet.'),
+    ()=>N.mc('Hva er en <b>norm</b>?','En uskrevet regel for hvordan vi oppfører oss',['En lov fra Stortinget','En app'],['Uskrevet.'],'Normer er forventninger i et fellesskap, for eksempel at man svarer når noen hilser.'),
+    ()=>N.mc('Noen du ikke kjenner, ber deg om bilder på chat. Hva gjør du?','Svarer ikke, blokkerer og forteller det til en voksen',['Sender et bilde for å være snill','Gir adressen din'],['Du vet ikke hvem det er.'],'Fremmede på nett kan lyve om hvem de er. Si alltid ifra til en voksen.'),
+    ()=>N.mc('Hvem bestemmer om noe var «bare tull» eller krenkende?','Den som ble rammet',['Den som gjorde det','De som lo'],['Hvem kjenner følelsen?'],'Det er den som opplever det, som kan si hvordan det føltes.'),
+    ()=>N.mc('Hva er lurt å tenke før du poster noe?','Ville jeg vært ok med at alle, også om ti år, så dette?',['Får jeg mange likes?','Er det morsomt akkurat nå?'],['Nettet glemmer sent.'],'Det du legger ut, kan lagres, deles og dukke opp mange år senere.')]},
+  grense:{name:'Grenser og identitet',gens:[
+    ()=>N.mc('Noen sier «stopp» mens dere tuller. Hva gjør du?','Stopper med en gang',['Fortsetter litt','Ler'],['Stopp betyr...'],'Stopp betyr stopp, uansett hvor gøy det var før.'),
+    ()=>N.mc('Hva betyr <b>seksuell orientering</b>?','Hvem man blir forelsket i',['Hvilke klær man liker','Hvor man bor'],['Forelskelse.'],'Heterofil, homofil og bifil er eksempler på seksuell orientering.'),
+    ()=>N.mc('Hva betyr <b>kjønnsuttrykk</b>?','Hvordan man viser kjønn, for eksempel med klær og hår',['Hvor gammel man er','Hvem man blir forelsket i'],['Uttrykk = hvordan det vises.'],'Kjønnsuttrykk handler om stil og væremåte.'),
+    ()=>N.mc('Hvem kan du kontakte hvis noen har gått over grensene dine?','En voksen du stoler på, eller Alarmtelefonen 116 111',['Ingen, det må du holde for deg selv','Den som gjorde det, og ingen andre'],['Du skal ikke være alene med det.'],'Det er aldri din feil. Voksne skal hjelpe deg.'),
+    ()=>N.mc('Kan grensene dine endre seg?','Ja, noe kan være greit en dag og ikke en annen',['Nei, de er alltid like','Bare voksne har grenser'],['Tenk på kilingen.'],'Grenser kan endre seg, og du kan alltid si stopp.')]}
+};
+V.practice($('#practice'),{id:'saf7-nett-grenser',title:'Nett og grenser',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Makt og politikk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<style>.parties{display:flex;flex-direction:column;gap:4px}
+.coal{display:flex;flex-wrap:wrap;gap:6px}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Makt og politikk</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#makt"><b>2</b>Maktfordeling</a>
+    <a href="#valg"><b>3</b>Valg</a>
+    <a href="#aktor"><b>4</b>Aktører</a>
+    <a href="#velferd"><b>5</b>Velferd</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Hvem har makta i Norge?</h1>
+      <p class="lead">Stortinget vedtar lovene, regjeringen styrer landet, og domstolene dømmer. Men også medier, organisasjoner, bedrifter og vanlige folk har makt. Lag ditt eget valg, fordel plassene på Stortinget og prøv å danne en regjering.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Stortingssalen sett ovenfra"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Norge er et representativt demokrati med tre statsmakter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="makt"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Tre statsmakter</h2></div>
+    <p class="sec-lead">Makta er delt i tre, slik at ingen skal få for mye. Dra hver oppgave til riktig statsmakt.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="valg"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Lag et stortingsvalg</h2></div>
+    <p class="sec-lead">Fem tenkte partier stiller til valg. Endre hvor mange prosent av stemmene de får, og se hvordan de 169 plassene fordeles. Velg så partier til en regjering. Har de flertall (85 plasser)?</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="sal" viewBox="0 0 380 210" role="img" aria-label="Stortingssalen med plasser fordelt på partier"></svg><div class="card2" id="coalCard" aria-live="polite"></div></div>
+  <div class="controls"><div class="parties" id="parties"></div><b>Velg regjeringspartier</b><div class="coal" id="coal"></div></div>
+</div>
+  </div></section>
+
+  <section id="aktor"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Makt utenfor Stortinget</h2></div>
+    <p class="sec-lead">Mange prøver å påvirke politikken. Trykk på kortene og se hvordan de får makt og begrunner standpunktene sine.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="velferd"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Velferdsstaten og utfordringene</h2></div>
+    <p class="sec-lead">Velferdsstaten betyr at fellesskapet sørger for at alle får skole, helsehjelp og inntekt hvis de blir syke, arbeidsledige eller gamle. Den betales med skatt. Svar på spørsmålene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="v0"></div><div id="v1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: reflektere over hvem som har makt i samfunnet og hvordan de begrunner standpunktene sine, og beskrive trekk ved det politiske systemet og velferdssamfunnet i Norge og reflektere over sentrale utfordringer. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const PT=[{n:'Grønt framtid',c:'#2f8f46',v:9},{n:'Velferdspartiet',c:'#c0392b',v:27},{n:'Bygdelista',c:'#c79a00',v:13},{n:'Næringspartiet',c:'#2f5fb3',v:24},{n:'Tryggpartiet',c:'#6b4fa0',v:18},{n:'Andre små',c:'#8a8f98',v:9,small:true}];
+/* Sainte-Laguës metode, første deler 1,4 (forenklet: hele landet som én valgkrets, ingen sperregrense) */
+function seats(){const q=[];PT.forEach((p,i)=>{if(p.small)return;[1.4,...Array.from({length:170},(_,k)=>2*k+3)].forEach(d=>q.push([p.v/d,i]));});q.sort((a,b)=>b[0]-a[0]);const s=PT.map(()=>0);for(let k=0;k<169;k++)s[q[k][1]]++;return s;}
+function salSvg(s,coal){let out='',k=0;const rows=[[34,20],[48,28],[62,34],[76,40],[90,47]];const seatsList=[];s.forEach((n,i)=>{for(let j=0;j<n;j++)seatsList.push(i);});
+  const pos=[];rows.forEach(([r,n])=>{for(let j=0;j<n;j++){const a=Math.PI-(j+.5)/n*Math.PI;pos.push([a,r]);}});pos.sort((x,y)=>y[0]-x[0]);
+  pos.forEach((p,j)=>{const i=seatsList[j];if(i==null)return;const x=190+Math.cos(p[0])*p[1]*1.9,y=190-Math.sin(p[0])*p[1]*1.9;out+=`<circle cx="${fx(x)}" cy="${fx(y)}" r="3.6" fill="${PT[i].c}" opacity="${coal&&coal.size&&!coal.has(i)?.25:1}"/>`;});
+  return out+`<text x="190" y="186" text-anchor="middle" font-size="22" font-weight="800" fill="var(--ink)">169</text><text x="190" y="202" text-anchor="middle" font-size="11" fill="var(--muted)">plasser</text>`;}
+const coal=new Set();let S0=seats();
+$('#heroFig').innerHTML=salSvg(S0);
+function partiesUI(){$('#parties').innerHTML='';PT.forEach((p,i)=>{if(p.small)return;N.slider($('#parties'),{id:'pt'+i,label:`<span style="color:${p.c}">●</span> ${p.n}`,min:0,max:40,step:1,value:p.v,fmt:v=>v+' %',on:v=>{p.v=v;redraw();}});});}
+function redraw(){const tot=PT.filter(p=>!p.small).reduce((a,p)=>a+p.v,0);PT[5].v=Math.max(0,100-tot);S0=seats();$('#sal').innerHTML=salSvg(S0,coal);
+  $('#coal').innerHTML=PT.map((p,i)=>p.small?'':`<button type="button" class="chip${coal.has(i)?' on':''}" data-i="${i}"><span style="color:${p.c}">●</span> ${p.n} (${S0[i]})</button>`).join('');
+  $('#coal').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i;coal.has(i)?coal.delete(i):coal.add(i);redraw();}));
+  const sum=[...coal].reduce((a,i)=>a+S0[i],0);
+  $('#coalCard').innerHTML=tot>100?`<b>Prosentene blir over 100.</b> Skru ned noen partier.`:!coal.size?`Andre små partier har ${PT[5].v} % til sammen, men får ingen plasser i denne forenklede modellen. Velg partier for å danne regjering.`:
+    sum>=85?`<b>${sum} plasser: flertall!</b> Regjeringen kan få vedtatt forslagene sine, men partiene må bli enige seg imellom. Det krever kompromisser.`:`<b>${sum} plasser: mindretallsregjering.</b> Den må få støtte fra andre partier i hver sak. Det er vanlig i Norge.`;}
+partiesUI();redraw();
+
+V.predict($('#p1'),{q:'Hvem vedtar lovene i Norge?',opts:['Regjeringen','Stortinget','Kongen'],ok:1,expl:'Stortinget er den <b>lovgivende</b> makta. Regjeringen er den <b>utøvende</b>: den legger frem forslag og sørger for at lovene blir fulgt. Domstolene er den <b>dømmende</b>. Kongen har ingen politisk makt i praksis.',retry:'Hvem velger vi ved stortingsvalg?'});
+
+N.sorter($('#sort1'),{groups:[{id:'s',name:'Stortinget (lovgivende)'},{id:'r',name:'Regjeringen (utøvende)'},{id:'d',name:'Domstolene (dømmende)'}],
+  items:[{t:'Vedtar nye lover',g:'s'},{t:'Vedtar statsbudsjettet',g:'s'},{t:'Kontrollerer regjeringen',g:'s'},{t:'Legger frem lovforslag',g:'r'},{t:'Styrer departementene',g:'r'},{t:'Gjennomfører det Stortinget har vedtatt',g:'r'},{t:'Dømmer i straffesaker',g:'d'},{t:'Avgjør tvister mellom folk',g:'d'},{t:'Kan si at en lov bryter Grunnloven',g:'d',why:'Høyesterett kan prøve om lover er i strid med Grunnloven. Det kalles prøvingsrett.'}],
+  good:'Riktig! Dette er <b>maktfordelingsprinsippet</b> fra Grunnloven. De tre statsmaktene kontrollerer hverandre.'});
+
+S.flip($('#flip1'),[
+  {front:'<b>📰 Mediene</b>Den fjerde statsmakt',back:'<b>Mediene</b>Avslører maktmisbruk og bestemmer hvilke saker folk snakker om. Begrunner det med at folk har rett til å vite.'},
+  {front:'<b>🤝 Fagforeninger og arbeidsgivere</b>For eksempel LO og NHO',back:'<b>Organisasjoner i arbeidslivet</b>Forhandler om lønn for hundretusener og blir hørt av regjeringen. Begrunner med medlemmenes interesser.'},
+  {front:'<b>🌱 Interesseorganisasjoner</b>For eksempel miljø- og pasientorganisasjoner',back:'<b>Interesseorganisasjoner</b>Lager kampanjer, demonstrerer og går til retten. Begrunner med verdier og fakta om saken sin.'},
+  {front:'<b>🏢 Store bedrifter</b>Lobbyvirksomhet',back:'<b>Store bedrifter</b>Har penger, arbeidsplasser og ekspertise. Møter politikere for å påvirke (lobbyvirksomhet). Begrunner ofte med arbeidsplasser og verdiskaping.'},
+  {front:'<b>📱 Influensere og grasrota</b>Vanlige folk',back:'<b>Grasrota</b>Underskriftskampanjer og sosiale medier kan sette saker på dagsorden på kort tid. Begrunner ofte med personlige historier.'}]);
+V.predict($('#p2'),{tag:'Kildekritikk',q:'Et selskap som selger energidrikk, sier at aldersgrense på energidrikk er unødvendig. Hva bør du tenke?',opts:['De vet best, fordi de lager drikken','De kan ha gode argumenter, men de har også en økonomisk interesse. Sjekk hva uavhengige kilder sier','De lyver alltid'],ok:1,expl:'Når du vurderer et standpunkt, spør: Hvem sier det, og hva tjener de på det? Det betyr ikke at de tar feil, men at du må sjekke.',retry:'Hvem tjener på at det ikke blir aldersgrense?'});
+
+V.predict($('#v0'),{tag:'Spørsmål 1',q:'Hvorfor er det en utfordring for velferdsstaten at vi lever lenger og får færre barn?',opts:['Det er ingen utfordring','Færre i arbeid skal betale skatt til pensjon og omsorg for flere eldre','Eldre betaler mer skatt enn unge'],ok:1,expl:'Dette kalles ofte eldrebølgen. Mot 2060 kan det bli rundt halvparten så mange i arbeidsfør alder per pensjonist som for 50 år siden. Løsninger som diskuteres: at flere jobber, jobber lenger, mer bruk av teknologi, og bruk av Oljefondet.',retry:'Hvem betaler mest skatt?'});
+V.predict($('#v1'),{tag:'Spørsmål 2',q:'Hva er en annen viktig utfordring for velferdsstaten?',opts:['At mange unge står utenfor jobb og skole','At det er for mange skoler','At skatten er for lav for de rike'],ok:0,expl:'Hvis mange faller ut av skole og arbeid, blir det færre som bidrar, og flere som trenger hjelp. Derfor er det et viktig politisk mål at flest mulig fullfører skolen og får jobb. Partiene er uenige om hvordan.',retry:'Hva trenger velferdsstaten for å kunne betales?'});
+
+const skills={
+  system:{name:'Det politiske systemet',gens:[
+    ()=>{const x=pick([['Vedtar lover','Stortinget'],['Dømmer i straffesaker','Domstolene'],['Legger frem statsbudsjettet','Regjeringen'],['Vedtar statsbudsjettet','Stortinget'],['Styrer departementene','Regjeringen']]);return N.mc(`Hvem gjør dette? <b>${x[0]}</b>`,x[1],['Stortinget','Regjeringen','Domstolene'].filter(y=>y!==x[1]),['Lovgivende, utøvende eller dømmende?'],`${x[1]}.`);},
+    ()=>N.mc('Hvor mange representanter har Stortinget?','169',['100','150','200'],['Litt under 170.'],'169 representanter velges hvert fjerde år.'),
+    ()=>N.mc('Hvor mange plasser trengs for flertall på Stortinget?','85',['50','100','169'],['Mer enn halvparten av 169.'],'85 av 169 er flertall.'),
+    ()=>N.mc('Hva er en <b>mindretallsregjering</b>?','En regjering der partiene har under halvparten av plassene på Stortinget',['En regjering med få statsråder','En regjering for barn'],['Mindre enn 85.'],'Den må samarbeide med andre partier for å få flertall i hver sak.'),
+    ()=>N.mc('Hvor ofte er det stortingsvalg?','Hvert fjerde år',['Hvert år','Hvert tiende år'],['Samme som kommunevalg, men forskjøvet.'],'Stortingsvalg og kommunevalg har to års mellomrom.')]},
+  makt:{name:'Makt og påvirkning',gens:[
+    ()=>N.mc('Hvorfor kalles mediene den <b>fjerde statsmakt</b>?','Fordi de kontrollerer de tre andre statsmaktene ved å avsløre og informere',['Fordi de vedtar lover','Fordi de eies av staten'],['Kontroll.'],'Frie medier er viktige i et demokrati.'),
+    ()=>N.mc('Hva er <b>lobbyvirksomhet</b>?','Å prøve å påvirke politikere direkte, for eksempel i møter',['Å vente i en lobby','Å stemme ved valg'],['Påvirkning bak kulissene.'],'Bedrifter og organisasjoner driver lobbyvirksomhet.'),
+    ()=>N.mc('Hva bør du spørre om når en aktør argumenterer for et standpunkt?','Hvilke interesser har de, og hvilke fakta bygger de på?',['Hvor kjent er de?','Hvor mange følgere har de?'],['Hvem tjener på det?'],'Interesser og belegg sier noe om hvor mye du kan stole på argumentet.')]},
+  velferd:{name:'Velferdsstaten',gens:[
+    ()=>N.mc('Hvordan betales velferdsstaten?','Med skatter og avgifter',['Med reklame','Med lotteri'],['Fellesskapet.'],'Alle bidrar etter evne, og får hjelp etter behov.'),
+    ()=>N.mc('Hva er et eksempel på velferd?','Gratis skole og sykehus',['Fri parkering','Gratis mobiltelefon'],['Fellesgoder.'],'Pensjon, sykepenger og barnetrygd er også velferd.'),
+    ()=>N.mc('Hva er <b>eldrebølgen</b>?','At andelen eldre i befolkningen øker',['At eldre surfer mer','En storm'],['Flere eldre.'],'Det gir økte utgifter til pensjon og omsorg.')]}
+};
+V.practice($('#practice'),{id:'saf10-makt',title:'Makt og politikk',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

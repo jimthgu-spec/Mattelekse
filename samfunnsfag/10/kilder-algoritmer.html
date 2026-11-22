@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kilder og algoritmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<style>.post .act{display:flex;gap:6px;margin-top:6px}
+.post.liked{border-color:var(--accent);background:var(--accent-soft)}
+.quote{border-left:4px solid var(--line);padding:6px 12px;font-style:italic;background:var(--paper);border-radius:4px}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Kilder og algoritmer</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#boble"><b>2</b>Filterboble</a>
+    <a href="#kilder"><b>3</b>Kildevurdering</a>
+    <a href="#metode"><b>4</b>Metode</a>
+    <a href="#fortid"><b>5</b>Fortiden</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 10. trinn</p>
+      <h1>Hvem bestemmer hva du ser?</h1>
+      <p class="lead">Feeden din er ikke et speil av verden. Den er valgt ut av en algoritme som vil holde deg på skjermen. Lær å vurdere kilder, oppdage filterbobler og gjennomføre undersøkelser du kan stole på.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En feed med innlegg og et filter"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du og en venn søker på det samme og åpner den samme appen. Dere får likevel helt ulike innlegg.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="boble"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Bygg din egen filterboble</h2></div>
+    <p class="sec-lead">Temaet er: <b>Bør det være mobilforbud i hele ungdomsskolen?</b> Lik de innleggene du er enig i, og bla videre. Se hva algoritmen gjør.</p>
+<div class="bench">
+  <div class="controls"><div class="feed" id="feed" aria-live="polite"></div><div class="row"><button class="btn primary" type="button" id="more">Bla videre</button><button class="btn" type="button" id="feedRe">Start på nytt</button></div></div>
+  <div class="controls"><b>Hva feeden viser deg nå</b><div class="stat" id="mix"></div><div id="mixNote" class="note"></div></div>
+</div>
+  </div></section>
+
+  <section id="kilder"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Hvilke kilder kan du bruke?</h2></div>
+    <p class="sec-lead">Du skriver en fagtekst om ulv i Norge. Vurder kildene ut fra <b>avsender, formål, dato</b> og om påstandene er <b>dokumentert</b>. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="metode"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Lag en undersøkelse du kan stole på</h2></div>
+    <p class="sec-lead">En undersøkelse er <b>gyldig</b> når den faktisk måler det du vil vite, og <b>relevant</b> når den svarer på problemstillingen din. Svar på spørsmålene.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="m0"></div><div id="m1"></div><div id="m2"></div></div>
+  </div></section>
+
+  <section id="fortid"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Hvordan blir fortiden fortalt?</h2></div>
+    <p class="sec-lead">Måten historien fortelles på, endrer seg. Les utdragene fra skolebøker og plakater, og trykk for å se hvordan vi ser på det i dag.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="flip1"></div><div id="p2"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 10. trinn: bruke samfunnsfaglige metoder og vurdere gyldighet og relevans, vurdere hvordan algoritmer og ensidige eller manglende kilder påvirker forståelsen, og drøfte hvordan framstillinger av fortiden og av grupper påvirker holdninger og handlinger. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=S.phone(30,10,130,200,[0,1,2,3].map(i=>`<rect x="10" y="${20+i*42}" width="110" height="34" rx="6" fill="${i%2?'var(--c1-soft)':'var(--c2-soft)'}"/>`).join(''))+`<path d="M200 50 h140 l-50 60 v70 l-40 -20 v-50 z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><text x="270" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent)">ALGORITME</text>`;
+
+V.predict($('#p1'),{q:'Hvorfor får dere ulike innlegg?',opts:['Det er tilfeldig','En algoritme velger innhold ut fra hva hver av dere har sett, likt og stoppet ved før','Appen er ødelagt'],ok:1,expl:'Algoritmen lærer hva du reagerer på, og viser deg mer av det. Målet er å holde deg i appen lengst mulig, fordi det gir mer reklameinntekter.',retry:'Hva vet appen om deg?'});
+
+/* Filterboble */
+const P={
+  for:[['📰','Forskning: Elever lærer mer uten mobil i timene','Avis'],['👩‍🏫','Lærer: «Friminuttene ble levende igjen»','Leserinnlegg'],['🧠','Psykolog: Mindre skjerm gir bedre søvn','Fagartikkel'],['😊','«Vi spiller fotball igjen i friminuttet!»','Elev på TikTok'],['📊','Skole X: Mindre mobbing etter forbudet','Rapport']],
+  mot:[['📱','«Jeg trenger mobilen for å nå foreldrene mine»','Elev på TikTok'],['⚖️','Elevorganisasjonen: Elever må få medvirke','Uttalelse'],['💻','Ekspert: Vi må lære å bruke mobilen klokt, ikke forby den','Kronikk'],['😤','«Voksne bruker mobilen hele tiden selv»','Kommentar'],['🎒','Foreldre: Mobilen gir trygghet på skoleveien','Avis']]};
+let shown=[],w={for:1,mot:1},likes={for:0,mot:0},idx={for:0,mot:0};
+function nextPost(){const r=Math.random()*(w.for+w.mot),side=r<w.for?'for':'mot';const list=P[side];const p=list[idx[side]%list.length];idx[side]++;return{side,p};}
+function addPosts(n){for(let i=0;i<n;i++)shown.push(nextPost());renderFeed();}
+function renderFeed(){const last=shown.slice(-6);
+  $('#feed').innerHTML=last.map((x,i)=>{const id=shown.length-last.length+i;return `<div class="post${x.liked?' liked':''}"><span class="e">${x.p[0]}</span><div><div class="k">${x.p[2]}</div>${x.p[1]}<div class="act"><button type="button" class="chip${x.liked?' on':''}" data-i="${id}">${x.liked?'❤️ Likt':'🤍 Lik'}</button></div></div></div>`;}).join('');
+  $('#feed').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{const x=shown[+b.dataset.i];if(x.liked)return;x.liked=true;likes[x.side]++;w[x.side]+=1.6;renderFeed();}));
+  const recent=shown.slice(-10),f=recent.filter(x=>x.side==='for').length,m=recent.length-f;
+  $('#mix').innerHTML=`<div><b>${Math.round(f/recent.length*100)} %</b><span>for forbud</span><div class="meter"><i style="width:${f/recent.length*100}%"></i></div></div><div><b>${Math.round(m/recent.length*100)} %</b><span>mot forbud</span><div class="meter"><i style="width:${m/recent.length*100}%;background:var(--c2)"></i></div></div>`;
+  const tot=likes.for+likes.mot,dom=Math.max(f,m)/recent.length;
+  $('#mixNote').innerHTML=tot<3?'Lik noen innlegg og trykk «Bla videre».':dom>=.75?`<b>Du er i en filterboble!</b> Nesten alt du ser, er enig med deg. Det kan få deg til å tro at «alle» mener det samme, og at den andre siden ikke har gode argumenter. Prøv å lete etter innlegg du er uenig i.`:'Feeden er ganske blandet ennå. Fortsett å like og bla.';}
+$('#more').addEventListener('click',()=>addPosts(3));
+$('#feedRe').addEventListener('click',()=>{shown=[];w={for:1,mot:1};likes={for:0,mot:0};addPosts(4);});
+addPosts(4);
+
+N.sorter($('#sort1'),{groups:[{id:'g',name:'God kilde'},{id:'f',name:'Bruk med forsiktighet'},{id:'i',name:'Ikke bruk'}],
+  items:[{t:'Rovdata (Miljødirektoratet): antall ulver i 2024',g:'g',why:'En offentlig etat som teller ulv med faste metoder og oppgir hvordan de har gjort det.'},{t:'NRK-sak der både bønder og forskere blir intervjuet',g:'g'},{t:'Forskningsartikkel om hvor mye sau ulv tar',g:'g'},
+    {t:'Leserinnlegg fra en sauebonde',g:'f',why:'Viser en viktig erfaring, men er en mening fra én side. Få frem andre syn også.'},{t:'Nettside fra en organisasjon som vil verne ulven',g:'f',why:'Kan ha gode fakta, men har et klart formål. Sjekk tallene mot nøytrale kilder.'},{t:'Wikipedia-artikkel om ulv',g:'f',why:'Godt utgangspunkt, men alle kan redigere. Bruk kildene nederst i artikkelen.'},
+    {t:'Anonymt Facebook-innlegg: «Ulven er satt ut av staten!»',g:'i'},{t:'Avisartikkel fra 1998 om dagens ulvebestand',g:'i',why:'Gammel kilde kan ikke si noe om i dag.'}],
+  good:'Riktig! Ensidige kilder kan brukes når du vil vise hva ulike grupper mener, men da må du si hvem de er. Og hvis kilder mangler, for eksempel hvis du bare leser det byfolk mener, får du et skjevt bilde.'});
+
+V.predict($('#m0'),{tag:'Spørsmål 1',q:'Du vil finne ut hva elever på skolen mener om mobilforbud. Hvilket spørsmål er best?',opts:['«Er du enig i at det dumme mobilforbudet bør fjernes?»','«Hva mener du om mobilforbud på skolen? (helt for – litt for – usikker – litt mot – helt mot)»','«Synes du ikke også at mobilen er viktig?»'],ok:1,expl:'Det er nøytralt og har svaralternativer på begge sider. De andre er <b>ledende spørsmål</b> som presser frem et bestemt svar. Da blir undersøkelsen ugyldig.',retry:'Se etter ord som avslører hva spørreren mener.'});
+V.predict($('#m1'),{tag:'Spørsmål 2',q:'Du spør bare de 25 i din egen klasse. Hva er problemet?',opts:['Ingenting','Utvalget er lite og representerer kanskje ikke hele skolen','Det er for mange'],ok:1,expl:'Klassen din kan mene noe annet enn de på 8. og 10. trinn. Et godt utvalg ligner på hele gruppen du vil si noe om.',retry:'Kan du si noe om hele skolen?'});
+V.predict($('#m2'),{tag:'Spørsmål 3',q:'Du vil vite <b>hvorfor</b> noen elever er mot forbudet. Hvilken metode passer best?',opts:['Intervju med noen få elever (kvalitativ metode)','Telle hvor mange mobiler som ligger i skapene (kvantitativ)','Lese en reklame'],ok:0,expl:'Intervju gir dype svar om grunner og følelser. Spørreskjema og telling gir tall som sier noe om hvor mange. Ofte er det lurt å bruke begge.',retry:'Hvilken metode får frem begrunnelser?'});
+
+S.flip($('#flip1'),[
+  {front:'<b>📘 Skolebok, ca. 1950</b><div class="quote">«Europeerne brakte sivilisasjonen til Afrika.»</div>',back:'<b>I dag</b>Vi vet at Afrika hadde rike samfunn og kulturer før europeerne kom. Kolonimaktene tok land, ressurser og frihet. Framstillingen i boka ble brukt til å forsvare kolonialismen.'},
+  {front:'<b>📕 Lærebok, ca. 1930</b><div class="quote">«Samene er et nomadefolk som står lavere i utvikling.»</div>',back:'<b>I dag</b>Slike framstillinger ble brukt til å forsvare fornorskingen. I dag ser vi dem som rasistiske. Samene er et urfolk med egne rettigheter.'},
+  {front:'<b>🪧 Propagandaplakat, 1940-tallet</b><div class="quote">Jøder vist som farlige og grådige.</div>',back:'<b>I dag</b>Nazistene brukte slike bilder for å få folk til å godta forfølgelse og drap. Det viser hvor farlig det er når grupper framstilles som en trussel.'},
+  {front:'<b>🗽 Statue av en kolonist</b><div class="quote">Hedret som en helt i 100 år.</div>',back:'<b>I dag</b>Mange land diskuterer om slike statuer skal stå. Hvem vi hedrer, sier noe om hvem sin historie som blir fortalt.'}]);
+V.predict($('#p2'),{tag:'Drøft',q:'Hvorfor betyr det noe hvordan fortiden blir fortalt?',opts:['Det betyr ingenting, det er jo fortid','Framstillinger av grupper kan forme holdninger og handlinger, både da og nå','Fordi historien alltid er nøytral'],ok:1,expl:'Hvis en gruppe framstilles som mindreverdig eller farlig, blir det lettere å diskriminere den. Derfor er det viktig å spørre: Hvem forteller, og hvem mangler i historien?',retry:'Tenk på propagandaplakaten.'});
+
+const skills={
+  kilde:{name:'Kildevurdering',gens:[
+    ()=>{const x=pick([['Statistisk sentralbyrå (SSB)','God kilde'],['Anonym blogg uten kilder','Ikke bruk'],['Leserinnlegg fra en interessegruppe','Bruk med forsiktighet'],['Forskningsrapport fra et universitet','God kilde'],['TikTok-video fra ukjent konto','Ikke bruk'],['Nettsiden til et politisk parti','Bruk med forsiktighet']]);return N.mc(`Hvordan vurderer du denne kilden? <b>${x[0]}</b>`,x[1],['God kilde','Bruk med forsiktighet','Ikke bruk'].filter(y=>y!==x[1]),['Hvem er avsender, og hva er formålet?'],`${x[1]}.`);},
+    ()=>N.mc('Hva er en <b>ensidig kilde</b>?','En kilde som bare viser ett syn på saken',['En kilde med bare én side tekst','En kilde fra ett land'],['Én side av saken.'],'Ensidige kilder kan brukes, men du må få med andre syn også.'),
+    ()=>N.mc('Hvordan kan <b>manglende kilder</b> påvirke forståelsen din?','Noen stemmer kommer ikke frem, så bildet blir skjevt',['Det gjør ingenting','Da blir teksten kortere'],['Hvem får ikke si noe?'],'Hvis for eksempel bare én gruppe har skrevet historien, mangler andres erfaringer.')]},
+  algo:{name:'Algoritmer og filterbobler',gens:[
+    ()=>N.mc('Hva er en <b>filterboble</b>?','At du mest ser innhold som bekrefter det du mener fra før',['Et filter på kameraet','En type såpebobler'],['Tenk på simuleringen.'],'Algoritmer kan stenge deg inne med like meninger.'),
+    ()=>N.mc('Hvorfor vil sosiale medier holde deg lenge i appen?','De tjener penger på reklame',['De vil at du skal lære mest mulig','Det er påbudt'],['Forretningsmodell.'],'Mer tid i appen gir flere reklamevisninger.'),
+    ()=>N.mc('Hva kan du gjøre for å komme ut av en filterboble?','Oppsøke kilder med andre syn enn ditt eget',['Like flere innlegg du er enig i','Slette appen for alltid'],['Gjør det motsatte av algoritmen.'],'Les aviser, snakk med folk som mener noe annet, og søk aktivt etter motargumenter.')]},
+  metode:{name:'Metode',gens:[
+    ()=>N.mc('Hva er et <b>ledende spørsmål</b>?','Et spørsmål som presser frem et bestemt svar',['Et spørsmål fra lederen','Det første spørsmålet'],['Det leder deg mot svaret.'],'Ledende spørsmål gjør undersøkelsen ugyldig.'),
+    ()=>N.mc('Hva er forskjellen på kvantitativ og kvalitativ metode?','Kvantitativ gir tall fra mange, kvalitativ gir dype svar fra få',['De er like','Kvalitativ er alltid bedre'],['Kvantitet = mengde.'],'Spørreskjema er kvantitativt, intervju er kvalitativt.'),
+    ()=>N.mc('Når er en undersøkelse <b>gyldig</b>?','Når den måler det den skal måle',['Når den er lang','Når mange har svart'],['Validitet.'],'Gyldighet handler om at du faktisk får svar på det du lurer på.'),
+    ()=>N.mc('Hva er et godt <b>utvalg</b>?','Et utvalg som ligner hele gruppen du vil si noe om',['Bare vennene dine','De som svarer først'],['Representativt.'],'Utvalget må representere gruppen.')]}
+};
+V.practice($('#practice'),{id:'saf10-kilder',title:'Kilder og algoritmer',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

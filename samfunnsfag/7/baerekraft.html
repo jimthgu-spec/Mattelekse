@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>En bærekraftig verden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.tog{display:flex;flex-direction:column;gap:6px}
+.tog label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.tog input{width:20px;height:20px;margin-top:2px;flex:0 0 auto}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← En bærekraftig verden</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#film"><b>2</b>Film</a>
+    <a href="#sim"><b>3</b>Simulering</a>
+    <a href="#sorter"><b>4</b>Sorter</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Plast i havet: et problem uten grenser</h1>
+      <p class="lead">Havet henger sammen over hele jorda. Plast som kastes i ett land, kan ende på en strand i Norge. Et slikt problem kan ingen land løse alene. Undersøk konsekvensene, og finn ut hva som virker.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="En hval og plastflasker i havet"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">En plastflaske flyter i havet.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Strandryddingen</h2></div>
+    <p class="sec-lead">Klassen rydder en strand i Lofoten. Se hva de finner.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="sim"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Kan vi stoppe plasten?</h2></div>
+    <p class="sec-lead">Grafen viser hvor mye plast det kan bli i havet de neste 30 årene. Velg tiltak og hvor mange land som er med. Gjett først: Holder det at Norge gjør alt riktig?</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="gFig" role="img" aria-label="Graf over plast i havet"></svg><p class="note" id="gNote" aria-live="polite"></p></div>
+  <div class="controls">
+    <div class="tog" id="tog"></div>
+    <div id="landSl"></div>
+  </div>
+</div>
+  </div></section>
+
+  <section id="sorter"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Konsekvens eller tiltak?</h2></div>
+    <p class="sec-lead">Noe er <b>konsekvenser</b> av plast i havet. Noe er <b>tiltak</b> du kan gjøre selv, og noe er tiltak som krever at <b>land samarbeider</b>. Sorter.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: undersøke en global bærekraftsutfordring og konsekvensene den kan få, og foreslå tiltak og hvordan land kan samarbeide. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+$('#heroFig').innerHTML=`<rect x="0" y="70" width="380" height="150" fill="color-mix(in srgb,var(--water) 25%,var(--surface))"/><path d="M0 70 q20 -10 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="var(--water)" stroke-width="3"/>
+<text x="120" y="170" font-size="70">🐋</text><text x="280" y="120" font-size="30" transform="rotate(30 290 110)">🧴</text><text x="60" y="110" font-size="26">🛍️</text><text x="300" y="200" font-size="26">🥤</text>`;
+
+V.predict($('#p1'),{q:'Omtrent hvor lang tid tar det før en plastflaske er brutt ned i havet?',opts:['1 år','10 år','Flere hundre år'],ok:2,expl:'Det kan ta flere hundre år. Og plasten forsvinner egentlig ikke. Den brytes ned til <b>mikroplast</b>, bittesmå biter som fisk og fugler spiser, og som havner i maten vår.',retry:'Plast er laget for å vare lenge.'});
+
+if(window.Film){const {person,bubble,seg,lerp}=Film,GY=S.GY;
+  const beach=()=>`<rect width="400" height="${GY}" fill="var(--paper)"/><path d="M0 ${GY-50} L120 ${GY-50} Q200 ${GY-46} 250 ${GY} L0 ${GY} Z" fill="color-mix(in srgb,var(--water) 30%,var(--surface))"/><path d="M60 40 l40 -26 l40 26z" fill="var(--line)"/><path d="M110 40 l50 -30 l50 30z" fill="var(--line)"/><line class="fm-ground" x1="0" y1="${GY}" x2="400" y2="${GY}"/>`;
+  const bottle=(x,o=1)=>`<g opacity="${o}"><rect x="${x}" y="${GY-14}" width="26" height="12" rx="4" fill="var(--c2-soft)" stroke="var(--c2)" stroke-width="1.5"/><rect x="${x+26}" y="${GY-11}" width="6" height="6" fill="var(--c2)"/></g>`;
+  const kids=(o={})=>person(270,GY,76,Object.assign({shirt:1,skin:0,hair:1},o.a||{}))+person(330,GY,80,Object.assign({shirt:4,skin:2,hair:2,flip:true},o.b||{}));
+  S.film('#film1',{title:'Strandryddingen',real:'Lofoten',size:[400,250],end:{text:'Prøv simuleringen ↓',href:'#sim'},poster:'På en øde strand i Lofoten finner klassen tonnevis av søppel. Hvor kommer det fra?',
+    scenes:[
+      {dur:4000,text:'Klassen rydder en strand i Lofoten. Det bor nesten ingen her, men stranda er full av plast.',draw:p=>beach()+kids({a:{walk:p*12}})+bottle(200)+bottle(150,.7)+`<text x="100" y="${GY-6}" font-size="18">🛍️</text>`},
+      {dur:4200,text:'Ahmed finner en flaske med en etikett på et språk de ikke kjenner. – Denne har reist langt!',draw:p=>beach()+kids({b:{armL:lerp(10,140,seg(p,.2,.5))}})+bubble(330,GY-90,'Hvor er den fra?',{opacity:seg(p,.4,.6)})+bottle(150,.7)},
+      {dur:1200,text:'Havstrømmer frakter søppel over hele verden.',draw:()=>beach()+kids()+bottle(150,.7),
+        ask:{q:'Hva betyr det at plasten kan reise med havstrømmene?',opts:['At Norge kan løse problemet alene','At land må samarbeide for å løse problemet','At plasten blir borte av seg selv'],ok:1,why:'Plast fra mange land havner i havet og driver over grensene. Da må landene samarbeide, for eksempel gjennom avtaler i FN.',wrong:{0:'Selv om Norge ikke kastet noe, ville det kommet plast fra andre land.',2:'Plast blir ikke borte. Den blir til mikroplast.'}}},
+      {dur:4600,text:'Klassen fyller 40 sekker. De teller og sorterer søppelet, og sender resultatet til en forsker. Slik bidrar de til å kartlegge problemet.',draw:p=>beach()+kids({a:{armL:120},b:{armL:120}})+[0,1,2,3].map(k=>`<ellipse cx="${60+k*34}" cy="${GY-14}" rx="14" ry="14" fill="var(--ink)" opacity="${seg(p,k*.15,k*.15+.2)}"/>`).join('')}]});}
+
+/* Simulering */
+const TOG=[{id:'pant',t:'Pant på flasker og bokser',e:.06},{id:'eng',t:'Forby engangsplast (sugerør, bestikk)',e:.05},{id:'rydd',t:'Rydde strender',e:.03},{id:'avf',t:'Bygge avfallsanlegg der søppel ikke blir hentet i dag',e:.30}];
+const on={pant:true,eng:false,rydd:false,avf:false};
+$('#tog').innerHTML='<b>Tiltak</b>'+TOG.map(t=>`<label><input type="checkbox" data-id="${t.id}"${on[t.id]?' checked':''}> ${t.t}</label>`).join('');
+$('#tog').querySelectorAll('input').forEach(i=>i.addEventListener('change',()=>{on[i.dataset.id]=i.checked;simDraw();}));
+const LAND=['Bare Norge','10 land','50 land','100 land','Nesten alle land'],SHARE=[.005,.15,.45,.75,.97];
+let sl=null;sl=N.slider($('#landSl'),{id:'land',label:'Land som er med',min:0,max:4,step:1,value:0,fmt:v=>LAND[v],on:()=>simDraw()});
+function series(eff,share){const pts=[[0,100]];let tot=100;for(let y=1;y<=30;y++){tot+=10*(1-eff)-(on.rydd?share:0);pts.push([y,Math.max(0,tot)]);}return pts;}
+function sum(){return TOG.reduce((s,t)=>s+(on[t.id]?t.e:0),0);}
+function simDraw(){if(!sl)return;const share=SHARE[sl.value],red=Math.min(.95,sum()*1.9)*share;
+  const base=series(0,0),now=series(red,share);
+  N.graph($('#gFig'),{x:{min:0,max:30,step:5,label:'År fra nå'},y:{min:0,max:420,step:100,label:'Plast i havet'},series:[{pts:base,dots:false,lineCls:'ptline3'},{pts:now,dots:false,lineCls:'ptline2'}],
+    marks:(X,Y)=>`<text class="lbl small" x="${X(30)-4}" y="${Y(base[30][1])-6}" text-anchor="end">uten tiltak</text><text class="lbl small" x="${X(30)-4}" y="${Y(now[30][1])+16}" text-anchor="end" style="fill:var(--c2)">med tiltakene dine</text>`});
+  const growth=Math.round((now[30][1]-100));
+  $('#gNote').innerHTML=sl.value===0?'Norge står for en svært liten del av plasten i havet. Selv om Norge gjør alt riktig, endrer det lite globalt. Prøv flere land.':
+    red>.6?'Nå virker det! Når mange land samarbeider om gode tiltak, kan veksten nesten stoppe.':
+    !on.avf?'Mye plast kommer fra land der søppel ikke blir hentet. Prøv tiltaket med avfallsanlegg.':`Med disse tiltakene øker plasten med ${growth} enheter på 30 år. Prøv å få med flere land.`;}
+simDraw();
+
+N.sorter($('#sort1'),{groups:[{id:'k',name:'Konsekvens'},{id:'j',name:'Tiltak jeg kan gjøre'},{id:'l',name:'Land må samarbeide'}],
+  items:[{t:'Sjøfugler dør med magen full av plast.',g:'k'},{t:'Mikroplast havner i fisken vi spiser.',g:'k'},{t:'Turister slutter å komme til skitne strender.',g:'k'},{t:'Pante flasker og bokser.',g:'j'},{t:'Bruke handlenett i stedet for plastpose.',g:'j'},{t:'Bli med på strandrydding.',g:'j'},{t:'Lage en FN-avtale om mindre plastproduksjon.',g:'l'},{t:'Hjelpe fattige land med å bygge avfallsanlegg.',g:'l'},{t:'Forby skip å dumpe søppel på havet.',g:'l',why:'Skip seiler mellom mange land. Regler for havet må lages av land i fellesskap, slik de er i FNs sjøfartsorganisasjon.'}],
+  good:'Riktig! Det du gjør selv, betyr noe. Men et globalt problem trenger også globale løsninger. Derfor samarbeider land gjennom FN og avtaler.'});
+
+const skills={
+  plast:{name:'Plast i havet',gens:[
+    ()=>N.mc('Hva er <b>mikroplast</b>?','Bittesmå plastbiter som oppstår når plast brytes ned',['Plast som er laget i mikrobølgeovn','En type fisk'],['Mikro betyr liten.'],'Mikroplast er så smått at dyr spiser det, og det kan havne i maten vår.'),
+    ()=>N.mc('Hvorfor kan plast fra Asia havne på en strand i Norge?','Havstrømmene frakter den over store avstander',['Noen kjører den hit med lastebil','Plast kan fly'],['Havet henger sammen.'],'Havstrømmer gjør plast til et globalt problem.'),
+    ()=>N.mc('Hva er en konsekvens av plast i havet?','Dyr skades eller dør av å spise plast eller sette seg fast i den',['Havet blir varmere','Det blir flere fisk'],['Hva skjer med dyrene?'],'Sjøfugler, skilpadder og hvaler rammes hardt.')]},
+  samarbeid:{name:'Samarbeid og bærekraft',gens:[
+    ()=>N.mc('Hvorfor holder det ikke at bare ett land gjør tiltak?','Problemet krysser grenser, og ett land står bare for en liten del',['Fordi tiltak aldri virker','Fordi det er ulovlig'],['Tenk på simuleringen.'],'Globale problemer krever at mange land gjør noe samtidig.'),
+    ()=>N.mc('Hva betyr <b>bærekraftig utvikling</b>?','Å dekke behovene våre i dag uten å ødelegge for dem som kommer etter oss',['Å bære tunge ting','Å bruke så mye som mulig nå'],['Tenk på fremtidige generasjoner.'],'Bærekraft handler om at også barnebarna våre skal få en god jord å leve på.'),
+    ()=>N.mc('Hvilken organisasjon samarbeider nesten alle land i verden gjennom?','FN',['NATO','Barnehagen'],['De forente nasjoner.'],'FN har 193 medlemsland og har laget 17 bærekraftsmål.'),
+    ()=>N.mc('Hvor mange bærekraftsmål har FN laget?','17',['3','100'],['Mellom 10 og 20.'],'FNs 17 bærekraftsmål skal nås innen 2030.'),
+    ()=>{const x=pick([['Pante flasker','Tiltak jeg kan gjøre'],['Lage en internasjonal avtale','Land må samarbeide'],['Sjøfugler dør','Konsekvens'],['Mikroplast i fisk','Konsekvens'],['Plukke søppel på stranda','Tiltak jeg kan gjøre']]);return N.mc(`Hva er «${x[0].toLowerCase()}»?`,x[1],['Konsekvens','Tiltak jeg kan gjøre','Land må samarbeide'].filter(y=>y!==x[1]),['Er det noe som skjer, eller noe vi gjør?'],`Det er: ${x[1].toLowerCase()}.`);}]}
+};
+V.practice($('#practice'),{id:'saf7-baerekraft',title:'En bærekraftig verden',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

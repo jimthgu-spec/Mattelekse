@@ -5,6 +5,7 @@ Interaktive lekse-moduler etter LK20, delt opp i fag. Forsiden (`index.html`) er
 - **Matematikk 9. trinn** (MAT01-06): 9 moduler i `matematikk/9/`
 - **Naturfag 10. trinn** (NAT01-05): 12 moduler i `naturfag/10/`.
 - **Naturfag 7. trinn**: 10 moduler i `naturfag/7/`, med opplesing (🔊 Les opp). 2. og 4. trinn kommer.
+- **Samfunnsfag 7. og 10. trinn** (SAF01-05): 10 + 10 moduler i `samfunnsfag/7/` og `samfunnsfag/10/`, med filmsnutter, opplesing og simuleringer.
 
 ## Struktur
 
@@ -20,6 +21,9 @@ matematikk/9/*.html        mattemodulene (+ filmer/)
 naturfag/index.html        fagside med trinnvalg
 naturfag/10/*.html         naturfagmodulene for 10. trinn
 naturfag/7/*.html          naturfagmodulene for 7. trinn
+felles/samfunn.js + .css   samfunnsfag: S.scenario (dilemma med valg), S.order (tidslinje), S.flip (kort), bakgrunner til filmer
+samfunnsfag/index.html     fagside med trinnvalg
+samfunnsfag/7/, 10/        samfunnsfagmodulene, gruppert etter kjerneelement
 moduler/*.html             gamle adresser som sender videre til matematikk/9/
 ```
 

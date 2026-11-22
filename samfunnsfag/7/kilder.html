@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kildedetektiven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=2">
+<link rel="stylesheet" href="../../felles/samfunn.css?v=1">
+<link rel="stylesheet" href="../../felles/film.css?v=3">
+<style>.src{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface)}
+.src .k{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til samfunnsfag">← Kildedetektiven</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#film"><b>2</b>Film</a>
+    <a href="#sorter"><b>3</b>Sorter</a>
+    <a href="#kilder"><b>4</b>Kilder</a>
+    <a href="#under"><b>5</b>Undersøk</a>
+    <a href="#ov"><b>6</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Samfunnsfag · 7. trinn</p>
+      <h1>Kan du stole på det du leser?</h1>
+      <p class="lead">Hver dag ser du nyheter, meninger og reklame på mobilen. Noen vil informere deg, noen vil overbevise deg, og noen vil selge deg noe. En god kildedetektiv spør alltid: Hvem har laget dette, og hvorfor?</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Et forstørrelsesglass over en avis"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du ser et innlegg: «Forskere: Sjokolade gjør deg smartere!» Innlegget er laget av en sjokoladefabrikk.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="film"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Ella sjekker en nyhet</h2></div>
+    <p class="sec-lead">Ella får en nyhet på mobilen som gjør henne sint. Se hva hun gjør.</p>
+<div id="film1"></div>
+  </div></section>
+
+  <section id="sorter"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Fakta, mening eller reklame?</h2></div>
+    <p class="sec-lead"><b>Fakta</b> kan sjekkes og er sant eller usant. En <b>mening</b> er hva noen synes. <b>Reklame</b> vil få deg til å kjøpe noe. Dra hver setning til riktig kurv.</p>
+<div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="kilder"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Tre kilder om samme sak</h2></div>
+    <p class="sec-lead">Kommunen har bygget en ny skatepark. Tre kilder skriver om den. Les dem, og svar på spørsmålene.</p>
+<div class="bench" style="grid-template-columns:1fr">
+  <div class="srcs" id="srcs"></div>
+  <div id="kq"></div>
+</div>
+  </div></section>
+
+  <section id="under"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Lag din egen undersøkelse</h2></div>
+    <p class="sec-lead">En samfunnsfaglig undersøkelse starter med et spørsmål. Så samler du inn svar, ser på resultatet og forteller hva du fant. Velg et spørsmål og spør klassen.</p>
+<div class="bench">
+  <div class="figcol"><svg class="fig" id="uFig" viewBox="0 0 380 240" role="img" aria-label="Søylediagram med svarene"></svg></div>
+  <div class="controls">
+    <div><b>1. Velg spørsmål</b><div class="chips" id="uQ" style="margin-top:6px"></div></div>
+    <div><b>2. Spør 24 elever</b><div class="row" style="margin-top:6px"><button class="btn primary" type="button" id="uGo" disabled>Spør klassen</button></div></div>
+    <div id="uC" aria-live="polite"></div>
+  </div>
+</div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">6</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+<div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (SAF01-05), kompetansemål etter 7. trinn: presentere en aktuell nyhetssak og skille mellom fakta, meninger og reklame, sammenligne kilder og lage en samfunnsfaglig undersøkelse. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til samfunnsfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=2"></script>
+<script src="../../felles/samfunn.js?v=1"></script>
+<script src="../../felles/film.js?v=3"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const {person,bubble,seg,text,lerp}=window.Film||{};
+$('#heroFig').innerHTML=`<rect x="60" y="40" width="200" height="150" rx="8" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+<rect x="76" y="56" width="120" height="14" rx="3" fill="var(--ink)"/>${[0,1,2,3,4,5].map(i=>`<rect x="76" y="${84+i*14}" width="${i%2?150:168}" height="6" rx="3" fill="var(--line)"/>`).join('')}
+<circle cx="250" cy="120" r="52" fill="var(--accent-soft)" fill-opacity=".55" stroke="var(--accent)" stroke-width="8"/><line x1="288" y1="158" x2="340" y2="205" stroke="var(--accent)" stroke-width="14" stroke-linecap="round"/>
+<text x="250" y="132" text-anchor="middle" font-size="34">?</text>`;
+
+/* 1 Gjett */
+V.predict($('#p1'),{q:'Hva er dette innlegget mest av?',opts:['En nøytral nyhet','Reklame som bruker forskning for å selge','En mening fra en elev'],ok:1,
+  expl:'Det er laget av noen som tjener penger på at du kjøper sjokolade. Da bør du være ekstra skeptisk. Kanskje forskerne bare fant en liten effekt, eller kanskje fabrikken betalte for forskningen. Sjekk andre kilder!',
+  retry:'Tenk på hvem som har laget innlegget, og hva de ønsker.'});
+
+/* 2 Film */
+if(window.Film){
+  const GY=S.GY;
+  const ella=(o={})=>person(120,GY,92,Object.assign({shirt:2,skin:1,hair:3},o));
+  const jonas=(o={})=>person(330,GY,96,Object.assign({shirt:1,skin:3,hair:2,flip:true},o));
+  const ph=(head,sub,op=1)=>`<g opacity="${op}">`+S.phone(140,18,130,150,`<rect x="12" y="18" width="106" height="10" rx="2" fill="var(--bad)"/>${S.lines(65,48,head,14,'fm-bubble',16,'middle')}${S.lines(65,112,sub,16,'fm-small',14,'middle')}`)+'</g>';
+  S.film('#film1',{title:'Ella sjekker en nyhet',real:'Nyheter',size:[400,250],end:{text:'Sorter fakta, mening og reklame ↓',href:'#sorter'},
+    poster:'«Sommerferien blir to uker kortere!» står det på mobilen. Er det sant?',
+    scenes:[
+      {dur:4200,text:'Ella ser en nyhet: «Sommerferien blir to uker kortere fra neste år!» Hun blir sint og vil dele den med alle.',
+        draw:p=>S.bg.stue()+ella({armL:lerp(8,140,seg(p,.1,.4))})+ph('Sommerferien blir 2 uker kortere!','Del hvis du er sint!',seg(p,0,.3))},
+      {dur:1200,text:'Jonas kommer inn.',draw:()=>S.bg.stue()+ella({armL:140})+jonas()+ph('Sommerferien blir 2 uker kortere!','Del hvis du er sint!'),
+        ask:{q:'Hva bør Ella gjøre før hun deler?',opts:['Dele med en gang, det haster','Sjekke hvem som har skrevet det, og om andre skriver det samme','Spørre om noen liker innlegget'],ok:1,
+          why:'Først sjekker vi kilden. Hvem står bak? Skriver kjente nyhetssider det samme?',wrong:{0:'Hvis nyheten er feil, sprer Ella usannheter til alle vennene sine.',2:'Mange likerklikk betyr ikke at noe er sant.'}}},
+      {dur:4600,text:'De sjekker. Innlegget kommer fra en ukjent side uten navn. NRK og kommunen skriver ingenting om saken.',
+        draw:p=>S.bg.stue()+ella({armL:140})+jonas({armL:lerp(8,150,seg(p,.1,.4))})+ph('Avsender: «nyheter-123»','Ingen navn, ingen dato',1)+bubble(330,GY-112,'Hvem er det?',{opacity:seg(p,.3,.5)})},
+      {dur:4200,text:'Det var en falsk nyhet laget for å få mange klikk. Ella deler den ikke. Når du sjekker <b>hvem</b> og <b>hvorfor</b>, blir du vanskeligere å lure.',
+        draw:p=>S.bg.stue()+ella({armL:8})+jonas()+bubble(120,GY-104,'Godt vi sjekket!',{opacity:seg(p,.2,.5)})}
+    ]});
+}
+
+/* 3 Sorter */
+N.sorter($('#sort1'),{groups:[{id:'f',name:'Fakta'},{id:'m',name:'Mening'},{id:'r',name:'Reklame'}],
+  items:[{t:'Oslo er hovedstaden i Norge.',g:'f'},{t:'Det bor omtrent 5,5 millioner mennesker i Norge.',g:'f'},{t:'Skoledagen er for lang.',g:'m'},{t:'Fotball er den beste sporten.',g:'m',why:'«Beste» er noe man synes. Andre kan mene noe annet.'},
+    {t:'Kjøp nye SuperSko, og løp fortere enn alle!',g:'r'},{t:'Bare i dag: 50 % rabatt på spillet!',g:'r'},{t:'Stortinget har 169 representanter.',g:'f'},{t:'Det burde være gratis buss for alle barn.',g:'m',why:'«Burde» viser at dette er en mening om hva som er rett.'},
+    {t:'Influenseren viser frem gratis sminke hun har fått.',g:'r',why:'Når noen får varer gratis eller betalt for å vise dem frem, er det reklame. Det skal merkes med «annonse» eller «reklame».'}],
+  good:'Riktig! Fakta kan sjekkes. Meninger kan man være uenige om. Reklame vil selge noe. En god nyhetssak bygger på fakta, og forteller tydelig når noe er en mening.'});
+
+/* 4 Kilder */
+const SRC=[
+  {k:'Kommunens nettside',e:'🏛️',t:'«Den nye skateparken kostet 4 millioner kroner. Den er åpen hver dag fra 08 til 22, og er et flott tilbud til barn og unge.»'},
+  {k:'Lokalavisen',e:'📰',t:'«Mange unge er glade for parken. Men naboen Kari (67) klager på bråk om kvelden: – Jeg får ikke sove, sier hun.»'},
+  {k:'Skatebutikken på Instagram',e:'🛹',t:'«Ny park = nye triks! Kjøp brett og hjelm hos oss før helgen. Bare 999 kr!»'}];
+$('#srcs').innerHTML=SRC.map(s=>`<div class="src"><div class="k">${s.e} ${s.k}</div><p style="margin:.3em 0 0">${s.t}</p></div>`).join('');
+const KQ=[
+  {q:'Hvilken kilde forteller om <b>både fordeler og ulemper</b>?',opts:['Kommunens nettside','Lokalavisen','Skatebutikken'],ok:1,expl:'Avisen lar flere sider komme til orde: de unge som er glade, og naboen som klager. Det er typisk for god journalistikk.',retry:'Hvem lar flere mennesker si sin mening?'},
+  {q:'Hvorfor skriver kommunen bare positive ting?',opts:['Fordi parken ikke har noen ulemper','Fordi kommunen har bygget parken og vil at folk skal synes det var lurt','Fordi kommunen selger skatebrett'],ok:1,expl:'Kommunen brukte 4 millioner kroner og vil gjerne vise at pengene ble brukt godt. Kilder kan være farget av hva avsenderen ønsker.',retry:'Hvem bestemte og betalte for parken?'},
+  {q:'Hvilken opplysning kan du lettest <b>sjekke</b>?',opts:['At parken er åpen fra 08 til 22','At parken er et flott tilbud','At du lærer nye triks'],ok:0,expl:'Åpningstiden er et faktum. Du kan dra dit og se på skiltet. «Flott tilbud» er en mening.',retry:'Hva er fakta, og hva er meninger?'}];
+$('#kq').innerHTML=KQ.map((_,i)=>`<div id="kq${i}" style="margin-top:12px"></div>`).join('');
+KQ.forEach((k,i)=>V.predict($('#kq'+i),Object.assign({tag:'Spørsmål '+(i+1)},k)));
+
+/* 5 Undersøkelse */
+const QS=[
+  {q:'Hva gjør du mest i friminuttet?',a:['Ballspill','Prater','Mobil','Lek'],w:[7,8,4,5],ok:'Ballspill og prat er mest vanlig i denne klassen.',over:'Alle barn i Norge prater mest i friminuttet.'},
+  {q:'Hvordan kommer du til skolen?',a:['Går','Sykler','Buss','Bil'],w:[9,5,6,4],ok:'De fleste i klassen går eller tar buss.',over:'Ingen barn i Norge blir kjørt til skolen.'},
+  {q:'Hvilken årstid liker du best?',a:['Vinter','Vår','Sommer','Høst'],w:[5,3,13,3],ok:'Sommer er klart mest populært i klassen.',over:'Alle mennesker i verden liker sommer best.'}];
+let uq=null,res=null;
+$('#uQ').innerHTML=QS.map((q,i)=>`<button type="button" class="chip" data-i="${i}">${q.q}</button>`).join('');
+$('#uQ').querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{uq=QS[+b.dataset.i];res=null;$('#uQ').querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));$('#uGo').disabled=false;drawU(0);$('#uC').innerHTML='';}));
+function sample(w){const tot=w.reduce((a,b)=>a+b,0),c=w.map(()=>0);for(let i=0;i<24;i++){let r=Math.random()*tot,j=0;while(r>w[j]){r-=w[j];j++;}c[j]++;}return c;}
+function drawU(k){let s='';const L=40,B=200,maxv=16;
+  for(let v=0;v<=maxv;v+=4)s+=`<line class="gl2" x1="${L}" y1="${B-v*10}" x2="370" y2="${B-v*10}"/><text class="lbl small" x="${L-6}" y="${B-v*10+4}" text-anchor="end">${v}</text>`;
+  if(uq)uq.a.forEach((a,i)=>{const v=res?res[i]*k:0,x=L+14+i*82;s+=`<rect x="${x}" y="${B-v*10}" width="56" height="${v*10}" rx="4" fill="var(--accent)"/><text class="lbl small" x="${x+28}" y="${B+16}" text-anchor="middle">${a}</text>`+(res&&k>=1?`<text class="lbl" x="${x+28}" y="${B-v*10-6}" text-anchor="middle">${res[i]}</text>`:'');});
+  else s+=`<text class="lbl small" x="200" y="110" text-anchor="middle">Velg et spørsmål</text>`;
+  s+=`<line class="ax" x1="${L}" y1="${B}" x2="370" y2="${B}"/>`;$('#uFig').innerHTML=s;}
+drawU(0);
+$('#uGo').addEventListener('click',()=>{const mine=sample(uq.w);res=mine;let t0=null;const step=ts=>{if(res!==mine)return;if(!t0)t0=ts;const k=Math.min(1,(ts-t0)/700);drawU(k);if(k<1&&!V.reduce)requestAnimationFrame(step);else{drawU(1);ask();}};requestAnimationFrame(step);});
+function ask(){const top=uq.a[res.indexOf(Math.max(...res))];
+  $('#uC').innerHTML=`<b>3. Hva kan du si ut fra svarene?</b><div id="uP" style="margin-top:6px"></div>`;
+  V.predict($('#uP'),{tag:'Konklusjon',q:`Flest svarte «${top}». Hvilken setning er en god konklusjon?`,opts:[`I klassen vår svarte flest «${top}».`,uq.over,'Undersøkelsen viser ingenting.'],ok:0,
+    expl:'Riktig! Du spurte bare 24 elever i én klasse. Da kan du si noe om klassen, men ikke om alle barn i Norge. Vil du si noe om flere, må du spørre flere og ulike grupper. Presenter gjerne resultatet med et diagram, slik som her.',
+    retry:'Hvem spurte du egentlig? Kan du si noe om alle ut fra det?'});}
+
+/* Øving */
+const FMR=[['Bergen ligger på Vestlandet.','Fakta'],['Pizza er bedre enn taco.','Mening'],['Kjøp to, få én gratis!','Reklame'],['Norge er medlem av FN.','Fakta'],['Alle burde ha hund.','Mening'],['Prøv den nye brusen nå, den gir deg energi!','Reklame'],['Sola står opp i øst.','Fakta'],['Matte er det kjedeligste faget.','Mening']];
+const skills={
+  fmr:{name:'Fakta, mening eller reklame',gens:[()=>{const x=pick(FMR);return N.mc(`«${x[0]}» Er dette fakta, mening eller reklame?`,x[1],['Fakta','Mening','Reklame'].filter(y=>y!==x[1]),['Kan det sjekkes? Er det noen sin mening? Vil noen selge?'],`Det er ${x[1].toLowerCase()}.`);}]},
+  kilde:{name:'Hvem står bak?',gens:[
+    ()=>N.mc('Hva er det første du bør spørre om når du leser noe på nettet?','Hvem har laget det, og hvorfor?',['Hvor mange likerklikk det har','Om bildet er pent'],['Tenk på avsenderen.'],'Avsender og formål avslører mye om hvor mye du kan stole på en kilde.'),
+    ()=>N.mc('En butikk skriver at produktet deres er «testvinner». Hvorfor bør du sjekke dette?','Butikken tjener penger på at du tror det',['Butikker lyver alltid','Det er ulovlig å skrive testvinner'],['Hva ønsker butikken?'],'Butikken har en interesse i å selge. Se etter hvem som gjorde testen.'),
+    ()=>N.mc('Hvordan kan du sjekke om en nyhet stemmer?','Se om flere kjente og uavhengige kilder skriver det samme',['Spørre en venn som også har sett den','Lese den én gang til'],['Én kilde er ikke nok.'],'Sammenlign med andre kilder, for eksempel NRK, en avis eller offentlige nettsider.'),
+    ()=>N.mc('Hvorfor kan to kilder si ulike ting om samme sak?','Fordi de har ulike formål og ser saken fra ulike sider',['Fordi den ene alltid lyver','Fordi nyheter tilfeldig blir forskjellige'],['Tenk på hvem de er.'],'Kilder velger ut hva de tar med. Det avhenger av hva de vil oppnå.')]},
+  metode:{name:'Undersøkelser',gens:[
+    ()=>N.mc('Du spør 20 elever i klassen din. Hvem kan du si noe om?','Klassen din',['Alle elever i Norge','Alle voksne'],['Hvem spurte du?'],'Resultatet gjelder dem du spurte. Vil du si noe om flere, må du spørre flere.'),
+    ()=>N.mc('Hva er den første delen av en undersøkelse?','Å lage et spørsmål du vil finne svar på',['Å lage diagrammet','Å skrive konklusjonen'],['Hva vil du finne ut?'],'Først et spørsmål (problemstilling), så innsamling, så resultat og konklusjon.'),
+    ()=>N.mc('Hvilken metode passer best for å finne ut hva bestemor husker fra skoletiden?','Intervju',['Telle biler','Spørreskjema til 100 personer'],['Du vil ha en fortelling.'],'Et intervju gir lange, personlige svar.'),
+    ()=>N.mc('Hvordan presenterer du lettest svar fra 24 elever?','Med et søylediagram',['Med et dikt','Ved å lese opp alle svarene'],['Hva viser tall tydelig?'],'Et diagram gjør det lett å se hva som er vanligst.')]}
+};
+V.practice($('#practice'),{id:'saf7-kilder',title:'Kildedetektiven',skills});
+N.lesOpp();
+})();
+</script>
+</body>
+</html>

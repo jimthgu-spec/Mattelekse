@@ -49,7 +49,7 @@ footer{color:var(--muted);font-size:.85rem;margin-top:36px}
 </main>
 <script>
 // Ny modul: legg HTML-fila i «moduler/» og legg til én linje her. «id» er lagringsnøkkelen modulen bruker (V.practice id).
-// «mal» = kompetansemål etter 9. trinn som modulen dekker (nummerert som på udir.no).
+// Forsiden sorterer etter laveste tall i «mal». «mal» = kompetansemål etter 9. trinn som modulen dekker (nummerert som på udir.no).
 const moduler = [
   { fil:"moduler/volum-prisme-sylinder.html", id:"volumverkstedet-v1", tittel:"Volumverkstedet", tekst:"Volum av prisme og sylinder, og omregning mellom cm³, dm³ og liter.", tema:"Geometri og måling", mal:[6] },
   { fil:"moduler/pytagoras.html", id:"pytagoras", tittel:"Pytagoras og trekanter", tekst:"a² + b² = c², finne ukjente sider og avgjøre om en trekant er rettvinklet.", tema:"Geometri og måling", mal:[3,4] },
@@ -76,12 +76,12 @@ const groups=document.getElementById('groups');const dueList=[];
 for(const tema of [...new Set(moduler.map(m=>m.tema))]){
   groups.appendChild(el('h2','group',tema));
   const ul=el('ul','list');groups.appendChild(ul);
-  for(const m of moduler.filter(x=>x.tema===tema)){
+  for(const m of moduler.filter(x=>x.tema===tema).sort((x,y)=>Math.min(...x.mal)-Math.min(...y.mal))){
     const li=el('li');const a=el(m.kommer?'div':'a','card'+(m.kommer?' soon':''));
     if(!m.kommer)a.href=m.fil;
     a.appendChild(el('h3',null,m.tittel));a.appendChild(el('p',null,m.tekst));
     const meta=el('div','meta');
-    meta.appendChild(el('span','tag',m.kommer?'Kommer':'Mål '+m.mal.join(' og ')));
+    meta.appendChild(el('span','tag',m.kommer?'Kommer':'Mål '+[...m.mal].sort((x,y)=>x-y).join(' og ')));
     const pr=!m.kommer&&progress(m.id);
     if(pr){
       if(pr.due){meta.appendChild(el('span','tag due','Klar for repetisjon'));dueList.push(m);}

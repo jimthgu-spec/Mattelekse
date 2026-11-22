@@ -1,24 +1,32 @@
-# Mattelekse – Matematikk 9. trinn
+# Leksehjelp
 
-Interaktive lekse-moduler etter LK20 (kompetansemål etter 9. trinn, MAT01-06). Forsiden (`index.html`) lister alle modulene og viser fremgang og hva som er klart for repetisjon.
+Interaktive lekse-moduler etter LK20, delt opp i fag. Forsiden (`index.html`) er et fagvalg, og hvert fag har sin egen side med modulene per trinn. Alle sidene viser fremgang og hva som er klart for repetisjon.
+
+- **Matematikk 9. trinn** (MAT01-06): 9 moduler i `matematikk/9/`
+- **Naturfag 10. trinn** (NAT01-05): 12 moduler i `naturfag/10/`. 2., 4. og 7. trinn kommer.
 
 ## Struktur
 
 ```
-index.html                 forside (lista «moduler» nederst)
-felles/verksted.css        felles stil (farger, lys/mørk modus, layout)
-felles/verksted.js         felles verktøy: V.predict, V.walk, V.check, V.practice
+index.html                 forside med fagvalg
+katalog.js                 alle fag og moduler (fag, trinn, fil, id, tittel, mål)
+felles/forside.js + .css   forside og fagsider (leser katalog.js)
+felles/verksted.css/.js    felles stil og verktøy: V.predict, V.walk, V.check, V.practice
+felles/natur.js + .css     naturfag: N.sorter (dra og slipp), N.fill, N.graph, N.slider, N.mc
 felles/film.js + film.css  filmspiller for animerte filmsnutter (Film.mount)
-moduler/filmer/*.js        filmsnuttene til hver modul
-moduler/*.html             én fil per modul
+matematikk/index.html      fagside
+matematikk/9/*.html        mattemodulene (+ filmer/)
+naturfag/index.html        fagside med trinnvalg
+naturfag/10/*.html         naturfagmodulene for 10. trinn
+moduler/*.html             gamle adresser som sender videre til matematikk/9/
 ```
 
 ## Legge til en ny modul
 
-1. Kopier en eksisterende modul i `moduler/` (for eksempel `pytagoras.html`) som mal.
-2. Behold oppbyggingen: utforsk med figur → «gjett først» → gjennomgått eksempel → delvis utfylt eksempel → blandet øving.
+1. Kopier en eksisterende modul i samme fag og trinn som mal.
+2. Behold oppbyggingen: gjett først → utforsk (virtuelt forsøk eller figur) → eksempel eller dra og slipp → blandet øving.
 3. Øvingen lages med `V.practice(el, {id, title, skills})`. Hver ferdighet har en liste med oppgavegeneratorer.
-4. Legg til én linje i `moduler`-lista i `index.html`, med samme `id` som i `V.practice`.
+4. Legg til én linje i `katalog.js` med samme `id` som i `V.practice`. Fjern `kommer:true` når modulen er ferdig.
 
 ## Pedagogiske prinsipper
 

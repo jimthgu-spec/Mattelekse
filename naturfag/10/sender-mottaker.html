@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sender og mottaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.lamp{width:84px;height:84px;border-radius:50%;background:#343a40;border:4px solid #212529;margin:0 auto;transition:background .05s}
+.lamp.on{background:#ffd43b;box-shadow:0 0 30px #ffd43b}
+.bits{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.bit{width:40px;height:48px;border-radius:8px;border:2px solid var(--line);background:var(--surface);font-family:var(--f-mono);font-weight:700;font-size:1.3rem;cursor:pointer}
+.bit.one{background:var(--lamp);border-color:#e0a800;color:#212529}
+.bitw{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);text-align:center;width:40px}
+.palette,.prog{display:flex;flex-wrap:wrap;gap:6px;min-height:46px;padding:8px;border-radius:10px;background:var(--paper)}
+.blk{border:none;border-radius:8px;padding:8px 12px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--f-body)}
+.blk.k{background:#1c7ed6}.blk.l{background:#7048e8}.blk.p{background:#868e96}.blk.g{background:#e8590c}
+.blk.run{outline:3px solid var(--lamp)}
+.mtrace{font-family:var(--f-mono);font-size:1.4rem;letter-spacing:.1em;text-align:center;min-height:2rem}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Sender og mottaker</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#binar"><b>2</b>Lyskoden</a>
+    <a href="#prog"><b>3</b>Programmer</a>
+    <a href="#system"><b>4</b>Systemer</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Beskjeder med lys og lyd</h1>
+      <p class="lead">Mobilen, fjernkontrollen og wifi-ruteren er systemer med en <b>sender</b>, en <b>kanal</b> og en <b>mottaker</b>. Senderen gjør beskjeden om til en <b>kode</b>, ofte bare av og på, 1 og 0. Mottakeren gjør koden om igjen til beskjeden.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 200" id="heroFig" role="img" aria-label="Sender, kanal og mottaker"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Du trykker på volumknappen på fjernkontrollen, og TV-en blir høyere.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="binar"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Lyskoden</h2></div>
+    <p class="sec-lead">Hver bokstav kan skrives som 8 biter (av og på). Senderen under blinker en bokstav: <b>på = 1</b>, <b>av = 0</b>. Du er mottakeren. Se på lampa, sett bitene og finn bokstaven.</p>
+    <div class="bench">
+      <div class="figcol">
+        <div class="lamp" id="lamp" aria-hidden="true"></div>
+        <div class="counter" id="lampOut" aria-live="polite">Trykk <b>Send bokstav</b>.</div>
+        <div class="bits" id="bits"></div>
+        <div class="bits" id="bitw"></div>
+      </div>
+      <div class="controls">
+        <div class="row"><button class="btn primary" type="button" id="send">Send bokstav</button><button class="btn" type="button" id="resend">Send på nytt</button></div>
+        <div class="calc" id="decode" aria-live="polite"></div>
+        <div class="row"><button class="btn" type="button" id="checkBits">Sjekk</button></div>
+        <div class="fb" id="bitFb" aria-live="polite"></div>
+        <p class="note">Bitene teller 128, 64, 32, 16, 8, 4, 2 og 1. Legg sammen verdiene der det er 1. Tallet 65 er A, 66 er B, og så videre.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="prog"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Programmer senderen</h2></div>
+    <p class="sec-lead">Trykk på blokkene for å lage et program som blinker nødsignalet <b>SOS</b> i morsekode: <span class="mono">··· ––– ···</span> (tre korte, tre lange, tre korte, med pause mellom bokstavene). Trykk på en blokk i programmet for å fjerne den.</p>
+    <div class="bench">
+      <div class="controls">
+        <p><b>Blokker</b></p><div class="palette" id="pal"></div>
+        <p><b>Programmet ditt</b> <span class="note" id="nBlk"></span></p><div class="prog" id="progList" aria-live="polite"></div>
+        <div class="row"><button class="btn primary" type="button" id="run">Kjør</button><button class="btn" type="button" id="clr">Tøm</button></div>
+        <div class="fb" id="progFb" aria-live="polite"></div>
+      </div>
+      <div class="figcol"><div class="lamp" id="lamp2" aria-hidden="true"></div><div class="mtrace" id="trace" aria-live="polite"></div>
+        <div class="card2"><span class="tag">Oppdrag <span id="taskNo">1</span> av 2</span><p id="taskTxt"></p></div></div>
+    </div>
+  </div></section>
+
+  <section id="system"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Sender, kanal og mottaker</h2></div>
+    <p class="sec-lead">Sorter delene i tre systemer: fjernkontroll og TV, en telefonsamtale, og en temperatursensor i et smarthus.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om teknologiske systemer med sender og mottaker, og om å bruke programmering til å utforske og styre dem. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+/* ---------- Hero ---------- */
+(function(){let s='<rect x="20" y="70" width="70" height="60" rx="10" fill="var(--accent)"/><text class="lbl" x="55" y="150" text-anchor="middle">Sender</text>';
+  for(let i=0;i<8;i++)s+=`<rect x="${110+i*20}" y="92" width="14" height="16" rx="3" fill="${'10110010'[i]==='1'?'var(--lamp)':'var(--line)'}"/>`;
+  s+='<text class="lbl" x="190" y="150" text-anchor="middle">Kanal: 10110010</text><rect x="290" y="70" width="70" height="60" rx="10" fill="var(--c2)"/><text class="lbl" x="325" y="150" text-anchor="middle">Mottaker</text>';
+  $('#heroFig').innerHTML=s;})();
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hvordan får TV-en beskjeden?',opts:['Fjernkontrollen sender lyd TV-en hører','Fjernkontrollen blinker med usynlig infrarødt lys i et mønster','Det går en usynlig ledning mellom dem'],ok:1,
+  expl:'Hver knapp har sin egen kode av korte blink med infrarødt lys, som vi ikke kan se. Sensoren i TV-en tar imot blinkene og gjør dem om til en kommando. Prøv å se på lampa i fjernkontrollen gjennom mobilkameraet når du trykker, da ser du blinkene!',
+  retry:'Prøv å holde hånda foran fjernkontrollen. Da virker den ikke. Hva sier det om signalet? Prøv igjen.'});
+
+/* ---------- 2 Lyskoden ---------- */
+const W8=[128,64,32,16,8,4,2,1];let letter=null,bits=[0,0,0,0,0,0,0,0],sending=false;
+$('#bits').innerHTML=W8.map((_,i)=>`<button type="button" class="bit" data-i="${i}" aria-label="Bit ${i+1}">0</button>`).join('');
+$('#bitw').innerHTML=W8.map(w=>`<span class="bitw">${w}</span>`).join('');
+$('#bits').querySelectorAll('.bit').forEach(b=>b.addEventListener('click',()=>{const i=+b.dataset.i;bits[i]=1-bits[i];renderBits();}));
+function renderBits(){$('#bits').querySelectorAll('.bit').forEach((b,i)=>{b.textContent=bits[i];b.classList.toggle('one',!!bits[i]);});
+  const v=bits.reduce((a,b,i)=>a+b*W8[i],0);$('#decode').innerHTML=`Verdi: ${bits.map((b,i)=>b?W8[i]:null).filter(x=>x).join(' + ')||'0'} = <b>${v}</b><br>Bokstav: <b>${v>=65&&v<=90?String.fromCharCode(v):'?'}</b>`;}
+function blink(code){if(sending)return;sending=true;const lamp=$('#lamp');let i=0;const T=V.reduce?60:600;
+  $('#lampOut').innerHTML='Følg med …';
+  const nx=()=>{if(i>=8){lamp.classList.remove('on');sending=false;$('#lampOut').innerHTML='Ferdig. Trykk på bitene, så de stemmer med blinkene.';return;}
+    lamp.classList.toggle('on',code[i]==='1');$('#lampOut').innerHTML=`Bit ${i+1} av 8`;i++;
+    setTimeout(()=>{lamp.classList.remove('on');setTimeout(nx,V.reduce?20:180);},T);};
+  nx();}
+$('#send').addEventListener('click',()=>{if(sending)return;letter=65+R(0,25);bits=[0,0,0,0,0,0,0,0];renderBits();$('#bitFb').className='fb';$('#bitFb').innerHTML='';blink(letter.toString(2).padStart(8,'0'));});
+$('#resend').addEventListener('click',()=>{if(letter)blink(letter.toString(2).padStart(8,'0'));});
+$('#checkBits').addEventListener('click',()=>{const fb=$('#bitFb');if(!letter){fb.className='fb hint';fb.textContent='Send en bokstav først.';return;}
+  const v=bits.reduce((a,b,i)=>a+b*W8[i],0);
+  if(v===letter){fb.className='fb good';fb.innerHTML=`Riktig! Det var <b>${String.fromCharCode(letter)}</b> = ${letter} = <span class="mono">${letter.toString(2).padStart(8,'0')}</span>. Akkurat slik sendes tekst i mobilnettet, bare millioner av ganger raskere.`;}
+  else{fb.className='fb bad';fb.innerHTML='Ikke helt. Trykk «Send på nytt» og følg med på hver bit. Alle store bokstaver starter med 010.';}});
+renderBits();
+
+/* ---------- 3 Programmer ---------- */
+const BL={k:['Kort blink','k'],l:['Langt blink','l'],p:['Pause','p'],g:['Gjenta 3 × neste','g']};
+let prog=[],task=0,runningP=false;
+const TASKS=[{t:'Lag et program som blinker SOS.',max:99},{t:'Lag SOS igjen, men bruk høyst 8 blokker. Tips: bruk «Gjenta 3 × neste».',max:8}];
+$('#pal').innerHTML=Object.entries(BL).map(([k,b])=>`<button type="button" class="blk ${k}" data-k="${k}">${b[0]}</button>`).join('');
+$('#pal').querySelectorAll('.blk').forEach(b=>b.addEventListener('click',()=>{if(runningP||prog.length>=20)return;prog.push(b.dataset.k);renderProg();}));
+function renderProg(){$('#progList').innerHTML=prog.map((k,i)=>`<button type="button" class="blk ${k}" data-i="${i}" aria-label="Fjern ${BL[k][0]}">${BL[k][0]}</button>`).join('')||'<span class="note">Tomt. Trykk på blokkene over.</span>';
+  $('#progList').querySelectorAll('.blk').forEach(b=>b.addEventListener('click',()=>{if(runningP)return;prog.splice(+b.dataset.i,1);renderProg();}));
+  $('#nBlk').textContent=`(${prog.length} blokker)`;$('#taskNo').textContent=task+1;$('#taskTxt').textContent=task<TASKS.length?TASKS[task].t:'Begge oppdragene er løst!';}
+function expand(p){const out=[];for(let i=0;i<p.length;i++){if(p[i]==='g'){const n=p[i+1];if(n&&n!=='g'){out.push({k:n,src:[i,i+1]},{k:n,src:[i,i+1]},{k:n,src:[i,i+1]});i++;}}else out.push({k:p[i],src:[i]});}return out;}
+$('#run').addEventListener('click',()=>{if(runningP)return;const seq=expand(prog);if(!seq.length)return;runningP=true;let i=0,tr='';const lamp=$('#lamp2'),U=V.reduce?30:220;
+  const nx=()=>{$('#progList').querySelectorAll('.blk').forEach(b=>b.classList.remove('run'));
+    if(i>=seq.length){lamp.classList.remove('on');runningP=false;check(seq);return;}
+    const s=seq[i++];s.src.forEach(j=>{const b=$('#progList').querySelectorAll('.blk')[j];if(b)b.classList.add('run');});
+    if(s.k==='p'){tr+='  ';$('#trace').textContent=tr;setTimeout(nx,U*3);return;}
+    lamp.classList.add('on');tr+=s.k==='k'?'·':'–';$('#trace').textContent=tr;
+    setTimeout(()=>{lamp.classList.remove('on');setTimeout(nx,U);},s.k==='k'?U:U*3);};
+  $('#trace').textContent='';nx();});
+function check(seq){const got=seq.map(s=>s.k).join(''),fb=$('#progFb');
+  const ok=got.replace(/p+$/,'')==='kkkplllpkkk';
+  if(!ok){fb.className='fb bad';fb.innerHTML=got.includes('p')?'Lampa blinket, men ikke SOS. Sjekk antall korte og lange, og pausene mellom bokstavene.':'Husk pause mellom bokstavene, ellers kan ikke mottakeren vite hvor en bokstav slutter.';return;}
+  if(task<TASKS.length&&prog.length>TASKS[task].max){fb.className='fb hint';fb.innerHTML=`Riktig signal, men du brukte ${prog.length} blokker. Klarer du det med høyst ${TASKS[task].max}?`;return;}
+  fb.className='fb good';fb.innerHTML=task===0?'SOS! Nå: kan du gjøre programmet kortere?':'Strålende! Med en <b>løkke</b> (gjenta) slipper du å skrive det samme mange ganger. Løkker er en av de viktigste ideene i programmering.';
+  if(task<TASKS.length)task++;renderProg();}
+$('#clr').addEventListener('click',()=>{if(runningP)return;prog=[];renderProg();$('#trace').textContent='';$('#progFb').className='fb';$('#progFb').innerHTML='';});
+renderProg();
+
+/* ---------- 4 Systemer ---------- */
+N.sorter($('#sort1'),{groups:[{id:'s',name:'Sender'},{id:'k',name:'Kanal'},{id:'m',name:'Mottaker'}],
+  items:[{t:'Fjernkontrollen',g:'s'},{t:'Infrarødt lys',g:'k'},{t:'Sensoren i TV-en',g:'m'},{t:'Mikrofonen i mobilen din',g:'s'},{t:'Radiobølger via mobilmasten',g:'k',why:'Mobiltelefoner sender radiobølger til nærmeste mast, som sender videre.'},{t:'Høyttaleren i vennens mobil',g:'m'},{t:'Temperatursensoren på veggen',g:'s',why:'Sensoren måler og sender målingen videre, så den er senderen i dette systemet.'},{t:'Wifi',g:'k'},{t:'Appen som viser temperaturen',g:'m'}],
+  good:'Riktig! Alle systemene har samme oppbygging. En <b>sensor</b> måler noe i omgivelsene, og en <b>aktuator</b> (som en motor eller en høyttaler) gjør noe ute i verden.'});
+
+/* ---------- Øving ---------- */
+const bin=n=>n.toString(2).padStart(8,'0');
+const skills={
+  binar:{name:'Binære tall',gens:[
+    ()=>{const n=R(1,255);return {prompt:`Hvilket tall er <span class="mono">${bin(n)}</span> i titallsystemet?`,ans:n,hints:['Bitene teller 128, 64, 32, 16, 8, 4, 2, 1 fra venstre.','Legg sammen verdiene der det står 1.'],sol:`${W8.filter((w,i)=>bin(n)[i]==='1').join(' + ')} = <b>${n}</b>`};},
+    ()=>{const n=R(1,31);return N.mc(`Hvilken binærkode er tallet <b>${n}</b>?`,bin(n),[bin(n^1||2),bin((n+2)%256),bin(n<<1&255||3)].filter((x,i,a)=>x!==bin(n)&&a.indexOf(x)===i).slice(0,3),['Finn de største verdiene (16, 8, 4, 2, 1) som passer.'],`${n} = ${W8.filter((w,i)=>bin(n)[i]==='1').join(' + ')}, altså <span class="mono">${bin(n)}</span>.`);},
+    ()=>{const b=pick([1,2,3,4,8]);return {prompt:`Med ${b} bit${b>1?'er':''} kan du lage hvor mange ulike koder?`,ans:Math.pow(2,b),hints:['Hver bit kan være 0 eller 1.','Doble for hver ny bit.'],sol:`2<sup>${b}</sup> = <b>${Math.pow(2,b)}</b> ulike koder.`,diag:v=>v===b*2?'Det dobles for hver bit, så du må gange 2 med seg selv.':null};}
+  ]},
+  system:{name:'Teknologiske systemer',gens:[
+    ()=>{const x=pick([['Fjernkontrollen','sender'],['Sensoren i TV-en','mottaker'],['Radiobølgene','kanal'],['Mikrofonen i en walkie-talkie','sender'],['Høyttaleren i en walkie-talkie','mottaker']]);
+      return N.mc(`Hvilken rolle har <b>${x[0].toLowerCase()}</b> i systemet?`,x[1][0].toUpperCase()+x[1].slice(1),['Sender','Kanal','Mottaker'].filter(y=>y.toLowerCase()!==x[1]),['Lager den signalet, frakter den det, eller tar den imot?'],`${x[0]} er ${x[1]}.`);},
+    ()=>N.mc('Hva er forskjellen på en sensor og en aktuator?','En sensor måler, en aktuator gjør noe',['En sensor er alltid trådløs','En aktuator måler lys'],['Tenk på et smarthus: termometeret og varmeovnen.'],'Sensoren (for eksempel et termometer) måler. Aktuatoren (for eksempel varmeovnen eller en motor) utfører en handling.'),
+    ()=>N.mc('Hvorfor bruker datamaskiner bare 0 og 1?','Det er lett å skille mellom av og på, selv med støy',['Fordi det er billigere å skrive','Fordi 2 er et ulykkestall'],['Tenk på lampa: er det lett å se forskjell på av og på?'],'To tilstander er robust: selv om signalet blir svakere, er det lett å avgjøre om det er av eller på.')
+  ]},
+  prog:{name:'Programmering',gens:[
+    ()=>N.mc('Hva er en løkke i programmering?','En instruksjon som gjentar noe flere ganger',['En feil i programmet','En kabel mellom sender og mottaker'],['Tenk på «Gjenta 3 × neste».'],'En løkke gjentar en eller flere instruksjoner. Det gjør programmet kortere og enklere å endre.'),
+    ()=>{const n=pick([3,4,5]),m=pick([2,3,4]);return {prompt:`Et program har en løkke «gjenta ${n} ganger» med ${m} blink inni. Hvor mange blink blir det?`,ans:n*m,hints:['Alt inni løkka skjer én gang per runde.'],sol:`${n} · ${m} = <b>${n*m}</b> blink.`};}
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-sender-mottaker',title:'Sender og mottaker',skills});
+})();
+</script>
+</body>
+</html>

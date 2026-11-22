@@ -32,7 +32,7 @@ window.KATALOG = {
     { fag:"naturfag", trinn:10, fil:"naturfag/10/platetektonikk.html", id:"nat10-platetektonikk", tittel:"Platetektonikk", tekst:"Dra i tiden og se kontinentene flytte seg, fjell vokse og vulkaner få utbrudd.", tema:"Jorda og livet på jorda", mal:["platetektonikk"] },
     { fag:"naturfag", trinn:10, fil:"naturfag/10/kroppens-styring.html", id:"nat10-kroppens-styring", tittel:"Kroppens styring", tekst:"Nerver og hormoner, rus og doping, og seksuell helse.", tema:"Kropp og helse", mal:["nervesystem og hormoner","rusmidler og doping","seksuell og reproduktiv helse"] },
     { fag:"naturfag", trinn:10, fil:"naturfag/10/immunforsvar.html", id:"nat10-immunforsvar", tittel:"Immunforsvar og vaksiner", tekst:"Følg kroppens forsvar mot et virus, og se hvordan vaksiner stopper smitte.", tema:"Kropp og helse", mal:["immunforsvar","vaksiner"] },
-    { fag:"naturfag", trinn:10, fil:"naturfag/10/sender-mottaker.html", kommer:true, id:"nat10-sender-mottaker", tittel:"Sender og mottaker", tekst:"Kod meldinger til lys og lyd, og programmer en sender.", tema:"Teknologi", mal:["teknologiske systemer","programmering"] },
+    { fag:"naturfag", trinn:10, fil:"naturfag/10/sender-mottaker.html", id:"nat10-sender-mottaker", tittel:"Sender og mottaker", tekst:"Kod meldinger til lys og lyd, og programmer en sender.", tema:"Teknologi", mal:["teknologiske systemer","programmering"] },
 
     // Naturfag på andre trinn: kommer
     { fag:"naturfag", trinn:7, kommer:true, tittel:"Naturfag 7. trinn", tekst:"10 moduler: partikkelmodellen, elektrisitet, næringsnett, jorda i rommet og mer.", tema:"Kommer" },

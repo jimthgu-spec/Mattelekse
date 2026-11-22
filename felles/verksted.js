@@ -15,6 +15,8 @@ V.reduce=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').ma
 V.parseNum=function(str){
   if(str==null)return NaN;
   const s=String(str).trim().replace(/[\s  ]/g,'').replace(',', '.').replace('−','-');
+  const fr=s.match(/^(-?\d+)\/(\d+)$/);            // brøk, for eksempel 5/36
+  if(fr)return +fr[2]?(+fr[1])/(+fr[2]):NaN;
   if(!/^-?(\d+\.?\d*|\.\d+)$/.test(s))return NaN;
   return parseFloat(s);
 };
@@ -156,7 +158,7 @@ V.practice=function(root,{id,title,skills}){
   q('form').addEventListener('submit',e=>{
     e.preventDefault();if(!task||task.done||task.choices)return;
     const v=V.parseNum(q('ans').value);
-    if(isNaN(v)){const fb=q('fb');fb.className='fb hint';fb.textContent='Skriv svaret som et tall, for eksempel 12,5.';return;}
+    if(isNaN(v)){const fb=q('fb');fb.className='fb hint';fb.textContent=task.placeholder&&task.placeholder.includes('/')?'Skriv svaret som en brøk (for eksempel 3/8) eller et desimaltall (0,375).':'Skriv svaret som et tall, for eksempel 12,5.';return;}
     const ok=Math.abs(v-task.ans)<=Math.max((task.rel??1e-6)*Math.abs(task.ans),task.abs||0)+1e-9;
     ok?right():wrong(task.diag&&task.diag(v));
   });
@@ -206,7 +208,7 @@ V.practice=function(root,{id,title,skills}){
         ch.appendChild(b);});
     }
     q('unit').innerHTML=task.unit||'';
-    const a=q('ans');a.value='';a.disabled=false;q('check').disabled=false;
+    const a=q('ans');a.value='';a.disabled=false;a.placeholder=task.placeholder||'Svar';a.inputMode=task.placeholder&&task.placeholder.includes('/')?'text':'decimal';q('check').disabled=false;
     q('hints').innerHTML='';q('fb').innerHTML='';q('fb').className='fb';
     const h=q('hint');h.disabled=!task.hintText.length;h.textContent='Gi meg et hint';q('show').hidden=true;
     const nx=q('next');nx.textContent='Ny oppgave';nx.classList.add('ghost');nx.classList.remove('primary');

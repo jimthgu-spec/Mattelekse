@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drivhuseffekt og klima</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
+<style>.fig .space{fill:#0b1430}
+.fig .earth{fill:#2f7fd6}
+.fig .land{fill:#3f9b4f}
+.fig .atm{fill:#9ec5ff;fill-opacity:.18;stroke:#9ec5ff;stroke-opacity:.5}
+.fig .sun{stroke:#ffd43b;stroke-width:3;stroke-linecap:round;marker-end:url(#arY)}
+.fig .ir{stroke:#ff6b6b;stroke-width:3;stroke-linecap:round;fill:none;marker-end:url(#arR)}
+.fig .co2{fill:#dee2e6}
+.fig .thermo{fill:#fff;stroke:#495057;stroke-width:1.4}
+.fig .merc{fill:#e03131}
+.fig .wt{fill:#fff;font-family:var(--f-mono);font-size:14px;font-weight:700}
+.fig .ws{fill:#ced4da;font-family:var(--f-body);font-size:11px}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Deler av modulen">
+  <div class="wrap">
+    <a class="brand" href="../index.html" title="Til naturfag">← Klima</a>
+    <a href="#gjett"><b>1</b>Gjett</a>
+    <a href="#modell"><b>2</b>Drivhusmodellen</a>
+    <a href="#data"><b>3</b>Målingene</a>
+    <a href="#sort"><b>4</b>Vær og klima</a>
+    <a href="#ov"><b>5</b>Øv</a>
+  </div>
+</nav>
+
+<div class="wrap"><div class="nojs" id="nojs"><b>Knappene og figurene virker ikke her.</b> Denne forhåndsvisningen kjører ikke JavaScript (det skjer ofte når filen åpnes fra Filer-appen på iPhone). Åpne lenken i Safari, så virker alt.</div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Naturfag · 10. trinn</p>
+      <h1>Jordas varme dyne</h1>
+      <p class="lead">Sollyset varmer opp jorda, og jorda sender varmestråling tilbake mot verdensrommet. <b>Drivhusgasser</b> som CO₂ og vanndamp fanger noe av varmestrålingen og sender den tilbake ned. Mer CO₂ gir en tykkere dyne.</p>
+    </div>
+    <div class="heroart"><svg class="fig" viewBox="0 0 380 220" id="heroFig" role="img" aria-label="Jorda med sollys inn og varmestråling ut"></svg></div>
+  </div>
+</header>
+<main>
+  <section id="gjett"><div class="wrap">
+    <div class="sec-head"><span class="step-no">1</span><h2>Gjett først</h2></div>
+    <p class="sec-lead">Drivhuseffekten høres farlig ut, men uten den hadde det sett annerledes ut på jorda.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="p1"></div></div>
+  </div></section>
+
+  <section id="modell"><div class="wrap">
+    <div class="sec-head"><span class="step-no">2</span><h2>Drivhusmodellen</h2></div>
+    <p class="sec-lead">Skru CO₂-innholdet opp og ned. Gule piler er sollys inn. Røde piler er varmestråling ut. Se hvor mange røde piler som sendes tilbake, og hva som skjer med temperaturen.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="ghFig" viewBox="0 0 380 300" role="img" aria-label="Drivhusmodell med jord, atmosfære og piler"></svg></div>
+      <div class="controls">
+        <div id="ghSl"></div>
+        <div class="pick" id="ghPre"><button class="btn" type="button" data-c="0">Ingen drivhusgasser</button><button class="btn" type="button" data-c="190">Istid</button><button class="btn" type="button" data-c="280">År 1850</button><button class="btn" type="button" data-c="424">I dag</button><button class="btn" type="button" data-c="800">År 2100, høye utslipp</button></div>
+        <div class="calc" id="ghOut" aria-live="polite"></div>
+        <div id="p2"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="data"><div class="wrap">
+    <div class="sec-head"><span class="step-no">3</span><h2>Hva viser målingene?</h2></div>
+    <p class="sec-lead">Modeller må testes mot virkeligheten. Her er ekte målinger. Bytt mellom CO₂ og temperatur.</p>
+    <div class="bench">
+      <div class="figcol"><svg class="fig" id="dataFig" role="img" aria-label="Graf over målte data"></svg></div>
+      <div class="controls">
+        <div class="pick" id="dataPick"><button class="btn on" type="button" data-d="t" aria-pressed="true">Temperatur</button><button class="btn" type="button" data-d="c" aria-pressed="false">CO₂</button></div>
+        <p class="note" id="dataNote"></p>
+        <div id="p3"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="sort"><div class="wrap">
+    <div class="sec-head"><span class="step-no">4</span><h2>Vær eller klima?</h2></div>
+    <p class="sec-lead"><b>Vær</b> er hvordan det er ute i dag eller denne uka. <b>Klima</b> er gjennomsnittet av været over minst 30 år.</p>
+    <div class="bench" style="grid-template-columns:1fr"><div id="sort1"></div></div>
+  </div></section>
+
+  <section id="ov"><div class="wrap">
+    <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
+    <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake.</p>
+    <div id="practice"></div>
+  </div></section>
+</main>
+<footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om drivhuseffekten og klimaendringer. Temperaturdata: NASA GISS (avvik fra snittet 1951–1980). CO₂-data: Mauna Loa, NOAA. Modellen er forenklet. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til naturfag</a></div></footer>
+<script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
+<script>
+(function(){
+const {$,nf,R,pick,shuffle,fx,near}=V;V.ready();
+const T0=13.8;
+const temp=c=>c<=0?-18:Math.max(-18,T0+3*Math.log(Math.max(c,20)/280)/Math.LN2);
+function gh(c,W=380,H=300){
+  const back=c<=0?0:Math.min(5,Math.round(1+c/200));
+  let s=`<defs><marker id="arY" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#ffd43b"/></marker><marker id="arR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#ff6b6b"/></marker></defs>`;
+  s+=`<rect class="space" width="${W}" height="${H}" rx="10"/>`;
+  const cy=H+170,R=260;
+  s+=`<circle class="atm" cx="${W/2}" cy="${cy}" r="${R+60}"/><circle class="earth" cx="${W/2}" cy="${cy}" r="${R}"/><path class="land" d="M${W*.25},${cy-R+14} q40,-14 80,-4 q30,8 40,0 l0,30 h-120z"/>`;
+  for(let i=0;i<Math.round(c/40);i++){const a=-Math.PI/2+((i*0.618)%1-.5)*1.3,r=R+18+((i*37)%40);s+=`<circle class="co2" cx="${fx(W/2+r*Math.cos(a))}" cy="${fx(cy+r*Math.sin(a))}" r="3"/>`;}
+  for(let i=0;i<3;i++){const x=70+i*40;s+=`<line class="sun" x1="${x}" y1="20" x2="${x+30}" y2="${cy-R-8+Math.abs(i-1)*6}"/>`;}
+  const out=6;for(let i=0;i<out;i++){const x=210+i*24,y1=cy-R-4+Math.abs(x-W/2)*.12;
+    if(i<back){s+=`<path class="ir" d="M${x},${fx(y1)} Q${x+6},${fx(y1-55)} ${x+12},${fx(y1-62)} Q${x+20},${fx(y1-50)} ${x+16},${fx(y1-6)}"/>`;}
+    else s+=`<line class="ir" x1="${x}" y1="${fx(y1)}" x2="${x+10}" y2="18"/>`;}
+  const T=temp(c),th=Math.max(4,(T+20)/45*120);
+  s+=`<rect class="thermo" x="22" y="140" width="18" height="130" rx="9"/><rect class="merc" x="26" y="${fx(266-th)}" width="10" height="${fx(th)}" rx="5"/><text class="wt" x="50" y="${fx(270-th+5)}">${T>0?'+':''}${nf(T,1)} °C</text>`;
+  s+=`<text class="ws" x="70" y="${H-14}">CO₂: ${c} ppm</text>`;
+  return s;
+}
+$('#heroFig').setAttribute('viewBox','0 0 380 300');$('#heroFig').innerHTML=gh(424);
+
+/* ---------- 1 Gjett ---------- */
+V.predict($('#p1'),{q:'Hva ville gjennomsnittstemperaturen på jorda vært uten noen drivhusgasser?',opts:['Omtrent som nå','Rundt 0 °C','Rundt −18 °C','Over 50 °C'],ok:2,
+  expl:'Uten drivhuseffekten ville jorda vært en frossen klode på rundt −18 °C. Den <b>naturlige</b> drivhuseffekten gir oss rundt +14 °C. Problemet er at vi forsterker den ved å slippe ut mer CO₂.',
+  retry:'Kaldere enn du tror. Varmen ville strålt rett ut i verdensrommet. Prøv igjen.'});
+
+/* ---------- 2 Modellen ---------- */
+let ghC=424;
+const ghS=N.slider($('#ghSl'),{id:'co2',label:'CO₂ (ppm)',min:0,max:1000,step:2,value:424,fmt:v=>v,on:v=>{ghC=v;renderGH();}});
+function renderGH(){
+  $('#ghFig').innerHTML=gh(ghC);const T=temp(ghC),d=T-temp(280);
+  $('#ghOut').innerHTML=`Likevektstemperatur: <b>${nf(T,1)} °C</b><br>Endring fra 1850: <b>${d>=0?'+':''}${nf(d,1)} °C</b>`+(ghC>=560?'<br>CO₂ er doblet fra 1850.':'');
+  $('#ghPre').querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.c===ghC));
+}
+$('#ghPre').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ghS.value=+b.dataset.c;}));
+renderGH();
+V.predict($('#p2'),{tag:'Finn mønsteret',q:'Prøv 280 → 560 ppm, og så 560 → 1000 ppm. Hva skjer med temperaturen for hver dobling av CO₂?',opts:['Den stiger omtrent like mye for hver dobling','Den dobles','Den stiger ikke mer etter 560'],ok:0,
+  expl:'Klimaforskerne anslår at en dobling av CO₂ gir omtrent 3 °C oppvarming på sikt (klimafølsomhet). Det høres lite ut, men under siste istid var jorda bare rundt 6 °C kaldere enn i dag.',retry:'Les av «Endring fra 1850» ved 280, 560 og rundt 1000 ppm.'});
+
+/* ---------- 3 Data ---------- */
+const TD=[[1960,-0.03],[1965,-0.10],[1970,0.03],[1975,-0.01],[1980,0.26],[1985,0.12],[1990,0.45],[1995,0.45],[1998,0.61],[2000,0.39],[2005,0.68],[2010,0.72],[2015,0.90],[2016,1.01],[2020,1.01],[2023,1.17],[2024,1.28]];
+const CD=[[1960,317],[1965,320],[1970,326],[1975,331],[1980,339],[1985,346],[1990,354],[1995,361],[2000,370],[2005,380],[2010,390],[2015,401],[2020,414],[2024,424]];
+let dsel='t';
+function renderData(){
+  const t=dsel==='t';
+  N.graph($('#dataFig'),t?{x:{min:1960,max:2025,step:10,label:'År',fmt:v=>v},y:{min:-.4,max:1.4,step:.2,label:'Avvik (°C)'},series:[{pts:TD,cls:'pt',lineCls:'ptline'}]}
+    :{x:{min:1960,max:2025,step:10,label:'År',fmt:v=>v},y:{min:300,max:440,step:20,label:'CO₂ (ppm)'},series:[{pts:CD,cls:'pt2',lineCls:'ptline2'}]});
+  $('#dataNote').innerHTML=t?'Temperaturen er vist som avvik fra gjennomsnittet 1951–1980. Den hopper litt opp og ned fra år til år, men trenden er tydelig.':'CO₂ måles på Mauna Loa på Hawaii, langt fra byer og fabrikker. Kurven øker jevnt hvert år.';
+  $('#dataPick').querySelectorAll('button').forEach(b=>{b.classList.toggle('on',b.dataset.d===dsel);b.setAttribute('aria-pressed',b.dataset.d===dsel);});
+}
+$('#dataPick').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{dsel=b.dataset.d;renderData();}));
+renderData();
+V.predict($('#p3'),{tag:'Tolk grafen',q:'1998 var et svært varmt år, og noen år etter var kaldere. Betyr det at oppvarmingen stoppet?',opts:['Ja, da det ble kaldere','Nei, vi må se på trenden over mange år','Det kan vi ikke vite noe om'],ok:1,
+  expl:'Enkeltår påvirkes av naturlige svingninger som El Niño. Klima handler om gjennomsnitt over 30 år. Over tid har hvert tiår vært varmere enn det forrige.',retry:'Se på hele grafen. Hva gjør kurven over mange tiår?'});
+
+/* ---------- 4 Sorter ---------- */
+N.sorter($('#sort1'),{groups:[{id:'v',name:'Vær'},{id:'k',name:'Klima'}],
+  items:[{t:'Det regner i Bergen i dag',g:'v'},{t:'Det blir storm i natt',g:'v'},{t:'Det var kaldt i fjor vinter',g:'v',why:'Én vinter er for kort tid. Klima er snittet over minst 30 år.'},{t:'Sahara er tørr og varm',g:'k'},{t:'Vintrene i Norge er blitt kortere de siste 50 årene',g:'k'},{t:'Gjennomsnittlig nedbør i Tromsø 1991–2020',g:'k'}],
+  good:'Riktig! En kald vinter motbeviser ikke global oppvarming, på samme måte som én varm sommer ikke beviser den.'});
+
+/* ---------- Øving ---------- */
+const skills={
+  drivhus:{name:'Drivhuseffekten',gens:[
+    ()=>N.mc('Hva gjør drivhusgassene i atmosfæren?','Fanger varmestråling fra jorda og sender noe tilbake',['Slipper inn mer sollys','Lager hull i ozonlaget','Kjøler ned jorda'],['Tenk på de røde pilene i modellen.'],'Drivhusgasser slipper sollyset gjennom, men fanger noe av varmestrålingen fra jorda og sender den tilbake ned.',{'Lager hull i ozonlaget':'Ozonhullet er et annet miljøproblem, skapt av KFK-gasser. Det har lite med drivhuseffekten å gjøre.'}),
+    ()=>{const g=pick(['Karbondioksid (CO₂)','Metan (CH₄)','Vanndamp (H₂O)','Lystgass (N₂O)']);return N.mc('Hvilken av disse er en drivhusgass?',g,['Oksygen (O₂)','Nitrogen (N₂)','Argon (Ar)'],['De vanligste gassene i lufta er ikke drivhusgasser.'],`${g} er en drivhusgass. Oksygen og nitrogen, som utgjør 99 % av lufta, fanger nesten ikke varmestråling.`);},
+    ()=>N.mc('Hva er den viktigste årsaken til at CO₂ i lufta har økt siden 1850?','Forbrenning av kull, olje og gass',['Vulkaner','Flere mennesker som puster','Sola er blitt sterkere'],['Hva skjedde etter den industrielle revolusjonen?'],'Fossile brensler inneholder karbon som har vært lagret i millioner av år. Når vi brenner dem, blir det til CO₂.',{'Flere mennesker som puster':'Karbonet vi puster ut, kom fra mat som nylig tok CO₂ fra lufta. Det gir ikke netto økning.'})
+  ]},
+  data:{name:'Regne med klimadata',gens:[
+    ()=>{const a=pick(CD.slice(0,6)),b=pick(CD.slice(8));return {prompt:`CO₂ var ${a[1]} ppm i ${a[0]} og ${b[1]} ppm i ${b[0]}. Hvor mange ppm økte det?`,ans:b[1]-a[1],unit:'ppm',hints:['Trekk den gamle verdien fra den nye.'],sol:`${b[1]} − ${a[1]} = <b>${b[1]-a[1]} ppm</b>.`};},
+    ()=>{const a=pick(CD.slice(0,4)),b=CD[CD.length-1];const y=b[0]-a[0],ans=(b[1]-a[1])/y;return {prompt:`CO₂ økte fra ${a[1]} ppm i ${a[0]} til ${b[1]} ppm i ${b[0]}. Hvor mye økte det i gjennomsnitt per år? Svar med én desimal.`,ans,unit:'ppm/år',abs:.06,hints:['Finn økningen, og del på antall år.',`Økning: ${b[1]-a[1]} ppm. Antall år: ${y}.`],sol:`${b[1]-a[1]} : ${y} ≈ <b>${nf(ans,1)} ppm per år</b>.`};},
+    ()=>{const c=pick([560,840,1120]);const n=Math.round(Math.log(c/280)/Math.LN2*100)/100;return {prompt:`Hvis hver dobling av CO₂ gir 3 °C oppvarming, hvor mye varmere blir det med ${c} ppm sammenlignet med 280 ppm?`,ans:3*Math.log2(c/280),unit:'°C',abs:.15,hints:[`Hvor mange ganger må du doble 280 for å få ${c}?`,'280 · 2 = 560, 560 · 2 = 1120.'],sol:`${c} = 280 · ${nf(c/280,1)}, som er ${nf(n,2)} doblinger. ${nf(n,2)} · 3 ≈ <b>${nf(3*Math.log2(c/280),1)} °C</b>.`};}
+  ]},
+  klima:{name:'Vær, klima og konsekvenser',gens:[
+    ()=>N.mc('Hva er forskjellen på vær og klima?','Klima er været i gjennomsnitt over minst 30 år',['Klima er været om sommeren','Vær er det samme som klima','Klima gjelder bare temperatur'],['Tenk på tidsrommet.'],'Vær er nå og de nærmeste dagene. Klima er gjennomsnitt og variasjon over 30 år eller mer.'),
+    ()=>N.mc('Hvorfor stiger havet når klimaet blir varmere?','Isbreer på land smelter, og varmt vann utvider seg',['Havisen på Nordpolen smelter','Det regner mer'],['Hva skjer med et isbit i et glass vann når den smelter?'],'Is som flyter (havis) hever ikke havet når den smelter. Men is på land (Grønland, Antarktis, isbreer) renner ut i havet, og varmere vann tar mer plass.',{'Havisen på Nordpolen smelter':'Havis flyter allerede, så den hever ikke havet når den smelter, akkurat som en isbit i et glass.'}),
+    ()=>N.mc('Hvilket tiltak reduserer CO₂-utslippene mest for en vanlig familie?','Fly mindre og kjøre mindre fossilbil',['Slå av lyset på badet','Sortere plast','Bruke papirpose'],['Hvilke aktiviteter bruker mest fossil energi?'],'Flyreiser og bilkjøring på bensin og diesel står for store deler av en families utslipp. Små tiltak hjelper litt, men de store valgene teller mest.')
+  ]}
+};
+V.practice($('#practice'),{id:'nat10-klima',title:'Drivhuseffekt og klima',skills});
+})();
+</script>
+</body>
+</html>

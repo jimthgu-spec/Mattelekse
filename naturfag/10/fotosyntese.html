@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap">
 <link rel="stylesheet" href="../../felles/verksted.css?v=3">
+<link rel="stylesheet" href="../../felles/natur.css?v=1">
 <style>
 :root{--leaf:#2f8f46;--leaf-soft:#dcf1e1;--lamp:#f2b705}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--leaf:#5cc777;--leaf-soft:#173322;--lamp:#f5cc4a}}
@@ -58,7 +59,8 @@ table.log td.x{color:var(--c1);font-weight:700}
     <a href="#gjett"><b>1</b>Gjett</a>
     <a href="#lab"><b>2</b>Laboratoriet</a>
     <a href="#likning"><b>3</b>Likningen</a>
-    <a href="#ov"><b>4</b>Øv</a>
+    <a href="#celler"><b>4</b>Cellene</a>
+    <a href="#ov"><b>5</b>Øv</a>
   </div>
 </nav>
 
@@ -135,9 +137,17 @@ table.log td.x{color:var(--c1);font-weight:700}
     </div>
   </section>
 
+  <section id="celler">
+    <div class="wrap">
+      <div class="sec-head"><span class="step-no">4</span><h2>Plantecelle og dyrecelle</h2></div>
+      <p class="sec-lead">Fotosyntesen skjer i grønnkornene, celleåndingen i mitokondriene. Men har alle celler begge deler? Sorter delene etter hvor de finnes.</p>
+      <div class="bench" style="grid-template-columns:1fr"><div id="cellSort"></div></div>
+    </div>
+  </section>
+
   <section id="ov">
     <div class="wrap">
-      <div class="sec-head"><span class="step-no">4</span><h2>Øv</h2></div>
+      <div class="sec-head"><span class="step-no">5</span><h2>Øv</h2></div>
       <p class="sec-lead">Oppgavene blandes. Det du synes er vanskelig, kommer oftere tilbake, og det du kan, kommer tilbake om noen dager.</p>
       <div id="practice"></div>
     </div>
@@ -145,6 +155,7 @@ table.log td.x{color:var(--c1);font-weight:700}
 </main>
 <footer><div class="wrap">Følger LK20 (NAT01-05), kompetansemål etter 10. trinn om fotosyntese og celleånding, og om å utforske med hypoteser og variabler. Fremgangen lagres bare i denne nettleseren. <a href="../index.html">Til forsiden</a></div></footer>
 <script src="../../felles/verksted.js?v=2"></script>
+<script src="../../felles/natur.js?v=1"></script>
 <script>
 (function(){
 const {$,nf,R,pick,shuffle,fx}=V;V.ready();
@@ -349,6 +360,12 @@ $('#eqCheck').addEventListener('click',()=>{
     'Du har de riktige stoffene, men noen står på feil side. Hva bruker reaksjonen opp, og hva lager den?';
 });
 renderEq();
+
+/* ---------- 4 Cellene ---------- */
+N.sorter($('#cellSort'),{groups:[{id:'p',name:'Bare plantecelle'},{id:'b',name:'Begge'},{id:'d',name:'Bare dyrecelle'}],
+  items:[{t:'Grønnkorn (kloroplast)',g:'p'},{t:'Cellevegg',g:'p',why:'Celleveggen av cellulose gjør planter stive. Dyreceller har bare cellemembran.'},{t:'Stor vakuole',g:'p'},
+    {t:'Cellekjerne',g:'b'},{t:'Cellemembran',g:'b'},{t:'Mitokondrier',g:'b',why:'Planter driver også celleånding, så de trenger mitokondrier.'},{t:'Cytoplasma',g:'b'},{t:'Sentriol',g:'d',why:'Sentrioler hjelper dyreceller å dele seg. De fleste planteceller mangler dem.'}],
+  good:'Riktig! Begge celletypene har mitokondrier og driver celleånding hele døgnet. Bare plantecellene har grønnkorn og kan drive fotosyntese.'});
 
 /* ---------- 4 Øving ---------- */
 function mc(prompt,right,wrongs,hints,sol,why){

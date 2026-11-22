@@ -82,6 +82,7 @@ input[type=range]{width:100%;accent-color:var(--accent);min-width:0}
 .btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .btn.ghost{background:transparent}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.mini{padding:4px 12px}
 .btn.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .note{font-size:.92rem;color:var(--muted)}
 .field{border:2px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;min-width:0;font-size:16px}
